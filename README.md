@@ -39,6 +39,7 @@ Lernstand und eigene Karten werden nur im eigenen Browser gespeichert (localStor
 ## Enthaltene Lernsets
 
 - **Programmierpraktikum** (TUM Elektrotechnik, 1. Semester) – Computer-Modell, Betriebssystem, Toolchain, git & Shell, Funktionen, `main`, `printf`, Escaping, Kommentare
+- **Schaltungstheorie** (TUM Elektrotechnik, 1. Semester) – in 11 Kapitel-Unterordnern, einzeln oder alle zusammen lernbar; mit 42 Schaltbild-Karten
 
 ## Eigene Lernsets hinzufügen
 
@@ -59,6 +60,12 @@ Lernsets stehen in [`decks.js`](decks.js). Jeder Eintrag ist ein Ordner:
   ],
 }
 ```
+
+Weitere Möglichkeiten (siehe [`decks/schaltungstheorie.js`](decks/schaltungstheorie.js)):
+
+- `{ chapter: '1 Grundlagen' }` zwischen den Karten teilt das Lernset in Kapitel-Unterordner
+- Karten mit `img: 'schaltbilder/datei.png'` sind Schaltbild-Karten (eine Seite Begriff, andere Seite Bild + `def` als Bildunterschrift)
+- weitere Lernset-Dateien in `index.html` und `sw.js` eintragen
 
 Formatierung in Texten: Leerzeile = neuer Absatz, `- ` = Liste, `**fett**`, `` `code` ``,
 Formeln im LaTeX-Stil mit `$…$` (im Text) oder `$$…$$` (abgesetzt). In JavaScript-Strings Backslashes verdoppeln, z. B. `'$\\frac{a}{b}$'`.

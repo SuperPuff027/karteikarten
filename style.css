@@ -266,6 +266,15 @@ button.row:active { background: var(--press); }
   .study-controls .btn.grade { flex: 1 1 0; padding: 10px 6px; font-size: 14px; gap: 6px; }
 }
 
+/* Schaltbild-Karten */
+.face .content:has(> .figure) { height: 100%; width: 100%; display: flex; }
+.figure { display: flex; flex-direction: column; justify-content: center; gap: 10px; width: 100%; height: 100%; }
+.figure img { flex: 1 1 auto; min-height: 0; width: 100%; object-fit: contain; }
+.figure .cap { flex: none; font-size: clamp(13px, 3.6vw, 16px); line-height: 1.45; opacity: .8; }
+/* Schaltbilder sind dunkle Linien auf transparentem Grund → im Dunkelmodus invertieren */
+:root[data-theme="dark"] .figure img { filter: invert(1) hue-rotate(180deg); }
+@media (prefers-color-scheme: dark) { :root:not([data-theme="light"]) .figure img { filter: invert(1) hue-rotate(180deg); } }
+
 /* Formeln (KaTeX) */
 .face .katex { font-size: 1.05em; }
 .face .katex-display { margin: .4em 0; overflow-x: auto; overflow-y: hidden; }

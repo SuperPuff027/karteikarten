@@ -14,7 +14,7 @@
 
   let userFolders = store.get('kk.folders', []);     // [{id, name, color}]
   let ownCards = store.get('kk.cards', {});          // {folderId: [{term, def, more, moreLabel}]}
-  let prefs = Object.assign({ reverse: false, shuffle: true, extended: true, smart: true }, store.get('kk.prefs', {}));
+  let prefs = Object.assign({ reverse: false, shuffle: true, extended: true, smart: true, images: true }, store.get('kk.prefs', {}));
   // Lernstand pro Karte: { s: 'known'|'unsure'|'wrong', lvl: 0..5, t: Zeitstempel }
   let stats = store.get('kk.stats', {});
 
@@ -43,14 +43,24 @@
     stats[key] = { s: g, lvl, t: Date.now() };
     save();
   }
-  function statItems(f) {
-    const out = [];
+  // Lernstand-Schlüssel: Kapitel teilen sich den Lernstand mit ihrem Hauptordner
+  const sid = f => f.statId || f.id;
+
+  // Alle Lernkarten eines Ordners (Definition, Vertiefung, Schaltbild); all = Optionen ignorieren
+  function studyItems(f, all) {
+    const id = sid(f), out = [];
     for (const c of cardsOf(f)) {
-      out.push(statKey(f.id, c.term, null));
-      if (c.more && prefs.extended) out.push(statKey(f.id, c.term, c.moreLabel || 'Methode'));
+      if (c.img) {
+        if (all || prefs.images) out.push({ term: c.term, img: c.img, text: c.def || '', label: 'Schaltbild' });
+        continue;
+      }
+      out.push({ term: c.term, text: c.def, label: null });
+      if (c.more && (all || prefs.extended)) out.push({ term: c.term, text: c.more, label: c.moreLabel || 'Methode' });
     }
+    out.forEach((it, i) => { it.key = statKey(id, it.term, it.label); it.pos = i; });
     return out;
   }
+  const statItems = f => studyItems(f).map(it => it.key);
   function summary(f) {
     const r = { wrong: 0, unsure: 0, known: 0, neu: 0 };
     for (const k of statItems(f)) { const st = stats[k]; st ? r[st.s]++ : r.neu++; }
@@ -58,22 +68,48 @@
   }
 
   // ---------- Daten ----------
-  function folders() {
-    const builtin = (window.DECKS || []).map((d, i) => ({
-      id: d.id || 'deck-' + i, name: d.name, color: d.color || COLORS[i % COLORS.length],
-      cards: d.cards || [], builtin: true, description: d.description || '',
-    }));
-    return builtin.concat(userFolders.map(f => Object.assign({ cards: [], builtin: false }, f)));
+  // Lernset aus decks.js: Einträge { chapter: '…' } teilen die Karten in Kapitel-Unterordner
+  function parseDeck(d, i) {
+    const id = d.id || 'deck-' + i, color = d.color || COLORS[i % COLORS.length];
+    const cards = [], chapters = [];
+    for (const c of d.cards || []) {
+      if (c.chapter) { chapters.push({ name: c.chapter, cards: [] }); continue; }
+      cards.push(c);
+      if (chapters.length) chapters[chapters.length - 1].cards.push(c);
+    }
+    return {
+      id, name: d.name, color, cards, builtin: true, description: d.description || '',
+      chapters: chapters.map((ch, k) => ({
+        id: id + '::' + k, name: ch.name, color, cards: ch.cards, builtin: true,
+        parentId: id, statId: id, isChapter: true,
+      })),
+    };
   }
-  const folderById = id => folders().find(f => f.id === id);
+  function folders() {
+    const builtin = (window.DECKS || []).map(parseDeck);
+    return builtin.concat(userFolders.map(f => Object.assign({ cards: [], builtin: false, chapters: [] }, f)));
+  }
+  function folderById(id) {
+    for (const f of folders()) {
+      if (f.id === id) return f;
+      const ch = f.chapters.find(c => c.id === id);
+      if (ch) return ch;
+    }
+    return null;
+  }
   function cardsOf(f) {
+    const own = f.isChapter ? [] : (ownCards[f.id] || []);
     return f.cards.map(c => Object.assign({}, c, { own: false }))
-      .concat((ownCards[f.id] || []).map((c, i) => Object.assign({}, c, { own: true, ownIndex: i })));
+      .concat(own.map((c, i) => Object.assign({}, c, { own: true, ownIndex: i })));
   }
   function countText(f) {
     const cs = cardsOf(f);
-    const more = cs.filter(c => c.more).length;
-    return cs.length + (cs.length === 1 ? ' Begriff' : ' Begriffe') + (more ? ' · ' + more + ' Vertiefung' + (more === 1 ? '' : 'en') : '');
+    const terms = cs.filter(c => !c.img).length, more = cs.filter(c => c.more).length, imgs = cs.filter(c => c.img).length;
+    const parts = [terms + (terms === 1 ? ' Begriff' : ' Begriffe')];
+    if (more) parts.push(more + ' Vertiefung' + (more === 1 ? '' : 'en'));
+    if (imgs) parts.push(imgs + ' Schaltbild' + (imgs === 1 ? '' : 'er'));
+    if (f.chapters && f.chapters.length) parts.push(f.chapters.length + ' Kapitel');
+    return parts.join(' · ');
   }
 
   // ---------- Hilfen ----------
@@ -158,12 +194,18 @@
   // Lange Texte verkleinern, bis sie auf die Karte passen (Scrollen nur als letzter Ausweg)
   function fitCards() {
     app.querySelectorAll('.face .content').forEach(c => {
-      const t = c.firstElementChild; if (!t) return;
+      const t = c.firstElementChild; if (!t || t.classList.contains('figure')) return;
+      // verfügbarer Platz = Karte minus Innenabstand (nicht die Höhe des Textfelds selbst,
+      // sonst würden Formeln mit Brüchen, die etwas über die Zeile ragen, unnötig verkleinert)
+      const face = c.parentElement, fs = getComputedStyle(face);
+      const avail = face.clientHeight - parseFloat(fs.paddingTop) - parseFloat(fs.paddingBottom);
       t.style.fontSize = '';
+      c.style.overflowY = 'visible';
       let size = parseFloat(getComputedStyle(t).fontSize);
-      while (c.scrollHeight > c.clientHeight + 1 && size > 11) {
+      while (t.scrollHeight > avail && size > 11) {
         size -= 0.5; t.style.fontSize = size + 'px';
       }
+      c.style.overflowY = t.scrollHeight > avail ? 'auto' : 'visible';
     });
   }
   let resizeTimer;
@@ -249,12 +291,20 @@
     const f = folderById(state.folderId);
     if (!f) { state.view = 'home'; return viewHome(); }
     const cs = cardsOf(f);
-    const total = cs.length + (prefs.extended ? cs.filter(c => c.more).length : 0);
+    const total = studyItems(f).length;
+    const hasChapters = f.chapters && f.chapters.length;
+    const hasImages = cs.some(c => c.img);
+    const parent = f.parentId ? folderById(f.parentId) : null;
+    const chapterRow = ch => `<button class="row" data-action="open" data-id="${esc(ch.id)}">
+        <span class="grow"><div class="title">${esc(ch.name)}</div><div class="sub">${countText(ch)}</div></span>
+        <span class="chev">${icon.chev}</span>
+      </button>`;
     return `<div class="menu">
       <div class="topbar">
-        <div class="left"><button class="icon-btn" data-action="home" aria-label="Zurück">${icon.back}</button>
+        <div class="left"><button class="icon-btn" data-action="up" aria-label="Zurück">${icon.back}</button>
         <h1>${esc(f.name)}</h1></div>${themeBtn()}
       </div>
+      ${parent ? `<p class="muted" style="margin:-14px 4px 0">Kapitel aus ${esc(parent.name)}</p>` : ''}
       ${f.description ? `<p class="muted" style="margin:-14px 4px 0">${esc(f.description)}</p>` : ''}
 
       <div class="section-label">Richtung</div>
@@ -277,21 +327,27 @@
           <button class="${prefs.smart ? 'on' : ''}" data-action="pref" data-key="smart" data-val="1">Schwache bevorzugen</button>
           <button class="${!prefs.smart ? 'on' : ''}" data-action="pref" data-key="smart" data-val="0">Alle Karten</button>
         </div>
+        ${hasImages ? `<div class="segment">
+          <button class="${prefs.images ? 'on' : ''}" data-action="pref" data-key="images" data-val="1">Mit Schaltbildern</button>
+          <button class="${!prefs.images ? 'on' : ''}" data-action="pref" data-key="images" data-val="0">Ohne Schaltbilder</button>
+        </div>` : ''}
       </div>
 
       ${total ? statsBlock(f) : ''}
 
-      <div style="margin-top:22px"><button class="btn primary block" data-action="study" ${total ? '' : 'disabled'}>Lernen</button></div>
+      <div style="margin-top:22px"><button class="btn primary block" data-action="study" ${total ? '' : 'disabled'}>${hasChapters ? 'Alle Kapitel zusammen lernen' : 'Lernen'}</button></div>
 
+      ${hasChapters ? `<div class="section-label">Kapitel</div>
+      <div class="list">${f.chapters.map(chapterRow).join('')}</div>` : `
       <div class="section-label">Karten</div>
       <div class="list">${cs.length ? cs.map(c => `<div class="row card-preview">
-          <span class="dot" style="background:${dotFor(stats[statKey(f.id, c.term, null)])}"></span>
-          <span class="grow"><div class="title">${esc(c.term)}${c.more ? `<span class="tag">+ ${esc(c.moreLabel || 'Methode')}</span>` : ''}${c.own ? '<span class="tag">eigene</span>' : ''}</div>
+          <span class="dot" style="background:${dotFor(stats[statKey(sid(f), c.term, c.img ? 'Schaltbild' : null)])}"></span>
+          <span class="grow"><div class="title">${fmt(c.term)}${c.img ? '<span class="tag">Schaltbild</span>' : ''}${c.more ? `<span class="tag">+ ${esc(c.moreLabel || 'Methode')}</span>` : ''}${c.own ? '<span class="tag">eigene</span>' : ''}</div>
           <div class="sub">${fmt(c.def)}</div></span>
           ${c.own ? `<button class="del" data-action="del-card" data-i="${c.ownIndex}" aria-label="Karte löschen">×</button>` : ''}
-        </div>`).join('') : '<div class="empty">Dieser Ordner ist noch leer.</div>'}</div>
+        </div>`).join('') : '<div class="empty">Dieser Ordner ist noch leer.</div>'}</div>`}
 
-      <div style="margin-top:14px">${state.newCard ? newCardForm() : '<button class="btn block" data-action="new-card">+ Karte hinzufügen</button>'}</div>
+      ${f.isChapter || hasChapters ? '' : `<div style="margin-top:14px">${state.newCard ? newCardForm() : '<button class="btn block" data-action="new-card">+ Karte hinzufügen</button>'}</div>`}
 
       ${!f.builtin ? '<div style="margin-top:30px;text-align:center"><button class="btn ghost danger" data-action="del-folder">Ordner löschen</button></div>' : ''}
     </div>`;
@@ -327,12 +383,7 @@
 
   // ---------- Lernen ----------
   function buildQueue(f) {
-    let items = [];
-    for (const c of cardsOf(f)) {
-      items.push({ term: c.term, text: c.def, label: null });
-      if (c.more && prefs.extended) items.push({ term: c.term, text: c.more, label: c.moreLabel || 'Methode' });
-    }
-    items.forEach((it, i) => { it.key = statKey(f.id, it.term, it.label); it.pos = i; });
+    let items = studyItems(f);
 
     if (prefs.smart) {
       // Gewusste Karten werden seltener gezogen, Unsichere/Nicht gewusste immer bzw. fast immer
@@ -373,6 +424,8 @@
     let inner;
     if (showTerm) {
       inner = `<div class="term">${fmt(item.term)}${item.label ? `<span style="font-weight:400;opacity:.55">: ${esc(item.label)}</span>` : ''}</div>`;
+    } else if (item.img) {
+      inner = `<div class="figure"><img src="${esc(item.img)}" alt="${esc(item.term)}">${item.text ? `<div class="cap">${fmt(item.text)}</div>` : ''}</div>`;
     } else {
       inner = `<div class="text ${lengthClass(item.text)}">${rich(item.text)}</div>`;
     }
@@ -450,6 +503,13 @@
       case 'install-close': state.installHelp = false; render(); break;
       case 'open': state.folderId = el.dataset.id; state.view = 'folder'; state.newCard = false; render(); scrollTo(0, 0); break;
       case 'home': state.view = 'home'; render(); break;
+      case 'up': {
+        const f = folderById(state.folderId);
+        if (f && f.parentId) { state.folderId = f.parentId; state.view = 'folder'; }
+        else state.view = 'home';
+        render(); scrollTo(0, 0);
+        break;
+      }
       case 'new-folder': state.newFolder = true; state.newFolderColor = null; render(); break;
       case 'cancel-folder': state.newFolder = false; render(); break;
       case 'pick-color':
@@ -466,7 +526,7 @@
       case 'reset-stats': {
         const f = folderById(state.folderId);
         if (f && confirm(`Lernstand für „${f.name}“ zurücksetzen?`)) {
-          for (const k of Object.keys(stats)) if (k.startsWith(f.id + '|')) delete stats[k];
+          for (const it of studyItems(f, true)) delete stats[it.key];
           save(); render();
         }
         break;
