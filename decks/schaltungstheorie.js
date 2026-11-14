@@ -11,24 +11,12 @@ window.DECKS.push({
   cards: [
     { chapter: '1 Grundlagen' },
     {
-      term: 'Schaltungstheorie',
-      def: 'Ingenieurdisziplin zur Analyse und Vorhersage des elektrischen Verhaltens realer Schaltungen – Grundlage für deren systematischen Entwurf.',
-    },
-    {
-      term: 'Reale Schaltung',
-      def: 'Anordnung miteinander verbundener elektrischer Bauelemente (Widerstände, Kondensatoren, Spulen, Dioden, Transistoren, …).',
-    },
-    {
-      term: 'Elektrisches Verhalten',
-      def: 'Verlauf der Spannungen und Ströme in einer Schaltung über der Zeit bei Vorgabe einiger dieser Größen oder Parameter.',
-    },
-    {
       term: 'Signal',
       def: 'Zeitverlauf einer elektrischen Größe (meist Spannung oder Strom), dem man eine bestimmte Bedeutung beimisst. Eine Quelle, die es erzeugt, heißt Signalquelle.',
     },
     {
       term: 'Gleichanteil und Wechselanteil',
-      def: 'Zerlegung eines Signals $u(t) = U_{\\text{AP}} + \\Delta u(t)$: konstanter Gleichanteil (stellt Betriebsbedingungen ein) plus informationstragender Wechselanteil.',
+      def: 'Zerlegung eines Signals $u(t) = U_{\\text{AP}} + \\Delta u(t)$:\n- **Gleichanteil** $U_{\\text{AP}}$: konstant, stellt die Betriebsbedingungen ein\n- **Wechselanteil** $\\Delta u(t)$: trägt die Information',
     },
     {
       term: 'Netzwerkelement',
@@ -39,18 +27,10 @@ window.DECKS.push({
       def: 'Modell einer realen Schaltung aus verbundenen Netzwerkelementen; Verbindungsleitungen werden meist als perfekt leitend angenommen.',
     },
     {
-      term: 'Modellierung',
-      def: 'Übergang von der realen Schaltung zum Netzwerk durch Abstraktion der Bauelemente zu Netzwerkelementen. Prüfstein: Vergleich von Analyse- und Messergebnissen.',
-    },
-    {
       term: 'Konzentriertheitshypothese',
       def: 'Die räumliche Ausdehnung $d$ der Schaltung ist so klein gegenüber der Wellenlänge, dass Ströme und Spannungen nicht vom Ort abhängen: $d \\ll \\lambda$.',
       more: 'Wellenlänge aus Frequenz $f$ bzw. Signaldauer $T$:\n$$\\lambda = \\frac{c}{f} = c\\,T$$\nmit $c \\approx 3 \\cdot 10^8\\,\\text{m/s}$ (Lichtgeschwindigkeit im Vakuum).\n\nIst $d \\ll \\lambda$ nicht erfüllt, braucht man statt Schaltungstheorie die Elektrodynamik (Maxwell). Analogie: Newton’sche Mechanik vs. Relativitätstheorie.',
       moreLabel: 'Methode',
-    },
-    {
-      term: 'System',
-      def: 'Technische Anordnung, die wegen ihrer großen Komplexität nur auf hohem Abstraktionsniveau modelliert werden kann. Grenze zur Schaltung ist fließend.',
     },
 
     { chapter: '2 Kirchhoff-Gesetze' },
@@ -68,7 +48,7 @@ window.DECKS.push({
     },
     {
       term: 'n-Tor',
-      def: '$2n$-Pol, dessen $2n$ Klemmenströme paarweise entgegengesetzt gleich sind. Ein Zweipol ist stets ein Eintor; ein Dreipol kann durch Beschaltung zum Zweitor werden.',
+      def: '$2n$-Pol, dessen $2n$ Klemmenströme paarweise entgegengesetzt gleich sind.\n- ein Zweipol ist stets ein Eintor\n- ein Dreipol kann durch Beschaltung zum Zweitor werden',
     },
     {
       term: 'Mehrtore und Mehrpole',
@@ -101,7 +81,7 @@ window.DECKS.push({
     },
     {
       term: 'Umlauf und Schleife',
-      def: 'Umlauf: geschlossene Knotenfolge, z. B. $\\alpha\\beta\\eta\\lambda\\alpha$. Schleife: Umlauf, der stets entlang von Netzwerkelementen verläuft.',
+      def: '- **Umlauf:** geschlossene Knotenfolge, z. B. $\\alpha\\beta\\eta\\lambda\\alpha$\n- **Schleife:** Umlauf, der stets entlang von Netzwerkelementen verläuft',
     },
 
     { chapter: '3 Resistive Eintore' },
@@ -119,7 +99,7 @@ window.DECKS.push({
     },
     {
       term: 'Zeitinvariant vs. zeitvariant',
-      def: 'Zeitinvariant: Die Kennlinie ist zu allen Zeitpunkten dieselbe. Zeitvariant: Die Kennlinie ändert sich mit $t$ (z. B. Schalter).',
+      def: '- **Zeitinvariant:** Kennlinie ist zu allen Zeitpunkten dieselbe\n- **Zeitvariant:** Kennlinie ändert sich mit $t$ (z. B. Schalter)',
     },
     {
       term: 'Implizite Darstellung',
@@ -147,15 +127,15 @@ window.DECKS.push({
     },
     {
       term: 'Leistung eines Eintors',
-      def: 'Aufgenommene Leistung $p(t) = u(t)\\,i(t)$ (assoziierte Zählpfeile). $p > 0$: Leistung wird verbraucht, $p < 0$: Leistung wird abgegeben.',
+      def: 'Aufgenommene Leistung $p(t) = u(t)\\,i(t)$ (assoziierte Zählpfeile):\n- $p > 0$: Leistung wird verbraucht\n- $p < 0$: Leistung wird abgegeben',
     },
     {
       term: 'Aktiv vs. passiv',
-      def: 'Aktiv: Es gibt einen Betriebspunkt mit $ui < 0$ (gibt Leistung ab). Passiv: $ui \\ge 0$ für alle Betriebspunkte – Kennlinie nur im I. und III. Quadranten.',
+      def: '- **Aktiv:** Es gibt einen Betriebspunkt mit $ui < 0$ (gibt Leistung ab)\n- **Passiv:** $ui \\ge 0$ für alle Betriebspunkte – Kennlinie nur im I. und III. Quadranten',
     },
     {
       term: 'Verlustlos vs. verlustbehaftet',
-      def: 'Verlustlos: $ui = 0$ in allen Betriebspunkten – Kennlinie liegt ganz auf den Achsen. Verlustbehaftet: Es gibt einen Punkt mit $ui \\neq 0$.',
+      def: '- **Verlustlos:** $ui = 0$ in allen Betriebspunkten – Kennlinie liegt ganz auf den Achsen\n- **Verlustbehaftet:** Es gibt einen Punkt mit $ui \\neq 0$',
     },
     {
       term: 'Quellenfrei',
@@ -169,7 +149,7 @@ window.DECKS.push({
     },
     {
       term: 'Streng linear',
-      def: 'Kennlinie ist ein Untervektorraum: Mit $(u,i)$ ist auch $(ku, ki)$ enthalten und mit zwei Punkten auch ihre Summe. Daraus folgt: quellenfrei und ungepolt.',
+      def: 'Kennlinie ist ein Untervektorraum:\n- mit $(u,i)$ ist auch $(ku, ki)$ enthalten\n- mit zwei Punkten auch ihre Summe\n\nDaraus folgt: quellenfrei und ungepolt.',
     },
     {
       term: 'Nullator',
@@ -201,15 +181,15 @@ window.DECKS.push({
     },
     {
       term: 'Dualer Widerstand',
-      def: 'Zu einem Leitwert $G$ dualer Widerstand: $R^d = R_d^2\\, G$; zu $R$ dualer Leitwert: $G^d = \\frac{R}{R_d^2}$.',
+      def: '- zu einem Leitwert $G$ dualer Widerstand: $R^d = R_d^2\\, G$\n- zu einem Widerstand $R$ dualer Leitwert: $G^d = \\frac{R}{R_d^2}$',
     },
     {
       term: 'Leerlauf',
-      def: 'Triviale Widerstandsgerade mit $i = 0$ (Leitwert $0\\,\\text{S}$, Widerstand $\\infty\\,\\Omega$). Verlustlos, nicht stromgesteuert.',
+      def: 'Triviale Widerstandsgerade mit $i = 0$:\n- Leitwert $0\\,\\text{S}$, Widerstand $\\infty\\,\\Omega$\n- verlustlos, nicht stromgesteuert',
     },
     {
       term: 'Kurzschluss',
-      def: 'Triviale Widerstandsgerade mit $u = 0$ (Widerstand $0\\,\\Omega$, Leitwert $\\infty\\,\\text{S}$). Verlustlos, nicht spannungsgesteuert; dual zum Leerlauf.',
+      def: 'Triviale Widerstandsgerade mit $u = 0$:\n- Widerstand $0\\,\\Omega$, Leitwert $\\infty\\,\\text{S}$\n- verlustlos, nicht spannungsgesteuert\n- dual zum Leerlauf',
     },
     {
       term: 'Leerlauf und Kurzschluss',
@@ -222,7 +202,7 @@ window.DECKS.push({
     },
     {
       term: 'Negativer Widerstand',
-      def: 'Nicht Ohm’scher, streng linearer Widerstand mit $G < 0$ bzw. $R < 0$; aktiv (gibt Leistung ab). Als Gerade nicht realisierbar.',
+      def: 'Streng linearer Widerstand mit $G < 0$ bzw. $R < 0$.\n- aktiv (gibt Leistung ab)\n- als Gerade nicht realisierbar',
     },
     {
       term: 'Zeitvarianter Widerstand',
@@ -252,7 +232,7 @@ window.DECKS.push({
     },
     {
       term: 'pn-Diode',
-      def: 'Halbleiterdiode: Bei positiver Spannung durchlässig, bei negativer sperrt sie (nur winziger Sperrstrom). Spannungs- und stromgesteuert.',
+      def: 'Halbleiterdiode:\n- bei positiver Spannung durchlässig\n- bei negativer Spannung sperrt sie (nur winziger Sperrstrom)',
       more: '$$i = I_s\\left(e^{u/U_T} - 1\\right) \\qquad u = U_T \\ln\\!\\left(\\frac{i}{I_s} + 1\\right)$$\n- $I_s$: Sperrstrom (typisch im pA-Bereich)\n- $U_T = \\frac{k_B T}{q_e}$: Temperaturspannung, bei Raumtemperatur $U_T \\approx 25\\,\\text{mV}$\n- $k_B = 1{,}38 \\cdot 10^{-23}\\,\\text{VAs/K}$, $q_e = 1{,}602 \\cdot 10^{-19}\\,\\text{As}$',
       moreLabel: 'Kennlinie',
     },
@@ -270,10 +250,6 @@ window.DECKS.push({
       term: 'pn-Diode und Photodiode',
       img: 'schaltbilder/pn-diode-photodiode.svg',
       def: '(a) pn-Diode, (b) Photodiode mit Kennlinienfeld.',
-    },
-    {
-      term: 'Kennlinienfeld',
-      def: 'Diagramm mit mehreren Kennlinien eines zeitvarianten Elements, je eine für einen Wert der maßgeblichen Einflussgröße (z. B. Lichtstärke).',
     },
     {
       term: 'Zener-Diode',
@@ -294,11 +270,11 @@ window.DECKS.push({
     },
     {
       term: 'Parallelschaltung von Eintoren',
-      def: 'Gleiche Spannung, Ströme addieren sich. Bei spannungsgesteuerten Eintoren: $g_\\mathcal{G}(u) = g_1(u) + g_2(u)$ – Addition im $u$-$i$-Diagramm bei konstantem $u$.',
+      def: '- gleiche Spannung, Ströme addieren sich\n- spannungsgesteuert: $g_\\mathcal{G}(u) = g_1(u) + g_2(u)$ – Addition bei konstantem $u$',
     },
     {
       term: 'Serienschaltung von Eintoren',
-      def: 'Gleicher Strom, Spannungen addieren sich. Bei stromgesteuerten Eintoren: $r_\\mathcal{G}(i) = r_1(i) + r_2(i)$ – Addition bei konstantem $i$. Dual zur Parallelschaltung.',
+      def: '- gleicher Strom, Spannungen addieren sich\n- stromgesteuert: $r_\\mathcal{G}(i) = r_1(i) + r_2(i)$ – Addition bei konstantem $i$\n- dual zur Parallelschaltung',
     },
     {
       term: 'Parallel- und Serienschaltung',
@@ -307,7 +283,7 @@ window.DECKS.push({
     },
     {
       term: 'Parallele Summe',
-      def: 'Abkürzung $a \\parallel b = \\frac{ab}{a+b}$, definiert über $\\frac{1}{a \\parallel b} = \\frac{1}{a} + \\frac{1}{b}$. Kommutativ, assoziativ; bindet stärker als $+$, schwächer als $\\cdot$.',
+      def: '$a \\parallel b = \\frac{ab}{a+b}$, definiert über $\\frac{1}{a \\parallel b} = \\frac{1}{a} + \\frac{1}{b}$.\n- kommutativ und assoziativ\n- bindet stärker als $+$, schwächer als $\\cdot$',
     },
     {
       term: 'Parallelschaltung von Widerständen',
@@ -327,7 +303,7 @@ window.DECKS.push({
     },
     {
       term: 'Linear vs. streng linear',
-      def: 'Linear: Kennlinie geht durch Verschiebung in eine streng lineare über (affine Gerade). Streng linear = linear und quellenfrei. Alles andere heißt nichtlinear.',
+      def: '- **Linear:** Kennlinie geht durch Verschiebung in eine streng lineare über (affine Gerade)\n- **Streng linear:** linear und quellenfrei\n- alles andere heißt **nichtlinear**',
     },
     {
       term: 'Lineare Quelle',
@@ -353,11 +329,11 @@ window.DECKS.push({
     },
     {
       term: 'Stromquelle',
-      def: 'Liefert unabhängig von der Spannung den Strom $i = i_Q(t)$. Spannungsgesteuert, aktiv, gepolt, linear. Innenleitwert 0, Innenwiderstand $\\infty$. Leerlauf = Nullstromquelle.',
+      def: 'Liefert unabhängig von der Spannung den Strom $i = i_Q(t)$.\n- spannungsgesteuert, aktiv, gepolt, linear\n- Innenleitwert 0, Innenwiderstand $\\infty$\n- Nullstromquelle = Leerlauf',
     },
     {
       term: 'Spannungsquelle',
-      def: 'Liefert unabhängig vom Strom die Spannung $u = u_Q(t)$. Stromgesteuert, dual zur Stromquelle. Innenwiderstand 0, Innenleitwert $\\infty$. Kurzschluss = Nullspannungsquelle.',
+      def: 'Liefert unabhängig vom Strom die Spannung $u = u_Q(t)$.\n- stromgesteuert, dual zur Stromquelle\n- Innenwiderstand 0, Innenleitwert $\\infty$\n- Nullspannungsquelle = Kurzschluss',
     },
     {
       term: 'Strom- und Spannungsquelle',
@@ -381,7 +357,7 @@ window.DECKS.push({
     },
     {
       term: 'Ideale Diode',
-      def: 'Idealisiertes Durchlass-/Sperrverhalten: Ast I: $i = 0$ für $u \\le 0$ (sperrt), Ast II: $u = 0$ für $i \\ge 0$ (leitet). Verlustlos; dual zur umgepolten idealen Diode.',
+      def: 'Idealisiertes Durchlass-/Sperrverhalten:\n- **Ast I:** $i = 0$ für $u \\le 0$ (sperrt)\n- **Ast II:** $u = 0$ für $i \\ge 0$ (leitet)\n\nVerlustlos; dual zur umgepolten idealen Diode.',
     },
     {
       term: 'Ideale Diode',
@@ -395,10 +371,6 @@ window.DECKS.push({
     {
       term: 'Konvexer Widerstand',
       def: 'Parameter $(R, I)$: Kennlinie ist die $i$-Achse bis $I$, danach Halbgerade mit Steigung $1/R$. Dual zum konkaven Widerstand.',
-    },
-    {
-      term: 'Reale negative Widerstände',
-      def: 'Mit OPV realisierbare Kennlinien, die nur im mittleren Ast negativ sind: spannungsgesteuerte N-Kennlinie bzw. stromgesteuerte S-Kennlinie.',
     },
     {
       term: 'Arbeitspunkt',
@@ -416,7 +388,7 @@ window.DECKS.push({
     },
     {
       term: 'Erregung und Antwort',
-      def: 'Einteilung der Betriebsgrößen in eine vorgegebene Eingangsgröße $a$ (Erregung, Ursache) und abhängige Ausgangsgrößen $b = \\beta(a)$ (Antwort, Wirkung).',
+      def: 'Einteilung der Betriebsgrößen:\n- **Erregung** $a$: vorgegebene Eingangsgröße (Ursache)\n- **Antwort** $b = \\beta(a)$: abhängige Ausgangsgröße (Wirkung)',
     },
     {
       term: 'Übertragungskennlinie',
@@ -441,7 +413,7 @@ window.DECKS.push({
     },
     {
       term: 'Linearisierung eines Eintors',
-      def: 'Stromgesteuert: $u_{\\text{lin}} = r_\\mathcal{F}(I) - R_\\mathcal{F} I + R_\\mathcal{F}\\, i$ → Spannungsquelle in Serie mit $R_\\mathcal{F}$. Spannungsgesteuert: Stromquelle parallel zu $G_\\mathcal{F}$.',
+      def: '- **stromgesteuert:** $u_{\\text{lin}} = r_\\mathcal{F}(I) - R_\\mathcal{F} I + R_\\mathcal{F}\\, i$ → Spannungsquelle in Serie mit $R_\\mathcal{F}$\n- **spannungsgesteuert:** Stromquelle parallel zu $G_\\mathcal{F}$',
       more: '- Kleinsignalwiderstand $R_\\mathcal{F} = \\left.\\frac{\\mathrm{d}r_\\mathcal{F}}{\\mathrm{d}i}\\right|_{I}$\n- Kleinsignalleitwert $G_\\mathcal{F} = \\left.\\frac{\\mathrm{d}g_\\mathcal{F}}{\\mathrm{d}u}\\right|_{U}$\n- da $g_\\mathcal{F}$ und $r_\\mathcal{F}$ Umkehrfunktionen sind: $G_\\mathcal{F} = \\frac{1}{R_\\mathcal{F}}$\n- beide Ersatzschaltbilder gehen durch Quellenumwandlung ineinander über',
       moreLabel: 'Methode',
     },
@@ -453,7 +425,7 @@ window.DECKS.push({
     },
     {
       term: 'Kleinsignal-Ersatzschaltbild',
-      def: 'Nichtlineare Elemente → Kleinsignalwiderstände bzw. -leitwerte; Konstantspannungsquellen → Kurzschluss; Konstantstromquellen → Leerlauf. Ergebnis: rein lineare Schaltung.',
+      def: 'Ergibt eine rein lineare Schaltung:\n- nichtlineare Elemente → Kleinsignalwiderstände bzw. -leitwerte\n- Konstantspannungsquellen → Kurzschluss\n- Konstantstromquellen → Leerlauf',
     },
     {
       term: 'Kleinsignalleitwert einer Diode',
@@ -499,11 +471,11 @@ window.DECKS.push({
     },
     {
       term: 'Nicht-Eindeutigkeit von Kern und Bild',
-      def: 'Der Betriebsraum ist eindeutig, $[M, N]$ und die Betriebsmatrix aber nicht: Links-Multiplikation mit regulärem $T$ bzw. Rechts-Multiplikation mit regulärem $W$ ändert nichts.',
+      def: 'Der Betriebsraum ist eindeutig, $[M, N]$ und die Betriebsmatrix nicht:\n- Links-Multiplikation von $[M, N]$ mit regulärem $T$ ändert nichts\n- Rechts-Multiplikation der Betriebsmatrix mit regulärem $W$ ändert nichts',
     },
     {
       term: 'Zweitormatrizen',
-      def: 'Sechs explizite Beschreibungen streng linearer Zweitore: $G$, $R$, $H$, $H\'$, $A$, $A\'$. Existiert eine, ist sie eindeutig; mindestens eine existiert immer.',
+      def: 'Sechs explizite Beschreibungen streng linearer Zweitore: $G$, $R$, $H$, $H\'$, $A$, $A\'$.\n- existiert eine, ist sie eindeutig\n- mindestens eine existiert immer',
       more: '- Leitwertsmatrix: $\\boldsymbol{i} = G\\,\\boldsymbol{u}$\n- Widerstandsmatrix: $\\boldsymbol{u} = R\\,\\boldsymbol{i}$\n- Hybridmatrix: $\\begin{bmatrix}u_1\\\\ i_2\\end{bmatrix} = H \\begin{bmatrix}i_1\\\\ u_2\\end{bmatrix}$\n- inverse Hybridmatrix: $\\begin{bmatrix}i_1\\\\ u_2\\end{bmatrix} = H\' \\begin{bmatrix}u_1\\\\ i_2\\end{bmatrix}$\n- Kettenmatrix: $\\begin{bmatrix}u_1\\\\ i_1\\end{bmatrix} = A \\begin{bmatrix}u_2\\\\ -i_2\\end{bmatrix}$\n- inverse Kettenmatrix: $\\begin{bmatrix}u_2\\\\ i_2\\end{bmatrix} = A\' \\begin{bmatrix}u_1\\\\ -i_1\\end{bmatrix}$',
       moreLabel: 'Übersicht',
     },
@@ -513,7 +485,7 @@ window.DECKS.push({
     },
     {
       term: 'Widerstandsmatrix $R$',
-      def: 'Stromgesteuerte Beschreibung $\\boldsymbol{u} = R\\boldsymbol{i}$; existiert, wenn $M$ invertierbar ist. Falls beide existieren: $R = G^{-1}$.',
+      def: 'Stromgesteuerte Beschreibung $\\boldsymbol{u} = R\\boldsymbol{i}$.\n- existiert, wenn $M$ invertierbar ist\n- falls beide existieren: $R = G^{-1}$',
     },
     {
       term: 'Kettenmatrix $A$',
@@ -525,11 +497,11 @@ window.DECKS.push({
     },
     {
       term: 'Bedeutung von $g_{11}$, $g_{22}$',
-      def: '$g_{11} = \\left.\\frac{i_1}{u_1}\\right|_{u_2 = 0}$: Eingangsleitwert bei kurzgeschlossenem Ausgang. $g_{22} = \\left.\\frac{i_2}{u_2}\\right|_{u_1 = 0}$: Ausgangsleitwert bei kurzgeschlossenem Eingang.',
+      def: '- $g_{11} = \\left.\\frac{i_1}{u_1}\\right|_{u_2 = 0}$: Eingangsleitwert bei kurzgeschlossenem Ausgang\n- $g_{22} = \\left.\\frac{i_2}{u_2}\\right|_{u_1 = 0}$: Ausgangsleitwert bei kurzgeschlossenem Eingang',
     },
     {
       term: 'Bedeutung von $r_{11}$, $r_{22}$',
-      def: '$r_{11} = \\left.\\frac{u_1}{i_1}\\right|_{i_2 = 0}$: Eingangswiderstand bei leerlaufendem Ausgang. $r_{22} = \\left.\\frac{u_2}{i_2}\\right|_{i_1 = 0}$: Ausgangswiderstand bei leerlaufendem Eingang.',
+      def: '- $r_{11} = \\left.\\frac{u_1}{i_1}\\right|_{i_2 = 0}$: Eingangswiderstand bei leerlaufendem Ausgang\n- $r_{22} = \\left.\\frac{u_2}{i_2}\\right|_{i_1 = 0}$: Ausgangswiderstand bei leerlaufendem Eingang',
     },
     {
       term: 'Nicht quellenfreies lineares Zweitor',
@@ -557,7 +529,7 @@ window.DECKS.push({
     },
     {
       term: 'Zeitvariantes Zweitor',
-      def: 'Die Zeit $t$ geht in die charakterisierende Beziehung ein, z. B. Lichtschranke. Zeitinvariant: Beziehung für alle $t$ gleich.',
+      def: '- **Zeitvariant:** die Zeit $t$ geht in die charakterisierende Beziehung ein (z. B. Lichtschranke)\n- **Zeitinvariant:** Beziehung ist für alle $t$ gleich',
     },
     {
       term: 'Duales Zweitor',
@@ -585,11 +557,11 @@ window.DECKS.push({
     },
     {
       term: 'Klassifikation spezieller Zweitore',
-      def: 'Nach der Kettenmatrix $A$: alle 4 Elemente null → Nullor; 3 null → gesteuerte Quelle; Hauptdiagonale null → Inverter (Gyrator); Nebendiagonale null → Konverter (Übertrager, NIK).',
+      def: 'Nach der Kettenmatrix $A$:\n- alle 4 Elemente null → Nullor\n- 3 Elemente null → gesteuerte Quelle\n- Hauptdiagonale null → Inverter (Gyrator)\n- Nebendiagonale null → Konverter (Übertrager, NIK)',
     },
     {
       term: 'Gesteuerte Quelle',
-      def: 'Zweitor aus Steuerungszweig (Leerlauf oder Kurzschluss) und gesteuertem Zweig (abhängige Strom- oder Spannungsquelle). Vier Varianten: VCCS, CCCS, VCVS, CCVS.',
+      def: 'Zweitor aus zwei Zweigen:\n- **Steuerungszweig:** Leerlauf oder Kurzschluss\n- **gesteuerter Zweig:** abhängige Strom- oder Spannungsquelle\n\nVier Varianten: VCCS, CCCS, VCVS, CCVS.',
       more: '- **VCCS**: $i_2 = g\\,u_1$, $i_1 = 0$ → $G = \\begin{bmatrix}0&0\\\\g&0\\end{bmatrix}$\n- **CCCS**: $i_2 = \\beta\\, i_1$, $u_1 = 0$ → $H = \\begin{bmatrix}0&0\\\\\\beta&0\\end{bmatrix}$\n- **VCVS**: $u_2 = \\mu\\, u_1$, $i_1 = 0$ → $H\' = \\begin{bmatrix}0&0\\\\\\mu&0\\end{bmatrix}$\n- **CCVS**: $u_2 = r\\, i_1$, $u_1 = 0$ → $R = \\begin{bmatrix}0&0\\\\r&0\\end{bmatrix}$\n\nFür Faktor $\\neq 0$ weder passiv noch reziprok. Mit Faktor $\\to \\infty$ → Nullor.',
       moreLabel: 'Vier Typen',
     },
@@ -616,7 +588,7 @@ window.DECKS.push({
     },
     {
       term: 'Nullor',
-      def: 'Zweitor mit $u_1 = 0$ und $i_1 = 0$, keine Aussage über $u_2$, $i_2$. Ersatz: Nullator am Eingang, Norator am Ausgang. Kettenmatrix $A = \\boldsymbol{0}$.',
+      def: 'Zweitor mit $u_1 = 0$ und $i_1 = 0$, keine Aussage über $u_2$, $i_2$.\n- **Eingang:** Nullator\n- **Ausgang:** Norator\n\nKettenmatrix $A = \\boldsymbol{0}$.',
       more: '- Grenzfall aller gesteuerten Quellen für $g, \\beta, \\mu, r \\to \\infty$\n- von den sechs Zweitormatrizen existiert nur die Kettenmatrix (Nullmatrix → Name)\n- lineares Modell des idealen Operationsverstärkers',
       moreLabel: 'Details',
     },
@@ -627,7 +599,7 @@ window.DECKS.push({
     },
     {
       term: 'Idealer Übertrager',
-      def: 'Verlustloses und reziprokes Zweitor: $u_1 = \\ddot u\\, u_2$, $\\;i_2 = -\\ddot u\\, i_1$ mit Übersetzungsverhältnis $\\ddot u$ (Windungszahlverhältnis).',
+      def: 'Verlustloses und reziprokes Zweitor:\n- $u_1 = \\ddot u\\, u_2$\n- $i_2 = -\\ddot u\\, i_1$\n\n$\\ddot u$: Übersetzungsverhältnis (Windungszahlverhältnis).',
       more: '$$H = \\begin{bmatrix}0 & \\ddot u\\\\ -\\ddot u & 0\\end{bmatrix} \\qquad A = \\begin{bmatrix}\\ddot u & 0\\\\ 0 & \\frac{1}{\\ddot u}\\end{bmatrix}$$\n- $H$ schiefsymmetrisch; $G$ und $R$ existieren nicht\n- gilt auch für Gleichgrößen (Idealisierung!)\n- umkehrbar für $\\ddot u = \\pm 1$\n- Abschluss mit $R$: am Tor 1 wirkt $R_{\\text{ein}} = \\ddot u^2 R$ → Positiv-Immittanz-Konverter (PIK)',
       moreLabel: 'Matrizen',
     },
@@ -682,7 +654,7 @@ window.DECKS.push({
     },
     {
       term: 'Hybride Zweitorschaltungen',
-      def: 'Serien-Parallel (Eingänge Serie, Ausgänge parallel): $H_\\mathcal{G} = H_1 + H_2$. Parallel-Serien (Eingänge parallel, Ausgänge Serie): $H\'_\\mathcal{G} = H\'_1 + H\'_2$.',
+      def: '- **Serien-Parallel** (Eingänge Serie, Ausgänge parallel): $H_\\mathcal{G} = H_1 + H_2$\n- **Parallel-Serien** (Eingänge parallel, Ausgänge Serie): $H\'_\\mathcal{G} = H\'_1 + H\'_2$',
     },
     {
       term: 'Hybride Zweitorschaltungen',
@@ -721,7 +693,7 @@ window.DECKS.push({
     },
     {
       term: 'Offsetspannung und Offsetstrom',
-      def: 'Imperfektionen realer Op-Amps durch Unsymmetrien: $U_{\\text{offset}}$ (ca. 1 mV) und $I_{\\text{offset}} = I_{1+} - I_{1-}$ (ca. 20 nA). Modelliert durch externe Quellen, oft vernachlässigbar.',
+      def: 'Imperfektionen realer Op-Amps durch Unsymmetrien, modelliert durch externe Quellen:\n- **Offsetspannung** $U_{\\text{offset}}$ ≈ 1 mV\n- **Offsetstrom** $I_{\\text{offset}} = I_{1+} - I_{1-}$ ≈ 20 nA',
     },
     {
       term: 'Idealer Op-Amp',
@@ -749,7 +721,7 @@ window.DECKS.push({
     },
     {
       term: 'Komparator',
-      def: 'Op-Amp ohne Rückkopplung als Vergleicher: $u_2 = +U_{\\text{sat}}$ für $u_{1+} > u_{1-}$, $\\;u_2 = -U_{\\text{sat}}$ für $u_{1+} < u_{1-}$.',
+      def: 'Op-Amp ohne Rückkopplung als Vergleicher:\n- $u_2 = +U_{\\text{sat}}$ für $u_{1+} > u_{1-}$\n- $u_2 = -U_{\\text{sat}}$ für $u_{1+} < u_{1-}$',
     },
     {
       term: 'Invertierender Verstärker',
@@ -773,7 +745,7 @@ window.DECKS.push({
     },
     {
       term: 'Spannungsfolger',
-      def: 'Nichtinvertierender Verstärker mit $v_u = 1$ ($R_0 = 0$, $R_1 \\to \\infty$): $u_0 = u_1$. Belastet die Quelle nicht ($i_1 = 0$) und liefert beliebige Ausgangsströme (Impedanzwandler).',
+      def: 'Nichtinvertierender Verstärker mit $v_u = 1$ ($R_0 = 0$, $R_1 \\to \\infty$): $u_0 = u_1$.\n- belastet die Quelle nicht ($i_1 = 0$)\n- liefert beliebige Ausgangsströme (Impedanzwandler)',
     },
     {
       term: 'Spannungsfolger',
@@ -786,7 +758,7 @@ window.DECKS.push({
     },
     {
       term: 'S- und N-Kennlinie',
-      def: 'Kennlinien realer negativer Widerstände mit Op-Amp: S-Kennlinie stromgesteuert (kurzschlussinstabil, leerlaufstabil), N-Kennlinie spannungsgesteuert (leerlaufinstabil, kurzschlussstabil).',
+      def: 'Kennlinien realer negativer Widerstände mit Op-Amp:\n- **S-Kennlinie:** stromgesteuert, kurzschlussinstabil, leerlaufstabil\n- **N-Kennlinie:** spannungsgesteuert, leerlaufinstabil, kurzschlussstabil',
     },
     {
       term: 'Op-Amp-Realisierung stückweise linearer Widerstände',
@@ -847,7 +819,7 @@ window.DECKS.push({
     },
     {
       term: 'Multiplizierer',
-      def: 'Nichtlineares Dreitor: $u_3 = \\frac{u_1 u_2}{U_M}$, Eingangsströme $i_1 = i_2 = 0$; Multipliziererkonstante $U_M$. Baustein von Analogrechnern.',
+      def: 'Nichtlineares Dreitor, Baustein von Analogrechnern:\n- $u_3 = \\frac{u_1 u_2}{U_M}$ mit Multipliziererkonstante $U_M$\n- Eingangsströme $i_1 = i_2 = 0$',
     },
     {
       term: 'Multiplizierer',
@@ -879,11 +851,11 @@ window.DECKS.push({
     },
     {
       term: 'Baum',
-      def: 'Teilgraph, der zusammenhängend ist, alle $n$ Knoten enthält und keine Schleifen hat. Er besteht aus $n - 1$ Baumzweigen; die übrigen $b - (n-1)$ Zweige sind Verbindungskanten.',
+      def: 'Teilgraph, der zusammenhängend ist, alle $n$ Knoten enthält und keine Schleifen hat.\n- $n - 1$ Baumzweige\n- die übrigen $b - (n-1)$ Zweige sind Verbindungskanten',
     },
     {
       term: 'Baumzweige und Verbindungskanten',
-      def: 'Baumzweige (twigs): die $n - 1$ Kanten des Baums. Verbindungskanten (links): die $s = b - (n - 1)$ restlichen Kanten.',
+      def: '- **Baumzweige** (twigs): die $n - 1$ Kanten des Baums\n- **Verbindungskanten** (links): die $s = b - (n - 1)$ restlichen Kanten',
     },
     {
       term: 'Anzahl unabhängiger Kirchhoff-Gleichungen',
@@ -897,11 +869,11 @@ window.DECKS.push({
     },
     {
       term: 'Kirchhoff-Gleichungen zu einem Baum',
-      def: 'KVL: $[B_t, \\boldsymbol{1}_s]\\,\\boldsymbol{u} = \\boldsymbol{0}$. KCL: $[\\boldsymbol{1}_{n-1}, -B_t^{\\mathrm{T}}]\\,\\boldsymbol{i} = \\boldsymbol{0}$, denn es gilt immer $A_l = -B_t^{\\mathrm{T}}$.',
+      def: '- **KVL:** $[B_t, \\boldsymbol{1}_s]\\,\\boldsymbol{u} = \\boldsymbol{0}$\n- **KCL:** $[\\boldsymbol{1}_{n-1}, -B_t^{\\mathrm{T}}]\\,\\boldsymbol{i} = \\boldsymbol{0}$, denn es gilt immer $A_l = -B_t^{\\mathrm{T}}$',
     },
     {
       term: 'Nullraum- und Bildraum-Darstellung (Kirchhoff)',
-      def: 'Nullraum: Gleichungen $B\\boldsymbol{u} = \\boldsymbol{0}$, $A\\boldsymbol{i} = \\boldsymbol{0}$. Bildraum: $\\boldsymbol{u} = A^{\\mathrm{T}}\\boldsymbol{u}_k$, $\\boldsymbol{i} = B^{\\mathrm{T}}\\boldsymbol{i}_m$. Beide sind nicht eindeutig.',
+      def: '- **Nullraum:** $B\\boldsymbol{u} = \\boldsymbol{0}$, $A\\boldsymbol{i} = \\boldsymbol{0}$\n- **Bildraum:** $\\boldsymbol{u} = A^{\\mathrm{T}}\\boldsymbol{u}_k$, $\\boldsymbol{i} = B^{\\mathrm{T}}\\boldsymbol{i}_m$\n\nBeide sind nicht eindeutig.',
     },
     {
       term: 'Knoteninzidenzmatrix $A$',
@@ -921,7 +893,7 @@ window.DECKS.push({
     },
     {
       term: 'Tableau-Gleichungssystem',
-      def: 'Kirchhoff-Gleichungen ($b$) plus Elementgleichungen $M\\boldsymbol{u} + N\\boldsymbol{i} = \\boldsymbol{e}$ ($b$): $2b$ Gleichungen für $2b$ Unbekannte. Eindeutig lösbar, wenn $\\det T \\neq 0$.',
+      def: '$2b$ Gleichungen für $2b$ Unbekannte:\n- $b$ Kirchhoff-Gleichungen\n- $b$ Elementgleichungen $M\\boldsymbol{u} + N\\boldsymbol{i} = \\boldsymbol{e}$\n\nEindeutig lösbar, wenn $\\det T \\neq 0$.',
       more: '$$\\begin{bmatrix} B & \\boldsymbol{0} \\\\ \\boldsymbol{0} & A \\\\ M & N \\end{bmatrix} \\begin{bmatrix}\\boldsymbol{u}\\\\ \\boldsymbol{i}\\end{bmatrix} = \\begin{bmatrix}\\boldsymbol{0}\\\\ \\boldsymbol{0}\\\\ \\boldsymbol{e}\\end{bmatrix}$$\n- $\\boldsymbol{e}$: Erregungsvektor (alle unabhängigen Quellen)\n- nur Zweipole: $M$, $N$ diagonal; Mehrtore: blockdiagonal\n- ohne Einschränkungen anwendbar, ideal für Rechner (dünn besetzte Matrix)',
       moreLabel: 'Aufbau',
     },
@@ -951,7 +923,7 @@ window.DECKS.push({
     },
     {
       term: 'Nichtlineares Tableau',
-      def: 'Bei $p$ nichtlinearen Zweigen: $2b - p$ lineare Gleichungen (Kirchhoff + lineare Elemente) und $p$ nichtlineare Gleichungen $\\boldsymbol{f}(\\boldsymbol{u}, \\boldsymbol{i}) = \\boldsymbol{0}$. Lösung meist numerisch.',
+      def: 'Bei $p$ nichtlinearen Zweigen:\n- $2b - p$ lineare Gleichungen (Kirchhoff + lineare Elemente)\n- $p$ nichtlineare Gleichungen $\\boldsymbol{f}(\\boldsymbol{u}, \\boldsymbol{i}) = \\boldsymbol{0}$\n\nLösung meist numerisch.',
     },
     {
       term: 'Newton-Raphson-Algorithmus',
@@ -961,7 +933,7 @@ window.DECKS.push({
     },
     {
       term: 'Reduzierte Knotenspannungsanalyse',
-      def: 'Gleichungssystem nur in den Knotenspannungen: $G_k\\, \\boldsymbol{u}_k = \\boldsymbol{i}_q$ mit $G_k = A G A^{\\mathrm{T}}$. Voraussetzung: alle Elemente spannungsgesteuert ($N$ invertierbar).',
+      def: 'Gleichungssystem nur in den Knotenspannungen: $G_k\\, \\boldsymbol{u}_k = \\boldsymbol{i}_q$ mit $G_k = A G A^{\\mathrm{T}}$.\n- Voraussetzung: alle Elemente spannungsgesteuert ($N$ invertierbar)',
       more: 'Herleitung aus dem Knotentableau:\n- Elemente: $\\boldsymbol{i} = G\\boldsymbol{u} + \\boldsymbol{i}_0$ mit Kantenleitwertsmatrix $G = -N^{-1}M$ und $\\boldsymbol{i}_0 = N^{-1}\\boldsymbol{e}$\n- KVL: $\\boldsymbol{u} = A^{\\mathrm{T}}\\boldsymbol{u}_k$\n- KCL: $A\\boldsymbol{i} = \\boldsymbol{0}$\n$$\\Rightarrow\\; \\underbrace{A G A^{\\mathrm{T}}}_{G_k}\\, \\boldsymbol{u}_k = \\underbrace{-A\\, \\boldsymbol{i}_0}_{\\boldsymbol{i}_q}$$\nJede Zeile ist das KCL eines Knotens, ausgedrückt durch Knotenspannungen.',
       moreLabel: 'Herleitung',
     },
@@ -991,7 +963,7 @@ window.DECKS.push({
     },
     {
       term: 'Nullor-Einbau in $G_k$',
-      def: 'Erst $G_k^0$ mit Leerläufen statt Nullator/Norator aufstellen. Nullator zwischen $\\alpha$, $\\beta$: Spalten $\\alpha$ und $\\beta$ addieren. Norator zwischen $\\gamma$, $\\delta$: Zeilen $\\gamma$ und $\\delta$ addieren (Superknoten).',
+      def: 'Zuerst $G_k^0$ mit Leerläufen statt Nullator/Norator aufstellen, dann:\n- **Nullator** zwischen $\\alpha$, $\\beta$: Spalten $\\alpha$ und $\\beta$ addieren\n- **Norator** zwischen $\\gamma$, $\\delta$: Zeilen $\\gamma$ und $\\delta$ addieren (Superknoten)',
       more: '- Nullator erzwingt $u_{k\\alpha} = u_{k\\beta}$ → Spalten zusammenfassen, eine Unbekannte weniger; liegt $\\beta$ auf Masse, entfällt Spalte $\\alpha$\n- Norator: Strom beliebig → KCL der beiden Knoten zu einer Superknotengleichung addieren; liegt ein Pol auf Masse, einfach Zeile $\\gamma$ streichen\n- jeder Nullator kostet eine Spalte, jeder Norator eine Zeile → nur paarweise (Nullor) bleibt $G_k$ quadratisch',
       moreLabel: 'Methode',
     },
@@ -1039,7 +1011,7 @@ window.DECKS.push({
     },
     {
       term: 'Innenwiderstand bestimmen',
-      def: 'Unabhängige Quellen durch Nullquellen ersetzen (gesteuerte Quellen bleiben!), Zweipol von außen mit $u$ erregen und $i$ messen: $R_i = u/i$. Oder aus Leerlaufspannung und Kurzschlussstrom.',
+      def: '- **Methode 1:** unabhängige Quellen durch Nullquellen ersetzen (gesteuerte bleiben!), von außen mit $u$ erregen, $i$ messen: $R_i = u/i$\n- **Methode 2:** aus Leerlaufspannung und Kurzschlussstrom',
     },
     {
       term: 'Passivität zusammengesetzter Netzwerke',
@@ -1063,7 +1035,7 @@ window.DECKS.push({
     },
     {
       term: 'Ladung und Fluss',
-      def: 'Zusätzliche Betriebsgrößen: $q(t) = \\int_{-\\infty}^{t} i(\\tau)\\,\\mathrm{d}\\tau$ (Coulomb, $1\\,\\text{C} = 1\\,\\text{As}$), $\\Phi(t) = \\int_{-\\infty}^{t} u(\\tau)\\,\\mathrm{d}\\tau$ (Weber, $1\\,\\text{Wb} = 1\\,\\text{Vs}$).',
+      def: 'Zusätzliche Betriebsgrößen:\n- **Ladung** $q(t) = \\int_{-\\infty}^{t} i(\\tau)\\,\\mathrm{d}\\tau$, Einheit Coulomb ($1\\,\\text{C} = 1\\,\\text{As}$)\n- **Fluss** $\\Phi(t) = \\int_{-\\infty}^{t} u(\\tau)\\,\\mathrm{d}\\tau$, Einheit Weber ($1\\,\\text{Wb} = 1\\,\\text{Vs}$)',
       more: 'Mit Bezugszeitpunkt $t_0$:\n$$q(t) = q(t_0) + \\int_{t_0}^{t} i(\\tau)\\,\\mathrm{d}\\tau, \\qquad \\Phi(t) = \\Phi(t_0) + \\int_{t_0}^{t} u(\\tau)\\,\\mathrm{d}\\tau$$\nUmgekehrt: $i = \\frac{\\mathrm{d}q}{\\mathrm{d}t}$, $u = \\frac{\\mathrm{d}\\Phi}{\\mathrm{d}t}$.',
       moreLabel: 'Definition',
     },
@@ -1082,7 +1054,7 @@ window.DECKS.push({
     },
     {
       term: 'Gesteuerte Reaktanzen',
-      def: 'Kapazität: spannungsgesteuert $q = \\hat q(u)$ oder ladungsgesteuert $u = \\hat u(q)$. Induktivität: stromgesteuert $\\Phi = \\hat\\Phi(i)$ oder flussgesteuert $i = \\hat\\imath(\\Phi)$.',
+      def: '- **Kapazität:** spannungsgesteuert $q = \\hat q(u)$ oder ladungsgesteuert $u = \\hat u(q)$\n- **Induktivität:** stromgesteuert $\\Phi = \\hat\\Phi(i)$ oder flussgesteuert $i = \\hat\\imath(\\Phi)$',
     },
     {
       term: 'Beispiele nichtlinearer Reaktanzen',
@@ -1100,7 +1072,7 @@ window.DECKS.push({
     },
     {
       term: 'Dualität von Kapazität und Induktivität',
-      def: 'Mit $u \\to R_d\\,i$, $i \\to u/R_d$ wird $q \\to \\Phi/R_d$ und $\\Phi \\to R_d\\, q$: Kapazitäten und Induktivitäten sind zueinander dual; Dualwandlung mit einem Gyrator.',
+      def: 'Mit $u \\to R_d\\,i$, $i \\to u/R_d$ wird $q \\to \\Phi/R_d$ und $\\Phi \\to R_d\\, q$.\n- Kapazitäten und Induktivitäten sind zueinander dual\n- Dualwandlung mit einem Gyrator',
       more: '- duale Kennlinie: von der $u$-$q$- in die $i$-$\\Phi$-Ebene übertragen und Achsen mit $R_d$ umrechnen\n- lineare Elemente: $C$ ist dual zu $L^d = R_d^2\\, C$, $\\;L$ dual zu $C^d = \\frac{L}{R_d^2}$\n- daher reicht im Prinzip ein Typ von Energiespeicher (mit Gyrator)',
       moreLabel: 'Details',
     },
@@ -1123,7 +1095,7 @@ window.DECKS.push({
     },
     {
       term: 'Streng lineare Reaktanz',
-      def: 'Kennlinie ist ein Unterraum der $u$-$q$- bzw. $i$-$\\Phi$-Ebene. Dimension 0: Nullator, Dimension 2: Norator, Dimension 1: lineare Kapazität bzw. Induktivität.',
+      def: 'Kennlinie ist ein Unterraum der $u$-$q$- bzw. $i$-$\\Phi$-Ebene:\n- Dimension 0: Nullator\n- Dimension 1: lineare Kapazität bzw. Induktivität\n- Dimension 2: Norator',
     },
     {
       term: 'Gedächtnis reaktiver Elemente',
@@ -1149,7 +1121,7 @@ window.DECKS.push({
     },
     {
       term: 'Stetigkeitsregel',
-      def: 'Die Spannung an einer Kapazität ist stetig, solange der Strom beschränkt ist; dual ist der Strom durch eine Induktivität stetig, solange die Spannung beschränkt ist.',
+      def: '- **Kapazität:** Spannung ist stetig, solange der Strom beschränkt ist\n- **Induktivität:** Strom ist stetig, solange die Spannung beschränkt ist',
       more: 'Beweis für die Kapazität:\n$$|u_C(t_0 + \\Delta t) - u_C(t_0)| \\le \\frac{1}{C}\\,\\Delta t \\cdot \\max|i_C| \\;\\to\\; 0 \\quad (\\Delta t \\to 0)$$\nGilt auch für nichtlineare Kapazitäten mit stetiger Kennlinie. Bei überidealisierten Schaltungen (unbeschränkter Strom) kann sie verletzt sein.',
       moreLabel: 'Beweis',
     },
@@ -1161,7 +1133,7 @@ window.DECKS.push({
     },
     {
       term: 'Gespeicherte Energie',
-      def: 'Kapazität: $E_C = \\frac{1}{2} C u^2 = \\frac{q^2}{2C}$. Induktivität: $E_L = \\frac{1}{2} L i^2 = \\frac{\\Phi^2}{2L}$. Bezug: Relaxationspunkt im Ursprung.',
+      def: 'Bezug: Relaxationspunkt im Ursprung.\n- **Kapazität:** $E_C = \\frac{1}{2} C u^2 = \\frac{q^2}{2C}$\n- **Induktivität:** $E_L = \\frac{1}{2} L i^2 = \\frac{\\Phi^2}{2L}$',
     },
     {
       term: 'Relaxationspunkt (Ruhepunkt)',
@@ -1173,11 +1145,11 @@ window.DECKS.push({
     },
     {
       term: 'Parallelschaltung von Kapazitäten',
-      def: 'Kapazitäten addieren sich: $C = C_1 + C_2$ (wie Leitwerte). Anfangsspannungen werden als Spannungsquellen in Serie modelliert.',
+      def: '- Kapazitäten addieren sich: $C = C_1 + C_2$ (wie Leitwerte)\n- Anfangsspannungen werden als Spannungsquellen in Serie modelliert',
     },
     {
       term: 'Serienschaltung von Kapazitäten',
-      def: '$C = C_1 \\parallel C_2 = \\frac{C_1 C_2}{C_1 + C_2}$ (wie Leitwerte in Serie); die Anfangsspannungen addieren sich: $u_0 = u_{01} + u_{02}$.',
+      def: '- Kapazität: $C = C_1 \\parallel C_2 = \\frac{C_1 C_2}{C_1 + C_2}$ (wie Leitwerte in Serie)\n- Anfangsspannungen addieren sich: $u_0 = u_{01} + u_{02}$',
     },
     {
       term: 'Zusammenschaltung von Induktivitäten',
@@ -1227,7 +1199,7 @@ window.DECKS.push({
     },
     {
       term: 'Elementgleichungen in Zeigerdarstellung',
-      def: 'Widerstand: $\\underline{U} = R\\,\\underline{I}$. Leitwert: $\\underline{I} = G\\,\\underline{U}$. Kapazität: $\\underline{I} = j\\omega C\\,\\underline{U}$. Induktivität: $\\underline{U} = j\\omega L\\,\\underline{I}$.',
+      def: '- **Widerstand:** $\\underline{U} = R\\,\\underline{I}$\n- **Leitwert:** $\\underline{I} = G\\,\\underline{U}$\n- **Kapazität:** $\\underline{I} = j\\omega C\\,\\underline{U}$\n- **Induktivität:** $\\underline{U} = j\\omega L\\,\\underline{I}$',
     },
     {
       term: 'R, G, C und L',
@@ -1312,7 +1284,7 @@ window.DECKS.push({
     },
     {
       term: 'Inzidenzmatrix $A_0$',
-      def: '$n \\times b$-Matrix: $+1$, wenn Kante $j$ in Knoten $i$ beginnt, $-1$, wenn sie dort endet, sonst 0. Ohne die Zeile des Bezugsknotens: reduzierte Inzidenzmatrix $A$ mit vollem Rang.',
+      def: '$n \\times b$-Matrix:\n- $+1$, wenn Kante $j$ in Knoten $i$ beginnt\n- $-1$, wenn sie dort endet\n- sonst 0\n\nOhne die Zeile des Bezugsknotens: reduzierte Inzidenzmatrix $A$ mit vollem Rang.',
     },
     {
       term: 'Taylor-Approximation',
@@ -1329,12 +1301,8 @@ window.DECKS.push({
       def: 'Summe der Diagonalelemente einer quadratischen Matrix: $\\operatorname{tr}(A) = \\sum_i a_{ii}$.',
     },
     {
-      term: 'Singuläre Matrix',
-      def: 'Quadratische Matrix mit $\\det A = 0$; sonst nichtsingulär (invertierbar).',
-    },
-    {
       term: 'Vektorraum und Unterraum',
-      def: 'Menge, die unter Addition und Skalarmultiplikation abgeschlossen ist (mit den üblichen Rechenregeln). Eine Teilmenge mit dieser Eigenschaft ist ein linearer Unterraum.',
+      def: '- **Vektorraum:** Menge, die unter Addition und Skalarmultiplikation abgeschlossen ist\n- **Unterraum:** Teilmenge mit dieser Eigenschaft',
     },
     {
       term: 'Linearkombination',
@@ -1354,7 +1322,7 @@ window.DECKS.push({
     },
     {
       term: 'Basis und Dimension',
-      def: 'Basis: linear unabhängige Vektoren, die einen Raum aufspannen. Jede Basis hat gleich viele Elemente – diese Zahl ist die Dimension.',
+      def: '- **Basis:** linear unabhängige Vektoren, die einen Raum aufspannen\n- **Dimension:** Anzahl der Basisvektoren (gleich für jede Basis)',
     },
     {
       term: 'Rang einer Matrix',
@@ -1365,18 +1333,14 @@ window.DECKS.push({
       def: 'Zwei Vektoren sind orthogonal, wenn ihr Skalarprodukt verschwindet: $\\boldsymbol{a}^{\\mathrm{T}}\\boldsymbol{b} = 0$. $\\operatorname{Bild}(A^{\\mathrm{T}}) \\perp \\operatorname{Kern}(A)$ – Grundlage des Tellegen’schen Satzes.',
     },
     {
-      term: 'Orthogonale Matrix',
-      def: 'Quadratische Matrix $Q$ mit $Q^{\\mathrm{T}}Q = \\boldsymbol{1}$: Spalten stehen senkrecht aufeinander und haben Länge 1; die Abbildung ist längentreu.',
-    },
-    {
       term: 'Eigenwert und Eigenvektor',
-      def: '$A\\boldsymbol{x} = \\lambda\\boldsymbol{x}$ mit $\\boldsymbol{x} \\neq \\boldsymbol{0}$. Die Eigenwerte sind die Nullstellen des charakteristischen Polynoms $c(\\lambda) = \\det(A - \\lambda\\boldsymbol{1})$.',
+      def: '$A\\boldsymbol{x} = \\lambda\\boldsymbol{x}$ mit $\\boldsymbol{x} \\neq \\boldsymbol{0}$:\n- $\\lambda$ ist Eigenwert, $\\boldsymbol{x}$ Eigenvektor\n- Eigenwerte = Nullstellen von $c(\\lambda) = \\det(A - \\lambda\\boldsymbol{1})$',
       more: '- Eigenraum: alle Eigenvektoren zu $\\lambda_i$ (Unterraum)\n- algebraische Vielfachheit: Vielfachheit als Nullstelle\n- geometrische Vielfachheit: $n - \\operatorname{Rang}(A - \\lambda_i\\boldsymbol{1})$\n- **diagonalisierbar**, wenn es $n$ linear unabhängige Eigenvektoren gibt: $A = X\\Lambda X^{-1}$\n- sonst Jordan-Normalform mit Hauptvektoren\n- $A + \\alpha\\boldsymbol{1}$ hat Eigenwerte $\\lambda_i + \\alpha$',
       moreLabel: 'Details',
     },
     {
       term: 'Quadratische Form und Definitheit',
-      def: '$h = \\boldsymbol{x}^{\\mathrm{T}}A\\boldsymbol{x}$. Positiv definit: $h > 0$ für alle $\\boldsymbol{x} \\neq \\boldsymbol{0}$ (semidefinit: $\\ge 0$); indefinit: beide Vorzeichen möglich. Bei schiefsymmetrischem $A$ immer $h = 0$.',
+      def: '$h = \\boldsymbol{x}^{\\mathrm{T}}A\\boldsymbol{x}$:\n- **positiv definit:** $h > 0$ für alle $\\boldsymbol{x} \\neq \\boldsymbol{0}$\n- **positiv semidefinit:** $h \\ge 0$\n- **indefinit:** beide Vorzeichen möglich\n\nBei schiefsymmetrischem $A$ ist immer $h = 0$.',
     },
     // @@ENDE@@
   ],

@@ -31,7 +31,7 @@ window.DECKS = [
       },
       {
         term: 'Arbeitsspeicher (RAM)',
-        def: 'Random Access Memory: Speicher, mit dem der Prozessor arbeitet. Programme und Daten werden vom Massenspeicher hineingeladen; volatil.',
+        def: 'Random Access Memory: Speicher, mit dem der Prozessor arbeitet.\n- Programme und Daten werden vom Massenspeicher hineingeladen\n- volatil: Inhalt geht ohne Strom verloren',
       },
       {
         term: 'Adresse',
@@ -45,7 +45,7 @@ window.DECKS = [
       },
       {
         term: 'Befehlszähler',
-        def: 'Register mit der Adresse des auszuführenden Befehls. Normal: $\\text{BZ} \\leftarrow \\text{BZ} + 4$ (Befehlslänge), bei Sprüngen: $\\text{BZ} \\leftarrow \\text{BZ} + \\text{Offset}$.',
+        def: 'Register mit der Adresse des auszuführenden Befehls.\n- **normal:** $\\text{BZ} \\leftarrow \\text{BZ} + 4$ (Befehlslänge)\n- **Sprung:** $\\text{BZ} \\leftarrow \\text{BZ} + \\text{Offset}$',
       },
       {
         term: 'Maschinencode',
@@ -58,10 +58,6 @@ window.DECKS = [
       {
         term: 'Little Endian',
         def: 'Byte-Reihenfolge, bei der das niederwertigste Byte an der niedrigsten Adresse steht: `0xFD7BBFA9` liegt als `A9 BF 7B FD` im Speicher.',
-      },
-      {
-        term: 'Binärdatei',
-        def: 'Datei mit Maschinencode, die mit einem Loader in den Speicher geladen oder mit einem Programmieradapter übertragen werden kann.',
       },
       {
         term: 'Bare Metal',
@@ -93,11 +89,11 @@ window.DECKS = [
       },
       {
         term: 'Kernel Space / Kernel Mode',
-        def: 'Adressraum des Betriebssystems; Code dort läuft im Kernel Mode mit privilegierten Rechten und kann auf alle System-Ressourcen zugreifen.',
+        def: '- **Kernel Space:** Adressraum des Betriebssystems\n- **Kernel Mode:** Code dort läuft mit privilegierten Rechten und darf auf alle System-Ressourcen zugreifen',
       },
       {
         term: 'User Space / User Mode',
-        def: 'Getrennte virtuelle Adressräume der Programme; sie laufen im User Mode mit eingeschränkten Rechten (nur zugewiesener Speicher und Rechenzeit).',
+        def: '- **User Space:** getrennte virtuelle Adressräume der Programme\n- **User Mode:** eingeschränkte Rechte – nur zugewiesener Speicher und Rechenzeit',
       },
       {
         term: 'System Call',
@@ -109,14 +105,6 @@ window.DECKS = [
         def: 'Abstraktionsschicht, die Daten in Dateien statt in Blöcken organisiert: Dateinamen statt Blocknummern, Verzeichnisse, Metadaten, Verwaltung freier Blöcke.',
       },
       {
-        term: 'Verzeichnis (Ordner)',
-        def: 'Spezialdatei, die keine Daten, sondern Verweise auf andere Dateien enthält; ermöglicht die hierarchische Organisation.',
-      },
-      {
-        term: 'Terminal',
-        def: 'Programm bzw. Fenster, in dem die Shell läuft, z. B. Konsole (Linux), Terminal/iTerm2 (macOS), Windows Terminal.',
-      },
-      {
         term: 'Prompt',
         def: 'Eingabeaufforderung, z. B. `ab12cde@linux00:~$`. Zeigt, dass das System bereit für eine Eingabe ist.',
         more: '`ab12cde@linux00:~/Code$ ls -l -D "%F" 01_led`\n- `ab12cde` → Benutzer, `linux00` → Rechner/Host\n- `:` trennt Host und Pfad, `~/Code` → aktuelles Verzeichnis\n- `ls` → Programm/Utility oder Shell-Builtin\n- `-l` → Option, `-D "%F"` → Option mit Options-Argument, `01_led` → Operand\n- Enter schließt die Kommandozeile ab',
@@ -124,14 +112,14 @@ window.DECKS = [
       },
       {
         term: 'Absoluter vs. relativer Pfad',
-        def: 'Absolut: beginnt mit `/` und beschreibt den ganzen Weg vom Dateisystem-Ursprung. Relativ: ohne `/`, ausgehend vom aktuellen Verzeichnis.',
+        def: '- **Absolut:** beginnt mit `/`, ganzer Weg vom Dateisystem-Ursprung\n- **Relativ:** ohne `/`, ausgehend vom aktuellen Verzeichnis',
         ex: "cd /home/ab12cde/Code   # absolut\ncd Code                  # relativ",
       },
 
       { chapter: '3 Programmieren auf Hochsprachen-Ebene' },
       {
         term: 'Hochsprache',
-        def: 'Programmiersprache auf höherer Abstraktionsebene als Maschinencode (z. B. C); Code kann unabhängig von der Hardware geschrieben werden.',
+        def: 'Programmiersprache auf höherer Abstraktionsebene als Maschinencode, z. B. C.\n- Code unabhängig von der Hardware schreibbar\n- automatisch für verschiedene Prozessoren übersetzbar',
         more: '- hardwareunabhängig: kein Wissen über Register und Verarbeitungseinheiten nötig → niedrigere Einstiegsschwelle\n- Portabilität: automatische Übersetzung für verschiedene Prozessor-Architekturen\n- abstraktere Datentypen, Datenstrukturen (Listen, Bäume) und Operationen\n- implizit: Datentransport Speicher ↔ Register, Typkonvertierung, Stack',
         moreLabel: 'Vorteile',
       },
@@ -150,10 +138,6 @@ window.DECKS = [
         def: 'Reine Textdatei ohne Formatierungen oder Metadaten, die den Programmcode enthält; bei C mit der Endung `.c`.',
       },
       {
-        term: 'Arbeitsverzeichnis',
-        def: 'Working directory: Ordner, in dem die Quellcode-Dateien liegen und in dem git den versteckten Ordner `.git` anlegt.',
-      },
-      {
         term: 'Compiler',
         def: 'Übersetzt Quellcode in Objektdateien mit Maschinencode, z. B. gcc oder clang (oft über den Befehl `cc`).',
         more: '- Quell-Zeichensatz, Zeilenenden → LF\n- Zeilenspleißung\n- Lexer: Präprozessor-Token, Kommentare → Leerzeichen\n- Präprozessor (#include, #define)\n- Zeichenliteral-Konvertierung, Stringliteral-Verkettung\n- Tokenisierung verfeinern\n- Parser → AST\n- semantische Analyse, Typannotation\n- Zwischensprache → Optimierung → Maschinencode (.o)',
@@ -165,7 +149,7 @@ window.DECKS = [
       },
       {
         term: 'Präprozessor-Anweisung',
-        def: 'Mit `#` beginnende Anweisung, die zur Compile-Zeit ausgeführt wird, z. B. `#include` (Datei einfügen) oder `#define` (Textersetzung/Makro).',
+        def: 'Mit `#` beginnende Anweisung, die zur Compile-Zeit ausgeführt wird:\n- `#include`: Datei einfügen\n- `#define`: Textersetzung/Makro',
         ex: "#include <stdio.h>\n#define N 10",
       },
       {
@@ -175,11 +159,7 @@ window.DECKS = [
       },
       {
         term: 'Compile-Zeit vs. Laufzeit',
-        def: 'Compile-Zeit: während des Übersetzens (z. B. Präprozessor, sizeof). Laufzeit: während das Programm auf dem Prozessor ausgeführt wird.',
-      },
-      {
-        term: 'Stringliteral-Verkettung',
-        def: 'Direkt hintereinander stehende Zeichenketten werden zusammengefügt: `"Hallo " "Welt!"` → `"Hallo Welt!"`.',
+        def: '- **Compile-Zeit:** während des Übersetzens (z. B. Präprozessor, sizeof)\n- **Laufzeit:** während das Programm auf dem Prozessor läuft',
       },
       {
         term: 'Linker',
@@ -189,7 +169,7 @@ window.DECKS = [
       },
       {
         term: 'Statisches vs. dynamisches Linken',
-        def: 'Statisch: Bibliotheken werden in die Binärdatei kopiert (groß, eigenständig). Dynamisch: nur Verweise, Bibliotheken werden beim Start geladen (klein).',
+        def: '- **Statisch:** Bibliotheken werden in die Binärdatei kopiert → groß, eigenständig\n- **Dynamisch:** nur Verweise, Bibliotheken werden beim Start geladen → klein',
       },
       {
         term: 'Bibliothek',
@@ -197,14 +177,14 @@ window.DECKS = [
       },
       {
         term: 'git',
-        def: 'Versionsverwaltungsprogramm. Lädt die Praktikumsaufgaben aus dem gitlab-Repository (LRZ) herunter und speichert Arbeitsstände als Commits.',
+        def: 'Versionsverwaltungsprogramm:\n- lädt die Praktikumsaufgaben aus dem gitlab-Repository (LRZ) herunter\n- speichert Arbeitsstände als Commits',
         ex: "git add .\ngit commit -m \"Aufgabe 1\"\ngit pull --rebase",
         more: 'Typischer Ablauf im Praktikum:\n- einmalig: `git clone https://gitlab.lrz.de/ctpr/2026-27.git .`\n- Aufgaben bearbeiten\n- `git add .` → Änderungen in die Staging-Area\n- `git commit -m "Aktueller Stand"` → im lokalen Repository speichern\n- `git pull --rebase` → neue Aufgaben vom Server holen',
         moreLabel: 'Ablauf',
       },
       {
         term: 'Repository',
-        def: 'Ablage eines Projekts mitsamt seiner Versionsgeschichte. Lokal im verborgenen Ordner `.git`, remote auf dem gitlab-Server.',
+        def: 'Ablage eines Projekts mitsamt seiner Versionsgeschichte.\n- **lokal:** im verborgenen Ordner `.git`\n- **remote:** auf dem gitlab-Server',
         more: '- **Lokales Repository:** versteckter Ordner `.git` im Arbeitsverzeichnis; dort speichert git die verschiedenen Versionen der Dateien\n- **Remote Repository:** auf einem Server wie gitlab oder github; im Praktikum stellt ein gitlab-Server die Aufgaben bereit\n- Arbeitsverzeichnis und lokales Repository können auch an unterschiedlichen Orten liegen',
         moreLabel: 'Lokal vs. Remote',
       },
@@ -214,7 +194,7 @@ window.DECKS = [
       },
       {
         term: 'Home-Verzeichnis (~)',
-        def: 'Persönliches Verzeichnis des aktuellen Benutzers. Die Tilde `~` steht als Abkürzung dafür; `cd ~` wechselt dorthin.',
+        def: 'Persönliches Verzeichnis des aktuellen Benutzers.\n- `~` ist die Abkürzung dafür\n- `cd ~` wechselt dorthin',
         ex: "cd ~",
       },
       {
@@ -241,27 +221,27 @@ window.DECKS = [
       },
       {
         term: '. und ..',
-        def: '`.` steht für das aktuelle Verzeichnis, `..` für das übergeordnete Verzeichnis.',
+        def: '- `.` – das aktuelle Verzeichnis\n- `..` – das übergeordnete Verzeichnis',
         ex: "cd ..     # eine Ebene hoch\n./p       # p hier ausführen",
       },
       {
         term: 'git clone',
-        def: 'Lädt ein Remote-Repository erstmalig herunter. Mit `.` am Ende wird in das aktuelle Verzeichnis geklont.',
+        def: 'Lädt ein Remote-Repository erstmalig herunter.\n- `.` am Ende: in das aktuelle Verzeichnis klonen',
         ex: "git clone https://gitlab.lrz.de/ctpr/2026-27.git .",
       },
       {
         term: 'Staging-Area',
-        def: 'Zwischenbereich für Änderungen, die mit dem nächsten Commit gespeichert werden. `git add .` fügt alle geänderten Dateien hinzu.',
+        def: 'Zwischenbereich für Änderungen, die mit dem nächsten Commit gespeichert werden.\n- `git add .` fügt alle geänderten Dateien hinzu',
         ex: "git add p.c   # eine Datei\ngit add .     # alle Änderungen",
       },
       {
         term: 'git commit',
-        def: 'Speichert alle Dateien der Staging-Area als neuen Stand im lokalen Repository; `-m "…"` gibt eine kurze Beschreibung mit.',
+        def: 'Speichert alle Dateien der Staging-Area als neuen Stand im lokalen Repository.\n- `-m "…"` gibt eine kurze Beschreibung mit',
         ex: "git commit -m \"Aufgabe 1 fertig\"",
       },
       {
         term: 'git pull --rebase',
-        def: 'Holt neue Commits vom Server ins lokale Repository. `--rebase` setzt die eigenen lokalen Commits hinter die neu heruntergeladenen.',
+        def: 'Holt neue Commits vom Server ins lokale Repository.\n- `--rebase` setzt die eigenen lokalen Commits hinter die neu heruntergeladenen',
         more: 'Wichtig: Vorher immer den eigenen Stand committen (`git add .` und `git commit -m "…"`), erst dann `git pull --rebase`.',
         moreLabel: 'Methode',
       },
@@ -292,19 +272,15 @@ window.DECKS = [
         ex: "int summe = 0;   // summe\nint main(void)   // main",
       },
       {
-        term: 'Black-Box',
-        def: 'Sicht auf eine Funktion: Wichtig ist nur, WAS sie berechnet, nicht WIE. Die Realisierung darf unbekannt sein.',
-      },
-      {
         term: 'Funktionsaufruf',
-        def: 'Funktionsname, gefolgt von runden Klammern mit den Argumenten, z. B. `y = cos(x);`. Der Aufruf ist ein Ausdruck und liefert den Rückgabewert.',
+        def: 'Funktionsname mit den Argumenten in runden Klammern, z. B. `y = cos(x);`\n- ist ein Ausdruck und liefert den Rückgabewert',
         ex: "double y = cos(x);",
         more: 'Ablauf:\n- alle Argumente werden der Reihe nach ausgewertet\n- Sprung an die Stelle der Funktionsdefinition\n- Werte der Argumente werden der Reihe nach in die Parameter **kopiert** (nur die Reihenfolge zählt, nicht der Name)\n- `return` springt zurück; der Aufruf-Ausdruck hat dann den Rückgabewert\n- Typ des Rückgabewerts muss zur Verwendung passen, sonst Typumwandlung',
         moreLabel: 'Ablauf',
       },
       {
         term: 'Parameter vs. Argument',
-        def: 'Parameter: Eingangsvariablen in der Funktionsdefinition. Argumente: die beim Funktionsaufruf übergebenen Werte, die in die Parameter kopiert werden.',
+        def: '- **Parameter:** Eingangsvariablen in der Funktionsdefinition\n- **Argumente:** beim Aufruf übergebene Werte, die in die Parameter kopiert werden',
         ex: "int quadrat(int x);  // x: Parameter\nquadrat(5);          // 5: Argument",
       },
       {
@@ -324,12 +300,12 @@ window.DECKS = [
       },
       {
         term: 'Funktionsdefinition',
-        def: 'Funktionskopf + Funktionsrumpf. Legt fest, was die Funktion macht; der Rumpf wird in Maschinencode übersetzt, es wird also Speicher angelegt.',
+        def: 'Funktionskopf + Funktionsrumpf: legt fest, was die Funktion macht.\n- der Rumpf wird in Maschinencode übersetzt → es wird Speicher angelegt',
         ex: "int quadrat(int x) {\n    return x * x;\n}",
       },
       {
         term: 'Funktionsdeklaration',
-        def: 'Funktionskopf mit Semikolon, ohne Rumpf. Macht die Funktion dem Compiler bekannt, reserviert aber keinen Speicher.',
+        def: 'Funktionskopf mit Semikolon, ohne Rumpf.\n- macht die Funktion dem Compiler bekannt\n- reserviert keinen Speicher',
         ex: "int quadrat(int);",
         more: '- Der Compiler braucht die Deklaration, um den Maschinencode für den Aufruf (nach ABI) zu erzeugen.\n- Für die Parameterliste reichen hier die Datentypen, z. B. `double cos(double);`\n- Jede Definition ist gleichzeitig auch eine Deklaration.',
         moreLabel: 'Methode',
@@ -345,23 +321,18 @@ window.DECKS = [
         ex: "{\n    return x * x;\n}",
       },
       {
-        term: 'Überladen von Funktionen',
-        def: 'Mehrere Funktionen gleichen Namens mit unterschiedlichen Parametern/Rückgabetypen. In C nicht möglich (in C++ schon).',
-        ex: "int f(int);\ndouble f(double);  // Fehler in C",
-      },
-      {
         term: 'Parameterliste',
-        def: 'Liste der Parameter in runden Klammern (kann leer sein). Deklaration: Typen reichen. Definition: Typ und Bezeichner je Parameter.',
+        def: 'Liste der Parameter in runden Klammern (kann leer sein).\n- **Deklaration:** Typen reichen\n- **Definition:** Typ und Bezeichner je Parameter',
         ex: "int add(int a, int b)",
       },
       {
         term: 'void',
-        def: 'Schlüsselwort für „leer“: keine Parameter (`int main(void)`) bzw. kein Rückgabewert (`void f(…)`).',
+        def: 'Schlüsselwort für „leer“:\n- keine Parameter: `int main(void)`\n- kein Rückgabewert: `void f(…)`',
         ex: "void hallo(void) {\n    printf(\"Hallo\\n\");\n}",
       },
       {
         term: 'Variablendeklaration vs. -definition',
-        def: 'Deklaration gibt den Typ an, Definition reserviert Speicher. `int i, n = 10;` ist beides.',
+        def: '- **Deklaration:** gibt den Typ an\n- **Definition:** reserviert Speicher\n\n`int i, n = 10;` ist beides.',
         ex: "extern int n;  // Deklaration\nint n = 10;    // Definition",
       },
       {
@@ -371,37 +342,31 @@ window.DECKS = [
       },
       {
         term: 'Lokale Variable',
-        def: 'Innerhalb einer Funktion definierte Variable: nur dort über ihren Bezeichner ansprechbar; ihr Wert geht beim Verlassen der Funktion verloren.',
+        def: 'Innerhalb einer Funktion definierte Variable:\n- nur dort über ihren Bezeichner ansprechbar\n- Wert geht beim Verlassen der Funktion verloren',
         ex: "void f(void) {\n    int i = 0;  // nur in f\n}",
       },
       {
         term: 'int',
-        def: 'Typspezifizierer für vorzeichenbehaftete Ganzzahlen; meist 32 Bit (4 Byte), auf dem 8-Bit-Mikrocontroller nur 2 Byte.',
+        def: 'Typspezifizierer für vorzeichenbehaftete Ganzzahlen.\n- meist 32 Bit (4 Byte)\n- auf dem 8-Bit-Mikrocontroller nur 2 Byte',
         ex: "int n = -42;",
       },
       {
         term: 'main',
-        def: 'Haupt-Funktion und Einsprungspunkt jedes C-Programms. Genau eine pro Programm; Rückgabetyp ist immer `int`.',
+        def: 'Haupt-Funktion und Einsprungspunkt jedes C-Programms.\n- genau eine pro Programm\n- Rückgabetyp ist immer `int`',
         ex: "int main(void) {\n    return 0;\n}",
         more: '- `int main(void)` → ohne Parameter (empfohlen)\n- `int main()` → bis C17 „Parameter nicht spezifiziert“, seit C23 gleichbedeutend mit void\n- `int main(int argc, char *argv[])` → mit Kommandozeilen-Argumenten\n\n„Beginnen“ bezieht sich auf die Ausführung – im Quelltext steht main oft am Ende.',
         moreLabel: 'Varianten',
       },
       {
         term: 'argc / argv',
-        def: 'Parameter von main: `argc` = Anzahl der Argumente, `argv` = nullterminiertes Array aus Zeigern auf die Argument-Zeichenketten.',
+        def: 'Parameter von main:\n- `argc`: Anzahl der Argumente\n- `argv`: nullterminiertes Array aus Zeigern auf die Argument-Zeichenketten',
         ex: "int main(int argc, char *argv[]) {\n    printf(\"%s\\n\", argv[1]);\n}",
         more: 'Aufruf `./p eins zwei drei`:\n- argv = `["./p", "eins", "zwei", "drei", NULL]`\n- argc = 4 (der Programmname zählt mit)\n\nDie Vorbelegung des Speichers erfolgt durch den Kernel.',
         moreLabel: 'Beispiel',
       },
       {
-        term: 'Programmstart über die Shell',
-        def: 'Shell zerlegt die Kommandozeile in ein Argument-Array, klont sich mit fork(), das Kind lädt mit execve() das Programm, der Loader springt in main.',
-        more: '- Shell wertet Quoting, Variablen, Wildcards aus → Array aus Strings\n- `fork()` klont den Shell-Prozess in einen Kindprozess\n- Shell-Prozess wartet mit `waitpid()`\n- Kindprozess ruft `execve()` auf: neuer leerer Adressraum, Programm laden, argv/envp auf den Stack kopieren\n- Wechsel Kernel → User-Mode: Befehlszähler = Startadresse des Loaders, Stackpointer = Adresse von argc\n- Loader lädt Bibliotheken, löst Symbole auf, Relokation, Initialisierungen → Sprung in main',
-        moreLabel: 'Ablauf',
-      },
-      {
         term: 'Loader',
-        def: 'Teil des Betriebssystems, der ein Programm in den Speicher lädt und dorthin verzweigt. Bei statisch gelinkten Dateien übernimmt das der Kernel.',
+        def: 'Teil des Betriebssystems, der ein Programm in den Speicher lädt und dorthin verzweigt.\n- bei statisch gelinkten Dateien übernimmt das der Kernel',
         more: 'Bei dynamisch gelinkten Binärdateien:\n- Kernel liest die Binärdatei und ermittelt den dynamischen Loader (Linux: ld-linux.so, macOS: dyld)\n- Kernel lädt Loader + Binärdatei und übergibt die Kontrolle (ab jetzt User Space)\n- Loader liest Header, erstellt Liste der benötigten Bibliotheken\n- sucht und lädt die Bibliotheken\n- Relocation: Bibliotheksaufrufe durch gültige Adressen ersetzen\n- Initialisierungsfunktionen der Bibliotheken und des Programms aufrufen\n- Sprung in main',
         moreLabel: 'Ablauf',
       },
@@ -412,7 +377,7 @@ window.DECKS = [
       },
       {
         term: 'Rückgabewert von main',
-        def: 'Meldet Erfolg oder Misserfolg: $= 0$ → Erfolg (`EXIT_SUCCESS`), $\\neq 0$ → Fehler (`EXIT_FAILURE`, beide in stdlib.h).',
+        def: 'Meldet Erfolg oder Misserfolg (Konstanten aus stdlib.h):\n- $= 0$ → Erfolg (`EXIT_SUCCESS`)\n- $\\neq 0$ → Fehler (`EXIT_FAILURE`)',
         ex: "return EXIT_FAILURE;",
         more: '- Idee: Ein Programm kann nur auf eine Art erfolgreich sein, aber auf viele Arten scheitern → alle Zahlen ≠ 0 bleiben für Fehlerarten frei.\n- `return` in main ist seit C99 optional; fehlt es, gibt main automatisch 0 zurück.\n- In der Shell auslesen mit `echo $?`.',
         moreLabel: 'Details',
@@ -424,7 +389,7 @@ window.DECKS = [
       },
       {
         term: '&& und || (Shell)',
-        def: '`p1 && p2`: p2 nur, wenn p1 erfolgreich war (Rückgabe 0). `p1 || p2`: p2 nur, wenn p1 fehlschlug. Gesamt-Rückgabewert = der des zuletzt ausgeführten Programms.',
+        def: '- `p1 && p2`: p2 nur, wenn p1 erfolgreich war (Rückgabe 0)\n- `p1 || p2`: p2 nur, wenn p1 fehlschlug\n\nGesamt-Rückgabewert = der des zuletzt ausgeführten Programms.',
         ex: "clang -o p p.c && ./p\n./p || echo \"Fehler\"",
       },
       {
@@ -436,7 +401,7 @@ window.DECKS = [
       },
       {
         term: 'stdio.h',
-        def: 'Header-Datei der Standardbibliothek für Ein- und Ausgabe (std = standard, io = input/output); enthält u. a. die Deklaration von printf.',
+        def: 'Header-Datei der Standardbibliothek für Ein- und Ausgabe (standard input/output).\n- enthält u. a. die Deklaration von printf',
         ex: "#include <stdio.h>",
       },
       {
@@ -455,11 +420,6 @@ window.DECKS = [
         ex: "clang -E p.c",
       },
       {
-        term: '... (variable Parameterliste)',
-        def: 'Steht in einer Deklaration für „beliebig viele weitere Parameter beliebigen Typs“, z. B. bei printf.',
-        ex: "int printf(const char *, ...);",
-      },
-      {
         term: 'Formatstring',
         def: 'Die an printf übergebene Zeichenkette. Enthält Text und Platzhalter (%…), an deren Stelle die Werte der weiteren Argumente ausgegeben werden.',
         ex: "printf(\"x = %d, y = %f\\n\", x, y);",
@@ -468,7 +428,7 @@ window.DECKS = [
       },
       {
         term: 'Platzhalter',
-        def: 'Mit % beginnende Stelle im Formatstring, an der ein Wert eingesetzt wird. Nötig, damit der Compiler Zeichen (\'a\') und Variable (a) unterscheiden kann.',
+        def: 'Mit `%` beginnende Stelle im Formatstring, an der ein Wert eingesetzt wird.\n- nötig, damit der Compiler Zeichen (`\'a\'`) und Variable (`a`) unterscheiden kann',
         ex: "printf(\"%d\", 42);  // 42",
       },
       {
@@ -504,7 +464,7 @@ window.DECKS = [
       },
       {
         term: 'signed vs. unsigned',
-        def: 'signed: vorzeichenbehaftet, das MSB zeigt das Vorzeichen (0xff als char = −1). unsigned: ohne Vorzeichen (0xff als unsigned char = 255).',
+        def: '- **signed:** vorzeichenbehaftet, MSB = Vorzeichen (`0xff` als char = −1)\n- **unsigned:** ohne Vorzeichen (`0xff` als unsigned char = 255)',
         ex: "signed char a = 0xff;    // -1\nunsigned char b = 0xff;  // 255",
       },
       {
@@ -516,12 +476,12 @@ window.DECKS = [
       },
       {
         term: 'sizeof',
-        def: 'Operator (keine Funktion!), der vom Compiler ausgewertet wird und die Größe eines Ausdrucks oder Typs in Byte liefert. Ausgabe mit `%zu`.',
+        def: 'Operator (keine Funktion!), der die Größe eines Ausdrucks oder Typs in Byte liefert.\n- wird vom Compiler ausgewertet\n- Ausgabe mit `%zu`',
         ex: "printf(\"%zu\", sizeof(int));  // 4",
       },
       {
         term: 'size_t',
-        def: 'Ganzzahliger Typ ohne Vorzeichen für die Größe eines Objekts in Byte (z. B. Ergebnis von sizeof); Längenangabe `z`.',
+        def: 'Vorzeichenloser Ganzzahltyp für die Größe eines Objekts in Byte (z. B. Ergebnis von sizeof).\n- Längenangabe `z`',
         ex: "size_t n = sizeof(double);",
       },
       {
@@ -537,24 +497,19 @@ window.DECKS = [
       },
       {
         term: 'Flags (printf)',
-        def: 'Zeichen direkt nach dem %: `-` linksbündig, `+` Vorzeichen immer, Leerzeichen statt +, `0` mit Nullen auffüllen, `#` 0x bei hex / 0 bei oktal.',
+        def: 'Zeichen direkt nach dem `%`:\n- `-` linksbündig\n- `+` Vorzeichen immer ausgeben\n- Leerzeichen statt `+`\n- `0` mit Nullen auffüllen\n- `#` `0x` bei hex bzw. `0` bei oktal',
         ex: "printf(\"[%-5d]\", 12);  // [12   ]",
         more: '- `[%-5d]` → `[12   ]`\n- `[%05d]` → `[00012]`\n- `[%+d]` → `[+12]`\n- `[%#x]`, 128 → `[0x80]`\n\nAchtung: `%+08d` zählt das Vorzeichen zur Breite (`+0000012`), `%+.8d` nicht (`+00000012`).',
         moreLabel: 'Beispiele',
       },
       {
         term: 'Zeichenkette (String)',
-        def: 'Folge von Zeichen in doppelten Anführungszeichen, z. B. `"Hallo"`; im Speicher nullterminiert.',
+        def: 'Folge von Zeichen in doppelten Anführungszeichen, z. B. `"Hallo"`.\n- im Speicher nullterminiert',
         ex: "char s[] = \"Hallo\";",
       },
       {
-        term: 'Escaping',
-        def: 'Ein vorangestellter Backslash `\\` hebt die Sonderbedeutung eines Zeichens auf, z. B. `\\"` für ein Anführungszeichen innerhalb einer Zeichenkette.',
-        ex: "printf(\"Er sagt \\\"Hi\\\"\");",
-      },
-      {
         term: 'Escape-Sequenz',
-        def: 'Mit Backslash eingeleitete Zeichenfolge für Sonder- oder Steuerzeichen, z. B. `\\n` (Zeilenumbruch) oder `\\"`.',
+        def: 'Mit Backslash eingeleitete Zeichenfolge für Sonder- oder Steuerzeichen, z. B. `\\n` (Zeilenumbruch) oder `\\"` (Anführungszeichen).',
         ex: "printf(\"A\\tB\\n\");",
         more: '- `\\\'` `\\"` `\\?` `\\\\` → das jeweilige Zeichen\n- `\\n` newline · `\\t` tab · `\\r` carriage return · `\\a` alert · `\\b` backspace · `\\f` form feed · `\\v` vertical tab\n- `\\0` bis `\\377` → Zeichen mit Oktalwert\n- `\\x` + Hexziffern → Zeichen mit Hexwert (greedy: liest so viele Hexziffern wie möglich; `"\\x61" "bc"` = `"abc"`)\n- `\\u` + 4 bzw. `\\U` + 8 Hexziffern → Universal Character',
         moreLabel: 'Tabelle',
@@ -566,12 +521,12 @@ window.DECKS = [
       },
       {
         term: 'Blockkommentar',
-        def: 'Beginnt mit `/*` und endet mit `*/`, kann mehrere Zeilen umfassen. Darf nicht verschachtelt werden.',
+        def: 'Beginnt mit `/*`, endet mit `*/`.\n- kann mehrere Zeilen umfassen\n- darf nicht verschachtelt werden',
         ex: "/* mehrere\n   Zeilen */",
       },
       {
         term: 'Zeilenkommentar',
-        def: 'Beginnt mit `//`; alles bis zum Zeilenende wird ignoriert. Kein Verschachtelungsproblem, daher meist vorzuziehen.',
+        def: 'Beginnt mit `//`; alles bis zum Zeilenende wird ignoriert.\n- kein Verschachtelungsproblem → meist vorzuziehen',
         ex: "x++;  // bis Zeilenende",
       },
     ],

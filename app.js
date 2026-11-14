@@ -343,7 +343,7 @@
       <div class="list">${cs.length ? cs.map(c => `<div class="row card-preview">
           <span class="dot" style="background:${dotFor(stats[statKey(sid(f), c.term, c.img ? 'Schaltbild' : null)])}"></span>
           <span class="grow"><div class="title">${fmt(c.term)}${c.img ? '<span class="tag">Schaltbild</span>' : ''}${c.more ? `<span class="tag">+ ${esc(c.moreLabel || 'Methode')}</span>` : ''}${c.own ? '<span class="tag">eigene</span>' : ''}</div>
-          <div class="sub">${fmt(c.def)}</div></span>
+          <div class="sub">${fmt(String(c.def || '').replace(/\n+- /g, ' · ').replace(/\n+/g, ' ').replace(/^- /, ''))}</div></span>
           ${c.own ? `<button class="del" data-action="del-card" data-i="${c.ownIndex}" aria-label="Karte löschen">×</button>` : ''}
         </div>`).join('') : '<div class="empty">Dieser Ordner ist noch leer.</div>'}</div>`}
 

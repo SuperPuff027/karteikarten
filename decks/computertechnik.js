@@ -23,10 +23,6 @@ window.DECKS.push({
       def: 'Application Specific Integrated Circuit: anwendungsspezifische integrierte Schaltung – eine problemspezifische Schaltung als eigener Chip.',
     },
     {
-      term: 'Seriell vs. parallel',
-      def: 'Parallel: Berechnungen laufen gleichzeitig (z. B. $2a$ und $4a$). Seriell: nacheinander, weil ein Ergebnis Eingang der nächsten Berechnung ist.',
-    },
-    {
       term: 'Universelle Schaltung',
       def: 'Problemunabhängige Schaltung: Das zu lösende Problem wird als Programm vorgegeben. Die Berechnung wird rein seriell ausgeführt, Zwischenergebnisse liegen im Speicher.',
     },
@@ -46,10 +42,6 @@ window.DECKS.push({
       ex: 'ADD R0,R1,R2   // R0 ← R1 + R2',
     },
     {
-      term: 'Prozessor',
-      def: 'Die am Abarbeiten der Ausführungs-Zyklen beteiligten Schaltungskomponenten, als eigenständige Schaltung hergestellt.',
-    },
-    {
       term: 'Harvard-Architektur',
       def: 'Befehle und Daten liegen in getrennten Speichern (Befehlsspeicher und Datenspeicher).',
     },
@@ -61,10 +53,6 @@ window.DECKS.push({
       term: 'Sprungbefehl',
       def: 'Befehl, der statt der nächsten Speicherstelle direkt die Position des als Nächstes auszuführenden Befehls festlegt.',
       ex: 'JMP Start',
-    },
-    {
-      term: 'Programm (Computertechnik)',
-      def: 'In sich geschlossene Menge an Befehlen, die festlegt, welche Befehle in welcher Reihenfolge ausgeführt werden.',
     },
 
     { chapter: '2 Darstellung von Zahlen und Zeichen' },
@@ -80,7 +68,7 @@ window.DECKS.push({
     },
     {
       term: 'MSB / LSB',
-      def: 'Most Significant Bit: Bit mit der höchsten Wertigkeit (ganz links). Least Significant Bit: niedrigste Wertigkeit (ganz rechts, Bit 0).',
+      def: '- **MSB** (Most Significant Bit): höchste Wertigkeit, ganz links\n- **LSB** (Least Significant Bit): niedrigste Wertigkeit, ganz rechts (Bit 0)',
     },
     {
       term: 'Nibble',
@@ -107,7 +95,7 @@ window.DECKS.push({
     },
     {
       term: 'Steuerzeichen',
-      def: 'Die ASCII-Codes `0x00`–`0x1F`, früher zur Steuerung von Fernschreibern. Heute wichtig: `0x00` (NUL, Ende einer Zeichenkette), `0x0A` (LF, Zeilenumbruch), `0x09` (HT, Tabulator).',
+      def: 'Die ASCII-Codes `0x00`–`0x1F`, früher zur Steuerung von Fernschreibern. Heute wichtig:\n- `0x00` NUL: Ende einer Zeichenkette\n- `0x0A` LF: Zeilenumbruch\n- `0x09` HT: Tabulator',
     },
     {
       term: 'Unicode',
@@ -120,7 +108,7 @@ window.DECKS.push({
     },
     {
       term: 'UTF-32',
-      def: 'Jedes Unicode-Zeichen wird mit 32 Bit codiert. Vorteil: einfach. Nachteil: hoher Speicherbedarf.',
+      def: 'Jedes Unicode-Zeichen wird mit 32 Bit codiert.\n- **Vorteil:** einfach\n- **Nachteil:** hoher Speicherbedarf',
     },
     {
       term: 'Basis eines Zahlensystems',
@@ -147,17 +135,17 @@ window.DECKS.push({
     },
     {
       term: 'Vorzeichen und Betrag',
-      def: 'MSB = Vorzeichen (0 positiv, 1 negativ), restliche Bits = Betrag. Probleme: doppelte Null ($+0$, $-0$) und Addition wie im Dezimalsystem funktioniert nicht.',
+      def: '- MSB = Vorzeichen (0 positiv, 1 negativ)\n- restliche Bits = Betrag\n\nProbleme: doppelte Null ($+0$, $-0$); Addition wie im Dezimalsystem funktioniert nicht.',
       ex: '+5 = 0000 0101\n−5 = 1000 0101',
     },
     {
       term: 'Einer-Komplement',
-      def: 'Negation durch Invertieren aller Bits. Addition funktioniert wie im Dezimalsystem, aber es gibt noch die doppelte Null. Wertebereich $-(2^{n-1}-1) \\ldots 2^{n-1}-1$.',
+      def: 'Negation durch Invertieren aller Bits.\n- Addition funktioniert wie im Dezimalsystem\n- Problem: doppelte Null\n- Wertebereich $-(2^{n-1}-1) \\ldots 2^{n-1}-1$',
       ex: '+5 = 0000 0101\n−5 = 1111 1010',
     },
     {
       term: 'Zweier-Komplement',
-      def: 'Einer-Komplement bilden und 1 addieren. Keine doppelte Null, Wertebereich $-2^{n-1} \\ldots 2^{n-1}-1$ (asymmetrisch). Standard für vorzeichenbehaftete Festkommazahlen.',
+      def: 'Einer-Komplement bilden und 1 addieren.\n- keine doppelte Null\n- Wertebereich $-2^{n-1} \\ldots 2^{n-1}-1$ (asymmetrisch)\n- Standard für vorzeichenbehaftete Festkommazahlen',
       ex: '+53 = 0011 0101\n1er = 1100 1010\n−53 = 1100 1011',
     },
     {
@@ -175,13 +163,13 @@ window.DECKS.push({
     },
     {
       term: 'IEEE 754 Format',
-      def: 'Vorzeichen $s$, Exponent $e$, Bruchteil $f$. 32 Bit: 1 + 8 + 23 Bit, $K = 127$. 64 Bit: 1 + 11 + 52 Bit, $K = 1023$.',
+      def: 'Vorzeichen $s$, Exponent $e$, Bruchteil $f$:\n- **32 Bit:** 1 + 8 + 23 Bit, $K = 127$\n- **64 Bit:** 1 + 11 + 52 Bit, $K = 1023$',
       more: '- **normalisiert** ($0 < e < e_{max}$): $v = (-1)^s \\cdot 1{,}f \\cdot 2^{e-K}$\n- **denormalisiert** ($e = 0$, $f > 0$): $v = (-1)^s \\cdot 0{,}f \\cdot 2^{1-K}$\n- **Null:** $e = 0$, $f = 0$\n- **$\\pm\\infty$:** $e$ alle Bits 1, $f = 0$\n- **NaN:** $e$ alle Bits 1, $f > 0$',
       moreLabel: 'Werte',
     },
     {
       term: 'Konstante K (Bias)',
-      def: 'Wird vom gespeicherten Exponenten abgezogen: $2^{e-K}$. Einfache Genauigkeit $K = 127$, doppelte Genauigkeit $K = 1023$.',
+      def: 'Wird vom gespeicherten Exponenten abgezogen: $2^{e-K}$.\n- einfache Genauigkeit: $K = 127$\n- doppelte Genauigkeit: $K = 1023$',
     },
     {
       term: 'Normalisierte Gleitkommazahl',
@@ -243,7 +231,7 @@ window.DECKS.push({
     },
     {
       term: 'Asynchrones RS-Flipflop',
-      def: 'Zwei rückgekoppelte NOR-Gatter speichern ein Bit. Set $S = 1$ setzt, Reset $R = 1$ löscht. Asynchron: Änderungen wirken sofort. $S = R = 1$ ist verboten (Zustand ungültig).',
+      def: 'Zwei rückgekoppelte NOR-Gatter speichern ein Bit.\n- **Set** $S = 1$: setzt\n- **Reset** $R = 1$: löscht\n- $S = R = 1$ ist verboten (Zustand ungültig)\n\nAsynchron: Änderungen wirken sofort.',
     },
     {
       term: 'Taktzustandsgesteuertes RS-Flipflop',
@@ -263,7 +251,7 @@ window.DECKS.push({
     },
     {
       term: 'Halbaddierer',
-      def: 'Addiert zwei Bits zu Summe und Übertrag: $s_i = x_i \\oplus y_i$, $c_i = x_i \\wedge y_i$. Berücksichtigt keinen Übertrag aus der vorherigen Stelle.',
+      def: 'Addiert zwei Bits:\n- Summe $s_i = x_i \\oplus y_i$\n- Übertrag $c_i = x_i \\wedge y_i$\n\nBerücksichtigt keinen Übertrag aus der vorherigen Stelle.',
     },
     {
       term: 'Volladdierer',
@@ -283,15 +271,15 @@ window.DECKS.push({
     },
     {
       term: 'Generate / Propagate',
-      def: 'Generate $g_i = x_i \\wedge y_i$: Der Volladdierer erzeugt selbst einen Übertrag. Propagate $p_i = x_i \\oplus y_i$: Er leitet einen ankommenden Übertrag weiter.',
+      def: '- **Generate** $g_i = x_i \\wedge y_i$: der Volladdierer erzeugt selbst einen Übertrag\n- **Propagate** $p_i = x_i \\oplus y_i$: er leitet einen ankommenden Übertrag weiter',
     },
     {
       term: 'Fan-In / Fan-Out',
-      def: 'Fan-In: maximale Anzahl Eingänge eines Gatters. Fan-Out: maximale Anzahl Gattereingänge an einem Ausgang. Grenzen werden durch Baumstrukturen umgangen (kostet zusätzliche Laufzeit).',
+      def: '- **Fan-In:** maximale Anzahl Eingänge eines Gatters\n- **Fan-Out:** maximale Anzahl Gattereingänge an einem Ausgang\n\nGrenzen werden durch Baumstrukturen umgangen (kostet Laufzeit).',
     },
     {
       term: 'Kaskadierte Carry-Look-Ahead-Schaltung',
-      def: 'Große CLA-Schaltungen aus mehreren kleinen (z. B. 4 Bit) zusammengesetzt; eine CLA-Einheit verknüpft deren Gruppen-Generate/-Propagate. Begrenzt die Gatteranzahl.',
+      def: '- große CLA-Schaltungen aus mehreren kleinen (z. B. 4 Bit) zusammengesetzt\n- eine CLA-Einheit verknüpft deren Gruppen-Generate/-Propagate\n- begrenzt die Gatteranzahl',
       more: 'CLA-Einheit (zweistufig):\n- $C_0 = CC_0$\n- $C_1 = G_0 \\vee (P_0 \\wedge CC_0)$\n- $PP_0 = P_3 \\wedge P_2 \\wedge P_1 \\wedge P_0$\n- $GG_0 = G_3 \\vee (P_3 \\wedge G_2) \\vee (P_3 \\wedge P_2 \\wedge G_1) \\vee (P_3 \\wedge P_2 \\wedge P_1 \\wedge G_0)$\n\n$G$ und $P$ dürfen nicht vom Carry-In abhängen, sonst entsteht wieder der Ripple-Effekt.',
       moreLabel: 'Formeln',
     },
@@ -312,11 +300,11 @@ window.DECKS.push({
     },
     {
       term: 'Zustandsautomat (Steuerung)',
-      def: 'Steuert sequentielle Schaltungen: Ein Zustandsregister speichert Zustand und Rundenzähler; Folgezustand und Ausgangssignale kommen aus Multiplexer-Logik oder aus einem ROM.',
+      def: 'Steuert sequentielle Schaltungen:\n- ein Zustandsregister speichert Zustand und Rundenzähler\n- Folgezustand und Ausgangssignale kommen aus Multiplexer-Logik oder aus einem ROM',
     },
     {
       term: 'Speicherorganisation',
-      def: 'Beschreibt den Aufbau eines Speichers: wie breit die Datenworte sind und wie viele es gibt. Beispiel: 6 Adressbits, 9 Datenbits → $2^6 = 64$ Worte zu je 9 Bit.',
+      def: 'Beschreibt den Aufbau eines Speichers:\n- wie breit die Datenworte sind\n- wie viele es gibt\n\nBeispiel: 6 Adressbits, 9 Datenbits → $2^6 = 64$ Worte zu je 9 Bit.',
     },
     {
       term: 'Vorzeichenbehaftete Multiplikation',
@@ -327,12 +315,8 @@ window.DECKS.push({
       def: 'Mantissen (mit „1,“) als Festkommazahlen multiplizieren, Exponenten addieren und einmal $K$ abziehen (sonst doppelt gezählt), dann renormalisieren.',
     },
     {
-      term: 'Minuend − Subtrahend = Differenz',
-      def: 'Bezeichnungen bei der Subtraktion. Ist eine Minuenden-Stelle zu klein, wird von der nächsthöheren Stelle geborgt.',
-    },
-    {
       term: 'Halbsubtrahierer',
-      def: 'Subtrahiert $y_i$ von $x_i$: $d_i = x_i \\oplus y_i$, Borge-Bit $b_i = \\overline{x_i} \\wedge y_i$. Berücksichtigt kein Borgen der vorherigen Stelle.',
+      def: 'Subtrahiert $y_i$ von $x_i$:\n- Differenz $d_i = x_i \\oplus y_i$\n- Borge-Bit $b_i = \\overline{x_i} \\wedge y_i$\n\nBerücksichtigt kein Borgen der vorherigen Stelle.',
     },
     {
       term: 'Vollsubtrahierer',
@@ -343,13 +327,8 @@ window.DECKS.push({
       def: '$n$ Vollsubtrahierer in Reihe berechnen $d = x - y$. Bei vorzeichenlosen Zahlen zeigt Borrow-Out einen Unterlauf an.',
     },
     {
-      term: 'Division (Begriffe)',
-      def: 'Dividend / Divisor = Quotient + Rest. Binär passt der Divisor in jeden Teildividenden entweder 0- oder 1-mal.',
-      ex: '1101 : 0100 = 0011 Rest 1\n(13 : 4 = 3 Rest 1)',
-    },
-    {
       term: 'Sequentieller Dividierer',
-      def: 'Dividend in der rechten Hälfte des $2n$ Bit Restregisters R, Divisor in D. $n$ Runden: R nach links schieben, $R_{oben} - D$ prüfen; wenn positiv: $R_0 = 1$ und Differenz übernehmen.',
+      def: 'Start: Dividend in der rechten Hälfte des $2n$ Bit Restregisters R, Divisor in D. Dann $n$ Runden:\n- R nach links schieben\n- $R_{oben} - D$ prüfen\n- wenn positiv: $R_0 = 1$ und Differenz übernehmen',
       more: 'Am Ende:\n- **Quotient** in der rechten Hälfte $R_{n-1 \\ldots 0}$\n- **Rest** in der linken Hälfte $R_{2n-1 \\ldots n}$',
       moreLabel: 'Ergebnis',
     },
@@ -423,7 +402,7 @@ window.DECKS.push({
     { chapter: '4 Universalrechner' },
     {
       term: 'Universalrechner',
-      def: 'Problemunabhängige Rechenschaltung: Die Lösung wird serialisiert, jede Rechenkomponente ist nur einmal vorhanden, Zwischenergebnisse liegen in Registern; die Verknüpfung entsteht durch die Befehle.',
+      def: 'Problemunabhängige Rechenschaltung:\n- die Lösung wird serialisiert\n- jede Rechenkomponente ist nur einmal vorhanden\n- Zwischenergebnisse liegen in Registern\n- die Verknüpfung entsteht durch die Befehle',
     },
     {
       term: 'Multiplexer M3 / M4',
@@ -447,7 +426,7 @@ window.DECKS.push({
     },
     {
       term: 'Setup- und Hold-Zeit',
-      def: 'Zeit unmittelbar vor (Setup) bzw. nach (Hold) der Taktflanke, in der sich die Daten am Register-Eingang nicht ändern dürfen.',
+      def: 'Zeiten, in denen sich die Daten am Register-Eingang nicht ändern dürfen:\n- **Setup:** unmittelbar vor der Taktflanke\n- **Hold:** unmittelbar nach der Taktflanke',
     },
     {
       term: 'Befehlswort',
@@ -456,7 +435,7 @@ window.DECKS.push({
     },
     {
       term: 'Befehlszähler (BZ)',
-      def: 'Register mit der Adresse des gerade ausgeführten Befehls. Mit jeder steigenden Flanke erhöht der Addierer A1 ihn um 1; bei reset = 1 setzt Multiplexer M0 ihn auf 0.',
+      def: 'Register mit der Adresse des gerade ausgeführten Befehls.\n- steigende Flanke: Addierer A1 erhöht ihn um 1\n- reset = 1: Multiplexer M0 setzt ihn auf 0',
     },
     {
       term: 'Vorzeichenerweiterung',
@@ -473,7 +452,7 @@ window.DECKS.push({
     },
     {
       term: 'Assembler-Syntax (Universalrechner)',
-      def: 'Erstes Wort: Befehl. Zweites Wort: Operanden, durch Komma getrennt – der erste ist immer der Zieloperand. Alles Weitere ist Kommentar.',
+      def: '- **erstes Wort:** Befehl\n- **zweites Wort:** Operanden, durch Komma getrennt – der erste ist immer der Zieloperand\n- **alles Weitere:** Kommentar',
       ex: 'INPUT R1,0     // R1 ← a\nSET   R5,4     // R5 ← 4\nMUL   R5,R5,R1 // R5 ← 4·a',
     },
     {
@@ -543,7 +522,7 @@ window.DECKS.push({
     },
     {
       term: 'Lokale, globale und marginale Register',
-      def: 'Lokale Register von unten (`$0`, `$1`, …), globale von oben (`$255`, `$254`, …), dazwischen marginale. rL = Nummer des ersten freien lokalen, rG = des ersten globalen Registers.',
+      def: '- **lokal:** von unten (`$0`, `$1`, …); rL = Nummer des ersten freien lokalen Registers\n- **global:** von oben (`$255`, `$254`, …); rG = Nummer des ersten globalen Registers\n- **marginal:** die unbenutzten dazwischen',
     },
     {
       term: 'Spezialregister',
@@ -559,22 +538,22 @@ window.DECKS.push({
     },
     {
       term: 'rH, rD, rR',
-      def: 'rH: obere 64 Bit eines 128 Bit Produkts (MULU). rD: obere 64 Bit des 128 Bit Dividenden (DIVU). rR: Rest einer Festkomma-Division.',
+      def: '- **rH:** obere 64 Bit eines 128 Bit Produkts (MULU)\n- **rD:** obere 64 Bit des 128 Bit Dividenden (DIVU)\n- **rR:** Rest einer Festkomma-Division',
       ex: 'DIV quotient,dividend,divisor\nGET rest,rR',
     },
     {
       term: 'Byte, Wyde, Tetra, Octa',
-      def: 'MMIX-Wortbreiten für Speicherzugriffe: Byte = 8 Bit, Wyde = 16 Bit, Tetra = 32 Bit, Octa = 64 Bit.',
+      def: 'MMIX-Wortbreiten für Speicherzugriffe:\n- **Byte:** 8 Bit\n- **Wyde:** 16 Bit\n- **Tetra:** 32 Bit\n- **Octa:** 64 Bit',
     },
     {
       term: 'Alignment',
-      def: 'Datenworte liegen nur an Adressen, die ein Vielfaches ihrer Größe in Byte sind: Wyde durch 2, Tetra durch 4, Octa durch 8 teilbar. So genügt ein einziger Speicherzugriff.',
+      def: 'Datenworte liegen nur an Adressen, die ein Vielfaches ihrer Größe in Byte sind:\n- Wyde: durch 2 teilbar\n- Tetra: durch 4 teilbar\n- Octa: durch 8 teilbar\n\nSo genügt ein einziger Speicherzugriff.',
       more: 'MMIX erzwingt das Alignment, indem die niederwertigsten Adressbits gelöscht werden:\n- $M_2[x]$ → Adresse `x & (-2)`\n- $M_4[x]$ → Adresse `x & (-4)`\n- $M_8[x]$ → Adresse `x & (-8)`\n\nOhne Alignment (z. B. Octa an durch 4 teilbarer Adresse) wären zwei Speicherzugriffe nötig.',
       moreLabel: 'Methode',
     },
     {
       term: 'Big Endian / Little Endian',
-      def: 'Big Endian: Die Wortadresse zeigt auf das höchstwertige Byte (MMIX, MIPS, SPARC). Little Endian: auf das niederwertigste Byte (Intel x86).',
+      def: '- **Big Endian:** Wortadresse zeigt auf das höchstwertige Byte (MMIX, MIPS, SPARC)\n- **Little Endian:** Wortadresse zeigt auf das niederwertigste Byte (Intel x86)',
       ex: '0x01234567 an Adresse 0:\nBig:    01 23 45 67\nLittle: 67 45 23 01',
     },
     {
@@ -583,7 +562,7 @@ window.DECKS.push({
     },
     {
       term: 'Text-Segment',
-      def: 'Enthält den ausführbaren Befehlscode (Befehle an durch 4 teilbaren Adressen). `0x00`–`0xFF`: Interrupt-Vektor-Tabelle, Programme ab `0x100`.',
+      def: 'Enthält den ausführbaren Befehlscode (Befehle an durch 4 teilbaren Adressen).\n- `0x00`–`0xFF`: Interrupt-Vektor-Tabelle\n- ab `0x100`: Programme',
     },
     {
       term: 'Interrupt-Vektor',
@@ -596,7 +575,7 @@ window.DECKS.push({
     },
     {
       term: 'Daten-Segment',
-      def: 'Ab `0x2000000000000000`: globale/statische Daten und Heap (wachsen nach oben). Der Stack beginnt am Ende (`0x3FFF…F8`) und wächst nach unten.',
+      def: 'Ab `0x2000000000000000`:\n- **globale Daten und Heap:** beginnen unten, wachsen nach oben\n- **Stack:** beginnt am Ende (`0x3FFF…F8`), wächst nach unten',
     },
     {
       term: 'Pool-Segment',
@@ -608,11 +587,11 @@ window.DECKS.push({
     },
     {
       term: 'Virtueller Speicher',
-      def: 'Programme verwenden virtuelle Adressen, die die Hardware (vom Betriebssystem gesteuert) in reale Adressen übersetzt. Vorteile: Adressraum unabhängig vom eingebauten RAM, Programme sind voneinander geschützt.',
+      def: 'Programme verwenden virtuelle Adressen, die die Hardware (vom Betriebssystem gesteuert) in reale Adressen übersetzt.\n- Adressraum unabhängig vom eingebauten RAM\n- Programme sind voneinander geschützt',
     },
     {
       term: 'Aufbau eines MMIX-Programms',
-      def: 'Vier durch Leerzeichen/Tabulatoren getrennte Spalten: Marke, Befehl, Operanden, Kommentar. Zeilen ohne Marke beginnen mit Leerzeichen.',
+      def: 'Vier durch Leerzeichen/Tabulatoren getrennte Spalten:\n- Marke\n- Befehl\n- Operanden\n- Kommentar\n\nZeilen ohne Marke beginnen mit Leerzeichen.',
       ex: '        LOC  Data_Segment\n        GREG @\nA       OCTA 123456\na       IS   $1\n        LOC  #100\nMain    LDO  a,A\n        TRAP 0,Halt,0',
     },
     {
@@ -636,17 +615,12 @@ window.DECKS.push({
     },
     {
       term: '@ (MMIX)',
-      def: '„The place where we are at“: die aktuelle Adresse des Loaders; bei Befehlen der Befehlszähler.',
+      def: '„The place where we are at“:\n- beim Laden: die aktuelle Adresse des Loaders\n- bei Befehlen: der Befehlszähler',
     },
     {
       term: 'BYTE, WYDE, TETRA, OCTA',
       def: 'Loader-Befehle, die 8, 16, 32 bzw. 64 Bit im Speicher anlegen und optional initialisieren. Leer-Bytes werden fürs Alignment eingefügt, Codierung Big Endian.',
       ex: '       LOC  Data_Segment\n       GREG @\nVektor BYTE 1,2,3\nN      OCTA 4',
-    },
-    {
-      term: 'Hexadezimalzahlen im MMIX-Assembler',
-      def: 'Werden mit führender Raute `#` statt `0x` geschrieben.',
-      ex: 'SETL $1,#BBBB\nLOC  #100',
     },
     {
       term: 'MMIX-Übersetzungsprozess',
@@ -667,41 +641,41 @@ window.DECKS.push({
     },
     {
       term: 'Direktoperand',
-      def: 'Operand, der direkt im Befehlswort steht (immediate): Z (8 Bit), Y (8 Bit), YZ (16 Bit) oder XYZ (24 Bit). Immediate-Variante hat den Opcode + 1.',
+      def: 'Operand, der direkt im Befehlswort steht (immediate):\n- **Z:** 8 Bit\n- **Y:** 8 Bit\n- **YZ:** 16 Bit\n- **XYZ:** 24 Bit\n\nImmediate-Variante hat den Opcode + 1.',
       ex: 'ADD $1,$2,$3   // Opcode 0x20\nADD $1,$2,3    // Opcode 0x21',
     },
     {
       term: 'Ausführungszeit (ν, μ)',
-      def: '$\\nu$ = 1 Takt, $\\mu$ = Takte für einen Speicherzugriff. Die meisten MMIX-Befehle brauchen $1\\nu$; am langsamsten ist DIV ($60\\nu$).',
+      def: '- $\\nu$ = 1 Takt\n- $\\mu$ = Takte für einen Speicherzugriff\n\nDie meisten MMIX-Befehle brauchen $1\\nu$; am langsamsten ist DIV ($60\\nu$).',
     },
     {
       term: 'ADD / ADDU',
-      def: 'Festkomma-Addition. ADD: vorzeichenbehaftet mit Überlauferkennung. ADDU: vorzeichenlos, ohne Überlauf. Direktoperand $0 \\ldots 255$.',
+      def: 'Festkomma-Addition, Direktoperand $0 \\ldots 255$:\n- **ADD:** vorzeichenbehaftet, mit Überlauferkennung\n- **ADDU:** vorzeichenlos, ohne Überlauf',
       ex: 'ADD  $1,$2,$3\nADDU $1,$2,8',
     },
     {
       term: 'SUB / NEG',
-      def: 'SUB: `$X ← $Y − $Z`. NEG: `$X ← Y − $Z` mit Y als Direktoperand – damit z. B. $5 - 3$ in einer Zeile.',
+      def: '- **SUB:** `$X ← $Y − $Z`\n- **NEG:** `$X ← Y − $Z` mit Y als Direktoperand – damit z. B. $5 - 3$ in einer Zeile',
       ex: 'SUB $1,$2,$3\nNEG $0,5,3     // $0 ← 5 − 3\nNEG $1,0,$1    // $1 ← −$1',
     },
     {
       term: 'MUL / MULU',
-      def: 'MUL: 64 Bit · 64 Bit → 64 Bit, vorzeichenbehaftet. MULU: vorzeichenlos mit 128 Bit Ergebnis, obere 64 Bit in rH.',
+      def: '- **MUL:** 64 Bit · 64 Bit → 64 Bit, vorzeichenbehaftet\n- **MULU:** vorzeichenlos, 128 Bit Ergebnis, obere 64 Bit in rH',
       ex: 'MUL  $1,$2,$3\nMULU $1,$2,$3  // obere Hälfte: rH',
     },
     {
       term: 'DIV / DIVU',
-      def: 'DIV: vorzeichenbehaftet, Quotient in `$X`, Rest in rR. DIVU: vorzeichenlos, 128 Bit Dividend aus rD und `$Y`.',
+      def: '- **DIV:** vorzeichenbehaftet, Quotient in `$X`, Rest in rR\n- **DIVU:** vorzeichenlos, 128 Bit Dividend aus rD und `$Y`',
       ex: 'DIV $2,$0,$1\nGET $3,rR      // Rest',
     },
     {
       term: 'SET- und INC-Befehle',
-      def: 'Schreiben 16 Bit Direktoperanden in einen der vier Abschnitte eines Registers: H (63–48), MH, ML, L (15–0). SET löscht den Rest, INC addiert.',
+      def: 'Schreiben 16 Bit Direktoperanden in einen der vier Abschnitte H (63–48), MH, ML, L (15–0):\n- **SET:** setzt den Abschnitt, löscht den Rest\n- **INC:** addiert auf den Abschnitt',
       ex: 'SETL  $1,#BBBB\nINCML $1,#AAAA\nINCMH $1,#5678\nINCH  $1,#1234\n// $1 = #12345678AAAABBBB',
     },
     {
       term: 'FLOT / FIX',
-      def: 'Typumwandlung: FLOT wandelt eine Festkommazahl in eine Gleitkommazahl, FIX eine Gleitkommazahl in eine Festkommazahl (Rundung nach rA).',
+      def: 'Typumwandlung:\n- **FLOT:** Festkommazahl → Gleitkommazahl\n- **FIX:** Gleitkommazahl → Festkommazahl (Rundung nach rA)',
       ex: 'FLOT $0,15     // $0 = 15,0\nFIX  $1,$1',
     },
     {
@@ -711,7 +685,7 @@ window.DECKS.push({
     },
     {
       term: 'Schiebebefehle',
-      def: 'SL/SLU: nach links schieben, rechts mit 0 auffüllen (SL mit Überlauf). SR: nach rechts, mit dem Vorzeichenbit auffüllen. SRU: nach rechts, mit 0 auffüllen.',
+      def: '- **SL / SLU:** nach links, rechts mit 0 auffüllen (SL mit Überlauf)\n- **SR:** nach rechts, mit dem Vorzeichenbit auffüllen\n- **SRU:** nach rechts, mit 0 auffüllen',
       ex: 'SRU s,fpn,63   // Vorzeichen\nSLU e,fpn,1\nSRU e,e,53     // Exponent',
     },
     {
@@ -720,7 +694,7 @@ window.DECKS.push({
     },
     {
       term: 'Bits löschen und setzen',
-      def: 'Löschen mit UND-artigen Befehlen (AND, ANDN), setzen mit ODER-Befehlen (OR, ORML …), invertieren mit XOR.',
+      def: '- **löschen:** UND-artige Befehle (AND, ANDN)\n- **setzen:** ODER-Befehle (OR, ORML …)\n- **invertieren:** XOR',
       ex: 'ANDNML a,#20   // Bit 21 löschen\nORML   a,#10   // Bit 20 setzen\nNEG    b,0,1\nXOR    a,a,b   // alle Bits invertieren',
     },
     {
@@ -730,7 +704,7 @@ window.DECKS.push({
     },
     {
       term: 'Vorzeichenbehaftet vs. vorzeichenlos laden',
-      def: 'LDB/LDW/LDT füllen die oberen Registerbits mit dem MSB auf (Vorzeichenerweiterung), LDBU/LDWU/LDTU mit 0. Opcode vorzeichenlos = vorzeichenbehaftet + 2.',
+      def: '- **LDB/LDW/LDT:** obere Registerbits mit dem MSB auffüllen (Vorzeichenerweiterung)\n- **LDBU/LDWU/LDTU:** obere Registerbits mit 0 auffüllen\n\nOpcode vorzeichenlos = vorzeichenbehaftet + 2.',
       ex: '−64 als Byte = 0xC0\nLDB  → 0xFFFFFFFFFFFFFFC0\nLDBU → 0x00000000000000C0 (192)',
     },
     {
@@ -740,13 +714,8 @@ window.DECKS.push({
     },
     {
       term: 'Speicherbefehle (STB, STW, STT, STO)',
-      def: 'Schreiben Bits 7–0, 15–0, 31–0 bzw. 63–0 von `$X` an Adresse `$Y + $Z`. Hier ist X die Quelle! Vorzeichenbehaftete Varianten melden einen Überlauf.',
+      def: 'Schreiben Bits 7–0, 15–0, 31–0 bzw. 63–0 von `$X` an Adresse `$Y + $Z`.\n- hier ist X die Quelle!\n- vorzeichenbehaftete Varianten melden einen Überlauf',
       ex: 'STO $1,:SP,0\nSTB $1,Data\nSTT $1,$254,#A',
-    },
-    {
-      term: 'STCO',
-      def: 'Store Constant Octa: schreibt einen 8 Bit Direktoperanden aus dem Befehlswort als Octa in den Speicher.',
-      ex: 'STCO 0,$254,0',
     },
     {
       term: 'LDA',
@@ -770,7 +739,7 @@ window.DECKS.push({
     },
     {
       term: 'Probable Branch (PBZ, PBNZ, …)',
-      def: 'Gleiche Funktion wie BZ usw., aber andere Ausführungszeit: P-Variante 1 Takt bei Sprung, 3 ohne. Normale Variante 1 Takt ohne Sprung, 3 mit. P-Variante für wahrscheinliche Sprünge (z. B. Schleifen).',
+      def: 'Gleiche Funktion wie BZ usw., andere Ausführungszeit:\n- **P-Variante:** 1 Takt bei Sprung, 3 ohne → für wahrscheinliche Sprünge (Schleifen)\n- **normale Variante:** 1 Takt ohne Sprung, 3 mit',
       ex: '      SET  $1,100\nLoop  SUB  $1,$1,1\n      PBNZ $1,Loop',
     },
     {
@@ -783,25 +752,17 @@ window.DECKS.push({
       def: 'Adresse des Befehls nach dem Funktionsaufruf ($@ + 4$). GO legt sie in `$X` ab.',
     },
     {
-      term: 'Befehlsregister',
-      def: 'Register, in dem das gerade auszuführende Befehlswort steht, nachdem es über den Befehlszähler aus dem Befehlsspeicher geladen wurde.',
-    },
-    {
       term: 'Registerblock',
-      def: 'Fasst die 256 Allzweckregister zusammen; gibt die durch X, Y, Z adressierten Register aus und übernimmt `$X` bei steigender Taktflanke. Y und Z nur lesend.',
-    },
-    {
-      term: 'Funktion (MMIX)',
-      def: 'Zusammengehörige Befehle, die über Funktionsaufrufe von beliebigen Stellen genutzt werden. Programme werden übersichtlicher und kürzer.',
+      def: 'Fasst die 256 Allzweckregister zusammen:\n- gibt die durch X, Y, Z adressierten Register aus\n- übernimmt `$X` bei steigender Taktflanke (Y und Z nur lesend)',
     },
     {
       term: 'PREFIX',
-      def: 'Assembler-Befehl für Namensräume: stellt allen folgenden Namen eine Zeichenkette voran. `PREFIX :` beendet den Namensraum, `:Name` greift auf globale Namen zu.',
+      def: 'Assembler-Befehl für Namensräume:\n- `PREFIX Name:` stellt allen folgenden Namen die Zeichenkette voran\n- `PREFIX :` beendet den Namensraum\n- `:Name` greift auf globale Namen zu',
       ex: 'PREFIX Fkt:\n:Fkt  SUB :SP,:SP,8\n      …\nPREFIX :',
     },
     {
       term: 'Call by Value / Call by Reference',
-      def: 'Wert-Übergabe: Kopie des Werts – Änderungen wirken nicht auf das Original. Referenz-Übergabe: Kopie der Adresse – die Funktion kann den Wert beim Aufrufer ändern.',
+      def: '- **Call by Value:** Kopie des Werts – Änderungen wirken nicht auf das Original\n- **Call by Reference:** Kopie der Adresse – die Funktion kann den Wert beim Aufrufer ändern',
     },
     {
       term: 'Aufrufkonvention',
@@ -828,7 +789,7 @@ window.DECKS.push({
     },
     {
       term: 'Rückgabewert und Rücksprung',
-      def: 'Ergebnis an die Stelle des Parameters mit der höchsten Adresse schreiben, Register wiederherstellen, SP so anpassen, dass er auf das Ergebnis zeigt, mit GO zurückspringen.',
+      def: '- Ergebnis an die Stelle des Parameters mit der höchsten Adresse schreiben\n- gesicherte Register wiederherstellen\n- SP so anpassen, dass er auf das Ergebnis zeigt\n- mit GO zurückspringen',
       ex: 'STO $1,:SP,4*8\nLDO $0,:SP,0\nLDO $1,:SP,1*8\nLDO $2,:SP,2*8\nADD :SP,:SP,4*8\nGO  $0,$0,0',
     },
     {
@@ -869,15 +830,15 @@ window.DECKS.push({
     },
     {
       term: 'Pipeline-Stufen (MMIX)',
-      def: 'BH: Befehl holen · BD: Befehl decodieren, Operanden bereitstellen · AF: Ausführen (ALU) · SP: Speicherzugriff · ES: Ergebnis schreiben.',
+      def: '- **BH:** Befehl holen\n- **BD:** Befehl decodieren, Operanden bereitstellen\n- **AF:** Ausführen (ALU)\n- **SP:** Speicherzugriff\n- **ES:** Ergebnis schreiben',
     },
     {
       term: 'Durchsatz einer Pipeline',
-      def: 'Bei $n$ Stufen bis zu $n$-mal so viele Befehle pro Zeit. Voraussetzung: Alle Stufen dauern möglichst gleich lang (die langsamste bestimmt den Takt).',
+      def: 'Bei $n$ Stufen bis zu $n$-mal so viele Befehle pro Zeit.\n- Voraussetzung: alle Stufen dauern möglichst gleich lang (die langsamste bestimmt den Takt)',
     },
     {
       term: 'Pipeline-Füll-Diagramm',
-      def: 'Zeigt für jeden Takt, welcher Befehl in welcher Stufe ist. Bei 5 Stufen ist die Pipeline ab Takt 5 gefüllt; danach wird pro Takt ein Befehl fertig.',
+      def: 'Zeigt für jeden Takt, welcher Befehl in welcher Stufe ist.\n- bei 5 Stufen ist die Pipeline ab Takt 5 gefüllt\n- danach wird pro Takt ein Befehl fertig',
     },
     {
       term: 'Datenkonflikt',
@@ -886,7 +847,7 @@ window.DECKS.push({
     },
     {
       term: 'NOP / SWYM',
-      def: 'Befehl, der nichts tut („no operation“); beim MMIX SWYM. Kann zwischen abhängige Befehle eingefügt werden, senkt aber den Durchsatz.',
+      def: 'Befehl, der nichts tut („no operation“); beim MMIX SWYM.\n- kann zwischen abhängige Befehle eingefügt werden\n- senkt aber den Durchsatz',
       ex: 'ADD  $1,$2,$3\nSWYM\nSWYM\nSWYM\nMUL  $3,$2,$1',
     },
     {
@@ -922,7 +883,7 @@ window.DECKS.push({
     },
     {
       term: 'Sprungvorhersage über P-Varianten',
-      def: 'Normale Sprungbefehle: Es wird angenommen, dass nicht gesprungen wird. P-Varianten: Es wird angenommen, dass gesprungen wird – die Befehle am Sprungziel kommen in die Pipeline.',
+      def: '- **normale Sprungbefehle:** Annahme, dass nicht gesprungen wird\n- **P-Varianten:** Annahme, dass gesprungen wird – die Befehle am Sprungziel kommen in die Pipeline',
       ex: '// do { … } while (a >= 0);\nStart …\n      SUB  a,a,1\n      PBNN a,Start',
     },
 
@@ -938,10 +899,6 @@ window.DECKS.push({
     },
 
     { chapter: '8 Cache' },
-    {
-      term: 'Warum ist der Arbeitsspeicher langsam?',
-      def: 'Er liegt außerhalb des Prozessors (lange Leitungen, parasitäre Kapazitäten), wird über ein Busprotokoll angesprochen, besteht aus langsamem DRAM und ist sehr groß (aufwendige Adressierung).',
-    },
     {
       term: 'Örtliche Lokalität',
       def: 'Nach einem Zugriff auf eine Speicherstelle wird sehr wahrscheinlich auch auf benachbarte Stellen zugegriffen (sequentielle Befehle, Arrays, Stack).',
@@ -968,11 +925,11 @@ window.DECKS.push({
     },
     {
       term: 'Cache-Hit',
-      def: 'Das adressierte Datenwort ist bereits im Cache. Hit-Time: Zugriffszeit in diesem Fall. Hit-Rate: mittlere Wahrscheinlichkeit eines Treffers.',
+      def: 'Das adressierte Datenwort ist bereits im Cache.\n- **Hit-Time:** Zugriffszeit in diesem Fall\n- **Hit-Rate:** mittlere Wahrscheinlichkeit eines Treffers',
     },
     {
       term: 'Cache-Miss',
-      def: 'Das Datenwort ist nicht im Cache und muss erst aus dem langsameren Speicher geladen werden. Miss-Time: Zeit bis es verfügbar ist. Miss-Rate $= 1 - $ Hit-Rate.',
+      def: 'Das Datenwort ist nicht im Cache und muss aus dem langsameren Speicher geladen werden.\n- **Miss-Time:** Zeit, bis es verfügbar ist\n- **Miss-Rate:** $1 - $ Hit-Rate',
     },
     {
       term: 'Mittlere Speicherzugriffszeit',
@@ -1004,11 +961,11 @@ window.DECKS.push({
     },
     {
       term: 'Write-Through',
-      def: 'Bei einem Schreibzugriff wird das Datenwort im Cache und gleichzeitig in den tieferen Ebenen aktualisiert (gepuffert, im Hintergrund). Andere Kerne sehen Änderungen.',
+      def: 'Bei einem Schreibzugriff:\n- Datenwort wird im Cache **und** in den tieferen Ebenen aktualisiert (gepuffert, im Hintergrund)\n- andere Kerne sehen die Änderung',
     },
     {
       term: 'Write-Back',
-      def: 'Das Datenwort wird nur im Cache aktualisiert; zurückgeschrieben wird erst beim Verdrängen des Blocks (erkennbar am Dirty-Bit).',
+      def: '- Datenwort wird nur im Cache aktualisiert\n- zurückgeschrieben wird erst beim Verdrängen des Blocks (erkennbar am Dirty-Bit)',
     },
     {
       term: 'Write-Allocate',
@@ -1020,7 +977,7 @@ window.DECKS.push({
     },
     {
       term: 'Direkt-abgebildeter Cache',
-      def: 'Jede Speicheradresse hat genau einen festen Cache-Rahmen. Adresse = Schlüssel $k$ | Rahmen-Nr. $f$ | Byte-Auswahl $b$. Sehr schnell, aber gleiche Rahmen-Nummern verdrängen sich ständig.',
+      def: 'Jede Speicheradresse hat genau einen festen Cache-Rahmen; Adresse = Schlüssel $k$ | Rahmen-Nr. $f$ | Byte-Auswahl $b$.\n- **Vorteil:** sehr schnell\n- **Nachteil:** gleiche Rahmen-Nummern verdrängen sich ständig',
       ex: 'Adresse: [ k Bit | f Bit | b Bit ]\nRahmengröße = 2^b Byte\nAnzahl Rahmen = 2^f',
     },
     {
@@ -1037,12 +994,12 @@ window.DECKS.push({
     },
     {
       term: 'Voll-assoziativer Cache',
-      def: 'Ein Speicherblock darf in jedem Cache-Rahmen liegen; Adresse = Schlüssel | Byte-Auswahl. Wenig Verdrängung, aber der Schlüssel muss mit allen Tags verglichen werden (langsam, viele Vergleicher).',
+      def: 'Ein Speicherblock darf in jedem Cache-Rahmen liegen; Adresse = Schlüssel | Byte-Auswahl.\n- **Vorteil:** wenig Verdrängung\n- **Nachteil:** Schlüssel mit allen Tags vergleichen → langsam, viele Vergleicher',
       ex: '32 kB, 256 Byte Rahmen:\n128 Rahmen · 56 Bit = 7168 Vergleicher',
     },
     {
       term: 'Set-assoziativer Cache',
-      def: 'Kompromiss: Adresse = Schlüssel $k$ | Set-Nr. $s$ | Byte-Auswahl $b$. Jedes Set hat $a$ Rahmen (Assoziativität); es werden nur $a$ Tags verglichen ($a \\cdot k$ Vergleicher).',
+      def: 'Kompromiss; Adresse = Schlüssel $k$ | Set-Nr. $s$ | Byte-Auswahl $b$.\n- jedes Set hat $a$ Rahmen (Assoziativität)\n- nur $a$ Tags werden verglichen ($a \\cdot k$ Vergleicher)',
       ex: '8-fach, 1 MB, 32 Byte Rahmen:\nb = 5, Sets = 2^12 → s = 12\nk = 64 − 12 − 5 = 47',
     },
     {
