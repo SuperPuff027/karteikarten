@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-24 -24 608 268" width="608" height="268">
+<circle cx="120" cy="25" r="3.4" fill="#ffffff" stroke="#1d1d1b" stroke-width="1.3"/>
+<circle cx="120" cy="190" r="3.4" fill="#ffffff" stroke="#1d1d1b" stroke-width="1.3"/>
+<polyline points="120.0,28.0 120.0,45.0" fill="none" stroke="#1d1d1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="70.0,45.0 170.0,45.0" fill="none" stroke="#1d1d1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="70.0,170.0 170.0,170.0" fill="none" stroke="#1d1d1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="120.0,170.0 120.0,187.0" fill="none" stroke="#1d1d1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="120" cy="45" r="2.9" fill="#1d1d1b"/>
+<circle cx="120" cy="170" r="2.9" fill="#1d1d1b"/>
+<polyline points="70.0,45.0 70.0,89.5" fill="none" stroke="#1d1d1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="70.0,125.5 70.0,170.0" fill="none" stroke="#1d1d1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="62.0" y="89.5" width="16" height="36" fill="none" stroke="#1d1d1b" stroke-width="1.6"/>
+<rect x="62.0" y="118.5" width="16" height="7" fill="#1d1d1b" stroke="#1d1d1b" stroke-width="0"/>
+<text x="55.0" y="107.5" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="20" fill="#1d1d1b" text-anchor="end" dominant-baseline="middle"><tspan font-style="italic">F</tspan><tspan baseline-shift="sub" font-size="72%"><tspan>1</tspan></tspan></text>
+<polyline points="170.0,45.0 170.0,89.5" fill="none" stroke="#1d1d1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="170.0,125.5 170.0,170.0" fill="none" stroke="#1d1d1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="162.0" y="89.5" width="16" height="36" fill="none" stroke="#1d1d1b" stroke-width="1.6"/>
+<rect x="162.0" y="118.5" width="16" height="7" fill="#1d1d1b" stroke="#1d1d1b" stroke-width="0"/>
+<text x="185.0" y="107.5" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="20" fill="#1d1d1b" text-anchor="start" dominant-baseline="middle"><tspan font-style="italic">F</tspan><tspan baseline-shift="sub" font-size="72%"><tspan>2</tspan></tspan></text>
+<polyline points="40.0,70.0 40.0,145.0" fill="none" stroke="#1d1d1b" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="40.0,145.0 36.7,135.4 43.3,135.4" fill="#1d1d1b"/>
+<text x="34" y="107.5" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="20" fill="#1d1d1b" text-anchor="end" dominant-baseline="middle"><tspan font-style="italic">u</tspan></text>
+<text x="120" y="210" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="17" fill="#1d1d1b" text-anchor="middle" dominant-baseline="middle">(a) Parallelschaltung</text>
+<circle cx="300" cy="100" r="3.4" fill="#ffffff" stroke="#1d1d1b" stroke-width="1.3"/>
+<circle cx="540" cy="100" r="3.4" fill="#ffffff" stroke="#1d1d1b" stroke-width="1.3"/>
+<polyline points="300.0,100.0 342.0,100.0" fill="none" stroke="#1d1d1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="378.0,100.0 420.0,100.0" fill="none" stroke="#1d1d1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="342.0" y="92.0" width="36" height="16" fill="none" stroke="#1d1d1b" stroke-width="1.6"/>
+<rect x="371.0" y="92.0" width="7" height="16" fill="#1d1d1b" stroke="#1d1d1b" stroke-width="0"/>
+<text x="360.0" y="83.0" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="20" fill="#1d1d1b" text-anchor="middle" dominant-baseline="middle"><tspan font-style="italic">F</tspan><tspan baseline-shift="sub" font-size="72%"><tspan>1</tspan></tspan></text>
+<polyline points="420.0,100.0 462.0,100.0" fill="none" stroke="#1d1d1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="498.0,100.0 540.0,100.0" fill="none" stroke="#1d1d1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="462.0" y="92.0" width="36" height="16" fill="none" stroke="#1d1d1b" stroke-width="1.6"/>
+<rect x="491.0" y="92.0" width="7" height="16" fill="#1d1d1b" stroke="#1d1d1b" stroke-width="0"/>
+<text x="480.0" y="83.0" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="20" fill="#1d1d1b" text-anchor="middle" dominant-baseline="middle"><tspan font-style="italic">F</tspan><tspan baseline-shift="sub" font-size="72%"><tspan>2</tspan></tspan></text>
+<polygon points="318.0,100.0 307.6,103.6 307.6,96.4" fill="#1d1d1b"/>
+<text x="318" y="88" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="20" fill="#1d1d1b" text-anchor="middle" dominant-baseline="middle"><tspan font-style="italic">i</tspan></text>
+<polyline points="330.0,132.0 410.0,132.0" fill="none" stroke="#1d1d1b" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="410.0,132.0 400.4,135.3 400.4,128.7" fill="#1d1d1b"/>
+<text x="370.0" y="146" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="20" fill="#1d1d1b" text-anchor="middle" dominant-baseline="middle"><tspan font-style="italic">u</tspan><tspan baseline-shift="sub" font-size="72%"><tspan>1</tspan></tspan></text>
+<polyline points="450.0,132.0 530.0,132.0" fill="none" stroke="#1d1d1b" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="530.0,132.0 520.4,135.3 520.4,128.7" fill="#1d1d1b"/>
+<text x="490.0" y="146" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="20" fill="#1d1d1b" text-anchor="middle" dominant-baseline="middle"><tspan font-style="italic">u</tspan><tspan baseline-shift="sub" font-size="72%"><tspan>2</tspan></tspan></text>
+<text x="420" y="210" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="17" fill="#1d1d1b" text-anchor="middle" dominant-baseline="middle">(b) Serienschaltung</text>
+</svg>

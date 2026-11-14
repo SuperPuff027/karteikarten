@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-24 -24 468 238" width="468" height="238">
+<polyline points="30.0,95.0 200.0,95.0" fill="none" stroke="#1d1d1b" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="200.0,95.0 192.0,97.8 192.0,92.2" fill="#1d1d1b"/>
+<polyline points="115.0,170.0 115.0,20.0" fill="none" stroke="#1d1d1b" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="115.0,20.0 117.8,28.0 112.2,28.0" fill="#1d1d1b"/>
+<text x="198" y="111.0" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="20" fill="#1d1d1b" text-anchor="middle" dominant-baseline="middle"><tspan font-style="italic">u</tspan></text>
+<text x="101.0" y="24" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="20" fill="#1d1d1b" text-anchor="middle" dominant-baseline="middle"><tspan font-style="italic">i</tspan></text>
+<text x="105.0" y="109.0" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="15" fill="#1d1d1b" text-anchor="middle" dominant-baseline="middle">0</text>
+<circle cx="115.0" cy="95.0" r="2.9" fill="#1d1d1b"/>
+<circle cx="320" cy="35" r="3.4" fill="#ffffff" stroke="#1d1d1b" stroke-width="1.3"/>
+<circle cx="320" cy="160" r="3.4" fill="#ffffff" stroke="#1d1d1b" stroke-width="1.3"/>
+<polyline points="320.0,38.0 320.0,80.5" fill="none" stroke="#1d1d1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="320.0,114.5 320.0,157.0" fill="none" stroke="#1d1d1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<ellipse cx="320.0" cy="97.5" rx="8" ry="17" fill="none" stroke="#1d1d1b" stroke-width="1.6"/>
+<text x="345" y="97" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="18" fill="#1d1d1b" text-anchor="start" dominant-baseline="middle"><tspan font-style="italic">u</tspan><tspan> = 0,  </tspan><tspan font-style="italic">i</tspan><tspan> = 0</tspan></text>
+</svg>

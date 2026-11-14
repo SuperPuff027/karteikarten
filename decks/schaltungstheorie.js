@@ -72,7 +72,7 @@ window.DECKS.push({
     },
     {
       term: 'Mehrtore und Mehrpole',
-      img: 'schaltbilder/mehrtore-mehrpole.png',
+      img: 'schaltbilder/mehrtore-mehrpole.svg',
       def: 'Links: $n$-Tor (Ströme paarweise entgegengesetzt gleich). Rechts: Dreipol als Zweitor betrieben.',
     },
     {
@@ -179,7 +179,7 @@ window.DECKS.push({
     },
     {
       term: 'Nullator',
-      img: 'schaltbilder/nullator.png',
+      img: 'schaltbilder/nullator.svg',
       def: 'Kennlinie: nur der Ursprung ($u = 0$, $i = 0$).',
     },
     {
@@ -196,7 +196,7 @@ window.DECKS.push({
     },
     {
       term: 'Streng linearer Widerstand',
-      img: 'schaltbilder/widerstand.png',
+      img: 'schaltbilder/widerstand.svg',
       def: 'Elementsymbol, beschriftet mit Leitwert $G$ oder Widerstand $R$.',
     },
     {
@@ -213,7 +213,7 @@ window.DECKS.push({
     },
     {
       term: 'Leerlauf und Kurzschluss',
-      img: 'schaltbilder/leerlauf-kurzschluss.png',
+      img: 'schaltbilder/leerlauf-kurzschluss.svg',
       def: '(a) Leerlauf: $i = 0$. (b) Kurzschluss: $u = 0$.',
     },
     {
@@ -236,7 +236,7 @@ window.DECKS.push({
     },
     {
       term: 'Idealer Schalter',
-      img: 'schaltbilder/schalter.png',
+      img: 'schaltbilder/schalter.svg',
       def: 'Zustand über die Schaltfunktion $S(t)$: 1 = geschlossen, 0 = offen.',
     },
     {
@@ -247,7 +247,7 @@ window.DECKS.push({
     },
     {
       term: 'Norator',
-      img: 'schaltbilder/norator.png',
+      img: 'schaltbilder/norator.svg',
       def: 'Kennlinie: die ganze $u$-$i$-Ebene.',
     },
     {
@@ -268,7 +268,7 @@ window.DECKS.push({
     },
     {
       term: 'pn-Diode und Photodiode',
-      img: 'schaltbilder/pn-diode-photodiode.png',
+      img: 'schaltbilder/pn-diode-photodiode.svg',
       def: '(a) pn-Diode, (b) Photodiode mit Kennlinienfeld.',
     },
     {
@@ -285,7 +285,7 @@ window.DECKS.push({
     },
     {
       term: 'Zener- und Tunneldiode',
-      img: 'schaltbilder/zener-tunneldiode.png',
+      img: 'schaltbilder/zener-tunneldiode.svg',
       def: '(a) Zener-Diode mit Durchbruch bei $U_Z$, (b) Tunneldiode mit fallendem Kennlinienstück.',
     },
     {
@@ -302,7 +302,7 @@ window.DECKS.push({
     },
     {
       term: 'Parallel- und Serienschaltung',
-      img: 'schaltbilder/parallel-serie-eintore.png',
+      img: 'schaltbilder/parallel-serie-eintore.svg',
       def: '(a) Parallelschaltung: gleiche Spannung. (b) Serienschaltung: gleicher Strom.',
     },
     {
@@ -361,7 +361,7 @@ window.DECKS.push({
     },
     {
       term: 'Strom- und Spannungsquelle',
-      img: 'schaltbilder/strom-spannungsquelle.png',
+      img: 'schaltbilder/strom-spannungsquelle.svg',
       def: '(a) Stromquelle: waagrechte Kennlinie $i\' = i_Q$. (b) Spannungsquelle: senkrechte Kennlinie $u\' = u_Q$.',
     },
     {
@@ -372,7 +372,7 @@ window.DECKS.push({
     },
     {
       term: 'Quellenumwandlung',
-      img: 'schaltbilder/quellenumwandlung.png',
+      img: 'schaltbilder/quellenumwandlung.svg',
       def: 'Spannungsquelle mit Innenwiderstand $R$ ⇔ Stromquelle mit Innenleitwert $G$: $i_0 = u_0 / R$.',
     },
     {
@@ -385,7 +385,7 @@ window.DECKS.push({
     },
     {
       term: 'Ideale Diode',
-      img: 'schaltbilder/ideale-diode.png',
+      img: 'schaltbilder/ideale-diode.svg',
       def: 'Kennlinie aus negativer $u$-Achse (Ast I) und positiver $i$-Achse (Ast II).',
     },
     {
@@ -430,7 +430,7 @@ window.DECKS.push({
     },
     {
       term: 'Einweggleichrichter',
-      img: 'schaltbilder/einweggleichrichter.png',
+      img: 'schaltbilder/einweggleichrichter.svg',
       def: 'Quelle $u_0(t)$ mit Innenwiderstand $R$, ideale Diode parallel zur Last $R$.',
     },
     {
@@ -461,7 +461,7 @@ window.DECKS.push({
     },
     {
       term: 'Kleinsignal-Ersatzschaltung (Diode)',
-      img: 'schaltbilder/kleinsignal-diode.png',
+      img: 'schaltbilder/kleinsignal-diode.svg',
       def: 'Diode durch $G_D$ ersetzt, Konstantquellen durch Nullquellen; $\\Delta u$ folgt aus dem Spannungsteiler.',
     },
 
@@ -474,7 +474,7 @@ window.DECKS.push({
     },
     {
       term: 'Zweitor',
-      img: 'schaltbilder/zweitor.png',
+      img: 'schaltbilder/zweitor.svg',
       def: 'Zweitor mit äußerer Beschaltung an Tor 1 ($1, 1\'$) und Tor 2 ($2, 2\'$).',
     },
     {
@@ -595,8 +595,8 @@ window.DECKS.push({
     },
     {
       term: 'Gesteuerte Quellen',
-      img: 'schaltbilder/gesteuerte-quellen.png',
-      def: 'VCCS, CCCS, VCVS, CCVS mit ihren Matrizen und Kettenmatrizen.',
+      img: 'schaltbilder/gesteuerte-quellen.svg',
+      def: 'VCCS, CCCS, VCVS, CCVS: Steuerzweig Leerlauf oder Kurzschluss, gesteuerter Zweig abhängige Quelle.',
     },
     {
       term: 'VCCS',
@@ -622,7 +622,7 @@ window.DECKS.push({
     },
     {
       term: 'Nullor',
-      img: 'schaltbilder/nullor.png',
+      img: 'schaltbilder/nullor.svg',
       def: 'Nullor-Ersatzschaltung: Nullator am Tor 1, Norator am Tor 2.',
     },
     {
@@ -633,7 +633,7 @@ window.DECKS.push({
     },
     {
       term: 'Idealer Übertrager',
-      img: 'schaltbilder/uebertrager.png',
+      img: 'schaltbilder/uebertrager.svg',
       def: 'Übersetzungsverhältnis $\\ddot u : 1$, sekundär mit $\\mathcal{F}$ abgeschlossen.',
     },
     {
@@ -644,7 +644,7 @@ window.DECKS.push({
     },
     {
       term: 'Gyrator',
-      img: 'schaltbilder/gyrator.png',
+      img: 'schaltbilder/gyrator.svg',
       def: 'Gyrator mit Gyrationswiderstand $R_d$, abgeschlossen mit $\\mathcal{F}$ – am Tor 1 wirkt $\\mathcal{F}^d$.',
     },
     {
@@ -655,8 +655,8 @@ window.DECKS.push({
     },
     {
       term: 'NIK',
-      img: 'schaltbilder/nik.png',
-      def: 'Nullor-Realisierungen eines NIK mit $k = -1$ (links) und $k = +1$ (rechts).',
+      img: 'schaltbilder/nik.svg',
+      def: 'Nullor-Realisierung eines NIK mit $k = -1$: Nullator oben, zwei gleiche Widerstände $R$, Norator zur Masse.',
     },
     {
       term: 'Torbedingung bei Zweitorschaltungen',
@@ -668,7 +668,7 @@ window.DECKS.push({
     },
     {
       term: 'Parallelschaltung von Zweitoren',
-      img: 'schaltbilder/parallelschaltung-zweitore.png',
+      img: 'schaltbilder/parallelschaltung-zweitore.svg',
       def: 'Beide Torpaare parallel: Leitwertsmatrizen addieren.',
     },
     {
@@ -677,7 +677,7 @@ window.DECKS.push({
     },
     {
       term: 'Serienschaltung von Zweitoren',
-      img: 'schaltbilder/serienschaltung-zweitore.png',
+      img: 'schaltbilder/serienschaltung-zweitore.svg',
       def: 'Beide Torpaare in Serie: Widerstandsmatrizen addieren.',
     },
     {
@@ -686,7 +686,7 @@ window.DECKS.push({
     },
     {
       term: 'Hybride Zweitorschaltungen',
-      img: 'schaltbilder/hybride-schaltungen.png',
+      img: 'schaltbilder/hybride-schaltungen.svg',
       def: 'Links Serien-Parallel ($H$ addieren), rechts Parallel-Serien ($H\'$ addieren).',
     },
     {
@@ -697,7 +697,7 @@ window.DECKS.push({
     },
     {
       term: 'Kettenschaltung',
-      img: 'schaltbilder/kettenschaltung.png',
+      img: 'schaltbilder/kettenschaltung.svg',
       def: 'Zwei Zweitore in Kette: $A_\\mathcal{G} = A_{\\mathcal{F}_1} A_{\\mathcal{F}_2}$.',
     },
 
@@ -712,7 +712,7 @@ window.DECKS.push({
     },
     {
       term: 'Op-Amp-Symbol',
-      img: 'schaltbilder/opamp-symbol.png',
+      img: 'schaltbilder/opamp-symbol.svg',
       def: 'Vierpoliges Symbol: invertierender (−) und nichtinvertierender (+) Eingang, Ausgang, Masse.',
     },
     {
@@ -735,7 +735,7 @@ window.DECKS.push({
     },
     {
       term: 'Op-Amp in Sättigung',
-      img: 'schaltbilder/opamp-saettigung.png',
+      img: 'schaltbilder/opamp-saettigung.svg',
       def: 'Ersatzschaltbilder: (I) $u_d < 0 \\Rightarrow u_2 = -U_{\\text{sat}}$, (III) $u_d > 0 \\Rightarrow u_2 = +U_{\\text{sat}}$.',
     },
     {
@@ -744,7 +744,7 @@ window.DECKS.push({
     },
     {
       term: 'Nullormodell des Op-Amps',
-      img: 'schaltbilder/opamp-nullormodell.png',
+      img: 'schaltbilder/opamp-nullormodell.svg',
       def: 'Linearer Bereich: $u_d = 0$, $i_\\pm = 0$; $u_2$ und $i_2$ beliebig.',
     },
     {
@@ -759,7 +759,7 @@ window.DECKS.push({
     },
     {
       term: 'Invertierender Verstärker',
-      img: 'schaltbilder/invertierender-verstaerker.png',
+      img: 'schaltbilder/invertierender-verstaerker.svg',
       def: '$u_0 = -\\frac{R_0}{R_1}\\, u_1$; weitere Eingänge über $R_2, \\dots$ möglich (Summierer).',
     },
     {
@@ -768,7 +768,7 @@ window.DECKS.push({
     },
     {
       term: 'Nichtinvertierender Verstärker',
-      img: 'schaltbilder/nichtinvertierender-verstaerker.png',
+      img: 'schaltbilder/nichtinvertierender-verstaerker.svg',
       def: '$u_0 = \\left(1 + \\frac{R_0}{R_1}\\right) u_1$, Eingangsstrom $i_1 = 0$.',
     },
     {
@@ -777,7 +777,7 @@ window.DECKS.push({
     },
     {
       term: 'Spannungsfolger',
-      img: 'schaltbilder/spannungsfolger.png',
+      img: 'schaltbilder/spannungsfolger.svg',
       def: 'Ausgang direkt auf (−) zurückgeführt: $u_0 = u_1$.',
     },
     {
@@ -802,7 +802,7 @@ window.DECKS.push({
     },
     {
       term: 'Virtuelle Masse',
-      img: 'schaltbilder/virtuelle-masse.png',
+      img: 'schaltbilder/virtuelle-masse.svg',
       def: 'Knoten 1 liegt auf dem Potential von Knoten 0, nimmt aber keinen Strom auf.',
     },
     {
@@ -813,7 +813,7 @@ window.DECKS.push({
     },
     {
       term: 'Summierer',
-      img: 'schaltbilder/summierer.png',
+      img: 'schaltbilder/summierer.svg',
       def: 'Eingänge mit Leitwerten $G_k$ an (−) und $G\'_k$ an (+), Rückkopplung $G_0$.',
     },
     {
@@ -842,7 +842,7 @@ window.DECKS.push({
     },
     {
       term: 'Zirkulator',
-      img: 'schaltbilder/zirkulator.png',
+      img: 'schaltbilder/zirkulator.svg',
       def: 'Drei-Tor-Zirkulator mit Quelle an Tor 1 und Abschlusswiderständen $R$.',
     },
     {
@@ -851,7 +851,7 @@ window.DECKS.push({
     },
     {
       term: 'Multiplizierer',
-      img: 'schaltbilder/multiplizierer.png',
+      img: 'schaltbilder/multiplizierer.svg',
       def: '$u_3 = \\frac{u_1 \\cdot u_2}{U_M}$, $i_1 = i_2 = 0$.',
     },
     {
@@ -860,7 +860,7 @@ window.DECKS.push({
     },
     {
       term: 'Dividierer',
-      img: 'schaltbilder/dividierer.png',
+      img: 'schaltbilder/dividierer.svg',
       def: '$u_3 = U_D\\, \\frac{u_1}{u_2}$, $i_1 = i_2 = 0$.',
     },
 
@@ -1023,7 +1023,7 @@ window.DECKS.push({
     },
     {
       term: 'Differenzverstärker',
-      img: 'schaltbilder/differenzverstaerker.png',
+      img: 'schaltbilder/differenzverstaerker.svg',
       def: 'Für $R_1/R_2 = R_3/R_4$: $u_a = \\frac{R_2}{R_1}(u_{02} - u_{01})$.',
     },
     {
@@ -1034,7 +1034,7 @@ window.DECKS.push({
     },
     {
       term: 'Thévenin- und Norton-Ersatzzweipol',
-      img: 'schaltbilder/zweipolersatzschaltungen.png',
+      img: 'schaltbilder/zweipolersatzschaltungen.svg',
       def: 'Oben: Spannungsquelle $u_0$ mit $R_i$ (Helmholtz/Thévenin). Unten: Stromquelle $i_0$ mit $G_i$ (Mayer/Norton).',
     },
     {
@@ -1077,7 +1077,7 @@ window.DECKS.push({
     },
     {
       term: 'Nichtlineare Kapazität und Induktivität',
-      img: 'schaltbilder/nichtlineare-c-l.png',
+      img: 'schaltbilder/nichtlineare-c-l.svg',
       def: 'Elementsymbole allgemeiner (nichtlinearer) kapazitiver und induktiver Eintore.',
     },
     {
@@ -1118,7 +1118,7 @@ window.DECKS.push({
     },
     {
       term: 'Lineare Kapazität und Induktivität',
-      img: 'schaltbilder/lineare-c-l.png',
+      img: 'schaltbilder/lineare-c-l.svg',
       def: 'Elementsymbole: links Kapazität $C$, rechts Induktivität $L$.',
     },
     {
@@ -1135,8 +1135,8 @@ window.DECKS.push({
     },
     {
       term: 'Kapazität mit Anfangsladung',
-      img: 'schaltbilder/kapazitaet-anfangsladung.png',
-      def: 'Ersatzschaltbild: ungeladene Kapazität in Serie mit Spannungsquelle $u_0$; Kennlinie verschoben.',
+      img: 'schaltbilder/kapazitaet-anfangsladung.svg',
+      def: 'Ersatzschaltbild: zum Zeitpunkt $t_0$ ungeladene Kapazität in Serie mit Spannungsquelle $u_0$.',
     },
     {
       term: 'Induktivität mit Anfangsstrom',
@@ -1144,7 +1144,7 @@ window.DECKS.push({
     },
     {
       term: 'Induktivität mit Anfangsstrom',
-      img: 'schaltbilder/induktivitaet-anfangsstrom.png',
+      img: 'schaltbilder/induktivitaet-anfangsstrom.svg',
       def: 'Ersatzschaltbild: stromlose Induktivität parallel zu Stromquelle $i_0$.',
     },
     {
@@ -1231,7 +1231,7 @@ window.DECKS.push({
     },
     {
       term: 'R, G, C und L',
-      img: 'schaltbilder/zeiger-r-g-c-l.png',
+      img: 'schaltbilder/zeiger-r-g-c-l.svg',
       def: '$\\underline{U}_R = R\\underline{I}_R$, $\\;\\underline{I}_G = G\\underline{U}_G$, $\\;\\underline{I}_C = j\\omega C\\,\\underline{U}_C$, $\\;\\underline{U}_L = j\\omega L\\,\\underline{I}_L$.',
     },
     {

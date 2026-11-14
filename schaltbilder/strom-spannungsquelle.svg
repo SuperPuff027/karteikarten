@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-24 -24 588 248" width="588" height="248">
+<polyline points="15.0,135.0 175.0,135.0" fill="none" stroke="#1d1d1b" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="175.0,135.0 167.0,137.8 167.0,132.2" fill="#1d1d1b"/>
+<polyline points="40.0,160.0 40.0,20.0" fill="none" stroke="#1d1d1b" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="40.0,20.0 42.8,28.0 37.2,28.0" fill="#1d1d1b"/>
+<text x="173" y="151" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="20" fill="#1d1d1b" text-anchor="middle" dominant-baseline="middle"><tspan font-style="italic">u</tspan></text>
+<text x="26" y="24" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="20" fill="#1d1d1b" text-anchor="middle" dominant-baseline="middle"><tspan font-style="italic">i</tspan></text>
+<text x="30" y="149" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="15" fill="#1d1d1b" text-anchor="middle" dominant-baseline="middle">0</text>
+<polyline points="40.0,70.0 165.0,70.0" fill="none" stroke="#1d1d1b" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="28" y="70" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="17" fill="#1d1d1b" text-anchor="end" dominant-baseline="middle"><tspan font-style="italic">i</tspan><tspan baseline-shift="sub" font-size="72%"><tspan>Q</tspan></tspan></text>
+<circle cx="225" cy="40" r="3.4" fill="#ffffff" stroke="#1d1d1b" stroke-width="1.3"/>
+<circle cx="225" cy="155" r="3.4" fill="#ffffff" stroke="#1d1d1b" stroke-width="1.3"/>
+<polyline points="225.0,43.0 225.0,83.5" fill="none" stroke="#1d1d1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="225.0,111.5 225.0,152.0" fill="none" stroke="#1d1d1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="225.0" cy="97.5" r="14" fill="none" stroke="#1d1d1b" stroke-width="1.6"/>
+<polyline points="211.0,97.5 239.0,97.5" fill="none" stroke="#1d1d1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="225.0,135.0 221.4,124.6 228.6,124.6" fill="#1d1d1b"/>
+<text x="235" y="135" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="20" fill="#1d1d1b" text-anchor="start" dominant-baseline="middle"><tspan font-style="italic">i</tspan><tspan baseline-shift="sub" font-size="72%"><tspan>Q</tspan></tspan></text>
+<text x="110" y="188" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="17" fill="#1d1d1b" text-anchor="middle" dominant-baseline="middle">(a) Stromquelle</text>
+<polyline points="285.0,135.0 445.0,135.0" fill="none" stroke="#1d1d1b" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="445.0,135.0 437.0,137.8 437.0,132.2" fill="#1d1d1b"/>
+<polyline points="310.0,160.0 310.0,20.0" fill="none" stroke="#1d1d1b" stroke-width="1.1" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="310.0,20.0 312.8,28.0 307.2,28.0" fill="#1d1d1b"/>
+<text x="443" y="151" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="20" fill="#1d1d1b" text-anchor="middle" dominant-baseline="middle"><tspan font-style="italic">u</tspan></text>
+<text x="296" y="24" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="20" fill="#1d1d1b" text-anchor="middle" dominant-baseline="middle"><tspan font-style="italic">i</tspan></text>
+<text x="300" y="149" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="15" fill="#1d1d1b" text-anchor="middle" dominant-baseline="middle">0</text>
+<polyline points="400.0,28.0 400.0,150.0" fill="none" stroke="#1d1d1b" stroke-width="2.4" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="400" y="155" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="17" fill="#1d1d1b" text-anchor="middle" dominant-baseline="middle"><tspan font-style="italic">u</tspan><tspan baseline-shift="sub" font-size="72%"><tspan>Q</tspan></tspan></text>
+<circle cx="495" cy="40" r="3.4" fill="#ffffff" stroke="#1d1d1b" stroke-width="1.3"/>
+<circle cx="495" cy="155" r="3.4" fill="#ffffff" stroke="#1d1d1b" stroke-width="1.3"/>
+<polyline points="495.0,43.0 495.0,83.5" fill="none" stroke="#1d1d1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="495.0,111.5 495.0,152.0" fill="none" stroke="#1d1d1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="495.0" cy="97.5" r="14" fill="none" stroke="#1d1d1b" stroke-width="1.6"/>
+<polyline points="495.0,83.5 495.0,111.5" fill="none" stroke="#1d1d1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="470.0,70.0 470.0,125.0" fill="none" stroke="#1d1d1b" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="470.0,125.0 466.7,115.4 473.3,115.4" fill="#1d1d1b"/>
+<text x="464" y="97.5" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="20" fill="#1d1d1b" text-anchor="end" dominant-baseline="middle"><tspan font-style="italic">u</tspan><tspan baseline-shift="sub" font-size="72%"><tspan>Q</tspan></tspan></text>
+<text x="380" y="188" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="17" fill="#1d1d1b" text-anchor="middle" dominant-baseline="middle">(b) Spannungsquelle</text>
+</svg>

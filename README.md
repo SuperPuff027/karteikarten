@@ -39,7 +39,7 @@ Lernstand und eigene Karten werden nur im eigenen Browser gespeichert (localStor
 ## Enthaltene Lernsets
 
 - **Programmierpraktikum** (TUM Elektrotechnik, 1. Semester) – das Wichtigste fürs Programmieren, in 3 Kapitel-Unterordnern
-- **Schaltungstheorie** (TUM Elektrotechnik, 1. Semester) – in 11 Kapitel-Unterordnern, einzeln oder alle zusammen lernbar; mit 42 Schaltbild-Karten
+- **Schaltungstheorie** (TUM Elektrotechnik, 1. Semester) – in 11 Kapitel-Unterordnern, einzeln oder alle zusammen lernbar; mit 42 selbst gezeichneten Schaltbild-Karten (erzeugt mit `tools/schaltbilder.py`)
 
 ## Eigene Lernsets hinzufügen
 

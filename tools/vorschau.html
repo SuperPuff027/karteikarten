@@ -1,0 +1,6 @@
+<!doctype html><meta charset="utf-8"><title>Schaltbilder-Vorschau</title>
+<style>body{font:12px sans-serif;margin:8px;background:#e8eef5}div{display:inline-block;margin:4px;padding:4px;background:#e4efed;border:1px solid #ccc;vertical-align:top}img{display:block;width:250px}</style>
+<body><script>
+const names = new URLSearchParams(location.search).get('n').split(',');
+for (const n of names) document.body.insertAdjacentHTML('beforeend', `<div>${n}<img src="../schaltbilder/${n}.svg?${Date.now()}"></div>`);
+</script>

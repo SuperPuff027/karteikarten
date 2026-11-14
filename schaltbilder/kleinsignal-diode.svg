@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-24 -24 468 238" width="468" height="238">
+<polyline points="50.0,40.0 50.0,150.0" fill="none" stroke="#1d1d1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="50.0,40.0 50.0,81.0" fill="none" stroke="#1d1d1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="50.0,109.0 50.0,150.0" fill="none" stroke="#1d1d1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="50.0" cy="95.0" r="14" fill="none" stroke="#1d1d1b" stroke-width="1.6"/>
+<polyline points="50.0,81.0 50.0,109.0" fill="none" stroke="#1d1d1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<text x="30.0" y="95.0" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="20" fill="#1d1d1b" text-anchor="end" dominant-baseline="middle"><tspan font-style="italic">Δu</tspan><tspan baseline-shift="sub" font-size="72%"><tspan>0</tspan></tspan><tspan>(</tspan><tspan font-style="italic">t</tspan><tspan>)</tspan></text>
+<polyline points="50.0,40.0 110.0,40.0" fill="none" stroke="#1d1d1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="110.0,40.0 152.0,40.0" fill="none" stroke="#1d1d1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="188.0,40.0 230.0,40.0" fill="none" stroke="#1d1d1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="152.0" y="33.0" width="36" height="14" fill="none" stroke="#1d1d1b" stroke-width="1.6"/>
+<text x="170.0" y="24.0" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="20" fill="#1d1d1b" text-anchor="middle" dominant-baseline="middle"><tspan font-style="italic">R</tspan></text>
+<polyline points="230.0,40.0 300.0,40.0" fill="none" stroke="#1d1d1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="50.0,150.0 300.0,150.0" fill="none" stroke="#1d1d1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="300.0,40.0 300.0,77.0" fill="none" stroke="#1d1d1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="300.0,113.0 300.0,150.0" fill="none" stroke="#1d1d1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<rect x="293.0" y="77.0" width="14" height="36" fill="none" stroke="#1d1d1b" stroke-width="1.6"/>
+<text x="314.0" y="95.0" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="20" fill="#1d1d1b" text-anchor="start" dominant-baseline="middle"><tspan font-style="italic">G</tspan><tspan baseline-shift="sub" font-size="72%"><tspan>D</tspan></tspan></text>
+<polygon points="300.0,62.0 296.4,51.6 303.6,51.6" fill="#1d1d1b"/>
+<text x="312" y="62" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="20" fill="#1d1d1b" text-anchor="start" dominant-baseline="middle"><tspan font-style="italic">Δi</tspan></text>
+<polyline points="275.0,60.0 275.0,130.0" fill="none" stroke="#1d1d1b" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="275.0,130.0 271.7,120.4 278.3,120.4" fill="#1d1d1b"/>
+<text x="269" y="95.0" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="20" fill="#1d1d1b" text-anchor="end" dominant-baseline="middle"><tspan font-style="italic">Δu</tspan></text>
+</svg>

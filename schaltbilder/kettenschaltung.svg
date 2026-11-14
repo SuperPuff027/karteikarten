@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="-24 -24 568 198" width="568" height="198">
+<rect x="120" y="20" width="100" height="110" fill="none" stroke="#1d1d1b" stroke-width="1.6"/>
+<text x="170.0" y="75.0" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="19" fill="#1d1d1b" text-anchor="middle" dominant-baseline="middle"><tspan font-style="italic">F</tspan><tspan baseline-shift="sub" font-size="72%"><tspan>1</tspan></tspan></text>
+<rect x="300" y="20" width="100" height="110" fill="none" stroke="#1d1d1b" stroke-width="1.6"/>
+<text x="350.0" y="75.0" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="19" fill="#1d1d1b" text-anchor="middle" dominant-baseline="middle"><tspan font-style="italic">F</tspan><tspan baseline-shift="sub" font-size="72%"><tspan>2</tspan></tspan></text>
+<polyline points="40.0,40.0 120.0,40.0" fill="none" stroke="#1d1d1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="220.0,40.0 300.0,40.0" fill="none" stroke="#1d1d1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="400.0,40.0 480.0,40.0" fill="none" stroke="#1d1d1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="40" cy="40" r="3.4" fill="#ffffff" stroke="#1d1d1b" stroke-width="1.3"/>
+<circle cx="480" cy="40" r="3.4" fill="#ffffff" stroke="#1d1d1b" stroke-width="1.3"/>
+<polyline points="40.0,110.0 120.0,110.0" fill="none" stroke="#1d1d1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="220.0,110.0 300.0,110.0" fill="none" stroke="#1d1d1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<polyline points="400.0,110.0 480.0,110.0" fill="none" stroke="#1d1d1b" stroke-width="1.6" stroke-linejoin="round" stroke-linecap="round"/>
+<circle cx="40" cy="110" r="3.4" fill="#ffffff" stroke="#1d1d1b" stroke-width="1.3"/>
+<circle cx="480" cy="110" r="3.4" fill="#ffffff" stroke="#1d1d1b" stroke-width="1.3"/>
+<polygon points="80.0,40.0 69.6,43.6 69.6,36.4" fill="#1d1d1b"/>
+<text x="80" y="27" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="20" fill="#1d1d1b" text-anchor="middle" dominant-baseline="middle"><tspan font-style="italic">i</tspan><tspan baseline-shift="sub" font-size="72%"><tspan>1</tspan></tspan></text>
+<polygon points="440.0,40.0 450.4,36.4 450.4,43.6" fill="#1d1d1b"/>
+<text x="440" y="27" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="20" fill="#1d1d1b" text-anchor="middle" dominant-baseline="middle"><tspan font-style="italic">i</tspan><tspan baseline-shift="sub" font-size="72%"><tspan>2</tspan></tspan></text>
+<polyline points="55.0,52.0 55.0,98.0" fill="none" stroke="#1d1d1b" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="55.0,98.0 51.7,88.4 58.3,88.4" fill="#1d1d1b"/>
+<text x="61" y="75.0" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="20" fill="#1d1d1b" text-anchor="start" dominant-baseline="middle"><tspan font-style="italic">u</tspan><tspan baseline-shift="sub" font-size="72%"><tspan>1</tspan></tspan></text>
+<polyline points="465.0,52.0 465.0,98.0" fill="none" stroke="#1d1d1b" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="465.0,98.0 461.7,88.4 468.3,88.4" fill="#1d1d1b"/>
+<text x="459" y="75.0" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="20" fill="#1d1d1b" text-anchor="end" dominant-baseline="middle"><tspan font-style="italic">u</tspan><tspan baseline-shift="sub" font-size="72%"><tspan>2</tspan></tspan></text>
+<polyline points="260.0,52.0 260.0,98.0" fill="none" stroke="#1d1d1b" stroke-width="1.2" stroke-linejoin="round" stroke-linecap="round"/>
+<polygon points="260.0,98.0 256.7,88.4 263.3,88.4" fill="#1d1d1b"/>
+<text x="260" y="145" font-family="'Times New Roman', 'STIX Two Text', serif" font-size="18" fill="#1d1d1b" text-anchor="middle" dominant-baseline="middle"><tspan font-style="italic">A</tspan><tspan> = </tspan><tspan font-style="italic">A</tspan><tspan baseline-shift="sub" font-size="72%"><tspan>1</tspan></tspan><tspan> · </tspan><tspan font-style="italic">A</tspan><tspan baseline-shift="sub" font-size="72%"><tspan>2</tspan></tspan></text>
+</svg>

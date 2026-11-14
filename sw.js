@@ -2,7 +2,7 @@
  * Strategie „Netzwerk zuerst“: Online kommen immer die neuesten Karten,
  * offline wird die zuletzt geladene Version aus dem Cache verwendet.
  */
-const CACHE = 'karteikarten-v3';
+const CACHE = 'karteikarten-v4';
 const CDN = 'cdnjs.cloudflare.com';
 const SHELL = [
   './', 'index.html', 'style.css', 'app.js', 'decks.js', 'decks/schaltungstheorie.js', 'manifest.webmanifest',
@@ -46,7 +46,8 @@ self.addEventListener('fetch', e => {
   const key = req.mode === 'navigate' ? new URL('./', location).href : url.origin + url.pathname;
 
   e.respondWith(
-    fetch(req)
+    // no-cache: beim Server nachfragen (ETag), damit nie eine veraltete Datei aus dem HTTP-Cache kommt
+    fetch(req, { cache: 'no-cache' })
       .then(res => {
         if (res.ok) { const copy = res.clone(); caches.open(CACHE).then(c => c.put(key, copy)); }
         return res;
