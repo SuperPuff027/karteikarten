@@ -54,7 +54,7 @@
         if (all || prefs.images) out.push({ term: c.term, img: c.img, text: c.def || '', label: 'Schaltbild' });
         continue;
       }
-      out.push({ term: c.term, text: c.def, label: null });
+      out.push({ term: c.term, text: c.def, ex: c.ex, label: null });
       if (c.more && (all || prefs.extended)) out.push({ term: c.term, text: c.more, label: c.moreLabel || 'Methode' });
     }
     out.forEach((it, i) => { it.key = statKey(id, it.term, it.label); it.pos = i; });
@@ -422,12 +422,15 @@
     // side: 'front' | 'back'; Inhalt hängt von der Richtung ab
     const showTerm = (side === 'front') !== prefs.reverse;
     let inner;
+    // kurzes Codebeispiel: immer auf der Rückseite (im umgekehrten Modus also beim Begriff)
+    const ex = side === 'back' && item.ex ? `<pre class="ex"><code>${esc(item.ex)}</code></pre>` : '';
     if (showTerm) {
       inner = `<div class="term">${fmt(item.term)}${item.label ? `<span style="font-weight:400;opacity:.55">: ${esc(item.label)}</span>` : ''}</div>`;
+      if (ex) inner = `<div class="text">${inner}${ex}</div>`;
     } else if (item.img) {
       inner = `<div class="figure"><img src="${esc(item.img)}" alt="${esc(item.term)}">${item.text ? `<div class="cap">${fmt(item.text)}</div>` : ''}</div>`;
     } else {
-      inner = `<div class="text ${lengthClass(item.text)}">${rich(item.text)}</div>`;
+      inner = `<div class="text ${lengthClass(item.text)}">${rich(item.text)}${ex}</div>`;
     }
     const corner = showTerm ? (item.label ? 'Begriff · ' + esc(item.label) : 'Begriff') : (item.label ? esc(item.label) : 'Definition');
     return `<div class="face ${side}" style="background:var(--c-${color})">

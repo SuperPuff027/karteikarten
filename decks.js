@@ -2,6 +2,7 @@
  * Jeder Eintrag = ein Ordner. Pro Karte:
  *   term       – Hauptbegriff (Vorderseite)
  *   def        – nur das Wichtigste: Definition / kurze Erklärung
+ *   ex         – optional: kurzes Codebeispiel (erscheint als Codeblock auf der Rückseite)
  *   more       – optional: Vertiefung -> erzeugt eine zweite Karte „Begriff: Methode“
  *   moreLabel  – optional: Bezeichnung der Vertiefung (Standard: „Methode“)
  * Farben: sage, rose, sky, sand, lilac, mint, peach, stone
@@ -101,6 +102,7 @@ window.DECKS = [
       {
         term: 'System Call',
         def: 'Aufruf, mit dem ein User-Space-Programm Kernel-Ressourcen (Dateien, Netzwerk, …) nutzt: spezieller Befehl (x86-64: `syscall`, ARM: `svc`) → Wechsel in den Kernel Mode.',
+        ex: "write(1, \"Hi\\n\", 3);  // Ausgabe über den Kernel",
       },
       {
         term: 'Dateisystem',
@@ -123,6 +125,7 @@ window.DECKS = [
       {
         term: 'Absoluter vs. relativer Pfad',
         def: 'Absolut: beginnt mit `/` und beschreibt den ganzen Weg vom Dateisystem-Ursprung. Relativ: ohne `/`, ausgehend vom aktuellen Verzeichnis.',
+        ex: "cd /home/ab12cde/Code   # absolut\ncd Code                  # relativ",
       },
 
       { chapter: '3 Programmieren auf Hochsprachen-Ebene' },
@@ -163,10 +166,12 @@ window.DECKS = [
       {
         term: 'Präprozessor-Anweisung',
         def: 'Mit `#` beginnende Anweisung, die zur Compile-Zeit ausgeführt wird, z. B. `#include` (Datei einfügen) oder `#define` (Textersetzung/Makro).',
+        ex: "#include <stdio.h>\n#define N 10",
       },
       {
         term: '#define',
         def: 'Präprozessor-Anweisung zur Festlegung von Textersetzungen bzw. Makros.',
+        ex: "#define PI 3.14159\ndouble u = 2 * PI * r;",
       },
       {
         term: 'Compile-Zeit vs. Laufzeit',
@@ -193,6 +198,7 @@ window.DECKS = [
       {
         term: 'git',
         def: 'Versionsverwaltungsprogramm. Lädt die Praktikumsaufgaben aus dem gitlab-Repository (LRZ) herunter und speichert Arbeitsstände als Commits.',
+        ex: "git add .\ngit commit -m \"Aufgabe 1\"\ngit pull --rebase",
         more: 'Typischer Ablauf im Praktikum:\n- einmalig: `git clone https://gitlab.lrz.de/ctpr/2026-27.git .`\n- Aufgaben bearbeiten\n- `git add .` → Änderungen in die Staging-Area\n- `git commit -m "Aktueller Stand"` → im lokalen Repository speichern\n- `git pull --rebase` → neue Aufgaben vom Server holen',
         moreLabel: 'Ablauf',
       },
@@ -209,40 +215,49 @@ window.DECKS = [
       {
         term: 'Home-Verzeichnis (~)',
         def: 'Persönliches Verzeichnis des aktuellen Benutzers. Die Tilde `~` steht als Abkürzung dafür; `cd ~` wechselt dorthin.',
+        ex: "cd ~",
       },
       {
         term: 'cd',
         def: 'change directory: wechselt das aktuelle Verzeichnis.',
+        ex: "cd Code\ncd ..",
         more: '- `cd ~` → ins Home-Verzeichnis\n- `cd Code` → in den Unterordner Code\n- `cd ..` → ins übergeordnete Verzeichnis\n- `cd ../04.05b_return` → eine Ebene hoch und in einen anderen Ordner',
         moreLabel: 'Beispiele',
       },
       {
         term: 'mkdir',
         def: 'make directory: legt ein neues Verzeichnis an, z. B. `mkdir Code`.',
+        ex: "mkdir Code\ncd Code",
       },
       {
         term: 'ls',
         def: 'list: zeigt den Inhalt des aktuellen Verzeichnisses an.',
+        ex: "ls -l",
       },
       {
         term: 'pwd',
         def: 'print working directory: gibt den Pfad des aktuellen Verzeichnisses aus, z. B. `/home/ab12cde/Code`.',
+        ex: "$ pwd\n/home/ab12cde/Code",
       },
       {
         term: '. und ..',
         def: '`.` steht für das aktuelle Verzeichnis, `..` für das übergeordnete Verzeichnis.',
+        ex: "cd ..     # eine Ebene hoch\n./p       # p hier ausführen",
       },
       {
         term: 'git clone',
         def: 'Lädt ein Remote-Repository erstmalig herunter. Mit `.` am Ende wird in das aktuelle Verzeichnis geklont.',
+        ex: "git clone https://gitlab.lrz.de/ctpr/2026-27.git .",
       },
       {
         term: 'Staging-Area',
         def: 'Zwischenbereich für Änderungen, die mit dem nächsten Commit gespeichert werden. `git add .` fügt alle geänderten Dateien hinzu.',
+        ex: "git add p.c   # eine Datei\ngit add .     # alle Änderungen",
       },
       {
         term: 'git commit',
         def: 'Speichert alle Dateien der Staging-Area als neuen Stand im lokalen Repository; `-m "…"` gibt eine kurze Beschreibung mit.',
+        ex: "git commit -m \"Aufgabe 1 fertig\"",
       },
       {
         term: 'git pull --rebase',
@@ -253,24 +268,28 @@ window.DECKS = [
       {
         term: 'clang',
         def: 'C-Compiler. `clang -o p p.c` übersetzt die Quelldatei p.c in die ausführbare Datei p.',
+        ex: "clang -o p p.c",
         more: '- `clang -o p p.c` → übersetzen, Ausgabedatei p\n- `./p` → Programm ausführen\n- `clang -E p.c > ausgabe.txt` → nur den Präprozessor ausführen und das Ergebnis in eine Datei umleiten\n- `code p.c` → Datei in Visual Studio Code öffnen',
         moreLabel: 'Befehle',
       },
       {
         term: './p',
         def: 'Führt das Programm p aus dem aktuellen Verzeichnis aus (`./` = „hier im aktuellen Verzeichnis“).',
+        ex: "clang -o p p.c && ./p",
       },
 
       { chapter: '4 Programm-Strukturierung mit Funktionen' },
       {
         term: 'Funktion',
         def: 'Fasst die Anweisungen zur Lösung einer abgrenzbaren Teilaufgabe in einem zusammenhängenden Speicherbereich zusammen; bildet Eingangswerte auf Ausgangswerte ab.',
+        ex: "int quadrat(int x) {\n    return x * x;\n}",
         more: 'Vorteile:\n- großes Problem → mehrere kleine Teilprobleme, jeweils in eigener Funktion gelöst\n- Code nur **einmal** schreiben, durch Funktionsaufrufe beliebig oft ausführen\n\nBeispiel LCD-Display: `main` → `lcd_reset` (ruft 3× `wait_ms`), `print_float32` → `print_string` → `print_single_character` → `lcd` (grundlegende Kommunikation mit dem Display).',
         moreLabel: 'Methode',
       },
       {
         term: 'Bezeichner (Identifier)',
         def: 'Name, über den eine Speicheradresse referenziert wird (z. B. `f1`, `main`, `cos`, Variablennamen). Bei Funktionen: Adresse des ersten Befehls.',
+        ex: "int summe = 0;   // summe\nint main(void)   // main",
       },
       {
         term: 'Black-Box',
@@ -279,80 +298,98 @@ window.DECKS = [
       {
         term: 'Funktionsaufruf',
         def: 'Funktionsname, gefolgt von runden Klammern mit den Argumenten, z. B. `y = cos(x);`. Der Aufruf ist ein Ausdruck und liefert den Rückgabewert.',
+        ex: "double y = cos(x);",
         more: 'Ablauf:\n- alle Argumente werden der Reihe nach ausgewertet\n- Sprung an die Stelle der Funktionsdefinition\n- Werte der Argumente werden der Reihe nach in die Parameter **kopiert** (nur die Reihenfolge zählt, nicht der Name)\n- `return` springt zurück; der Aufruf-Ausdruck hat dann den Rückgabewert\n- Typ des Rückgabewerts muss zur Verwendung passen, sonst Typumwandlung',
         moreLabel: 'Ablauf',
       },
       {
         term: 'Parameter vs. Argument',
         def: 'Parameter: Eingangsvariablen in der Funktionsdefinition. Argumente: die beim Funktionsaufruf übergebenen Werte, die in die Parameter kopiert werden.',
+        ex: "int quadrat(int x);  // x: Parameter\nquadrat(5);          // 5: Argument",
       },
       {
         term: 'Übergabe als Kopie',
         def: 'Die Funktion arbeitet nur mit Kopien der Argumente und kann deshalb die Variablen des Aufrufers nicht ändern.',
+        ex: "void inc(int a) { a++; }\n\nint n = 1;\ninc(n);   // n bleibt 1",
       },
       {
         term: 'return',
         def: 'Schlüsselwort: springt aus der Funktion zurück zur Aufrufstelle, optional mit einem Wert, der zum Rückgabewert wird.',
+        ex: "return x * x;",
       },
       {
         term: 'Rückgabewert',
         def: 'Wert, den eine Funktion mit `return` an den Aufrufer zurückgibt. Der Ausdruck des Funktionsaufrufs nimmt diesen Wert an.',
+        ex: "int r = quadrat(3);  // r = 9",
       },
       {
         term: 'Funktionsdefinition',
         def: 'Funktionskopf + Funktionsrumpf. Legt fest, was die Funktion macht; der Rumpf wird in Maschinencode übersetzt, es wird also Speicher angelegt.',
+        ex: "int quadrat(int x) {\n    return x * x;\n}",
       },
       {
         term: 'Funktionsdeklaration',
         def: 'Funktionskopf mit Semikolon, ohne Rumpf. Macht die Funktion dem Compiler bekannt, reserviert aber keinen Speicher.',
+        ex: "int quadrat(int);",
         more: '- Der Compiler braucht die Deklaration, um den Maschinencode für den Aufruf (nach ABI) zu erzeugen.\n- Für die Parameterliste reichen hier die Datentypen, z. B. `double cos(double);`\n- Jede Definition ist gleichzeitig auch eine Deklaration.',
         moreLabel: 'Methode',
       },
       {
         term: 'Funktionskopf',
         def: 'Erste Zeile einer Funktion: Datentyp des Rückgabewerts, Funktionsname und Parameterliste in runden Klammern, z. B. `double cos(double x)`.',
+        ex: "int quadrat(int x)",
       },
       {
         term: 'Funktionsrumpf',
         def: 'Anweisungen in geschweiften Klammern. Einziger Ort, an dem in C ausführbarer Code steht.',
+        ex: "{\n    return x * x;\n}",
       },
       {
         term: 'Überladen von Funktionen',
         def: 'Mehrere Funktionen gleichen Namens mit unterschiedlichen Parametern/Rückgabetypen. In C nicht möglich (in C++ schon).',
+        ex: "int f(int);\ndouble f(double);  // Fehler in C",
       },
       {
         term: 'Parameterliste',
         def: 'Liste der Parameter in runden Klammern (kann leer sein). Deklaration: Typen reichen. Definition: Typ und Bezeichner je Parameter.',
+        ex: "int add(int a, int b)",
       },
       {
         term: 'void',
         def: 'Schlüsselwort für „leer“: keine Parameter (`int main(void)`) bzw. kein Rückgabewert (`void f(…)`).',
+        ex: "void hallo(void) {\n    printf(\"Hallo\\n\");\n}",
       },
       {
         term: 'Variablendeklaration vs. -definition',
         def: 'Deklaration gibt den Typ an, Definition reserviert Speicher. `int i, n = 10;` ist beides.',
+        ex: "extern int n;  // Deklaration\nint n = 10;    // Definition",
       },
       {
         term: 'Initialisierung',
         def: 'Zuweisung eines Startwerts direkt bei der Definition (`int n = 10;`). Ohne Initialisierung ist der Wert unbestimmt.',
+        ex: "int n = 10;  // initialisiert\nint m;       // Wert unbestimmt",
       },
       {
         term: 'Lokale Variable',
         def: 'Innerhalb einer Funktion definierte Variable: nur dort über ihren Bezeichner ansprechbar; ihr Wert geht beim Verlassen der Funktion verloren.',
+        ex: "void f(void) {\n    int i = 0;  // nur in f\n}",
       },
       {
         term: 'int',
         def: 'Typspezifizierer für vorzeichenbehaftete Ganzzahlen; meist 32 Bit (4 Byte), auf dem 8-Bit-Mikrocontroller nur 2 Byte.',
+        ex: "int n = -42;",
       },
       {
         term: 'main',
         def: 'Haupt-Funktion und Einsprungspunkt jedes C-Programms. Genau eine pro Programm; Rückgabetyp ist immer `int`.',
+        ex: "int main(void) {\n    return 0;\n}",
         more: '- `int main(void)` → ohne Parameter (empfohlen)\n- `int main()` → bis C17 „Parameter nicht spezifiziert“, seit C23 gleichbedeutend mit void\n- `int main(int argc, char *argv[])` → mit Kommandozeilen-Argumenten\n\n„Beginnen“ bezieht sich auf die Ausführung – im Quelltext steht main oft am Ende.',
         moreLabel: 'Varianten',
       },
       {
         term: 'argc / argv',
         def: 'Parameter von main: `argc` = Anzahl der Argumente, `argv` = nullterminiertes Array aus Zeigern auf die Argument-Zeichenketten.',
+        ex: "int main(int argc, char *argv[]) {\n    printf(\"%s\\n\", argv[1]);\n}",
         more: 'Aufruf `./p eins zwei drei`:\n- argv = `["./p", "eins", "zwei", "drei", NULL]`\n- argc = 4 (der Programmname zählt mit)\n\nDie Vorbelegung des Speichers erfolgt durch den Kernel.',
         moreLabel: 'Beispiel',
       },
@@ -371,100 +408,121 @@ window.DECKS = [
       {
         term: 'Rückgabetyp',
         def: 'Legt fest, wie viele Bytes eine Funktion zurückgibt und wie sie zu interpretieren sind (Ganzzahl, Gleitkommazahl, …). Muss immer angegeben werden.',
+        ex: "double mittel(int a, int b)",
       },
       {
         term: 'Rückgabewert von main',
         def: 'Meldet Erfolg oder Misserfolg: $= 0$ → Erfolg (`EXIT_SUCCESS`), $\\neq 0$ → Fehler (`EXIT_FAILURE`, beide in stdlib.h).',
+        ex: "return EXIT_FAILURE;",
         more: '- Idee: Ein Programm kann nur auf eine Art erfolgreich sein, aber auf viele Arten scheitern → alle Zahlen ≠ 0 bleiben für Fehlerarten frei.\n- `return` in main ist seit C99 optional; fehlt es, gibt main automatisch 0 zurück.\n- In der Shell auslesen mit `echo $?`.',
         moreLabel: 'Details',
       },
       {
         term: 'echo $?',
         def: 'Gibt in der Shell den Rückgabewert des zuletzt ausgeführten Programms aus. `$` liest den Shell-Parameter `?` aus.',
+        ex: "$ ./p\n$ echo $?\n0",
       },
       {
         term: '&& und || (Shell)',
         def: '`p1 && p2`: p2 nur, wenn p1 erfolgreich war (Rückgabe 0). `p1 || p2`: p2 nur, wenn p1 fehlschlug. Gesamt-Rückgabewert = der des zuletzt ausgeführten Programms.',
+        ex: "clang -o p p.c && ./p\n./p || echo \"Fehler\"",
       },
       {
         term: 'printf',
         def: 'Funktion zur formatierten Textausgabe, deklariert in der Header-Datei stdio.h.',
+        ex: "printf(\"a = %d\\n\", a);",
         more: 'Deklaration (vereinfacht): `int printf(const char * restrict, ...);`\n\n- erster Parameter: Formatstring\n- `...`: beliebig viele weitere Argumente, deren Werte an den Platzhaltern eingesetzt werden\n- Beispiel: `printf("a: %d\\n", a);`',
         moreLabel: 'Methode',
       },
       {
         term: 'stdio.h',
         def: 'Header-Datei der Standardbibliothek für Ein- und Ausgabe (std = standard, io = input/output); enthält u. a. die Deklaration von printf.',
+        ex: "#include <stdio.h>",
       },
       {
         term: 'Header-Datei',
         def: 'Datei (.h) mit Deklarationen, z. B. von Funktionen. Wird mit #include eingebunden, damit der Compiler die Funktionen kennt.',
+        ex: "// mathe.h\nint quadrat(int);",
       },
       {
         term: '#include',
         def: 'Präprozessor-Anweisung, die eine Datei in den Quelltext einfügt, z. B. `#include <stdio.h>`.',
+        ex: "#include <stdio.h>   // Standard\n#include \"mathe.h\"   // eigene",
       },
       {
         term: 'Präprozessor',
         def: 'Teil des Compilers, der vor dem eigentlichen Übersetzen die Präprozessor-Anweisungen (#include, #define) zur Compile-Zeit ausführt. `clang -E` führt nur ihn aus.',
+        ex: "clang -E p.c",
       },
       {
         term: '... (variable Parameterliste)',
         def: 'Steht in einer Deklaration für „beliebig viele weitere Parameter beliebigen Typs“, z. B. bei printf.',
+        ex: "int printf(const char *, ...);",
       },
       {
         term: 'Formatstring',
         def: 'Die an printf übergebene Zeichenkette. Enthält Text und Platzhalter (%…), an deren Stelle die Werte der weiteren Argumente ausgegeben werden.',
+        ex: "printf(\"x = %d, y = %f\\n\", x, y);",
         more: 'Aufbau eines Platzhalters:\n`%[Flags][Breite][.Genauigkeit][Längenangabe]Umwandlungsspezifizierer`\n\nBeispiel: `%-08.3hhx` – nur der Umwandlungsspezifizierer ist Pflicht.',
         moreLabel: 'Aufbau',
       },
       {
         term: 'Platzhalter',
         def: 'Mit % beginnende Stelle im Formatstring, an der ein Wert eingesetzt wird. Nötig, damit der Compiler Zeichen (\'a\') und Variable (a) unterscheiden kann.',
+        ex: "printf(\"%d\", 42);  // 42",
       },
       {
         term: 'Umwandlungsspezifizierer',
         def: 'Letzter Teil eines Platzhalters: legt den Typ des Arguments und die Darstellungsart fest (dezimal, hexadezimal, Nachkommastellen, …).',
+        ex: "printf(\"%d %x %c\", 65, 65, 65);\n// 65 41 A",
         more: '- `d`/`i` int, dezimal mit Vorzeichen\n- `u` unsigned int, dezimal\n- `o` oktal · `x`/`X` hexadezimal · `b`/`B` binär (C23)\n- `f`/`F` double, Festkomma · `e`/`E` Exponentialdarstellung · `g`/`G` kürzere von f/e · `a`/`A` hex. Gleitkomma\n- `c` einzelnes Zeichen · `s` Zeichenkette (char *)\n- `p` Adresse/Zeiger · `n` keine Ausgabe, speichert Position · `%%` Prozentzeichen',
         moreLabel: 'Tabelle',
       },
       {
         term: 'Datentyp',
         def: 'Legt Wortgröße (wie viele Bytes) und Codierung (Ganzzahl/Festkomma oder Gleitkomma) eines Datenworts fest.',
+        ex: "char c = 'A';\ndouble d = 1.5;",
         more: '- Ganzzahlen mit Vorzeichen: `char`, `short`, `int`, `long`, `long long`\n- Vorzeichen explizit: `signed` / `unsigned`\n- einzelne Zeichen: `char`\n- Gleitkomma: `float`, `double`, `long double`',
         moreLabel: 'Typen',
       },
       {
         term: 'Literal',
         def: 'Konstanter Wert, der direkt im Code steht, z. B. `0xffffffff`, `123` oder `\'A\'`.',
+        ex: "int n = 123;\nchar c = 'A';",
       },
       {
         term: 'ASCII',
         def: 'Zeichentabelle, die Zeichen Zahlen zuordnet, z. B. \'A\' = 65 = 0x41, \'d\' = 100.',
+        ex: "printf(\"%d\", 'A');  // 65",
       },
       {
         term: 'Default Argument Promotion',
         def: 'Argumente mit kleiner Wortbreite (z. B. char, short) werden bei printf auf int erweitert (integer promotion), Gleitkommazahlen auf double.',
+        ex: "char b = 0xff;\nprintf(\"%x\", b);  // ffffffff",
         more: 'Beispiel `char b = 0xff;` (char ist vorzeichenbehaftet, MSB gesetzt → −1):\n- Erweiterung mit 24 Einsen → `11111111 … 11111111`\n- `%x` gibt `ffffffff` aus, `%u` gibt 4294967295 aus\n\nMit `unsigned char b = 0xff;` (= 255) wird mit 24 Nullen erweitert → `%x` gibt `ff` aus.\n\nAbhilfe: Längenangabe, z. B. `%hhx` → nur die untersten 8 Bit.',
         moreLabel: 'Beispiel',
       },
       {
         term: 'signed vs. unsigned',
         def: 'signed: vorzeichenbehaftet, das MSB zeigt das Vorzeichen (0xff als char = −1). unsigned: ohne Vorzeichen (0xff als unsigned char = 255).',
+        ex: "signed char a = 0xff;    // -1\nunsigned char b = 0xff;  // 255",
       },
       {
         term: 'Längenangabe',
         def: 'Teil des Platzhalters vor dem Spezifizierer: sagt printf, wie viele Bytes für die Ausgabe verwendet werden sollen.',
+        ex: "printf(\"%hhx\", b);  // ff",
         more: '- `hh` char · `h` short\n- `l` long · `ll` long long\n- `L` long double (bei a, e, f, g)\n- `z` size_t · `t` ptrdiff_t\n- `j` intmax_t / uintmax_t\n\nBeispiel: `%hhx` gibt von einem char nur die 8 Bit aus.',
         moreLabel: 'Tabelle',
       },
       {
         term: 'sizeof',
         def: 'Operator (keine Funktion!), der vom Compiler ausgewertet wird und die Größe eines Ausdrucks oder Typs in Byte liefert. Ausgabe mit `%zu`.',
+        ex: "printf(\"%zu\", sizeof(int));  // 4",
       },
       {
         term: 'size_t',
         def: 'Ganzzahliger Typ ohne Vorzeichen für die Größe eines Objekts in Byte (z. B. Ergebnis von sizeof); Längenangabe `z`.',
+        ex: "size_t n = sizeof(double);",
       },
       {
         term: 'Breite (printf)',
@@ -473,40 +531,48 @@ window.DECKS = [
       {
         term: 'Genauigkeit (printf)',
         def: 'Zahl nach einem Punkt im Platzhalter. Bedeutung hängt vom Typ ab.',
+        ex: "printf(\"%.2f\", 1.4142);  // 1.41",
         more: '- Gleitkommazahl: Anzahl Nachkommastellen, `%.2f` → `1.41`\n- Ganzzahl: Mindestanzahl Ziffern, mit 0 aufgefüllt, `%.6d` → `000123`\n- Zeichenkette: maximale Zeichenzahl, `%.2s` → `Ha`',
         moreLabel: 'Methode',
       },
       {
         term: 'Flags (printf)',
         def: 'Zeichen direkt nach dem %: `-` linksbündig, `+` Vorzeichen immer, Leerzeichen statt +, `0` mit Nullen auffüllen, `#` 0x bei hex / 0 bei oktal.',
+        ex: "printf(\"[%-5d]\", 12);  // [12   ]",
         more: '- `[%-5d]` → `[12   ]`\n- `[%05d]` → `[00012]`\n- `[%+d]` → `[+12]`\n- `[%#x]`, 128 → `[0x80]`\n\nAchtung: `%+08d` zählt das Vorzeichen zur Breite (`+0000012`), `%+.8d` nicht (`+00000012`).',
         moreLabel: 'Beispiele',
       },
       {
         term: 'Zeichenkette (String)',
         def: 'Folge von Zeichen in doppelten Anführungszeichen, z. B. `"Hallo"`; im Speicher nullterminiert.',
+        ex: "char s[] = \"Hallo\";",
       },
       {
         term: 'Escaping',
         def: 'Ein vorangestellter Backslash `\\` hebt die Sonderbedeutung eines Zeichens auf, z. B. `\\"` für ein Anführungszeichen innerhalb einer Zeichenkette.',
+        ex: "printf(\"Er sagt \\\"Hi\\\"\");",
       },
       {
         term: 'Escape-Sequenz',
         def: 'Mit Backslash eingeleitete Zeichenfolge für Sonder- oder Steuerzeichen, z. B. `\\n` (Zeilenumbruch) oder `\\"`.',
+        ex: "printf(\"A\\tB\\n\");",
         more: '- `\\\'` `\\"` `\\?` `\\\\` → das jeweilige Zeichen\n- `\\n` newline · `\\t` tab · `\\r` carriage return · `\\a` alert · `\\b` backspace · `\\f` form feed · `\\v` vertical tab\n- `\\0` bis `\\377` → Zeichen mit Oktalwert\n- `\\x` + Hexziffern → Zeichen mit Hexwert (greedy: liest so viele Hexziffern wie möglich; `"\\x61" "bc"` = `"abc"`)\n- `\\u` + 4 bzw. `\\U` + 8 Hexziffern → Universal Character',
         moreLabel: 'Tabelle',
       },
       {
         term: 'Kommentar',
         def: 'Zusatzinformation im Quelltext, die der Compiler ignoriert. Macht Code verständlicher (Erklärungen, Annahmen, Datenformate).',
+        ex: "int n = 0;  // Zähler",
       },
       {
         term: 'Blockkommentar',
         def: 'Beginnt mit `/*` und endet mit `*/`, kann mehrere Zeilen umfassen. Darf nicht verschachtelt werden.',
+        ex: "/* mehrere\n   Zeilen */",
       },
       {
         term: 'Zeilenkommentar',
         def: 'Beginnt mit `//`; alles bis zum Zeilenende wird ignoriert. Kein Verschachtelungsproblem, daher meist vorzuziehen.',
+        ex: "x++;  // bis Zeilenende",
       },
     ],
   },

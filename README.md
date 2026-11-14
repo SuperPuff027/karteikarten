@@ -23,6 +23,7 @@ Die App lässt sich auf den Home-Bildschirm legen, startet dann im Vollbild und 
 - **Hell- und Dunkelmodus**
 - Für das **Hochformat** am Handy gemacht (funktioniert auch quer und am PC)
 - **Formeln im LaTeX-Stil** (KaTeX)
+- **Kurze Codebeispiele** auf den Karten zu Begriffen, die man in Code schreiben kann
 
 Lernstand und eigene Karten werden nur im eigenen Browser gespeichert (localStorage) – jedes Gerät hat seinen eigenen Stand.
 
@@ -38,7 +39,7 @@ Lernstand und eigene Karten werden nur im eigenen Browser gespeichert (localStor
 
 ## Enthaltene Lernsets
 
-- **Programmierpraktikum** (TUM Elektrotechnik, 1. Semester) – das Wichtigste fürs Programmieren, in 3 Kapitel-Unterordnern
+- **Programmierpraktikum** (TUM Elektrotechnik, 1. Semester) – das Wichtigste fürs Programmieren mit kurzen Codebeispielen, in 3 Kapitel-Unterordnern
 - **Schaltungstheorie** (TUM Elektrotechnik, 1. Semester) – in 11 Kapitel-Unterordnern, einzeln oder alle zusammen lernbar; mit 42 selbst gezeichneten Schaltbild-Karten (erzeugt mit `tools/schaltbilder.py`)
 
 ## Eigene Lernsets hinzufügen
@@ -54,6 +55,7 @@ Lernsets stehen in [`decks.js`](decks.js). Jeder Eintrag ist ein Ordner:
     {
       term: 'Begriff',
       def: 'Kurze Definition – nur das Wichtigste.',
+      ex: 'int x = 5;',         // optional: kurzes Codebeispiel auf der Rückseite
       more: 'Optional: ausführliche Erklärung (erzeugt eine zweite Karte).',
       moreLabel: 'Methode', // optional, Standard: „Methode“
     },

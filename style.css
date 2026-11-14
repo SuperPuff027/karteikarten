@@ -236,6 +236,15 @@ button.row:active { background: var(--press); }
   padding: .05em .35em; border: var(--hair) solid var(--line-strong); white-space: pre-wrap;
 }
 
+.face pre.ex {
+  margin: .8em auto 0; max-width: 100%; width: fit-content; text-align: left;
+  font-family: ui-monospace, "SF Mono", Menlo, Consolas, monospace; font-size: .78em; line-height: 1.45;
+  padding: .55em .8em; border: var(--hair) solid var(--line-strong); white-space: pre-wrap; overflow-wrap: anywhere;
+  background: color-mix(in srgb, var(--bg) 35%, transparent);
+}
+.face pre.ex code { border: 0; padding: 0; font-size: 1em; }
+.face .text > .term + pre.ex { font-size: clamp(13px, 2.4vh, 17px); }
+
 .study-controls { display: flex; justify-content: center; align-items: center; gap: 10px; min-height: 44px; }
 .study-controls .btn { min-width: 120px; }
 .study-controls .btn.grade { min-width: 0; flex: 0 1 170px; padding: 10px 14px; white-space: nowrap; }
