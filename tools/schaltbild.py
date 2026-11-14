@@ -54,7 +54,9 @@ except ImportError:          # ohne matplotlib: einfache Textbeschriftung
     HAVE_MPL = False
 
 SYMBOLS = {'Δ': r'\Delta ', 'β': r'\beta ', 'μ': r'\mu ', 'ü': r'\ddot{u}', '−': '-', '·': r'\cdot ',
-           '≡': r'\equiv ', '⇔': r'\Leftrightarrow ', '⋮': r'\vdots ', '∞': r'\infty ', '′': "'", 'é': r'\acute{e}'}
+           '≡': r'\equiv ', '⇔': r'\Leftrightarrow ', '⋮': r'\vdots ', '∞': r'\infty ', '′': "'", 'é': r'\acute{e}',
+           '¬': r'\neg ', '∧': r'\wedge ', '∨': r'\vee ', '⊕': r'\oplus ', '←': r'\leftarrow ', '→': r'\rightarrow ',
+           '↑': r'\uparrow ', '↓': r'\downarrow ', '…': r'\ldots ', 'τ': r'\tau ', '≥': r'\geq ', '×': r'\times '}
 
 
 def to_tex(s):
@@ -148,6 +150,10 @@ class SVG:
             return
         body = s if raw else fmt_label(s)
         self.el.append(f'<text x="{x}" y="{y}" font-family="{FONT}" font-size="{size}" fill="{INK}" text-anchor="{anchor}" dominant-baseline="middle">{body}</text>')
+
+    def tex(self, x, y, tex, anchor='middle', size=18):
+        """Fertiger LaTeX-Ausdruck (z. B. mit \\overline), ohne Umwandlung."""
+        self.el.append(tex_svg(x, y, tex, anchor, size))
 
     def plain(self, x, y, s, anchor='middle', size=17):
         self.text(x, y, s, anchor, size)

@@ -201,6 +201,17 @@ window.DECKS.push({
       def: 'Exponent alle Bits 1, $f = 0$; Vorzeichen $s$ unterscheidet $+\\infty$ und $-\\infty$. 32 Bit: `0x7F800000` = $+\\infty$.',
     },
 
+    {
+      term: 'Zahlenring Zweier-Komplement',
+      img: 'schaltbilder/ct-zahlenring.svg',
+      def: 'Für $n = 4$: Die Richtung steigender Werte ist für positive und negative Zahlen gleich. Zwischen 0111 (7) und 1000 (−8) liegt die Überlaufgrenze.',
+    },
+    {
+      term: 'IEEE 754 Format',
+      img: 'schaltbilder/ct-ieee754.svg',
+      def: 'Vorzeichen $s$ (1 Bit), Exponent $e$ (8 bzw. 11 Bit), Bruchteil $f$ (23 bzw. 52 Bit).',
+    },
+
     { chapter: '3 Arithmetische Schaltungen' },
     {
       term: 'Logikgatter',
@@ -343,6 +354,72 @@ window.DECKS.push({
       moreLabel: 'Ergebnis',
     },
 
+    {
+      term: 'Logikgatter',
+      img: 'schaltbilder/ct-logikgatter.svg',
+      def: 'Schaltsymbole der Grundgatter mit ihrer Funktion.',
+    },
+    {
+      term: 'Multiplexer',
+      img: 'schaltbilder/ct-multiplexer.svg',
+      def: '1 Bit 2-auf-1-Multiplexer: Symbol und Realisierung aus Gattern.',
+    },
+    {
+      term: 'Demultiplexer',
+      img: 'schaltbilder/ct-demultiplexer.svg',
+      def: '1 Bit 1-auf-4-Demultiplexer mit Wertetabelle.',
+    },
+    {
+      term: 'Decoder',
+      img: 'schaltbilder/ct-decoder.svg',
+      def: '2-auf-4-Decoder: genau der durch $s$ gewählte Ausgang ist 1.',
+    },
+    {
+      term: 'Asynchrones RS-Flipflop',
+      img: 'schaltbilder/ct-rs-flipflop.svg',
+      def: 'Zwei rückgekoppelte NOR-Gatter.',
+    },
+    {
+      term: 'D-Flipflop',
+      img: 'schaltbilder/ct-d-flipflop.svg',
+      def: 'Taktzustandsgesteuertes D-Flipflop: $S = D \\wedge C$, $R = \\overline{D} \\wedge C$ vor dem RS-Flipflop.',
+    },
+    {
+      term: 'Register (Schaltung)',
+      img: 'schaltbilder/ct-register.svg',
+      def: '$n$ taktflankengesteuerte D-Flipflops mit gemeinsamem Takt.',
+    },
+    {
+      term: 'Halbaddierer',
+      img: 'schaltbilder/ct-halbaddierer.svg',
+      def: '$s_i = x_i \\oplus y_i$, $c_i = x_i \\wedge y_i$',
+    },
+    {
+      term: 'Volladdierer',
+      img: 'schaltbilder/ct-volladdierer.svg',
+      def: 'Aus zwei Halbaddierern und einem ODER-Gatter.',
+    },
+    {
+      term: 'Ripple-Carry-Addierer',
+      img: 'schaltbilder/ct-ripple-carry.svg',
+      def: 'Volladdierer in Reihe; der Übertrag läuft von rechts nach links durch.',
+    },
+    {
+      term: 'Carry-Look-Ahead',
+      img: 'schaltbilder/ct-carry-look-ahead.svg',
+      def: 'Die Überträge werden aus $g_i$ und $p_i$ im Voraus berechnet.',
+    },
+    {
+      term: 'Halbsubtrahierer',
+      img: 'schaltbilder/ct-halbsubtrahierer.svg',
+      def: '$d_i = x_i \\oplus y_i$, $b_i = \\overline{x_i} \\wedge y_i$',
+    },
+    {
+      term: 'Sequentieller Multiplizierer',
+      img: 'schaltbilder/ct-seq-multiplizierer.svg',
+      def: 'Prinzip: Multiplikand-Register, Addierer, Produktregister und Steuerung.',
+    },
+
     { chapter: '4 Universalrechner' },
     {
       term: 'Universalrechner',
@@ -403,6 +480,12 @@ window.DECKS.push({
       term: 'Befehle des Universalrechners',
       def: '`INPUT` (Eingang lesen), `SET` (10 Bit Konstante), `ADD`, `SUB`, `MUL`, `DIV`, `SQRT`.',
       ex: 'INPUT R0,0\nMUL   R0,R0,R0\nINPUT R1,1\nMUL   R1,R1,R1\nADD   R0,R0,R1\nSQRT  R0,R0   // Hypotenuse',
+    },
+
+    {
+      term: 'Universalrechner',
+      img: 'schaltbilder/ct-universalrechner.svg',
+      def: 'Vereinfachter Datenpfad: BZ und ROM liefern die Befehlsworte, M3/M4 wählen Operanden, M2 das Ergebnis, M1 Ergebnis oder Eingang, D das Zielregister.',
     },
 
     { chapter: '5 Befehlssätze und deren Klassifikation' },
@@ -758,6 +841,27 @@ window.DECKS.push({
       def: 'Ruft eine Funktion selbst eine Funktion auf, würde GO das Register mit der Rücksprungadresse überschreiben – deshalb wird sie vorher auf den Stack gesichert.',
     },
 
+    {
+      term: 'MMIX-Befehlswort',
+      img: 'schaltbilder/ct-mmix-befehlswort.svg',
+      def: '32 Bit: Opcode, X (Ziel), Y und Z (Quellen); Direktoperanden YZ bzw. XYZ.',
+    },
+    {
+      term: 'MMIX-Speichersegmente',
+      img: 'schaltbilder/ct-mmix-speichersegmente.svg',
+      def: 'Aufteilung des 64 Bit Adressraums in Segmente.',
+    },
+    {
+      term: 'Big Endian / Little Endian',
+      img: 'schaltbilder/ct-endian.svg',
+      def: 'Byte-Reihenfolge im Speicher; MMIX verwendet Big Endian.',
+    },
+    {
+      term: 'Stack beim Funktionsaufruf',
+      img: 'schaltbilder/ct-stack.svg',
+      def: 'Drei Parameter vom Aufrufer, darüber zwei von der Funktion gesicherte Register. SP zeigt auf das zuletzt abgelegte Element.',
+    },
+
     { chapter: '7 Pipelining' },
     {
       term: 'Pipelining',
@@ -820,6 +924,17 @@ window.DECKS.push({
       term: 'Sprungvorhersage über P-Varianten',
       def: 'Normale Sprungbefehle: Es wird angenommen, dass nicht gesprungen wird. P-Varianten: Es wird angenommen, dass gesprungen wird – die Befehle am Sprungziel kommen in die Pipeline.',
       ex: '// do { … } while (a >= 0);\nStart …\n      SUB  a,a,1\n      PBNN a,Start',
+    },
+
+    {
+      term: 'Pipeline-Stufen (MMIX)',
+      img: 'schaltbilder/ct-pipeline.svg',
+      def: 'Fünf Stufen, getrennt durch Pipeline-Register.',
+    },
+    {
+      term: 'Pipeline-Füll-Diagramm',
+      img: 'schaltbilder/ct-pipeline-fuelldiagramm.svg',
+      def: 'Jeder Befehl wandert pro Takt eine Stufe weiter.',
     },
 
     { chapter: '8 Cache' },
@@ -929,6 +1044,21 @@ window.DECKS.push({
       term: 'Set-assoziativer Cache',
       def: 'Kompromiss: Adresse = Schlüssel $k$ | Set-Nr. $s$ | Byte-Auswahl $b$. Jedes Set hat $a$ Rahmen (Assoziativität); es werden nur $a$ Tags verglichen ($a \\cdot k$ Vergleicher).',
       ex: '8-fach, 1 MB, 32 Byte Rahmen:\nb = 5, Sets = 2^12 → s = 12\nk = 64 − 12 − 5 = 47',
+    },
+    {
+      term: 'Speicherhierarchie',
+      img: 'schaltbilder/ct-speicherhierarchie.svg',
+      def: 'Oben schnell und klein, unten langsam und groß.',
+    },
+    {
+      term: 'Direkt-abgebildeter Cache',
+      img: 'schaltbilder/ct-cache-direkt.svg',
+      def: '$f$ wählt den Rahmen, das Tag wird mit dem Schlüssel $k$ verglichen (Hit), $b$ wählt das Byte.',
+    },
+    {
+      term: 'Set-assoziativer Cache',
+      img: 'schaltbilder/ct-cache-set.svg',
+      def: '$s$ wählt ein Set mit $a$ Rahmen; nur deren Tags werden verglichen.',
     },
   ],
 });
