@@ -187,7 +187,7 @@ def _(s):
     s.resistor(420, 40, 420, 150, 'G')
     s.term(520, 40); s.term(520, 150)
     s.u_arrow(500, 55, 135, "u'", 'left')
-    s.plain(280, 180, 'i₀ = u₀ / R,   G = 1 / R', size=18)
+    s.plain(280, 180, 'i_0 = u_0 / R,   G = 1 / R', size=18)
 
 
 @fig('ideale-diode', 420, 190)
@@ -357,7 +357,7 @@ def _(s):
 
 @fig('hybride-schaltungen', 460, 540)
 def _(s):
-    for k, (title, left_ser) in enumerate((('Serien-Parallel: H addieren', True), ('Parallel-Serien: H′ addieren', False))):
+    for k, (title, left_ser) in enumerate((('Serie/Parallel: H addieren', True), ('Parallel/Serie: H′ addieren', False))):
         dy = k * 280
         s.block(180, 20 + dy, 100, 80, 'F_1', size=18); s.block(180, 140 + dy, 100, 80, 'F_2', size=18)
         a1, b1, a2, b2 = 35 + dy, 85 + dy, 155 + dy, 205 + dy

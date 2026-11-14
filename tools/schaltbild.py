@@ -43,6 +43,77 @@ def fmt_label(s):
     return ''.join(out)
 
 
+# ---------- LaTeX-Formelsatz (matplotlib mathtext, Schrift Computer Modern) ----------
+try:
+    import matplotlib
+    matplotlib.rcParams['mathtext.fontset'] = 'cm'
+    from matplotlib.textpath import TextPath
+    from matplotlib.path import Path
+    HAVE_MPL = True
+except ImportError:          # ohne matplotlib: einfache Textbeschriftung
+    HAVE_MPL = False
+
+SYMBOLS = {'Δ': r'\Delta ', 'β': r'\beta ', 'μ': r'\mu ', 'ü': r'\ddot{u}', '−': '-', '·': r'\cdot ',
+           '≡': r'\equiv ', '⇔': r'\Leftrightarrow ', '⋮': r'\vdots ', '∞': r'\infty ', '′': "'", 'é': r'\acute{e}'}
+
+
+def to_tex(s):
+    """Beschriftung in LaTeX übersetzen: Formelzeichen kursiv, Wörter und Wort-Indizes aufrecht."""
+    out = []
+    i = 0
+    def word(w, sub):
+        return rf'\mathrm{{{w}}}' if (len(w) >= 3 or (sub and len(w) >= 2)) else w
+    def conv(txt, sub=False):
+        res = ''
+        toks = re.findall(r"[A-Za-zäöüéß]+|\s+|.", txt)
+        ops = set('=:+-−·/<>≈,≡⇔')
+        for k, tok in enumerate(toks):
+            if tok.isspace():
+                # Leerzeichen nur zwischen Wörtern/Zeichen behalten; um Operatoren setzt LaTeX selbst Abstände
+                prev = toks[k - 1] if k else ''; nxt = toks[k + 1] if k + 1 < len(toks) else ''
+                if prev and nxt and prev[-1] not in ops and nxt[0] not in ops: res += r'\ '
+                elif prev[-1:] == ',' : res += r'\ '
+            elif tok == 'ü': res += SYMBOLS['ü']
+            elif re.match(r"[A-Za-zäöüéß]", tok): res += word(tok, sub)
+            elif tok == "'": res += "'"
+            elif tok in SYMBOLS: res += SYMBOLS[tok]
+            elif tok in '%#&$': res += '\\' + tok
+            else: res += tok
+        return res
+    while i < len(s):
+        if s[i] == '_':
+            if s[i + 1] == '{':
+                j = s.index('}', i); body = s[i + 2:j]; i = j + 1
+            else:
+                body = s[i + 1]; i += 2
+            out.append('_{' + conv(body, True) + '}')
+        else:
+            j = i
+            while j < len(s) and s[j] != '_': j += 1
+            out.append(conv(s[i:j])); i = j
+    return '$' + ''.join(out) + '$'
+
+
+_CACHE = {}
+
+
+def tex_svg(x, y, tex, anchor, size):
+    key = (tex, size)
+    if key not in _CACHE:
+        tp = TextPath((0, 0), tex, size=size)
+        d = []
+        for verts, code in tp.iter_segments():
+            pts = [(verts[k], -verts[k + 1]) for k in range(0, len(verts), 2)]
+            c = {Path.MOVETO: 'M', Path.LINETO: 'L', Path.CURVE3: 'Q', Path.CURVE4: 'C', Path.CLOSEPOLY: 'Z'}[code]
+            d.append(c if c == 'Z' else c + ' '.join(f'{px:.2f},{py:.2f}' for px, py in pts))
+        ext = tp.get_extents()
+        _CACHE[key] = (' '.join(d), ext.x0, ext.x1)
+    d, x0, x1 = _CACHE[key]
+    tx = x - (x0 + x1) / 2 if anchor == 'middle' else (x - x0 if anchor == 'start' else x - x1)
+    ty = y + size * 0.33          # Grundlinie so, dass die Schrift mittig zur Position steht
+    return f'<path transform="translate({tx:.1f},{ty:.1f})" d="{d}" fill="{INK}"/>'
+
+
 class SVG:
     def __init__(self, w, h):
         self.w, self.h = w, h
@@ -66,12 +137,17 @@ class SVG:
         self.el.append(f'<path d="{d}" fill="{fill}" stroke="{INK}" stroke-width="{sw}"{da} stroke-linejoin="round" stroke-linecap="round"/>')
 
     def text(self, x, y, s, anchor='middle', size=20, raw=False):
+        """Beschriftung im LaTeX-Stil (Computer Modern, als Vektorpfad eingebettet)."""
+        if not s.strip():
+            return
+        if HAVE_MPL:
+            self.el.append(tex_svg(x, y, to_tex(s), anchor, size))
+            return
         body = s if raw else fmt_label(s)
         self.el.append(f'<text x="{x}" y="{y}" font-family="{FONT}" font-size="{size}" fill="{INK}" text-anchor="{anchor}" dominant-baseline="middle">{body}</text>')
 
     def plain(self, x, y, s, anchor='middle', size=17):
-        s = s.replace('&', '&amp;').replace('<', '&lt;')
-        self.el.append(f'<text x="{x}" y="{y}" font-family="{FONT}" font-size="{size}" fill="{INK}" text-anchor="{anchor}" dominant-baseline="middle">{s}</text>')
+        self.text(x, y, s, anchor, size)
 
     def head(self, x, y, dx, dy, size=7):
         """Gefüllte Pfeilspitze an (x, y), zeigt in Richtung (dx, dy)."""
