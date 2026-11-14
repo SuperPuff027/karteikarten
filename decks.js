@@ -5,7 +5,8 @@
  *   more       – optional: Vertiefung -> erzeugt eine zweite Karte „Begriff: Methode“
  *   moreLabel  – optional: Bezeichnung der Vertiefung (Standard: „Methode“)
  * Farben: sage, rose, sky, sand, lilac, mint, peach, stone
- * Formatierung in Texten: Leerzeile = neuer Absatz, "- " = Liste, **fett**, `code`
+ * Formatierung in Texten: Leerzeile = neuer Absatz, "- " = Liste, **fett**, `code`,
+ *   Formeln im LaTeX-Stil: $…$ im Text, $$…$$ abgesetzt (Backslashes im JS-String doppelt: \\frac)
  */
 window.DECKS = [
   {
@@ -60,7 +61,7 @@ window.DECKS = [
       },
       {
         term: 'Adresse',
-        def: 'Nummer einer adressierbaren Einheit im Speicher. Im RAM bilden je 8 Bit (1 Byte) eine Einheit; durchnummeriert ab 0.',
+        def: 'Nummer einer adressierbaren Einheit im Speicher. Im RAM bilden je $8\\,\\text{Bit} = 1\\,\\text{Byte}$ eine Einheit; durchnummeriert ab 0.',
       },
       {
         term: 'Register',
@@ -74,7 +75,7 @@ window.DECKS = [
       },
       {
         term: 'Allzweckregister',
-        def: 'Durchnummerierte Register (z. B. 32), in die Daten zur Verarbeitung geladen werden. Zur Adressierung reichen wenige Bits (z. B. 5).',
+        def: 'Durchnummerierte Register, in die Daten zur Verarbeitung geladen werden. Zur Adressierung reichen wenige Bits, z. B. $2^5 = 32$ Register → 5 Bit.',
       },
       {
         term: 'RISC',
@@ -82,7 +83,7 @@ window.DECKS = [
       },
       {
         term: 'Befehlszähler',
-        def: 'Register mit der Adresse des auszuführenden Befehls. Wird um die Befehlslänge (z. B. 4) erhöht, bei Sprüngen um einen Offset verändert.',
+        def: 'Register mit der Adresse des auszuführenden Befehls. Normal: $\\text{BZ} \\leftarrow \\text{BZ} + 4$ (Befehlslänge), bei Sprüngen: $\\text{BZ} \\leftarrow \\text{BZ} + \\text{Offset}$.',
       },
       {
         term: 'Befehlsregister',
@@ -117,7 +118,7 @@ window.DECKS = [
       {
         term: 'Speicheradressierung mit [ ]',
         def: 'Eckige Klammern bedeuten: Der Wert darin wird als Speicheradresse verwendet, z. B. `[sp]` = Adresse aus dem Stackpointer.',
-        more: '- `[sp,#-16]` → Basisregister + Offset, sp bleibt unverändert\n- `[sp,#-16]!` → **Pre-Indexed:** erst sp = sp − 16, dann mit neuem sp adressieren\n- `[sp], #-16` → **Post-Indexed:** erst mit sp adressieren, danach sp anpassen',
+        more: '- `[sp,#-16]` → Adresse $= sp - 16$, sp bleibt unverändert\n- `[sp,#-16]!` → **Pre-Indexed:** erst $sp \\leftarrow sp - 16$, dann mit neuem sp adressieren\n- `[sp], #-16` → **Post-Indexed:** erst mit sp adressieren, danach $sp \\leftarrow sp - 16$',
         moreLabel: 'Methode',
       },
       {
@@ -592,7 +593,7 @@ window.DECKS = [
       },
       {
         term: 'Sequentielle Befehlsverarbeitung',
-        def: 'Befehle werden nacheinander abgearbeitet: Der Befehlszähler wird jeweils um die Befehlswortbreite in Byte (z. B. 4) erhöht.',
+        def: 'Befehle werden nacheinander abgearbeitet: Der Befehlszähler wird jeweils um die Befehlswortbreite in Byte erhöht, z. B. $\\text{BZ} \\leftarrow \\text{BZ} + 4$.',
       },
       {
         term: 'Sprungbefehl',
@@ -601,7 +602,7 @@ window.DECKS = [
       {
         term: 'Rücksprung (ret)',
         def: 'Springt zum Befehl direkt nach dem Funktionsaufruf zurück. Die Rücksprungadresse liegt in einem speziellen Register (ARM: Link-Register).',
-        more: 'Die Rücksprungadresse wird schon beim Aufruf berechnet:\nBefehlszählerwert des Sprungbefehls + Befehlswortbreite\nz. B. `0x10418436c + 4 = 0x104184370`\n\nSie wird im Link-Register abgelegt und beim `ret` als Sprungziel verwendet.',
+        more: 'Die Rücksprungadresse wird schon beim Aufruf berechnet:\n$$\\text{Rücksprungadresse} = \\text{BZ}_{\\text{Sprung}} + \\text{Befehlswortbreite}$$\nz. B. $\\texttt{0x10418436c} + 4 = \\texttt{0x104184370}$\n\nSie wird im Link-Register abgelegt und beim `ret` als Sprungziel verwendet.',
         moreLabel: 'Methode',
       },
       {
@@ -614,7 +615,7 @@ window.DECKS = [
       },
       {
         term: 'Input/Output-System',
-        def: 'Sicht auf eine Funktion: Man übergibt eine Eingabe und erhält eine entsprechende Ausgabe (wie bei cos: 5,34 → 0,59).',
+        def: 'Sicht auf eine Funktion: Man übergibt eine Eingabe und erhält eine entsprechende Ausgabe, z. B. $\\cos(5{,}34) \\approx 0{,}59$.',
       },
       {
         term: 'Black-Box',
@@ -748,7 +749,7 @@ window.DECKS = [
       },
       {
         term: 'Rückgabewert von main',
-        def: 'Meldet Erfolg oder Misserfolg: 0 = Erfolg (`EXIT_SUCCESS`), ungleich 0 = Fehler (`EXIT_FAILURE`, beide in stdlib.h).',
+        def: 'Meldet Erfolg oder Misserfolg: $= 0$ → Erfolg (`EXIT_SUCCESS`), $\\neq 0$ → Fehler (`EXIT_FAILURE`, beide in stdlib.h).',
         more: '- Idee: Ein Programm kann nur auf eine Art erfolgreich sein, aber auf viele Arten scheitern → alle Zahlen ≠ 0 bleiben für Fehlerarten frei.\n- `return` in main ist seit C99 optional; fehlt es, gibt main automatisch 0 zurück.\n- In der Shell auslesen mit `echo $?`.',
         moreLabel: 'Details',
       },

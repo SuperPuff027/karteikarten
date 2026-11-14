@@ -80,11 +80,26 @@
   const esc = s => String(s == null ? '' : s).replace(/[&<>"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;' }[c]));
   const uid = () => 'f' + Date.now().toString(36) + Math.random().toString(36).slice(2, 6);
 
+  // Inline-Formatierung: `code`, $Formel$, $$Formel$$ (LaTeX via KaTeX), **fett**
+  function fmt(s) {
+    const keep = [];
+    const hold = html => '\u0000' + (keep.push(html) - 1) + '\u0000';
+    let t = String(s == null ? '' : s)
+      .replace(/`([^`]+)`/g, (m, c) => hold('<code>' + esc(c) + '</code>'))
+      .replace(/\$\$([^$]+?)\$\$|\$([^$\n]+?)\$/g, (m, d, i) => hold(tex(d != null ? d : i, d != null)));
+    t = esc(t).replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    return t.replace(/\u0000(\d+)\u0000/g, (m, n) => keep[+n]);
+  }
+  function tex(src, display) {
+    if (window.katex) {
+      try { return katex.renderToString(src, { displayMode: display, throwOnError: false, output: 'html' }); } catch (e) {}
+    }
+    return '<code>' + esc(src) + '</code>'; // Fallback, falls KaTeX nicht geladen ist
+  }
+
   // Minimal-Formatierung: Absätze, "- " Listen, **fett**
   function rich(text) {
-    const inline = s => esc(s)
-      .replace(/`([^`]+)`/g, '<code>$1</code>')
-      .replace(/\*\*(.+?)\*\*/g, '<strong>$1</strong>');
+    const inline = fmt;
     const blocks = String(text || '').trim().split(/\n\s*\n/);
     const isItem = l => /^\s*[-•]\s+/.test(l);
     return blocks.map(b => {
@@ -272,7 +287,7 @@
       <div class="list">${cs.length ? cs.map(c => `<div class="row card-preview">
           <span class="dot" style="background:${dotFor(stats[statKey(f.id, c.term, null)])}"></span>
           <span class="grow"><div class="title">${esc(c.term)}${c.more ? `<span class="tag">+ ${esc(c.moreLabel || 'Methode')}</span>` : ''}${c.own ? '<span class="tag">eigene</span>' : ''}</div>
-          <div class="sub">${esc(String(c.def).replace(/[`*]/g, ''))}</div></span>
+          <div class="sub">${fmt(c.def)}</div></span>
           ${c.own ? `<button class="del" data-action="del-card" data-i="${c.ownIndex}" aria-label="Karte löschen">×</button>` : ''}
         </div>`).join('') : '<div class="empty">Dieser Ordner ist noch leer.</div>'}</div>
 
@@ -357,7 +372,7 @@
     const showTerm = (side === 'front') !== prefs.reverse;
     let inner;
     if (showTerm) {
-      inner = `<div class="term">${esc(item.term)}${item.label ? `<span style="font-weight:400;opacity:.55">: ${esc(item.label)}</span>` : ''}</div>`;
+      inner = `<div class="term">${fmt(item.term)}${item.label ? `<span style="font-weight:400;opacity:.55">: ${esc(item.label)}</span>` : ''}</div>`;
     } else {
       inner = `<div class="text ${lengthClass(item.text)}">${rich(item.text)}</div>`;
     }

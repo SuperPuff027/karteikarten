@@ -2,7 +2,8 @@
  * Strategie „Netzwerk zuerst“: Online kommen immer die neuesten Karten,
  * offline wird die zuletzt geladene Version aus dem Cache verwendet.
  */
-const CACHE = 'karteikarten-v1';
+const CACHE = 'karteikarten-v2';
+const CDN = 'cdnjs.cloudflare.com';
 const SHELL = [
   './', 'index.html', 'style.css', 'app.js', 'decks.js', 'manifest.webmanifest',
   'icons/icon-192.png', 'icons/icon-512.png', 'icons/apple-touch-icon.png', 'icons/favicon-32.png',
@@ -27,7 +28,19 @@ self.addEventListener('activate', e => {
 self.addEventListener('fetch', e => {
   const req = e.request;
   const url = new URL(req.url);
-  if (req.method !== 'GET' || url.origin !== location.origin) return;
+  if (req.method !== 'GET') return;
+
+  // KaTeX (Skript, CSS, Schriften) vom CDN: versioniert, daher Cache zuerst → Formeln auch offline
+  if (url.host === CDN) {
+    e.respondWith(
+      caches.match(req).then(hit => hit || fetch(req).then(res => {
+        const copy = res.clone(); caches.open(CACHE).then(c => c.put(req, copy));
+        return res;
+      }))
+    );
+    return;
+  }
+  if (url.origin !== location.origin) return;
 
   // Cache-Schlüssel ohne ?v=… (die App hängt einen Zeitstempel an, um immer frisch zu laden)
   const key = req.mode === 'navigate' ? new URL('./', location).href : url.origin + url.pathname;

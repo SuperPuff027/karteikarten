@@ -21,7 +21,8 @@ Die App lässt sich auf den Home-Bildschirm legen, startet dann im Vollbild und 
 - **Lernstand** pro Ordner mit Fortschrittsbalken
 - **Eigene Ordner und Karten** direkt in der App anlegen
 - **Hell- und Dunkelmodus**
-- Menü im **Hochformat**, Lernen im **Querformat**
+- Für das **Hochformat** am Handy gemacht (funktioniert auch quer und am PC)
+- **Formeln im LaTeX-Stil** (KaTeX)
 
 Lernstand und eigene Karten werden nur im eigenen Browser gespeichert (localStorage) – jedes Gerät hat seinen eigenen Stand.
 
@@ -59,7 +60,8 @@ Lernsets stehen in [`decks.js`](decks.js). Jeder Eintrag ist ein Ordner:
 }
 ```
 
-Formatierung in Texten: Leerzeile = neuer Absatz, `- ` = Liste, `**fett**`, `` `code` ``.
+Formatierung in Texten: Leerzeile = neuer Absatz, `- ` = Liste, `**fett**`, `` `code` ``,
+Formeln im LaTeX-Stil mit `$…$` (im Text) oder `$$…$$` (abgesetzt). In JavaScript-Strings Backslashes verdoppeln, z. B. `'$\\frac{a}{b}$'`.
 
 ## Lokal starten
 
