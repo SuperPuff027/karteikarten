@@ -4,6 +4,14 @@ Minimalistische Karteikarten-App für den Browser – ohne Installation, ohne An
 
 **App öffnen:** https://superpuff027.github.io/karteikarten/
 
+## Als App installieren
+
+Die App lässt sich auf den Home-Bildschirm legen, startet dann im Vollbild und funktioniert auch offline. In der App gibt es dafür unten im Menü den Knopf **„Auf Home-Bildschirm installieren“**.
+
+- **iPhone/iPad:** Link in Safari öffnen → Teilen-Symbol → „Zum Home-Bildschirm“ → „Hinzufügen“
+- **Android:** Link in Chrome öffnen → „Installieren“ antippen (oder Menü ⋮ → „App installieren“)
+- **PC/Mac:** In Chrome oder Edge auf das Installieren-Symbol in der Adressleiste klicken
+
 ## Funktionen
 
 - **Lernsets als Ordner** – im Menü einen Ordner wählen und nur dieses Fach lernen

@@ -6,6 +6,15 @@
   <meta name="theme-color" content="#f7f7f5">
   <title>Karteikarten</title>
   <link rel="stylesheet" href="style.css">
+
+  <!-- Installierbar als App (Android + iPhone) -->
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" type="image/png" sizes="32x32" href="icons/favicon-32.png">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Karteikarten">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <script>
     // Theme vor dem ersten Rendern setzen (kein Aufblitzen)
     try {
@@ -33,6 +42,12 @@
       s.async = false;
       document.body.appendChild(s);
     });
+    // Service Worker: Offline-Nutzung + Installierbarkeit (nur über https/localhost)
+    if ('serviceWorker' in navigator && /^https?:$/.test(location.protocol)) {
+      addEventListener('load', function () {
+        navigator.serviceWorker.register('sw.js').catch(function () {});
+      });
+    }
   </script>
 </body>
 </html>

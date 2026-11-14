@@ -161,6 +161,7 @@ button.row:active { background: var(--press); }
 .form input:focus, .form textarea:focus { border-color: var(--line-strong); }
 .form .actions { display: flex; gap: 8px; justify-content: flex-end; }
 .swatches { display: flex; gap: 10px; flex-wrap: wrap; }
+.install-help ol { margin: 0; padding-left: 1.3em; display: grid; gap: 8px; font-size: 14px; }
 .swatch {
   width: 28px; height: 28px; border-radius: 50%;
   border: var(--hair) solid var(--line-strong); padding: 0;

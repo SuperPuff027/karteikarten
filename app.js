@@ -179,7 +179,46 @@
       <div class="list">${mine.length ? mine.map(folderRow).join('') : '<div class="empty">Noch keine eigenen Ordner.</div>'}</div>
 
       <div style="margin-top:14px">${state.newFolder ? newFolderForm() : '<button class="btn block" data-action="new-folder">+ Neuer Ordner</button>'}</div>
+
+      ${installBlock()}
     </div>`;
+  }
+
+  // ---------- Installation auf dem Home-Bildschirm ----------
+  let installPrompt = null;
+  const isStandalone = () => matchMedia('(display-mode: standalone)').matches || navigator.standalone === true;
+  const isIOS = () => /iphone|ipad|ipod/i.test(navigator.userAgent) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  const isAndroid = () => /android/i.test(navigator.userAgent);
+
+  addEventListener('beforeinstallprompt', e => { e.preventDefault(); installPrompt = e; if (state.view === 'home') render(); });
+  addEventListener('appinstalled', () => { installPrompt = null; state.installHelp = false; if (state.view === 'home') render(); });
+
+  function installBlock() {
+    if (isStandalone()) return '';
+    let help = '';
+    if (state.installHelp) {
+      const steps = isIOS()
+        ? ['In <strong>Safari</strong> öffnen (ab iOS 16.4 geht auch Chrome).', 'Auf das <strong>Teilen-Symbol</strong> tippen (Quadrat mit Pfeil nach oben).', '<strong>„Zum Home-Bildschirm“</strong> wählen, dann <strong>„Hinzufügen“</strong>.']
+        : isAndroid()
+          ? ['Oben rechts das <strong>Browser-Menü (⋮)</strong> öffnen.', '<strong>„App installieren“</strong> bzw. <strong>„Zum Startbildschirm hinzufügen“</strong> wählen.', 'Mit <strong>„Installieren“</strong> bestätigen.']
+          : ['In Chrome oder Edge in der Adressleiste auf das <strong>Installieren-Symbol</strong> klicken.', 'Oder im Browser-Menü <strong>„App installieren“</strong> wählen.', 'Am Handy: Link öffnen und dort zum Home-Bildschirm hinzufügen.'];
+      help = `<div class="form install-help">
+        <ol>${steps.map(s => `<li>${s}</li>`).join('')}</ol>
+        <div class="actions"><button class="btn ghost" data-action="install-close">Schließen</button></div>
+      </div>`;
+    }
+    return `<div class="section-label">App</div>
+      ${help || '<button class="btn block" data-action="install">Auf Home-Bildschirm installieren</button>'}`;
+  }
+
+  async function install() {
+    if (installPrompt) {
+      installPrompt.prompt();
+      try { await installPrompt.userChoice; } catch (e) {}
+      installPrompt = null; render();
+    } else {
+      state.installHelp = true; render();
+    }
   }
 
   function newFolderForm() {
@@ -392,6 +431,8 @@
     const a = el.dataset.action;
     switch (a) {
       case 'theme': toggleTheme(); break;
+      case 'install': install(); break;
+      case 'install-close': state.installHelp = false; render(); break;
       case 'open': state.folderId = el.dataset.id; state.view = 'folder'; state.newCard = false; render(); scrollTo(0, 0); break;
       case 'home': state.view = 'home'; render(); break;
       case 'new-folder': state.newFolder = true; state.newFolderColor = null; render(); break;
