@@ -62,7 +62,7 @@ def to_tex(s):
     out = []
     i = 0
     def word(w, sub):
-        return rf'\mathrm{{{w}}}' if (len(w) >= 3 or (sub and len(w) >= 2)) else w
+        return rf'\mathrm{{{w}}}' if (len(w) >= 3 or (sub and len(w) >= 2) or re.fullmatch('[IVX]+', w)) else w
     def conv(txt, sub=False):
         res = ''
         toks = re.findall(r"[A-Za-zäöüéß]+|\s+|.", txt)
@@ -71,8 +71,9 @@ def to_tex(s):
             if tok.isspace():
                 # Leerzeichen nur zwischen Wörtern/Zeichen behalten; um Operatoren setzt LaTeX selbst Abstände
                 prev = toks[k - 1] if k else ''; nxt = toks[k + 1] if k + 1 < len(toks) else ''
-                if prev and nxt and prev[-1] not in ops and nxt[0] not in ops: res += r'\ '
+                if nxt and nxt[0] not in ops and (not prev or prev[-1] not in ops): res += r'\ '
                 elif prev[-1:] == ',' : res += r'\ '
+            elif tok == '-' and 0 < k < len(toks) - 1 and toks[k - 1][-1:].isalpha() and toks[k + 1][:1].isalpha(): res += '{-}'
             elif tok == 'ü': res += SYMBOLS['ü']
             elif re.match(r"[A-Za-zäöüéß]", tok): res += word(tok, sub)
             elif tok == "'": res += "'"
@@ -91,7 +92,9 @@ def to_tex(s):
             j = i
             while j < len(s) and s[j] != '_': j += 1
             out.append(conv(s[i:j])); i = j
-    return '$' + ''.join(out) + '$'
+    tex = ''.join(out)
+    tex = re.sub(r"'_\{([^}]*)\}", lambda m: '_{' + m.group(1) + r'}^{\prime}', tex)   # G'_1 -> G_1 mit Strich darüber
+    return '$' + tex + '$'
 
 
 _CACHE = {}

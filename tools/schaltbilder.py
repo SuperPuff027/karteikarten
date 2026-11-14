@@ -90,7 +90,7 @@ def _(s):
 def _(s):
     s.term(30, 65); s.term(290, 65)
     s.switch(30, 65, 290, 'S(t)')
-    s.plain(160, 98, 'geschlossen: S = 1   ·   offen: S = 0', size=17)
+    s.plain(160, 98, 'S = 1 geschlossen,   S = 0 offen', size=17)
 
 
 @fig('norator', 420, 190)
@@ -276,7 +276,7 @@ def _(s):
     s.line((30, 40), (150, 40)); s.line((30, 130), (150, 130))
     s.line((250, 40), (370, 40)); s.line((250, 130), (370, 130))
     s.nullator(150, 40, 150, 130); s.norator(250, 40, 250, 130)
-    s.u_arrow(55, 52, 118, 'u_1 = 0', 'right'); s.text(60, -4, 'i_1 = 0', size=17)
+    s.u_arrow(55, 52, 118, 'u_1 = 0', 'left'); s.text(60, -4, 'i_1 = 0', size=17)
     s.text(330, -4, 'i_2 beliebig', size=17); s.u_arrow(345, 52, 118, 'u_2', 'left')
 
 
