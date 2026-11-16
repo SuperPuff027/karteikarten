@@ -58,6 +58,7 @@ window.DECKS = [
       {
         term: 'Little Endian',
         def: 'Byte-Reihenfolge, bei der das niederwertigste Byte an der niedrigsten Adresse steht: `0xFD7BBFA9` liegt als `A9 BF 7B FD` im Speicher.',
+        calc: 'Speicherbild eines Werts bestimmen:\n- Wert in Hex schreiben und in Bytes zerlegen\n- Bytes in umgekehrter Reihenfolge ablegen – niederwertigstes Byte an die niedrigste Adresse',
       },
       {
         term: 'Bare Metal',
@@ -378,6 +379,7 @@ window.DECKS = [
       {
         term: 'Rückgabewert von main',
         def: 'Meldet Erfolg oder Misserfolg (Konstanten aus stdlib.h):\n- $= 0$ → Erfolg (`EXIT_SUCCESS`)\n- $\\neq 0$ → Fehler (`EXIT_FAILURE`)',
+        calc: 'Erfolg eines Programms prüfen:\n- Programm in der Shell ausführen\n- direkt danach `echo $?`\n- 0 → Erfolg, sonst Fehlercode',
         ex: "return EXIT_FAILURE;",
         more: '- Idee: Ein Programm kann nur auf eine Art erfolgreich sein, aber auf viele Arten scheitern → alle Zahlen ≠ 0 bleiben für Fehlerarten frei.\n- `return` in main ist seit C99 optional; fehlt es, gibt main automatisch 0 zurück.\n- In der Shell auslesen mit `echo $?`.',
         moreLabel: 'Details',
@@ -453,11 +455,13 @@ window.DECKS = [
       {
         term: 'ASCII',
         def: 'Zeichentabelle, die Zeichen Zahlen zuordnet, z. B. \'A\' = 65 = 0x41, \'d\' = 100.',
+        calc: '- Zeichen in der ASCII-Tabelle suchen\n- Zeile (oberes Nibble) und Spalte (unteres Nibble) ergeben den Hexwert\n- in C einfach `printf("%d", \'A\');`',
         ex: "printf(\"%d\", 'A');  // 65",
       },
       {
         term: 'Default Argument Promotion',
         def: 'Argumente mit kleiner Wortbreite (z. B. char, short) werden bei printf auf int erweitert (integer promotion), Gleitkommazahlen auf double.',
+        calc: 'Ausgabe von printf vorhersagen:\n- ist der Typ kleiner als int → auf int erweitern\n- signed: mit dem MSB auffüllen, unsigned: mit 0 auffüllen\n- erweiterten Wert mit dem Platzhalter (z. B. `%x`) ausgeben',
         ex: "char b = 0xff;\nprintf(\"%x\", b);  // ffffffff",
         more: 'Beispiel `char b = 0xff;` (char ist vorzeichenbehaftet, MSB gesetzt → −1):\n- Erweiterung mit 24 Einsen → `11111111 … 11111111`\n- `%x` gibt `ffffffff` aus, `%u` gibt 4294967295 aus\n\nMit `unsigned char b = 0xff;` (= 255) wird mit 24 Nullen erweitert → `%x` gibt `ff` aus.\n\nAbhilfe: Längenangabe, z. B. `%hhx` → nur die untersten 8 Bit.',
         moreLabel: 'Beispiel',
@@ -465,6 +469,7 @@ window.DECKS = [
       {
         term: 'signed vs. unsigned',
         def: '- **signed:** vorzeichenbehaftet, MSB = Vorzeichen (`0xff` als char = −1)\n- **unsigned:** ohne Vorzeichen (`0xff` als unsigned char = 255)',
+        calc: 'Wert eines Bytes bestimmen:\n- **unsigned:** Binärwert direkt umrechnen\n- **signed:** MSB = 0 → wie unsigned; MSB = 1 → Wert minus 256 (Zweierkomplement)\n\n`0xff`: unsigned 255, signed −1',
         ex: "signed char a = 0xff;    // -1\nunsigned char b = 0xff;  // 255",
       },
       {
@@ -477,6 +482,7 @@ window.DECKS = [
       {
         term: 'sizeof',
         def: 'Operator (keine Funktion!), der die Größe eines Ausdrucks oder Typs in Byte liefert.\n- wird vom Compiler ausgewertet\n- Ausgabe mit `%zu`',
+        calc: '- `sizeof(Typ)` oder `sizeof Ausdruck` schreiben\n- mit `%zu` ausgeben\n- Wert hängt von der Plattform ab (z. B. int meist 4)',
         ex: "printf(\"%zu\", sizeof(int));  // 4",
       },
       {
@@ -487,10 +493,12 @@ window.DECKS = [
       {
         term: 'Breite (printf)',
         def: 'Mindestanzahl an Stellen der Ausgabe. Ist sie größer als nötig, wird rechtsbündig mit Leerzeichen aufgefüllt, z. B. `[%5d]` → `[   12]`.',
+        calc: '- Länge der Ausgabe ohne Breite bestimmen\n- ist sie kleiner als die Breite → links mit Leerzeichen auffüllen\n- sonst unverändert ausgeben',
       },
       {
         term: 'Genauigkeit (printf)',
         def: 'Zahl nach einem Punkt im Platzhalter. Bedeutung hängt vom Typ ab.',
+        calc: '- **Gleitkomma:** auf so viele Nachkommastellen runden\n- **Ganzzahl:** vorne mit Nullen auf so viele Ziffern auffüllen\n- **Zeichenkette:** nach so vielen Zeichen abschneiden',
         ex: "printf(\"%.2f\", 1.4142);  // 1.41",
         more: '- Gleitkommazahl: Anzahl Nachkommastellen, `%.2f` → `1.41`\n- Ganzzahl: Mindestanzahl Ziffern, mit 0 aufgefüllt, `%.6d` → `000123`\n- Zeichenkette: maximale Zeichenzahl, `%.2s` → `Ha`',
         moreLabel: 'Methode',

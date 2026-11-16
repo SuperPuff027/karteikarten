@@ -58,12 +58,14 @@ window.DECKS.push({
     {
       term: 'Skalarprodukt',
       def: 'Standard-Skalarprodukt zweier Vektoren – eine Zahl: $$\\langle v, w \\rangle = v_1 w_1 + \\dots + v_n w_n$$',
+      calc: '- Einträge an gleicher Stelle multiplizieren\n- alle Produkte addieren\n\n$\\langle (1,2,3), (4,5,6) \\rangle = 4 + 10 + 18 = 32$',
       more: '- symmetrisch: $\\langle v, w \\rangle = \\langle w, v \\rangle$\n- linear in jedem Argument: $\\langle u + v, w \\rangle = \\langle u, w \\rangle + \\langle v, w \\rangle$, $\\;\\langle \\lambda v, w \\rangle = \\lambda \\langle v, w \\rangle$\n- $\\langle v, v \\rangle \\ge 0$\n- $\\langle v, v \\rangle = 0 \\Leftrightarrow v = O$',
       moreLabel: 'Eigenschaften',
     },
     {
       term: 'Euklidische Norm',
       def: 'Länge eines Vektors: $\\|v\\|_2 = \\sqrt{\\langle v, v \\rangle}$.\n- $\\|v\\|_2 = 0 \\Leftrightarrow v = O$\n- $\\|\\lambda v\\|_2 = |\\lambda|\\,\\|v\\|_2$\n- $\\|e_j\\|_2 = 1$',
+      calc: '- alle Einträge quadrieren\n- Quadrate addieren\n- Wurzel ziehen\n\n$\\|(3, 4)\\|_2 = \\sqrt{9 + 16} = 5$',
     },
     {
       term: 'Cauchy-Schwarz-Ungleichung',
@@ -76,6 +78,7 @@ window.DECKS.push({
     {
       term: 'Orthogonalität',
       def: '$v$ und $w$ heißen orthogonal, wenn $\\langle v, w \\rangle = 0$.',
+      calc: '- Skalarprodukt $\\langle v, w \\rangle$ berechnen\n- ist es 0 → orthogonal, sonst nicht',
     },
     {
       term: 'Satz von Pythagoras',
@@ -88,12 +91,14 @@ window.DECKS.push({
     {
       term: 'Projektion',
       def: 'Projektion von $v$ entlang $w \\neq O$: $$\\text{proj}_w(v) = \\frac{\\langle v, w \\rangle}{\\langle w, w \\rangle}\\, w$$',
+      calc: '- $\\langle v, w \\rangle$ berechnen\n- $\\langle w, w \\rangle$ berechnen\n- Quotient $\\frac{\\langle v, w \\rangle}{\\langle w, w \\rangle}$ bilden\n- $w$ mit diesem Faktor multiplizieren',
       more: '- $\\text{proj}_w(v)$ ist der Punkt der Geraden durch den Ursprung mit Richtung $w$, der $v$ am nächsten liegt\n- $w$ und $v - \\text{proj}_w(v)$ sind orthogonal',
       moreLabel: 'Eigenschaften',
     },
     {
       term: 'Linearkombination',
       def: '$v = \\lambda_1 v^1 + \\dots + \\lambda_k v^k$ mit Koeffizienten $\\lambda_1, \\ldots, \\lambda_k \\in \\mathbb{R}$.\n\nJeder Vektor in $\\mathbb{R}^n$ ist eine Linearkombination der Standard-Einheitsvektoren.',
+      calc: 'Koeffizienten finden, um $v$ aus $v^1, \\ldots, v^k$ darzustellen:\n- $v^1, \\ldots, v^k$ als Spalten, $v$ als rechte Seite: $(v^1 \\cdots v^k \\mid v)$\n- mit Gauß lösen\n- Lösung = Koeffizienten; unlösbar → keine Linearkombination',
     },
 
     {
@@ -119,6 +124,7 @@ window.DECKS.push({
     {
       term: 'Lösungsmenge eines LGS',
       def: 'Menge aller Vektoren mit $n$ Einträgen (für $x_1, \\ldots, x_n$), die **alle** Gleichungen erfüllen.',
+      calc: '- erweiterte Koeffizientenmatrix aufstellen\n- in (strenge) Zeilenstufenform bringen\n- Zeile $(0 \\ldots 0 \\mid \\beta \\neq 0)$ → keine Lösung\n- Spalten ohne führende 1 → freie Variablen, als Parameter $t_1, t_2, \\ldots$ setzen\n- übrige Variablen durch die Parameter ausdrücken',
     },
     {
       term: 'LGS als Vektorproblem',
@@ -151,6 +157,7 @@ window.DECKS.push({
     {
       term: 'Rang einer Matrix',
       def: 'Anzahl der Zeilen in der Zeilenstufenform, die nicht nur Nullen enthalten: $\\text{rang}(A)$.',
+      calc: '- Matrix in Zeilenstufenform bringen\n- Zeilen zählen, die nicht nur Nullen enthalten',
     },
     {
       term: 'Rang und freie Variablen',
@@ -159,6 +166,7 @@ window.DECKS.push({
     {
       term: 'Lösbarkeit eines LGS',
       def: 'Äquivalent sind:\n- das LGS ist lösbar\n- die erweiterte Koeffizientenmatrix in ZSF hat keine Zeile $(0 \\ldots 0 \\mid \\beta)$ mit $\\beta \\neq 0$\n- $\\text{rang}(A) = \\text{rang}(A \\mid b)$',
+      calc: '- $(A \\mid b)$ in Zeilenstufenform bringen\n- Zeile $(0 \\ldots 0 \\mid \\beta)$ mit $\\beta \\neq 0$ → nicht lösbar\n- sonst lösbar; eindeutig, wenn $\\text{rang}(A) = n$ (keine freien Variablen)',
     },
 
     {
@@ -195,6 +203,7 @@ window.DECKS.push({
     {
       term: 'Linear abhängig / unabhängig',
       def: '- **linear abhängig:** es gibt $\\lambda_1, \\ldots, \\lambda_k$, nicht alle 0, mit $\\lambda_1 v^1 + \\dots + \\lambda_k v^k = O$\n- **linear unabhängig:** sonst – nur $\\lambda_1 = \\dots = \\lambda_k = 0$ liefert $O$',
+      calc: '- Vektoren als Spalten in eine Matrix $A$ schreiben\n- $A$ in Zeilenstufenform bringen\n- $\\text{rang}(A)$ = Anzahl der Vektoren → linear unabhängig\n- sonst (freie Variable in $Ax = O$) → linear abhängig',
     },
     {
       term: 'Lineare Abhängigkeit erkennen',
@@ -229,6 +238,7 @@ window.DECKS.push({
     {
       term: 'Matrizenmultiplikation',
       def: '$A \\in \\mathbb{R}^{m \\times p}$, $B \\in \\mathbb{R}^{p \\times n}$: $$c_{i,j} = \\sum_{k=1}^{p} a_{i,k}\\, b_{k,j}$$\n- nur definiert, wenn #Spalten von $A$ = #Zeilen von $B$\n- im Allgemeinen $AB \\neq BA$',
+      calc: '- prüfen: #Spalten von $A$ = #Zeilen von $B$\n- Ergebnis hat #Zeilen von $A$ und #Spalten von $B$\n- Eintrag $(i, j)$ = Zeile $i$ von $A$ mal Spalte $j$ von $B$ (Skalarprodukt)',
       more: 'Eintrag $c_{i,j}$ = Skalarprodukt von Zeile $i$ von $A$ mit Spalte $j$ von $B$. $$\\begin{pmatrix} 1 & 2 \\\\ 3 & 4 \\end{pmatrix}\\begin{pmatrix} 5 \\\\ 6 \\end{pmatrix} = \\begin{pmatrix} 1 \\cdot 5 + 2 \\cdot 6 \\\\ 3 \\cdot 5 + 4 \\cdot 6 \\end{pmatrix} = \\begin{pmatrix} 17 \\\\ 39 \\end{pmatrix}$$',
       moreLabel: 'Beispiel',
     },
@@ -257,6 +267,7 @@ window.DECKS.push({
     {
       term: 'Transponierte',
       def: '$A^{\\mathrm{T}}$: Zeilen und Spalten vertauscht; aus $(m \\times n)$ wird $(n \\times m)$.',
+      calc: '- Zeile 1 wird Spalte 1, Zeile 2 wird Spalte 2, …\n- also Eintrag $a_{i,j}$ an Position $(j, i)$ schreiben',
       more: '- $(A^{\\mathrm{T}})^{\\mathrm{T}} = A$\n- $(A + B)^{\\mathrm{T}} = A^{\\mathrm{T}} + B^{\\mathrm{T}}$\n- $(\\lambda A)^{\\mathrm{T}} = \\lambda A^{\\mathrm{T}}$\n- $(AB)^{\\mathrm{T}} = B^{\\mathrm{T}} A^{\\mathrm{T}}$ (Reihenfolge dreht sich um!)',
       moreLabel: 'Rechenregeln',
     },
@@ -273,6 +284,7 @@ window.DECKS.push({
     {
       term: 'Inverse Matrix',
       def: 'Gibt es zu $A \\in \\mathbb{R}^{n \\times n}$ ein $A^{-1}$ mit $AA^{-1} = A^{-1}A = I$, heißt $A$ invertierbar.\n- die Inverse ist eindeutig\n- elementare Matrizen sind invertierbar (Inverse wieder elementar)',
+      calc: '- $(A \\mid I)$ aufschreiben\n- Zeilenumformungen, bis links $I$ steht\n- rechts steht $A^{-1}$: $(I \\mid A^{-1})$\n- entsteht links eine Nullzeile → $A$ nicht invertierbar\n\nKontrolle: $AA^{-1} = I$.',
     },
     {
       term: 'LGS mit invertierbarer Matrix',
@@ -289,10 +301,6 @@ window.DECKS.push({
     {
       term: 'Einseitige Inverse genügt',
       def: 'Für quadratische $A, B$: Gilt $AB = I$ **oder** $BA = I$, dann ist $A$ invertierbar und $A^{-1} = B$.',
-    },
-    {
-      term: 'Inverse berechnen (Gauß-Jordan)',
-      def: '- Einheitsmatrix neben $A$ schreiben: $(A \\mid I)$\n- Zeilenumformungen anwenden, die $A$ zu $I$ machen\n- rechts steht dann $A^{-1}$: $(I \\mid A^{-1})$',
     },
     {
       term: 'Hauptsatz invertierbarer Matrizen',
@@ -315,24 +323,29 @@ window.DECKS.push({
     {
       term: 'Kern',
       def: '$\\text{kern}(A) = \\{x \\in \\mathbb{R}^n : Ax = O\\}$ – die Lösungsmenge des homogenen LGS. Ist ein Unterraum von $\\mathbb{R}^n$.',
+      calc: '- $(A \\mid O)$ in strenge Zeilenstufenform bringen\n- freie Variablen als Parameter $t_1, t_2, \\ldots$ setzen\n- führende Variablen durch die Parameter ausdrücken\n- $x$ als $t_1 v^1 + t_2 v^2 + \\dots$ schreiben → $v^1, v^2, \\ldots$ sind eine Basis des Kerns\n\n$\\dim(\\text{kern}(A))$ = Anzahl freier Variablen.',
     },
     {
       term: 'Struktur der Lösungsmenge',
       def: 'Ist $x\'$ eine Lösung von $Ax = b$, dann gilt:\n- $x\' + x^0$ ist für jedes $x^0 \\in \\text{kern}(A)$ ebenfalls eine Lösung\n- jede Lösung hat diese Form\n\nKurz: Lösungsmenge = spezielle Lösung + Kern.',
+      calc: '- eine spezielle Lösung $x\'$ von $Ax = b$ bestimmen\n- Kern von $A$ bestimmen (homogenes LGS)\n- Lösungsmenge $= \\{x\' + x^0 : x^0 \\in \\text{kern}(A)\\}$',
     },
     {
       term: 'Spaltenraum und Zeilenraum',
       def: '- **Spaltenraum** $\\text{col}(A) \\subseteq \\mathbb{R}^m$: Span der Spalten, $= \\{Ax : x \\in \\mathbb{R}^n\\}$ = alle $b$, für die $Ax = b$ lösbar ist\n- **Zeilenraum** $\\text{row}(A) \\subseteq \\mathbb{R}^n$: Span der Zeilen; ändert sich durch Zeilenumformungen nicht',
+      calc: '- **Spaltenraum:** $A$ in Zeilenstufenform bringen, Spalten mit führendem Eintrag merken → diese Spalten der **ursprünglichen** Matrix sind eine Basis\n- **Zeilenraum:** $A$ in Zeilenstufenform bringen → die Nicht-Nullzeilen sind eine Basis',
     },
     {
       term: 'Basis',
       def: 'Liste $v^1, \\ldots, v^k$ in einem Unterraum $U$ mit:\n- $v^1, \\ldots, v^k$ linear unabhängig\n- $\\text{span}(\\{v^1, \\ldots, v^k\\}) = U$\n\nJeder Unterraum hat eine Basis; alle Basen sind gleich lang.',
+      calc: 'Basis von $\\text{span}(\\{v^1, \\ldots, v^k\\})$:\n- Vektoren als Spalten in eine Matrix schreiben\n- in Zeilenstufenform bringen\n- Spalten mit führendem Eintrag merken\n- die zugehörigen ursprünglichen Vektoren bilden eine Basis',
     },
 
     { chapter: '13 Rangsatz' },
     {
       term: 'Dimension',
       def: '$\\dim(U)$: Anzahl der Vektoren in einer Basis von $U$.\n\n$\\dim(\\text{kern}(A))$ = Anzahl der freien Variablen.',
+      calc: '- Basis des Unterraums bestimmen\n- Basisvektoren zählen\n\nFür Matrizen: $\\dim(\\text{col}(A)) = \\text{rang}(A)$, $\\;\\dim(\\text{kern}(A)) = n - \\text{rang}(A)$.',
     },
     {
       term: 'Rangsatz',
@@ -355,6 +368,7 @@ window.DECKS.push({
     {
       term: 'Abbildungsmatrix',
       def: '$[f] \\in \\mathbb{R}^{m \\times n}$: die Matrix mit $f(x) = [f]\\,x$. Ihre Spalten sind die Bilder der Einheitsvektoren: $f(e_1), \\ldots, f(e_n)$.',
+      calc: '- $f(e_1), \\ldots, f(e_n)$ berechnen\n- diese Vektoren als Spalten nebeneinanderschreiben → $[f]$',
     },
     {
       term: 'Kern und Bild einer linearen Abbildung',
@@ -363,10 +377,16 @@ window.DECKS.push({
     {
       term: 'Injektiv / surjektiv / bijektiv bei linearen Abbildungen',
       def: '- **surjektiv** $\\Leftrightarrow \\text{im}(f) = \\mathbb{R}^m$\n- **injektiv** $\\Leftrightarrow \\text{kern}(f) = \\{O\\}$\n- **bijektiv** $\\Leftrightarrow m = n$ und $[f]$ invertierbar\n\nFür $f : \\mathbb{R}^n \\to \\mathbb{R}^n$ sind injektiv, surjektiv und bijektiv äquivalent.',
+      calc: '- Abbildungsmatrix $[f] \\in \\mathbb{R}^{m \\times n}$ aufstellen\n- $\\text{rang}([f])$ bestimmen\n- **injektiv:** $\\text{rang} = n$\n- **surjektiv:** $\\text{rang} = m$\n- **bijektiv:** beides, also $m = n = \\text{rang}$',
     },
     {
       term: 'Festlegung durch eine Basis',
       def: 'Stimmen zwei lineare Abbildungen $f, g$ auf einer Basis $b^1, \\ldots, b^n$ überein, dann gilt $f(v) = g(v)$ für alle $v$.',
+    },
+
+    {
+      term: 'Bild',
+      calc: '- Abbildungsmatrix $[f]$ aufstellen (Spalten $f(e_1), \\ldots, f(e_n)$)\n- $[f]$ in Zeilenstufenform bringen\n- Spalten mit führendem Eintrag merken\n- die zugehörigen Spalten der **ursprünglichen** Matrix sind eine Basis von $\\text{im}(f)$\n\n$\\dim(\\text{im}(f)) = \\text{rang}([f])$.',
     },
 
     { chapter: '15 Basiswechsel' },
@@ -377,10 +397,12 @@ window.DECKS.push({
     {
       term: 'Koordinaten bezüglich einer Basis',
       def: 'Aus $v = \\mu_1 b^1 + \\dots + \\mu_k b^k$: $[v]_B = (\\mu_1, \\ldots, \\mu_k)^{\\mathrm{T}}$.\n\nBilden die Spalten von $B$ eine Basis von $\\mathbb{R}^n$: $[v]_B = B^{-1} v$.',
+      calc: '- Basisvektoren als Spalten in $B$ schreiben\n- LGS $B\\,y = v$ lösen (oder $y = B^{-1} v$)\n- Lösung $y$ = $[v]_B$',
     },
     {
       term: 'Abbildungsmatrix bezüglich einer Basis',
       def: '$[f]_B$ hat die Spalten $[f(b^1)]_B, \\ldots, [f(b^n)]_B$. Berechnung: $$[f]_B = B^{-1}\\,[f]\\,B$$\n- es gilt $[f]_B\\,[x]_B = [f(x)]_B$',
+      calc: '- $[f]$ aufstellen\n- $B$ aus den Basisvektoren als Spalten bilden\n- $B^{-1}$ berechnen\n- $[f]_B = B^{-1}\\,[f]\\,B$ ausmultiplizieren',
     },
     {
       term: 'Ziel des Basiswechsels',
@@ -391,10 +413,12 @@ window.DECKS.push({
     {
       term: 'Markov-Kette (Autovermietung)',
       def: 'Verteilung $x$ der Autos auf die Standorte A, B, C; die Übergangsmatrix $A$ enthält, welcher Anteil von wo nach wo fährt.\n- nach einem Tag: $Ax$\n- nach $k$ Tagen: $A^k x$',
+      calc: '- Übergangsmatrix aufstellen: Spalte $j$ = Anteile, die von Standort $j$ zu den Standorten gehen\n- Startverteilung $x$ als Spaltenvektor\n- nach $k$ Tagen: $A^k x$ ausrechnen',
     },
     {
       term: 'Potenzen per Basiswechsel',
       def: 'Für invertierbares $B$: $$A^k = B\\,([A]_B)^k\\,B^{-1}$$ Ist $[A]_B$ einfach (z. B. Diagonalmatrix), lässt sich $A^k$ für große $k$ leicht berechnen.',
+      calc: '- Basis $B$ finden, in der $[A]_B = B^{-1} A B$ einfach ist (z. B. Diagonalmatrix)\n- $([A]_B)^k$ berechnen (bei Diagonalmatrix: Diagonaleinträge hoch $k$)\n- zurückrechnen: $A^k = B\\,([A]_B)^k\\,B^{-1}$',
     },
     {
       term: 'Grenzverteilung',

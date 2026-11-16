@@ -81,6 +81,7 @@ window.DECKS.push({
     {
       term: 'Hexadezimale Darstellung',
       def: 'Je 4 Bit (ein Nibble) werden zu einer Ziffer 0–9, A–F zusammengefasst. Präfix `0x`.',
+      calc: '- **binär → hex:** von rechts in 4er-Gruppen teilen, jede Gruppe durch 0–F ersetzen\n- **hex → binär:** jede Ziffer durch ihre 4 Bits ersetzen',
       ex: '0010 1100 1010 0011  =  0x2CA3',
     },
     {
@@ -113,6 +114,7 @@ window.DECKS.push({
     {
       term: 'Basis eines Zahlensystems',
       def: 'Anzahl $b$ der verfügbaren Ziffernsymbole. Mit $n$ Ziffern lassen sich $b^n$ Werte darstellen; die Stelle $i$ hat die Wertigkeit $b^i$.',
+      calc: 'Dezimalzahl in Basis $b$ umrechnen:\n- Zahl durch $b$ teilen, Rest notieren\n- Quotient weiter teilen, bis 0 übrig bleibt\n- Reste von unten nach oben lesen\n\nZurück: $\\sum a_i\\, b^i$ ausrechnen.',
       ex: '1024 = 1·10³ + 0·10² + 2·10¹ + 4·10⁰',
     },
     {
@@ -146,6 +148,7 @@ window.DECKS.push({
     {
       term: 'Zweier-Komplement',
       def: 'Einer-Komplement bilden und 1 addieren.\n- keine doppelte Null\n- Wertebereich $-2^{n-1} \\ldots 2^{n-1}-1$ (asymmetrisch)\n- Standard für vorzeichenbehaftete Festkommazahlen',
+      calc: 'Negative Zahl codieren:\n- Betrag binär mit $n$ Bit schreiben\n- alle Bits invertieren\n- 1 addieren\n\nZurück: ist das MSB 1, genauso invertieren + 1 → Betrag, Vorzeichen minus.',
       ex: '+53 = 0011 0101\n1er = 1100 1010\n−53 = 1100 1011',
     },
     {
@@ -155,6 +158,7 @@ window.DECKS.push({
     {
       term: 'Subtraktion im Zweier-Komplement',
       def: '$x - y = x + (-y)$: den Subtrahenden ins Zweier-Komplement wandeln und addieren.',
+      calc: '- Subtrahend ins Zweier-Komplement wandeln (invertieren + 1)\n- binär addieren, Übertrag über das MSB hinaus verwerfen\n- Überlauf prüfen: pos + pos = neg oder neg + neg = pos',
       ex: '  37 = 0010 0101\n−53 = 1100 1011\n  ───────────────\n−16 = 1111 0000',
     },
     {
@@ -164,6 +168,7 @@ window.DECKS.push({
     {
       term: 'IEEE 754 Format',
       def: 'Vorzeichen $s$, Exponent $e$, Bruchteil $f$:\n- **32 Bit:** 1 + 8 + 23 Bit, $K = 127$\n- **64 Bit:** 1 + 11 + 52 Bit, $K = 1023$',
+      calc: 'Bitmuster decodieren:\n- in $s$, $e$, $f$ aufteilen\n- Sonderfälle prüfen ($e$ alle 0 / alle 1)\n- $E = e - K$ berechnen\n- $v = (-1)^s \\cdot 1{,}f \\cdot 2^E$ ausrechnen',
       more: '- **normalisiert** ($0 < e < e_{max}$): $v = (-1)^s \\cdot 1{,}f \\cdot 2^{e-K}$\n- **denormalisiert** ($e = 0$, $f > 0$): $v = (-1)^s \\cdot 0{,}f \\cdot 2^{1-K}$\n- **Null:** $e = 0$, $f = 0$\n- **$\\pm\\infty$:** $e$ alle Bits 1, $f = 0$\n- **NaN:** $e$ alle Bits 1, $f > 0$',
       moreLabel: 'Werte',
     },
@@ -174,6 +179,7 @@ window.DECKS.push({
     {
       term: 'Normalisierte Gleitkommazahl',
       def: 'Exponent weder alle Bits 0 noch alle Bits 1. Vor dem Bruchteil steht implizit eine „1,“: $v = (-1)^s \\cdot 1{,}f \\cdot 2^{e-K}$.',
+      calc: 'Zahl als IEEE 754 codieren:\n- Vorzeichen $s$ festlegen\n- Betrag binär schreiben\n- auf die Form $1{,}f \\cdot 2^E$ normalisieren\n- $e = E + K$ binär schreiben (8 bzw. 11 Bit)\n- $f$ = Nachkommastellen, rechts mit Nullen auffüllen',
       ex: '13,5 = 1101,1 = 1,1011 · 2³\ne = 127 + 3 = 130\n0 10000010 10110000…0',
     },
     {
@@ -214,6 +220,7 @@ window.DECKS.push({
     {
       term: 'Kritischer Pfad',
       def: 'Längster Signalpfad durch eine Schaltung; bestimmt, wann am Ausgang sicher das korrekte Ergebnis anliegt.',
+      calc: '- alle Wege vom Eingang zum Ausgang betrachten\n- auf jedem Weg die Gatter zählen\n- längster Weg × $\\tau$ = Laufzeit',
     },
     {
       term: 'Multiplexer',
@@ -262,6 +269,7 @@ window.DECKS.push({
     {
       term: 'Ripple-Carry-Addierer',
       def: '$n$ Volladdierer in Reihe: Der Übertrag läuft („rippelt“) von der niedrigsten zur höchsten Stelle. Funktioniert vorzeichenlos und im Zweier-Komplement.',
+      calc: 'Laufzeit bestimmen ($n$ Bit):\n- erster Volladdierer: $x/y \\to c$: $3\\tau$\n- mittlere $n - 2$ Volladdierer: $c \\to c$: je $2\\tau$\n- letzter Volladdierer: $c \\to s$: $1\\tau$\n- bei Subtraktion: $+3\\tau$ für Inverter + Multiplexer',
       more: '**Subtrahieren:** $x - y = x + (-y)$ → $y$ über Inverter + Multiplexer invertieren und Carry-In auf 1 setzen (Zweier-Komplement).\n\n**Laufzeit Subtraktion:** Inverter + Multiplexer $3\\tau$, erster VA $3\\tau$, $n-2$ VA je $2\\tau$, letzter VA $\\tau$ → für $n = 64$: $131\\tau$.',
       moreLabel: 'Methode',
     },
@@ -431,6 +439,7 @@ window.DECKS.push({
     {
       term: 'Befehlswort',
       def: 'Im Befehlsspeicher (ROM) abgelegtes Datenwort, das alle Steuersignale (M1–M4, D, Konstante K) für einen Befehl enthält.',
+      calc: 'Universalrechner-Befehl codieren:\n- Format K(10) D(3) M4(3) M3(3) M2(3) M1(2)\n- D = Zielregister, M3/M4 = Quellregister\n- M2 = Operation (ADD 001, SUB 010, MUL 011, DIV 100, SQRT 101, SET 000)\n- M1 = 11 für Ergebnis, 00–10 für Eingang a–c\n- nicht verwendete Felder: x',
       ex: 'K(10) D(3) M4(3) M3(3) M2(3) M1(2)\nxxxxxxxxxx 000 001 000 001 11\n= ADD R0,R0,R1',
     },
     {
@@ -445,6 +454,7 @@ window.DECKS.push({
     {
       term: 'Maximale Taktfrequenz',
       def: 'Kritisch ist die Zeit zwischen steigender und fallender Flanke: langsamste Operation + Setup-Zeit. Beispiel: $90\\,\\text{ns} + 10\\,\\text{ns} = 100\\,\\text{ns}$ → Periode $200\\,\\text{ns}$ → $5\\,\\text{MHz}$.',
+      calc: '- langsamste Operation + Setup-Zeit = kritische Halbperiode\n- Periode = 2 × kritische Halbperiode (Übernahme bei fallender Flanke)\n- $f_{\\max} = 1 / \\text{Periode}$',
     },
     {
       term: 'Assembler',
@@ -548,12 +558,14 @@ window.DECKS.push({
     {
       term: 'Alignment',
       def: 'Datenworte liegen nur an Adressen, die ein Vielfaches ihrer Größe in Byte sind:\n- Wyde: durch 2 teilbar\n- Tetra: durch 4 teilbar\n- Octa: durch 8 teilbar\n\nSo genügt ein einziger Speicherzugriff.',
+      calc: 'Gültige Adresse prüfen:\n- Adresse durch die Wortgröße in Byte teilen (2, 4, 8)\n- Rest 0 → ausgerichtet\n- MMIX: unterste Bits löschen (`& -2`, `& -4`, `& -8`) → tatsächlich verwendete Adresse',
       more: 'MMIX erzwingt das Alignment, indem die niederwertigsten Adressbits gelöscht werden:\n- $M_2[x]$ → Adresse `x & (-2)`\n- $M_4[x]$ → Adresse `x & (-4)`\n- $M_8[x]$ → Adresse `x & (-8)`\n\nOhne Alignment (z. B. Octa an durch 4 teilbarer Adresse) wären zwei Speicherzugriffe nötig.',
       moreLabel: 'Methode',
     },
     {
       term: 'Big Endian / Little Endian',
       def: '- **Big Endian:** Wortadresse zeigt auf das höchstwertige Byte (MMIX, MIPS, SPARC)\n- **Little Endian:** Wortadresse zeigt auf das niederwertigste Byte (Intel x86)',
+      calc: 'Speicherbild bestimmen:\n- Wert in Bytes zerlegen\n- **Big Endian:** höchstwertiges Byte an die kleinste Adresse\n- **Little Endian:** niederwertigstes Byte an die kleinste Adresse',
       ex: '0x01234567 an Adresse 0:\nBig:    01 23 45 67\nLittle: 67 45 23 01',
     },
     {
@@ -633,6 +645,7 @@ window.DECKS.push({
     {
       term: 'MMIX-Befehlswort',
       def: '32 Bit, vier Bytes: Opcode (Bits 31–24), X (23–16, meist Ziel), Y (15–8) und Z (7–0, Quellen).',
+      calc: 'Befehl codieren:\n- Opcode aus der Tabelle ablesen (Immediate-Variante: +1)\n- X, Y, Z = Registernummern bzw. Direktoperanden, je 1 Byte\n- zusammensetzen: `OP X Y Z` als 32 Bit Hexzahl',
       ex: 'OP | X  | Y  | Z\nSUB $5,$6,7  →  0x25 05 06 07',
     },
     {
@@ -671,6 +684,7 @@ window.DECKS.push({
     {
       term: 'SET- und INC-Befehle',
       def: 'Schreiben 16 Bit Direktoperanden in einen der vier Abschnitte H (63–48), MH, ML, L (15–0):\n- **SET:** setzt den Abschnitt, löscht den Rest\n- **INC:** addiert auf den Abschnitt',
+      calc: '64 Bit Konstante laden:\n- Konstante in 4 Wydes zerlegen: H, MH, ML, L\n- `SETL` mit dem unteren Wyde\n- `INCML`, `INCMH`, `INCH` mit den übrigen',
       ex: 'SETL  $1,#BBBB\nINCML $1,#AAAA\nINCMH $1,#5678\nINCH  $1,#1234\n// $1 = #12345678AAAABBBB',
     },
     {
@@ -705,6 +719,7 @@ window.DECKS.push({
     {
       term: 'Vorzeichenbehaftet vs. vorzeichenlos laden',
       def: '- **LDB/LDW/LDT:** obere Registerbits mit dem MSB auffüllen (Vorzeichenerweiterung)\n- **LDBU/LDWU/LDTU:** obere Registerbits mit 0 auffüllen\n\nOpcode vorzeichenlos = vorzeichenbehaftet + 2.',
+      calc: 'Registerinhalt nach dem Laden bestimmen:\n- Bytes an der (ausgerichteten) Adresse lesen\n- **vorzeichenbehaftet:** oberste Bits mit dem MSB auffüllen\n- **vorzeichenlos:** oberste Bits mit 0 auffüllen',
       ex: '−64 als Byte = 0xC0\nLDB  → 0xFFFFFFFFFFFFFFC0\nLDBU → 0x00000000000000C0 (192)',
     },
     {
@@ -730,16 +745,19 @@ window.DECKS.push({
     {
       term: 'JMP',
       def: 'Unbedingte Verzweigung, relativ: $@ \\leftarrow @ + 4 \\cdot s(XYZ)$. XYZ = Anzahl Befehle vor/zurück (24 Bit, Zweier-Komplement).',
+      calc: 'Befehlswort berechnen:\n- Anzahl Befehle zwischen JMP und Ziel zählen (Ziel − JMP) / 4\n- als 24 Bit Zweierkomplement schreiben (rückwärts negativ)\n- Opcode `F0` (vorwärts) bzw. `F1` (rückwärts) davor',
       ex: 'JMP Start   // 3 zurück → 0xF1FFFFFD',
     },
     {
       term: 'Bedingte Verzweigung',
       def: 'Springt nach $@ + 4 \\cdot s(YZ)$, wenn die Bedingung für `$X` erfüllt ist, sonst weiter bei $@ + 4$: BZ (= 0), BNZ, BN (< 0), BNN, BP (> 0), BNP, BEV (gerade), BOD (ungerade).',
+      calc: 'Sprungziel/Offset bestimmen:\n- Offset = (Zieladresse − @) / 4 Befehle\n- als 16 Bit Zweierkomplement in YZ\n- Bedingung prüfen: erfüllt → @ + 4·Offset, sonst @ + 4',
       ex: '// if (a == 0) a = 1;\n      BNZ a,End\n      SET a,1\nEnd   …',
     },
     {
       term: 'Probable Branch (PBZ, PBNZ, …)',
       def: 'Gleiche Funktion wie BZ usw., andere Ausführungszeit:\n- **P-Variante:** 1 Takt bei Sprung, 3 ohne → für wahrscheinliche Sprünge (Schleifen)\n- **normale Variante:** 1 Takt ohne Sprung, 3 mit',
+      calc: 'Takte einer Schleife berechnen:\n- zählen, wie oft gesprungen bzw. nicht gesprungen wird\n- normale Variante: Sprung 3, kein Sprung 1 Takt\n- P-Variante: Sprung 1, kein Sprung 3 Takte\n- Takte aufsummieren und vergleichen',
       ex: '      SET  $1,100\nLoop  SUB  $1,$1,1\n      PBNZ $1,Loop',
     },
     {
@@ -839,10 +857,12 @@ window.DECKS.push({
     {
       term: 'Pipeline-Füll-Diagramm',
       def: 'Zeigt für jeden Takt, welcher Befehl in welcher Stufe ist.\n- bei 5 Stufen ist die Pipeline ab Takt 5 gefüllt\n- danach wird pro Takt ein Befehl fertig',
+      calc: 'Zeichnen:\n- Spalten = Takte, Zeilen = Befehle\n- Befehl $i$ startet in Takt $i$ mit BH\n- je Takt eine Stufe weiter: BH, BD, AF, SP, ES\n- Stalls als zusätzliche Wiederholung einer Stufe eintragen',
     },
     {
       term: 'Datenkonflikt',
       def: 'Ein Befehl braucht ein Ergebnis, das ein vorheriger Befehl noch nicht in den Registerblock geschrieben hat.',
+      calc: 'Konflikte finden:\n- für jeden Befehl das Zielregister notieren\n- folgende Befehle prüfen, ob sie es als Quelle lesen\n- liegt der Lesende weniger als 3 Befehle danach (bevor ES fertig ist) → Datenkonflikt',
       ex: 'ADD $1,$2,$3\nMUL $3,$2,$1   // $1 noch alt!',
     },
     {
@@ -934,6 +954,7 @@ window.DECKS.push({
     {
       term: 'Mittlere Speicherzugriffszeit',
       def: '$$t = h \\cdot t_{\\text{hit}} + (1 - h) \\cdot t_{\\text{miss}}$$ Beispiel: $h = 0{,}9$, $1\\,\\text{ns}$ / $50\\,\\text{ns}$ → $5{,}9\\,\\text{ns}$.',
+      calc: '- $t = h \\cdot t_{\\text{hit}} + (1 - h) \\cdot t_{\\text{miss}}$ einsetzen\n- gesucht $h$: nach $h$ umstellen, $h = \\frac{t_{\\text{miss}} - t}{t_{\\text{miss}} - t_{\\text{hit}}}$',
     },
     {
       term: 'Verdrängung',
@@ -978,6 +999,7 @@ window.DECKS.push({
     {
       term: 'Direkt-abgebildeter Cache',
       def: 'Jede Speicheradresse hat genau einen festen Cache-Rahmen; Adresse = Schlüssel $k$ | Rahmen-Nr. $f$ | Byte-Auswahl $b$.\n- **Vorteil:** sehr schnell\n- **Nachteil:** gleiche Rahmen-Nummern verdrängen sich ständig',
+      calc: 'Adresse aufteilen:\n- $b = \\text{ld}(\\text{Rahmengröße in Byte})$\n- $f = \\text{ld}(\\text{Anzahl Rahmen})$\n- $k = 64 - f - b$\n- Rahmen-Nr. = Bits $b \\ldots b + f - 1$ der Adresse\n- Vergleicher: $k$',
       ex: 'Adresse: [ k Bit | f Bit | b Bit ]\nRahmengröße = 2^b Byte\nAnzahl Rahmen = 2^f',
     },
     {
@@ -995,11 +1017,13 @@ window.DECKS.push({
     {
       term: 'Voll-assoziativer Cache',
       def: 'Ein Speicherblock darf in jedem Cache-Rahmen liegen; Adresse = Schlüssel | Byte-Auswahl.\n- **Vorteil:** wenig Verdrängung\n- **Nachteil:** Schlüssel mit allen Tags vergleichen → langsam, viele Vergleicher',
+      calc: '- $b = \\text{ld}(\\text{Rahmengröße})$, $k = 64 - b$\n- Anzahl Rahmen = Cachegröße / Rahmengröße\n- Vergleicher: Anzahl Rahmen $\\cdot\\, k$',
       ex: '32 kB, 256 Byte Rahmen:\n128 Rahmen · 56 Bit = 7168 Vergleicher',
     },
     {
       term: 'Set-assoziativer Cache',
       def: 'Kompromiss; Adresse = Schlüssel $k$ | Set-Nr. $s$ | Byte-Auswahl $b$.\n- jedes Set hat $a$ Rahmen (Assoziativität)\n- nur $a$ Tags werden verglichen ($a \\cdot k$ Vergleicher)',
+      calc: '- $b = \\text{ld}(\\text{Rahmengröße})$\n- Anzahl Sets $= \\frac{\\text{Cachegröße}}{\\text{Rahmengröße} \\cdot a}$, $s = \\text{ld}(\\text{Sets})$\n- $k = 64 - s - b$\n- Vergleicher: $a \\cdot k$',
       ex: '8-fach, 1 MB, 32 Byte Rahmen:\nb = 5, Sets = 2^12 → s = 12\nk = 64 − 12 − 5 = 47',
     },
     {

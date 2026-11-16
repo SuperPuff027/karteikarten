@@ -17,6 +17,7 @@ Die App lässt sich auf den Home-Bildschirm legen, startet dann im Vollbild und 
 - **Lernsets als Ordner** – im Menü einen Ordner wählen und nur dieses Fach lernen
 - **Karte antippen zum Umdrehen** – Begriff → Erklärung oder umgekehrt (Erklärung → Begriff)
 - **Vertiefungskarten** – Begriffe mit mehr Inhalt bekommen eine zweite Karte („Begriff: Methode“)
+- **Berechnungs-Karten** – zu allem, was man berechnen kann, eine Karte mit dem Rechenweg in Schritten („Begriff: Berechnung“)
 - **Drei Bewertungen** – *Nicht gewusst*, *Unsicher*, *Gewusst*; gewusste Karten werden beim Wiederholen seltener abgefragt, schwache zuerst
 - **Lernstand** pro Ordner mit Fortschrittsbalken
 - **Eigene Ordner und Karten** direkt in der App anlegen
@@ -60,6 +61,7 @@ Lernsets stehen in [`decks.js`](decks.js). Jeder Eintrag ist ein Ordner:
       ex: 'int x = 5;',         // optional: kurzes Codebeispiel auf der Rückseite
       more: 'Optional: ausführliche Erklärung (erzeugt eine zweite Karte).',
       moreLabel: 'Methode', // optional, Standard: „Methode“
+      calc: 'Rechenweg …',   // optional: Berechnungs-Karte „Begriff: Berechnung“
     },
   ],
 }

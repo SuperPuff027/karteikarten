@@ -58,6 +58,7 @@ window.DECKS.push({
     {
       term: 'Kirchhoff’sches Stromgesetz (KCL)',
       def: 'Knotenregel: Zu jedem Zeitpunkt verschwindet die Summe aller aus einem Knoten herausfließenden Ströme: $\\sum_j i_j(t) = 0$.',
+      calc: 'Knotengleichung aufstellen:\n- Knoten (oder Hülle) wählen\n- alle Ströme, die herausfließen, mit $+$, hineinfließende mit $-$ addieren\n- Summe $= 0$ setzen',
       more: '- Formulierung der **Ladungserhaltung** für konzentrierte Netzwerke\n- gilt für jede geschlossene Hülle, die kein Element durchtrennt\n- herausfließende Ströme positiv, hineinfließende negativ zählen\n- gilt auch für **Superknoten** (Hülle um mehrere Knoten)',
       moreLabel: 'Methode',
     },
@@ -76,6 +77,7 @@ window.DECKS.push({
     {
       term: 'Kirchhoff’sches Spannungsgesetz (KVL)',
       def: 'Maschenregel: Zu jedem Zeitpunkt verschwindet die algebraische Summe aller Spannungen eines geschlossenen Umlaufs: $\\sum_k u_k(t) = 0$.',
+      calc: 'Maschengleichung aufstellen:\n- Umlauf mit Richtung wählen\n- Spannungen in Umlaufrichtung mit $+$, entgegen mit $-$ addieren\n- Summe $= 0$ setzen',
       more: '- Formulierung des **Induktionsgesetzes** für konzentrierte Netzwerke (kein zeitlich veränderlicher Fluss außerhalb der Elemente)\n- Spannungen in Umlaufrichtung positiv, entgegen negativ zählen\n- Beispiel: $u_1 + u_2 + u_3 - u_4 = 0$\n- folgt daraus, dass Spannungen Differenzen von Knotenpotentialen sind',
       moreLabel: 'Methode',
     },
@@ -182,6 +184,7 @@ window.DECKS.push({
     {
       term: 'Dualer Widerstand',
       def: '- zu einem Leitwert $G$ dualer Widerstand: $R^d = R_d^2\\, G$\n- zu einem Widerstand $R$ dualer Leitwert: $G^d = \\frac{R}{R_d^2}$',
+      calc: '- Dualitätskonstante $R_d$ festlegen\n- zu $R$: dualer Leitwert $G^d = R / R_d^2$\n- zu $G$: dualer Widerstand $R^d = R_d^2\\, G$',
     },
     {
       term: 'Leerlauf',
@@ -288,18 +291,22 @@ window.DECKS.push({
     {
       term: 'Parallelschaltung von Widerständen',
       def: 'Leitwerte addieren sich: $G = G_1 + G_2$, also $R = R_1 \\parallel R_2 = \\frac{R_1 R_2}{R_1 + R_2}$.',
+      calc: '- Leitwerte addieren: $G = G_1 + G_2$\n- $R = 1/G$, bei zwei Widerständen $R = \\frac{R_1 R_2}{R_1 + R_2}$',
     },
     {
       term: 'Serienschaltung von Widerständen',
       def: 'Widerstände addieren sich: $R = R_1 + R_2$, also $G = G_1 \\parallel G_2$.',
+      calc: '- Widerstände addieren: $R = R_1 + R_2 + \\dots$',
     },
     {
       term: 'Stromteilerregel',
       def: 'Bei parallelen Widerständen verhalten sich die Ströme wie die Leitwerte: $\\frac{i_1}{i_2} = \\frac{G_1}{G_2}$, $\\;\\frac{i_1}{i} = \\frac{G_1}{G_1 + G_2}$.',
+      calc: '- prüfen: die Widerstände liegen parallel (gleiche Spannung)\n- Leitwerte $G_k = 1/R_k$ bilden\n- $i_1 = i \\cdot \\frac{G_1}{G_1 + G_2} = i \\cdot \\frac{R_2}{R_1 + R_2}$',
     },
     {
       term: 'Spannungsteilerregel',
       def: 'Bei Widerständen in Serie verhalten sich die Spannungen wie die Widerstände: $\\frac{u_1}{u_2} = \\frac{R_1}{R_2}$, $\\;\\frac{u_1}{u} = \\frac{R_1}{R_1 + R_2}$.',
+      calc: '- prüfen: die Widerstände liegen in Serie (gleicher Strom)\n- Gesamtwiderstand $R = R_1 + R_2$ bilden\n- $u_1 = u \\cdot \\frac{R_1}{R_1 + R_2}$',
     },
     {
       term: 'Linear vs. streng linear',
@@ -314,10 +321,12 @@ window.DECKS.push({
     {
       term: 'Leerlaufspannung $u_0$',
       def: 'Spannung an den Klemmen einer Quelle im Leerlauf ($i = 0$); Achsenabschnitt der Kennlinie auf der $u$-Achse.',
+      calc: '- Klemmen offen lassen ($i = 0$)\n- Spannung an den Klemmen ausrechnen (z. B. Spannungsteiler)',
     },
     {
       term: 'Kurzschlussstrom $i_0$',
       def: 'Strom durch eine Kurzschlussbrücke an der Quelle ($u = 0$); Achsenabschnitt auf der $i$-Achse (mit umgekehrtem Vorzeichen).',
+      calc: '- Klemmen kurzschließen ($u = 0$)\n- Strom durch die Kurzschlussbrücke ausrechnen',
     },
     {
       term: 'Innenwiderstand',
@@ -343,6 +352,7 @@ window.DECKS.push({
     {
       term: 'Quellenumwandlung',
       def: 'Spannungsquelle $u_0$ mit Serienwiderstand $R$ ⇔ Stromquelle $i_0$ mit Parallelleitwert $G$. Beide Ersatzschaltungen sind äquivalent.',
+      calc: '- **Spannungsquelle → Stromquelle:** $i_0 = u_0 / R$, $R$ parallel\n- **Stromquelle → Spannungsquelle:** $u_0 = R\\,i_0$, $R$ in Serie',
       more: 'Spannungsquelle → Stromquelle:\n$$i_0 = \\frac{u_0}{R}, \\qquad G = \\frac{1}{R}$$\nStromquelle → Spannungsquelle:\n$$u_0 = \\frac{i_0}{G}, \\qquad R = \\frac{1}{G}$$\nMan wählt jeweils die Form, die die Analyse vereinfacht.',
       moreLabel: 'Methode',
     },
@@ -375,6 +385,7 @@ window.DECKS.push({
     {
       term: 'Arbeitspunkt',
       def: 'Gleichanteil aller Betriebsgrößen einer Schaltung $(u_{\\text{AP}}, i_{\\text{AP}})$ – Schnittpunkt von externer Quellenkennlinie (Lastgerade) und Lastkennlinie.',
+      calc: '- Lastgerade der Quelle aufstellen (z. B. $u = u_0 - R\\,i$)\n- Kennlinie der Last aufstellen\n- Schnittpunkt bestimmen – grafisch oder durch Gleichsetzen',
       more: '- Quelle $\\mathcal{Q}$ und Last $\\mathcal{L}$ zeitinvariant\n- **externe Kennlinie** der Quelle: Spiegelung an der $u$-Achse, $f_{\\mathcal{Q}_x}(u,i) = f_\\mathcal{Q}(u,-i)$\n- Arbeitspunktmenge $= \\mathcal{Q}_x \\cap \\mathcal{L}$, grafisch als Schnitt in der $u$-$i$-Ebene\n- kann leer sein (z. B. überidealisierte Spannungsquelle + ideale Diode)',
       moreLabel: 'Methode',
     },
@@ -408,6 +419,7 @@ window.DECKS.push({
     {
       term: 'Linearisierung',
       def: 'Ersetzen einer stetig differenzierbaren Kennlinie durch ihre Tangente im Arbeitspunkt $(A, B)$: $\\beta_{\\text{lin}}(a) = \\beta(A) + k\\,(a - A)$ mit $k = \\beta\'(A)$.',
+      calc: '- Arbeitspunkt $(A, B)$ bestimmen\n- Ableitung $k = \\beta\'(A)$ berechnen\n- Tangente: $\\beta_{\\text{lin}}(a) = B + k\\,(a - A)$',
       more: 'Ansatz: $\\beta(a) = \\beta(A) + k(a - A) + r(a, A)(a - A)$\n\nDer Fehlerterm muss schneller als linear verschwinden, also $r(a, A) \\to 0$ für $a \\to A$. Daraus folgt\n$$k = \\left.\\frac{\\mathrm{d}\\beta(a)}{\\mathrm{d}a}\\right|_{a = A}$$\n$k$ heißt Übertragungsfaktor bzw. Verstärkung.',
       moreLabel: 'Herleitung',
     },
@@ -426,6 +438,7 @@ window.DECKS.push({
     {
       term: 'Kleinsignal-Ersatzschaltbild',
       def: 'Ergibt eine rein lineare Schaltung:\n- nichtlineare Elemente → Kleinsignalwiderstände bzw. -leitwerte\n- Konstantspannungsquellen → Kurzschluss\n- Konstantstromquellen → Leerlauf',
+      calc: '- Arbeitspunkt bestimmen (Großsignal-Analyse)\n- je nichtlinearem Element den Kleinsignalwiderstand = Steigung im AP bestimmen\n- Konstantspannungsquellen → Kurzschluss, Konstantstromquellen → Leerlauf\n- lineares Netzwerk mit den Kleinsignalgrößen analysieren',
     },
     {
       term: 'Kleinsignalleitwert einer Diode',
@@ -482,10 +495,12 @@ window.DECKS.push({
     {
       term: 'Leitwertsmatrix $G$',
       def: 'Spannungsgesteuerte Beschreibung $\\boldsymbol{i} = G\\boldsymbol{u}$. Existiert, wenn $U$ invertierbar ist: $G = I\\,U^{-1}$.',
+      calc: 'Elemente einzeln bestimmen:\n- $g_{11}, g_{21}$: Ausgang kurzschließen ($u_2 = 0$), $g_{11} = i_1/u_1$, $g_{21} = i_2/u_1$\n- $g_{12}, g_{22}$: Eingang kurzschließen ($u_1 = 0$), $g_{12} = i_1/u_2$, $g_{22} = i_2/u_2$',
     },
     {
       term: 'Widerstandsmatrix $R$',
       def: 'Stromgesteuerte Beschreibung $\\boldsymbol{u} = R\\boldsymbol{i}$.\n- existiert, wenn $M$ invertierbar ist\n- falls beide existieren: $R = G^{-1}$',
+      calc: 'Elemente einzeln bestimmen:\n- $r_{11}, r_{21}$: Ausgang leerlaufen lassen ($i_2 = 0$), $r_{11} = u_1/i_1$, $r_{21} = u_2/i_1$\n- $r_{12}, r_{22}$: Eingang leerlaufen lassen ($i_1 = 0$), $r_{12} = u_1/i_2$, $r_{22} = u_2/i_2$\n- oder $R = G^{-1}$',
     },
     {
       term: 'Kettenmatrix $A$',
@@ -664,6 +679,7 @@ window.DECKS.push({
     {
       term: 'Kettenschaltung',
       def: 'Ausgang von $\\mathcal{F}_1$ an Eingang von $\\mathcal{F}_2$: Kettenmatrizen multiplizieren, $A_\\mathcal{G} = A_1 A_2$. Torbedingungen innen automatisch erfüllt.',
+      calc: '- Kettenmatrizen $A_1$, $A_2$ der Teilzweitore bestimmen\n- in Reihenfolge multiplizieren: $A = A_1 A_2$',
       more: '- deshalb das Minuszeichen in der Kettenbeschreibung: $\\begin{bmatrix}u_1\\\\ i_1\\end{bmatrix} = A\\begin{bmatrix}u_2\\\\ -i_2\\end{bmatrix}$\n- nichtlinear: Verkettung der Funktionen $\\boldsymbol{a}_\\mathcal{G} = \\boldsymbol{a}_1 \\circ \\boldsymbol{a}_2$\n- inverse Kettenmatrix: umgekehrte Reihenfolge, $A\'_\\mathcal{G} = A\'_2 A\'_1$',
       moreLabel: 'Methode',
     },
@@ -726,6 +742,7 @@ window.DECKS.push({
     {
       term: 'Invertierender Verstärker',
       def: 'Eingang über $R_1$ an den invertierenden Eingang, Rückkopplung $R_0$, (+) auf Masse: $v_u = \\frac{u_0}{u_1} = -\\frac{R_0}{R_1}$.',
+      calc: 'Verstärkung mit dem Nullormodell:\n- Nullator: $u_d = 0$ → (−)-Eingang liegt auf Masse (virtuelle Masse)\n- $i_- = 0$ → durch $R_1$ und $R_0$ fließt derselbe Strom $i = u_1 / R_1$\n- $u_2 = -R_0\\, i$ → $v_u = -\\frac{R_0}{R_1}$',
       more: '- Nullor: $u_d = 0$ → invertierender Eingang ist virtuelle Masse\n- $i_1 = \\frac{u_1}{R_1}$, derselbe Strom fließt durch $R_0$: $u_0 = -R_0\\, i_1$\n- mehrere Eingänge: $u_0 = -R_0\\left(\\frac{u_1}{R_1} + \\frac{u_2}{R_2} + \\dots\\right)$\n- bei endlicher Verstärkung $A_0$ weicht $v_u$ nur minimal ab (z. B. 0,1 %)\n- **Polung wichtig:** bei vertauschten Eingängen nur Sättigung stabil, der lineare Arbeitspunkt ist instabil',
       moreLabel: 'Herleitung',
     },
@@ -737,6 +754,7 @@ window.DECKS.push({
     {
       term: 'Nichtinvertierender Verstärker',
       def: 'Eingang direkt an (+), Spannungsteiler $R_0$/$R_1$ vom Ausgang an (−): $v_u = 1 + \\frac{R_0}{R_1}$. Ausgang hat dasselbe Vorzeichen wie der Eingang.',
+      calc: '- Nullator: $u_d = 0$ → am (−)-Eingang liegt $u_1$\n- Spannungsteiler am Ausgang: $u_1 = u_2 \\frac{R_1}{R_0 + R_1}$\n- umstellen: $v_u = \\frac{u_2}{u_1} = 1 + \\frac{R_0}{R_1}$',
     },
     {
       term: 'Nichtinvertierender Verstärker',
@@ -767,6 +785,7 @@ window.DECKS.push({
     {
       term: 'Lineare Op-Amp-Schaltung',
       def: 'Durch die Beschaltung ist sichergestellt, dass der Op-Amp nur im linearen Bereich arbeitet – er kann allein durch einen Nullor modelliert werden.',
+      calc: '- Op-Amp durch Nullor ersetzen (Eingang Nullator, Ausgang Norator)\n- Nullator: $u_d = 0$ und $i_+ = i_- = 0$ ansetzen\n- KCL an den Eingangsknoten aufstellen\n- nach der Ausgangsspannung auflösen',
     },
     {
       term: 'Virtuelle Masse',
@@ -910,6 +929,7 @@ window.DECKS.push({
     {
       term: 'Maschenstromanalyse',
       def: 'Dual zur Knotenspannungsanalyse: KVL in Nullraum- ($B\\boldsymbol{u} = \\boldsymbol{0}$), KCL in Bildraum-Darstellung ($\\boldsymbol{i} = B^{\\mathrm{T}}\\boldsymbol{i}_m$) mit Maschenströmen. Nur für planare Netzwerke.',
+      calc: '- planares Netzwerk: je Masche (Fenster) einen Maschenstrom mit Richtung festlegen\n- KVL je Masche aufstellen; Zweigströme = Summe der anliegenden Maschenströme\n- Gleichungssystem nach den Maschenströmen lösen\n- Zweigströme und -spannungen daraus berechnen',
       more: '- **Masche:** elementare Schleife eines planaren Graphen ($s$ Stück)\n- Kantenstrom = Summe der anliegenden Maschenströme (negativ bei entgegengesetzter Orientierung)\n- Maschentableausystem: $2b + s$ Gleichungen\n- nicht planare Netzwerke lassen sich mit idealen 1:1-Übertragern planar machen',
       moreLabel: 'Methode',
     },
@@ -934,12 +954,14 @@ window.DECKS.push({
     {
       term: 'Reduzierte Knotenspannungsanalyse',
       def: 'Gleichungssystem nur in den Knotenspannungen: $G_k\\, \\boldsymbol{u}_k = \\boldsymbol{i}_q$ mit $G_k = A G A^{\\mathrm{T}}$.\n- Voraussetzung: alle Elemente spannungsgesteuert ($N$ invertierbar)',
+      calc: '- Spannungsquellen mit Serienwiderstand in Stromquellen umwandeln\n- $G_k$ und $\\boldsymbol{i}_q$ aufstellen\n- $G_k \\boldsymbol{u}_k = \\boldsymbol{i}_q$ lösen\n- Zweigspannungen aus Knotenspannungen: $u_{\\alpha\\beta} = u_\\alpha - u_\\beta$',
       more: 'Herleitung aus dem Knotentableau:\n- Elemente: $\\boldsymbol{i} = G\\boldsymbol{u} + \\boldsymbol{i}_0$ mit Kantenleitwertsmatrix $G = -N^{-1}M$ und $\\boldsymbol{i}_0 = N^{-1}\\boldsymbol{e}$\n- KVL: $\\boldsymbol{u} = A^{\\mathrm{T}}\\boldsymbol{u}_k$\n- KCL: $A\\boldsymbol{i} = \\boldsymbol{0}$\n$$\\Rightarrow\\; \\underbrace{A G A^{\\mathrm{T}}}_{G_k}\\, \\boldsymbol{u}_k = \\underbrace{-A\\, \\boldsymbol{i}_0}_{\\boldsymbol{i}_q}$$\nJede Zeile ist das KCL eines Knotens, ausgedrückt durch Knotenspannungen.',
       moreLabel: 'Herleitung',
     },
     {
       term: 'Knotenleitwertsmatrix $G_k$',
       def: '$(n-1)\\times(n-1)$-Matrix der reduzierten Knotenspannungsanalyse, $G_k = A G A^{\\mathrm{T}}$; direkt aufstellbar nach einfachen Regeln.',
+      calc: 'Aufstellen (nur spannungsgesteuerte Elemente):\n- Bezugsknoten wählen, übrige Knoten nummerieren\n- **Diagonale** $g_{kk}$: Summe aller Leitwerte am Knoten $k$\n- **außerhalb** $g_{kl}$: minus Summe der Leitwerte zwischen $k$ und $l$\n- **rechte Seite** $i_{q,k}$: Summe der in Knoten $k$ hineinfließenden Quellströme',
       more: '- Leitwert zwischen Knoten $\\alpha$ und Masse: $+G$ auf Diagonalelement $(\\alpha, \\alpha)$\n- Leitwert zwischen $\\alpha$ und $\\beta$: $+G$ auf $(\\alpha,\\alpha)$ und $(\\beta,\\beta)$, $-G$ auf $(\\alpha,\\beta)$ und $(\\beta,\\alpha)$\n- VCCS: gesteuerter Strom durch Knotenspannungen ausdrücken (Spalten = steuernde Knoten) und in die KCL-Zeilen der Ausgangsknoten eintragen\n- Quellenvektor $\\boldsymbol{i}_q$: in den Knoten hineinfließender Quellstrom $+$, herausfließender $-$',
       moreLabel: 'Regeln',
     },
@@ -984,6 +1006,7 @@ window.DECKS.push({
     {
       term: 'Superpositionsprinzip',
       def: 'In einem linearen, eindeutig lösbaren Netzwerk ist jede Spannung und jeder Strom die Summe der Reaktionen auf die einzelnen unabhängigen Quellen.',
+      calc: '- nur für lineare Netzwerke\n- jeweils **eine** unabhängige Quelle aktiv lassen, alle anderen nullsetzen (Spannungsquelle → Kurzschluss, Stromquelle → Leerlauf)\n- gesuchte Größe für jede Quelle einzeln berechnen\n- Teilergebnisse addieren',
       more: '- Beweis über die Tableaumatrix: $\\begin{bmatrix}\\boldsymbol{u}\\\\ \\boldsymbol{i}\\end{bmatrix} = T^{-1}\\begin{bmatrix}\\boldsymbol{0}\\\\ \\boldsymbol{e}\\end{bmatrix}$ ist linear in $\\boldsymbol{e}$\n- Vorgehen: jeweils eine Quelle behalten, alle anderen durch **Nullquellen** ersetzen\n- Spannungsquelle → Kurzschluss, Stromquelle → Leerlauf\n- Teilantworten addieren',
       moreLabel: 'Methode',
     },
@@ -1001,6 +1024,7 @@ window.DECKS.push({
     {
       term: 'Zweipolersatzschaltungen',
       def: 'Jede lineare, resistive, intern eindeutig lösbare Schaltung mit einem Klemmenpaar verhält sich wie eine lineare Quelle: Helmholtz/Thévenin- oder Mayer/Norton-Ersatzzweipol.',
+      calc: 'Ersatzspannungsquelle bestimmen:\n- Leerlaufspannung $u_0$ berechnen\n- Innenwiderstand $R_i$ berechnen (Quellen nullsetzen oder $u_0/i_0$)\n- Ersatz: $u_0$ in Serie mit $R_i$ (bzw. Stromquelle $i_0 = u_0/R_i$ parallel zu $R_i$)',
       more: '- **Thévenin:** Spannungsquelle $u_0$ in Serie mit $R_i$: $u = u_0 + R_i\\, i$ (für $m \\neq 0$)\n- **Norton:** Stromquelle $i_0$ parallel zu $G_i$ (für $n \\neq 0$)\n- Bestimmung: Leerlaufspannung $u_0$ und Kurzschlussstrom $i_0$ messen, $R_i = -\\frac{u_0}{i_0}$ (Vorzeichen je nach Zählpfeil)\n- oder: alle unabhängigen Quellen durch Nullquellen ersetzen und von außen erregen (gesteuerte Quellen bleiben!)\n- für $G_i \\neq 0$ und $R_i \\neq 0$ existieren beide',
       moreLabel: 'Methode',
     },
@@ -1012,6 +1036,7 @@ window.DECKS.push({
     {
       term: 'Innenwiderstand bestimmen',
       def: '- **Methode 1:** unabhängige Quellen durch Nullquellen ersetzen (gesteuerte bleiben!), von außen mit $u$ erregen, $i$ messen: $R_i = u/i$\n- **Methode 2:** aus Leerlaufspannung und Kurzschlussstrom',
+      calc: '- **über Quellen:** unabhängige Quellen durch Nullquellen ersetzen ($u_Q \\to$ Kurzschluss, $i_Q \\to$ Leerlauf), gesteuerte bleiben; Ersatzwiderstand an den Klemmen berechnen\n- **über Kennwerte:** $R_i = u_0 / i_0$',
     },
     {
       term: 'Passivität zusammengesetzter Netzwerke',
@@ -1134,6 +1159,7 @@ window.DECKS.push({
     {
       term: 'Gespeicherte Energie',
       def: 'Bezug: Relaxationspunkt im Ursprung.\n- **Kapazität:** $E_C = \\frac{1}{2} C u^2 = \\frac{q^2}{2C}$\n- **Induktivität:** $E_L = \\frac{1}{2} L i^2 = \\frac{\\Phi^2}{2L}$',
+      calc: '- **Kapazität:** Spannung $u$ bestimmen, $E_C = \\frac{1}{2} C u^2$\n- **Induktivität:** Strom $i$ bestimmen, $E_L = \\frac{1}{2} L i^2$',
     },
     {
       term: 'Relaxationspunkt (Ruhepunkt)',
@@ -1146,10 +1172,12 @@ window.DECKS.push({
     {
       term: 'Parallelschaltung von Kapazitäten',
       def: '- Kapazitäten addieren sich: $C = C_1 + C_2$ (wie Leitwerte)\n- Anfangsspannungen werden als Spannungsquellen in Serie modelliert',
+      calc: '- Kapazitäten addieren: $C = C_1 + C_2$',
     },
     {
       term: 'Serienschaltung von Kapazitäten',
       def: '- Kapazität: $C = C_1 \\parallel C_2 = \\frac{C_1 C_2}{C_1 + C_2}$ (wie Leitwerte in Serie)\n- Anfangsspannungen addieren sich: $u_0 = u_{01} + u_{02}$',
+      calc: '- $C = \\frac{C_1 C_2}{C_1 + C_2}$ (wie Leitwerte in Serie)\n- Anfangsspannungen addieren: $u_0 = u_{01} + u_{02}$',
     },
     {
       term: 'Zusammenschaltung von Induktivitäten',
@@ -1190,6 +1218,7 @@ window.DECKS.push({
     {
       term: 'Komplexer Zeiger',
       def: 'Zu $a(t) = A_m\\cos(\\omega t + \\alpha)$ gehört der Zeiger $\\underline{A} = A_m\\, e^{j\\alpha}$. Rückweg: $a(t) = \\operatorname{Re}\\{\\underline{A}\\, e^{j\\omega t}\\}$.',
+      calc: '- **Zeitfunktion → Zeiger:** Amplitude $A_m$ und Phase $\\alpha$ ablesen, $\\underline{A} = A_m e^{j\\alpha}$\n- **Zeiger → Zeitfunktion:** $a(t) = \\operatorname{Re}\\{\\underline{A}\\, e^{j\\omega t}\\} = |\\underline{A}| \\cos(\\omega t + \\arg \\underline{A})$',
       more: '- $A_m = |\\underline{A}|$, $\\alpha = \\arg(\\underline{A})$\n- Beweis mit Euler: $e^{j\\varphi} = \\cos\\varphi + j\\sin\\varphi$\n\nDrei Hilfssätze:\n- **Eindeutigkeit:** $a(t) = b(t)\\;\\forall t \\Leftrightarrow \\underline{A} = \\underline{B}$\n- **Linearität:** Zeiger einer Linearkombination = gleiche Linearkombination der Zeiger\n- **Differentiation:** $\\frac{\\mathrm{d}a}{\\mathrm{d}t} \\;\\leftrightarrow\\; j\\omega\\,\\underline{A}$',
       moreLabel: 'Hilfssätze',
     },
@@ -1200,6 +1229,7 @@ window.DECKS.push({
     {
       term: 'Elementgleichungen in Zeigerdarstellung',
       def: '- **Widerstand:** $\\underline{U} = R\\,\\underline{I}$\n- **Leitwert:** $\\underline{I} = G\\,\\underline{U}$\n- **Kapazität:** $\\underline{I} = j\\omega C\\,\\underline{U}$\n- **Induktivität:** $\\underline{U} = j\\omega L\\,\\underline{I}$',
+      calc: 'Netzwerk im eingeschwungenen Zustand berechnen:\n- alle Quellen als Zeiger schreiben\n- $R$, $j\\omega L$, $\\frac{1}{j\\omega C}$ wie Widerstände behandeln\n- mit den bekannten Regeln (Teiler, Knotenanalyse) komplex rechnen\n- Ergebnis-Zeiger in Zeitfunktion zurückwandeln',
     },
     {
       term: 'R, G, C und L',
@@ -1225,14 +1255,17 @@ window.DECKS.push({
     {
       term: 'Wirkleistung',
       def: 'Mittelwert der Momentanleistung über eine Periode: $P_W = \\frac{1}{T}\\int_0^T p(t)\\,\\mathrm{d}t = U_{\\text{eff}} I_{\\text{eff}} \\cos(\\alpha_U - \\alpha_I)$.',
+      calc: '- Effektivwerte $U_{\\text{eff}}$, $I_{\\text{eff}}$ bestimmen\n- Phasenverschiebung $\\varphi = \\alpha_U - \\alpha_I$ bestimmen\n- $P = U_{\\text{eff}} I_{\\text{eff}} \\cos\\varphi$',
     },
     {
       term: 'Effektivwert',
       def: 'Gleichwert, der in einem Ohm’schen Widerstand dieselbe mittlere Leistung erzeugt: bei Sinusgrößen $U_{\\text{eff}} = \\frac{U_m}{\\sqrt 2}$, $I_{\\text{eff}} = \\frac{I_m}{\\sqrt 2}$.',
+      calc: '- bei Sinusgrößen: Amplitude durch $\\sqrt{2}$ teilen: $A_{\\text{eff}} = \\frac{A_m}{\\sqrt{2}}$',
     },
     {
       term: 'Blindleistung',
       def: '$P_B = U_{\\text{eff}} I_{\\text{eff}} \\sin(\\alpha_U - \\alpha_I)$. Liefert keinen Beitrag zur Stromwärme, ist aber v. a. in der Energietechnik wichtig.',
+      calc: '- Effektivwerte und $\\varphi = \\alpha_U - \\alpha_I$ bestimmen\n- $P_B = U_{\\text{eff}} I_{\\text{eff}} \\sin\\varphi$',
     },
     {
       term: 'Komplexe Leistung',
@@ -1285,6 +1318,7 @@ window.DECKS.push({
     {
       term: 'Inzidenzmatrix $A_0$',
       def: '$n \\times b$-Matrix:\n- $+1$, wenn Kante $j$ in Knoten $i$ beginnt\n- $-1$, wenn sie dort endet\n- sonst 0\n\nOhne die Zeile des Bezugsknotens: reduzierte Inzidenzmatrix $A$ mit vollem Rang.',
+      calc: '- Zeile je Knoten, Spalte je Zweig\n- $+1$, wo der Zweig beginnt; $-1$, wo er endet; sonst 0\n- reduzierte Matrix $A$: Zeile des Bezugsknotens streichen',
     },
     {
       term: 'Taylor-Approximation',
@@ -1315,6 +1349,7 @@ window.DECKS.push({
     {
       term: 'Kern (Nullraum)',
       def: '$\\operatorname{Kern}(B) = \\{\\boldsymbol{x} \\mid B\\boldsymbol{x} = \\boldsymbol{0}\\}$: Lösungsmenge des homogenen Gleichungssystems.',
+      calc: '- $A\\boldsymbol{x} = \\boldsymbol{0}$ mit Gauß lösen\n- freie Variablen als Parameter\n- Lösung als Linearkombination schreiben → Basisvektoren des Kerns',
     },
     {
       term: 'Lineare Abhängigkeit',
@@ -1327,6 +1362,7 @@ window.DECKS.push({
     {
       term: 'Rang einer Matrix',
       def: 'Maximale Anzahl linear unabhängiger Spalten (= Zeilen) von $A$. Für $A \\in \\mathbb{R}^{m \\times n}$: $\\dim \\operatorname{Bild}(A) = r$, $\\dim \\operatorname{Kern}(A) = n - r$.',
+      calc: '- Matrix in Zeilenstufenform bringen\n- Nicht-Nullzeilen zählen',
     },
     {
       term: 'Orthogonalität',
@@ -1335,6 +1371,7 @@ window.DECKS.push({
     {
       term: 'Eigenwert und Eigenvektor',
       def: '$A\\boldsymbol{x} = \\lambda\\boldsymbol{x}$ mit $\\boldsymbol{x} \\neq \\boldsymbol{0}$:\n- $\\lambda$ ist Eigenwert, $\\boldsymbol{x}$ Eigenvektor\n- Eigenwerte = Nullstellen von $c(\\lambda) = \\det(A - \\lambda\\boldsymbol{1})$',
+      calc: '- charakteristisches Polynom $\\det(A - \\lambda \\boldsymbol{1}) = 0$ aufstellen\n- Nullstellen $\\lambda$ = Eigenwerte\n- je Eigenwert $\\text{kern}(A - \\lambda \\boldsymbol{1})$ bestimmen → Eigenvektoren',
       more: '- Eigenraum: alle Eigenvektoren zu $\\lambda_i$ (Unterraum)\n- algebraische Vielfachheit: Vielfachheit als Nullstelle\n- geometrische Vielfachheit: $n - \\operatorname{Rang}(A - \\lambda_i\\boldsymbol{1})$\n- **diagonalisierbar**, wenn es $n$ linear unabhängige Eigenvektoren gibt: $A = X\\Lambda X^{-1}$\n- sonst Jordan-Normalform mit Hauptvektoren\n- $A + \\alpha\\boldsymbol{1}$ hat Eigenwerte $\\lambda_i + \\alpha$',
       moreLabel: 'Details',
     },

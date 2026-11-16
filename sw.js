@@ -2,7 +2,7 @@
  * Strategie „Netzwerk zuerst“: Online kommen immer die neuesten Karten,
  * offline wird die zuletzt geladene Version aus dem Cache verwendet.
  */
-const CACHE = 'karteikarten-v11';
+const CACHE = 'karteikarten-v12';
 const CDN = 'cdnjs.cloudflare.com';
 const SHELL = [
   './', 'index.html', 'style.css', 'app.js', 'decks.js', 'decks/schaltungstheorie.js', 'decks/computertechnik.js', 'decks/lineare-algebra.js', 'manifest.webmanifest',

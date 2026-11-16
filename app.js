@@ -46,7 +46,7 @@
   // Lernstand-Schlüssel: Kapitel teilen sich den Lernstand mit ihrem Hauptordner
   const sid = f => f.statId || f.id;
 
-  // Alle Lernkarten eines Ordners (Definition, Vertiefung, Schaltbild); all = Optionen ignorieren
+  // Alle Lernkarten eines Ordners (Definition, Vertiefung, Berechnung, Schaltbild); all = Optionen ignorieren
   function studyItems(f, all) {
     const id = sid(f), out = [];
     for (const c of cardsOf(f)) {
@@ -54,8 +54,10 @@
         if (all || prefs.images) out.push({ term: c.term, img: c.img, text: c.def || '', label: 'Schaltbild' });
         continue;
       }
-      out.push({ term: c.term, text: c.def, ex: c.ex, label: null });
+      if (c.def) out.push({ term: c.term, text: c.def, ex: c.ex, label: null });
       if (c.more && (all || prefs.extended)) out.push({ term: c.term, text: c.more, label: c.moreLabel || 'Methode' });
+      // Rechenweg-Karte: Vorderseite „Begriff: Berechnung“, Rückseite die Schritte
+      if (c.calc) out.push({ term: c.term, text: c.calc, ex: c.calcEx, label: 'Berechnung' });
     }
     out.forEach((it, i) => { it.key = statKey(id, it.term, it.label); it.pos = i; });
     return out;
@@ -104,9 +106,11 @@
   }
   function countText(f) {
     const cs = cardsOf(f);
-    const terms = cs.filter(c => !c.img).length, more = cs.filter(c => c.more).length, imgs = cs.filter(c => c.img).length;
+    const terms = cs.filter(c => !c.img && c.def).length, more = cs.filter(c => c.more).length, imgs = cs.filter(c => c.img).length;
+    const calcs = cs.filter(c => c.calc).length;
     const parts = [terms + (terms === 1 ? ' Begriff' : ' Begriffe')];
     if (more) parts.push(more + ' Vertiefung' + (more === 1 ? '' : 'en'));
+    if (calcs) parts.push(calcs + ' Berechnung' + (calcs === 1 ? '' : 'en'));
     if (imgs) parts.push(imgs + ' Schaltbild' + (imgs === 1 ? '' : 'er'));
     if (f.chapters && f.chapters.length) parts.push(f.chapters.length + ' Kapitel');
     return parts.join(' · ');
@@ -342,8 +346,8 @@
       <div class="section-label">Karten</div>
       <div class="list">${cs.length ? cs.map(c => `<div class="row card-preview">
           <span class="dot" style="background:${dotFor(stats[statKey(sid(f), c.term, c.img ? 'Schaltbild' : null)])}"></span>
-          <span class="grow"><div class="title">${fmt(c.term)}${c.img ? '<span class="tag">Schaltbild</span>' : ''}${c.more ? `<span class="tag">+ ${esc(c.moreLabel || 'Methode')}</span>` : ''}${c.own ? '<span class="tag">eigene</span>' : ''}</div>
-          <div class="sub">${fmt(String(c.def || '').replace(/\n+- /g, ' · ').replace(/\n+/g, ' ').replace(/^- /, ''))}</div></span>
+          <span class="grow"><div class="title">${fmt(c.term)}${c.img ? '<span class="tag">Schaltbild</span>' : ''}${c.more ? `<span class="tag">+ ${esc(c.moreLabel || 'Methode')}</span>` : ''}${c.calc ? '<span class="tag">+ Berechnung</span>' : ''}${c.own ? '<span class="tag">eigene</span>' : ''}</div>
+          <div class="sub">${fmt(String(c.def || c.calc || '').replace(/\n+- /g, ' · ').replace(/\n+/g, ' ').replace(/^- /, ''))}</div></span>
           ${c.own ? `<button class="del" data-action="del-card" data-i="${c.ownIndex}" aria-label="Karte löschen">×</button>` : ''}
         </div>`).join('') : '<div class="empty">Dieser Ordner ist noch leer.</div>'}</div>`}
 
