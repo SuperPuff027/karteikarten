@@ -109,7 +109,7 @@ window.DECKS.push({
     {
       term: 'Projektion',
       img: 'schaltbilder/la-projektion.svg',
-      def: '$\text{proj}_w(v)$ liegt auf der Geraden in Richtung $w$; $v - \text{proj}_w(v)$ steht senkrecht darauf.',
+      def: '$\\text{proj}_w(v)$ liegt auf der Geraden in Richtung $w$; $v - \\text{proj}_w(v)$ steht senkrecht darauf.',
     },
 
     { chapter: '3 Lineare Gleichungssysteme' },
@@ -172,7 +172,7 @@ window.DECKS.push({
     {
       term: 'Zeilenstufenform (ZSF)',
       img: 'schaltbilder/la-zeilenstufenform.svg',
-      def: 'Unter jedem ersten Eintrag $\neq 0$ stehen nur Nullen; die Stufen gehen nach rechts.',
+      def: 'Unter jedem ersten Eintrag $\\neq 0$ stehen nur Nullen; die Stufen gehen nach rechts.',
     },
 
     { chapter: '5 Gauß-Jordan-Elimination' },
