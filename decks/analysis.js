@@ -37,6 +37,15 @@ window.DECKS.push({
       def: 'Durchschnitt, Vereinigung und Komplement als Mengendiagramm.',
     },
 
+    {
+      term: 'Rechenregeln für Mengen',
+      def: '- **leere Menge:** $\\emptyset \\subset A$ für jede Menge $A$\n- **assoziativ:** $(A \\cap B) \\cap C = A \\cap (B \\cap C)$, ebenso für $\\cup$\n- **distributiv:** $A \\cap (B \\cup C) = (A \\cap B) \\cup (A \\cap C)$\n- **distributiv:** $A \\cup (B \\cap C) = (A \\cup B) \\cap (A \\cup C)$\n- **De Morgan:** $A \\setminus (B \\cup C) = (A \\setminus B) \\cap (A \\setminus C)$',
+    },
+    {
+      term: 'Element vs. Teilmenge (Potenzmenge)',
+      def: 'Potenzmenge $\\mathcal{P}(A) = \\{M \\mid M \\subset A\\}$ – die Menge aller Teilmengen.\n- $a \\in A$, aber $\\{a\\} \\subset A$ und $\\{a\\} \\in \\mathcal{P}(A)$\n- $a \\notin \\mathcal{P}(A)$ (ein Element ist keine Teilmenge)\n- $\\emptyset \\in \\mathcal{P}(A)$ und $\\emptyset \\subset \\mathcal{P}(A)$\n- $A \\in \\mathcal{P}(A)$',
+    },
+
     { chapter: '1.2 Natürliche Zahlen und Induktion' },
     {
       term: 'Axiom',
@@ -72,6 +81,29 @@ window.DECKS.push({
       def: '$\\mathbb{N}_0 = \\{0\\} \\cup \\mathbb{N} = \\{0, 1, 2, \\ldots\\}$; Induktion beginnt dann bei $n = 0$.',
     },
 
+    {
+      term: 'Nützliche Summenformeln',
+      def: '- $\\sum_{i=1}^{n} (2i - 1) = n^2$ (Summe der ersten $n$ ungeraden Zahlen)\n- $\\sum_{k=1}^{n} k \\cdot k! = (n + 1)! - 1$\n- $\\sum_{k=0}^{n} \\binom{n}{k} = 2^n$\n- Fibonacci: $\\sum_{i=1}^{n} F_i^2 = F_n F_{n+1}$',
+    },
+    {
+      term: 'Anzahl der Anordnungen',
+      def: '$n$ verschiedene Elemente lassen sich auf $n! = 1 \\cdot 2 \\cdots n$ Arten anordnen.',
+    },
+    {
+      term: 'Teilbarkeit per Induktion',
+      def: 'Beweis, dass ein Ausdruck $A(n)$ für alle $n$ durch $m$ teilbar ist, z. B. $4^{2n+1} + 3^{n+2}$ durch 13.',
+      calc: '- **Anfang:** $A(1)$ ausrechnen und durch $m$ teilen\n- **Schritt:** $A(n + 1)$ so umformen, dass $A(n)$ auftaucht: $A(n + 1) = c \\cdot A(n) + (\\text{Rest})$\n- zeigen, dass der Rest ein Vielfaches von $m$ ist\n- $A(n)$ teilbar (Annahme) + Rest teilbar → $A(n + 1)$ teilbar\n\n$4^{2n+3} + 3^{n+3} = 16 \\cdot (4^{2n+1} + 3^{n+2}) - 13 \\cdot 3^{n+2}$',
+    },
+    {
+      term: 'Induktion bei zweistufiger Rekursion',
+      def: 'Für Folgen wie $x_n = -3x_{n-1} - 2x_{n-2}$ hängt jedes Glied von **zwei** Vorgängern ab.',
+      calc: '- **Anfang:** Formel für $n = 0$ **und** $n = 1$ prüfen\n- **Annahme:** Formel gilt für $n - 1$ und $n$\n- **Schritt:** $x_{n+1}$ per Rekursion durch $x_n$, $x_{n-1}$ ausdrücken, beide Formeln einsetzen, vereinfachen',
+    },
+    {
+      term: 'Typischer Induktionsfehler',
+      def: 'Der Induktionsschritt muss für **jedes** $n$ funktionieren – auch für den kleinsten.\n- Beispiel „alle Tiere sind Elefanten“: von $n = 1$ auf $n = 2$ überlappen „die ersten $n$“ und „die letzten $n$“ Tiere nicht\n- daher bricht die Kette schon bei $1 \\to 2$',
+    },
+
     { chapter: '1.3–1.4 Ganze und rationale Zahlen' },
     {
       term: 'Ganze Zahlen',
@@ -94,6 +126,19 @@ window.DECKS.push({
     {
       term: 'Widerspruchsbeweis',
       def: '- annehmen, das Gegenteil der Aussage gilt\n- daraus eine Aussage folgern, die sicher falsch ist\n- also stimmt die ursprüngliche Aussage',
+    },
+
+    {
+      term: 'Irrationalität von Wurzeln',
+      def: 'Für jede Primzahl $p$ ist $\\sqrt{p} \\notin \\mathbb{Q}$ (z. B. $\\sqrt{7}$).\n- Beweis wie bei $\\sqrt{2}$: aus $m^2 = p\\,n^2$ folgt $p \\mid m$, dann $p \\mid n$ → Widerspruch zur Teilerfremdheit',
+    },
+    {
+      term: 'Summen rationaler und irrationaler Zahlen',
+      def: '- rational + rational = **rational**\n- rational + irrational = **irrational** (Widerspruchsbeweis)\n- irrational + irrational = **kann rational sein**: $\\sqrt{2} + (-\\sqrt{2}) = 0$',
+    },
+    {
+      term: 'Irrationalität über Primfaktoren',
+      def: 'Gleichungen wie $10^x = 7$ haben keine rationale Lösung.\n- Annahme $x = \\frac{p}{q}$ → $10^p = 7^q$\n- links Primfaktoren 2 und 5, rechts nur 7 → Widerspruch (eindeutige Primfaktorzerlegung)',
     },
 
     { chapter: '1.5 Reelle Zahlen' },
@@ -149,6 +194,20 @@ window.DECKS.push({
       term: 'Infimum und Minimum',
       def: '- **Infimum** $\\inf M$: größte untere Schranke\n- **Minimum:** $\\min M = \\inf M$, falls $\\inf M \\in M$',
       calc: 'Sup/Inf bestimmen:\n- Kandidaten raten (Intervallgrenzen, Grenzwerte)\n- prüfen, dass es eine Schranke ist\n- zeigen, dass keine kleinere obere (größere untere) Schranke existiert, z. B. per Widerspruch\n- liegt der Wert in $M$ → auch Max bzw. Min\n\n$M = \\{\\frac{1}{n}\\}$: $\\max = \\sup = 1$, $\\inf = 0$, kein Minimum',
+    },
+
+    {
+      term: 'Umgekehrte Dreiecksungleichung',
+      def: '$$\\big||x| - |y|\\big| \\le |x - y|$$\n- falsch ist dagegen $|x - y| \\le |x| - |y|$\n- und im Allgemeinen $|x - y| \\neq \\big||x| - |y|\\big|$',
+    },
+    {
+      term: 'Quadrat-Trick für Ungleichungen',
+      def: 'Viele Ungleichungen folgen aus $(a - b)^2 \\ge 0$:\n- $a^2 + b^2 \\ge 2ab$\n- $(a + b)^2 \\ge 4ab$, also $\\frac{a + b}{2} \\ge \\sqrt{ab}$ für $a, b \\ge 0$\n- Gleichheit genau für $a = b$\n\nBeispiel Widerstände: $R_h = R_1 + R_2 \\ge 4 R_p$.',
+    },
+    {
+      term: 'Gleichung mit mehreren Beträgen',
+      def: 'Gleichung wie $|x + 1| + |5x - 2| = 6$.',
+      calc: '- Nullstellen aller Betragsinhalte bestimmen ($x = -1$, $x = \\frac25$)\n- Zahlengerade in Bereiche zwischen diesen Stellen teilen\n- in jedem Bereich die Beträge ohne Betrag (mit passendem Vorzeichen) schreiben\n- Gleichung lösen, Lösung nur behalten, wenn sie im Bereich liegt',
     },
 
     { chapter: '1.6 Summen, Produkte, Binomialformel' },
@@ -217,6 +276,37 @@ window.DECKS.push({
       def: 'Einheitskreis: der Punkt zur Bogenlänge $x$ hat die Koordinaten $(\\cos x, \\sin x)$.',
     },
 
+    {
+      term: 'Doppelwinkel und Potenzreduktion',
+      def: '- $\\sin(2x) = 2\\sin x \\cos x$\n- $\\cos(2x) = \\cos^2 x - \\sin^2 x = \\cos^4 x - \\sin^4 x$\n- $\\sin^2 x = \\frac{1 - \\cos(2x)}{2}$\n- $\\cos^2 x = \\frac{1 + \\cos(2x)}{2}$',
+    },
+    {
+      term: 'Produkt in Summe (Sinus/Kosinus)',
+      def: '$$\\sin x \\cos y = \\tfrac{1}{2}\\sin(x - y) + \\tfrac{1}{2}\\sin(x + y)$$',
+    },
+    {
+      term: 'Additionstheorem Tangens',
+      def: '- $\\tan(x + y) = \\frac{\\tan x + \\tan y}{1 - \\tan x \\tan y}$\n- $\\tan x + \\tan y = \\frac{\\sin(x + y)}{\\cos x \\cos y}$',
+    },
+    {
+      term: 'Halbwinkelformeln mit Tangens',
+      def: 'Mit $t = \\tan\\frac{x}{2}$ (für $x \\in (-\\pi, \\pi)$):\n- $\\cos x = \\frac{1 - t^2}{1 + t^2}$\n- $\\sin x = \\frac{2t}{1 + t^2}$',
+    },
+    {
+      term: 'Verkettung mit Arcusfunktionen',
+      def: '- $\\cos(\\arcsin x) = \\sqrt{1 - x^2}$ für $x \\in [-1, 1]$\n- $\\sin(\\arctan x) = \\frac{x}{\\sqrt{1 + x^2}}$ für $x \\in \\mathbb{R}$\n\nIdee: $\\sin^2 + \\cos^2 = 1$ und das Vorzeichen über den Wertebereich der Arcusfunktion festlegen.',
+    },
+    {
+      term: 'Trigonometrische Gleichung per Substitution',
+      def: 'Gleichung wie $5\\sin x - 2\\cos^2 x = 1$.',
+      calc: '- mit $\\cos^2 x = 1 - \\sin^2 x$ alles durch **eine** Funktion ausdrücken\n- substituieren $s = \\sin x$ → quadratische Gleichung $2s^2 + 5s - 3 = 0$\n- nur Lösungen mit $|s| \\le 1$ behalten ($s = \\frac12$)\n- zurück: $x = \\arcsin s + 2\\pi k$ und $x = \\pi - \\arcsin s + 2\\pi k$',
+    },
+    {
+      term: 'Trigonometrische Ungleichung',
+      def: 'Ungleichung wie $\\sin(2x) \\le \\sqrt{3}\\sin x$.',
+      calc: '- Doppelwinkel einsetzen: $2\\sin x\\cos x - \\sqrt3 \\sin x \\le 0$\n- ausklammern: $\\sin x\\,(2\\cos x - \\sqrt3) \\le 0$\n- Vorzeichen beider Faktoren auf einer Periode $[0, 2\\pi)$ untersuchen\n- Lösungsintervalle mit $+ 2\\pi k$ periodisch fortsetzen',
+    },
+
     { chapter: '1.8 Komplexe Zahlen' },
     {
       term: 'Komplexe Zahlen',
@@ -264,6 +354,25 @@ window.DECKS.push({
       term: 'Polardarstellung',
       img: 'schaltbilder/an-polardarstellung.svg',
       def: '$z = x + iy$ mit Betrag $r = |z|$ und Argument $\\varphi$.',
+    },
+
+    {
+      term: 'Einheitswurzeln',
+      def: 'Die Lösungen von $z^n = 1$ in $\\mathbb{C}$: $$z_k = e^{2\\pi i k/n}, \\quad k = 0, 1, \\ldots, n - 1$$\n- liegen als regelmäßiges $n$-Eck auf dem Einheitskreis\n- ihre Summe ist 0 (für $n \\ge 2$), z. B. Drehstrom: $1 + e^{2\\pi i/3} + e^{4\\pi i/3} = 0$',
+    },
+    {
+      term: 'Komplexe Gleichung mit Re und Im',
+      def: 'Gleichung wie $\\text{Re}(iz) + i\\,\\text{Im}(z) = \\bar z + 2i$.',
+      calc: '- $z = x + iy$ einsetzen\n- beide Seiten in der Form $a + bi$ schreiben\n- Realteile gleichsetzen und Imaginärteile gleichsetzen → zwei reelle Gleichungen\n- nach $x$ und $y$ lösen',
+    },
+    {
+      term: 'Komplexe Bruchgleichung',
+      def: 'Gleichung mit $z$ im Nenner, z. B. mit Nenner $z^2 - (1 + i)z + i$.',
+      calc: '- Nenner faktorisieren: $z^2 - (1 + i)z + i = (z - 1)(z - i)$\n- Definitionslücken notieren ($z \\neq 1$, $z \\neq i$)\n- mit dem Hauptnenner multiplizieren\n- entstehende Gleichung lösen, Lücken ausschließen',
+    },
+    {
+      term: 'Betrag eines Quotienten',
+      def: '$$\\left|\\frac{z}{w}\\right| = \\frac{|z|}{|w|}, \\qquad |z w| = |z|\\,|w|$$ Spart bei Ungleichungen wie $\\left|\\frac{a + 3i}{i - 1}\\right| > 1$ das Ausrechnen des Bruchs.',
     },
 
     { chapter: '2.1 Folgen und Grenzwert' },
@@ -377,6 +486,32 @@ window.DECKS.push({
     {
       term: 'Satz von Bolzano-Weierstraß',
       def: 'Jede beschränkte Folge hat mindestens eine konvergente Teilfolge.',
+    },
+
+    {
+      term: 'Unbestimmter Ausdruck ∞ − ∞',
+      def: 'Aus $c_n \\to +\\infty$ und $d_n \\to -\\infty$ folgt **nichts** über $c_n + d_n$:\n- $c_n = 2n$, $d_n = -n$ → $+\\infty$\n- $c_n = n$, $d_n = -2n$ → $-\\infty$\n- $c_n = n + e$, $d_n = -n$ → $e$',
+    },
+    {
+      term: 'Endlich viele Folgenglieder ändern',
+      def: 'Ändert man endlich viele Glieder einer konvergenten Folge, bleibt sie konvergent mit **demselben** Grenzwert.',
+    },
+    {
+      term: 'Teleskopprodukt',
+      def: 'Produkt wie $\\prod_{k=2}^{n}\\left(1 - \\frac{1}{k^2}\\right)$.',
+      calc: '- Faktor zerlegen: $1 - \\frac{1}{k^2} = \\frac{(k - 1)(k + 1)}{k \\cdot k}$\n- Produkt ausschreiben – fast alle Faktoren kürzen sich\n- übrig bleibt $\\frac{n + 1}{2n} \\to \\frac12$',
+    },
+    {
+      term: 'n-te Wurzel einer Konstanten',
+      def: '$$\\lim_{n\\to\\infty} \\sqrt[n]{\\alpha} = 1 \\quad \\text{für jedes } \\alpha > 0$$ Beweis mit Bernoulli-Ungleichung und Sandwich-Theorem.',
+    },
+    {
+      term: 'Nullfolge und Kehrwert',
+      def: 'Für eine monoton fallende Folge positiver Zahlen gilt: $$x_n \\to 0 \\;\\Leftrightarrow\\; \\left(\\tfrac{1}{x_n}\\right) \\text{ ist unbeschränkt}$$',
+    },
+    {
+      term: 'Beschränkt mal Nullfolge',
+      def: '- beschränkt · **Nullfolge** → Nullfolge\n- beschränkt · **konvergent** → im Allgemeinen **nicht** konvergent: $(-1)^n \\cdot 1$',
     },
 
     { chapter: '2.3 Unendliche Reihen' },
