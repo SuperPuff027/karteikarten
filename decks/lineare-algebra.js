@@ -296,7 +296,7 @@ window.DECKS.push({
     },
     {
       term: 'Rechenregeln Inverse',
-      def: '- $(A^{-1})^{-1} = A$\n- $(\\lambda A)^{-1} = \\frac{1}{\\lambda} A^{-1}$\n- $(AB)^{-1} = B^{-1} A^{-1}$ (umgekehrte Reihenfolge)\n- $(A^{\\mathrm{T}})^{-1} = (A^{-1})^{\\mathrm{T}}$\n- $(A^n)^{-1} = (A^{-1})^n$',
+      def: '- $(A^{-1})^{-1} = A$\n- $(\\lambda A)^{-1} = \\frac{1}{\\lambda} A^{-1}$ für $\\lambda \\neq 0$\n- $(AB)^{-1} = B^{-1} A^{-1}$ (umgekehrte Reihenfolge)\n- $(A^{\\mathrm{T}})^{-1} = (A^{-1})^{\\mathrm{T}}$\n- $(A^n)^{-1} = (A^{-1})^n$',
     },
     {
       term: 'Einseitige Inverse genügt',

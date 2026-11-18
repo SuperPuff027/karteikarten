@@ -862,7 +862,7 @@ window.DECKS.push({
     {
       term: 'Datenkonflikt',
       def: 'Ein Befehl braucht ein Ergebnis, das ein vorheriger Befehl noch nicht in den Registerblock geschrieben hat.',
-      calc: 'Konflikte finden:\n- für jeden Befehl das Zielregister notieren\n- folgende Befehle prüfen, ob sie es als Quelle lesen\n- liegt der Lesende weniger als 3 Befehle danach (bevor ES fertig ist) → Datenkonflikt',
+      calc: 'Konflikte finden:\n- für jeden Befehl das Zielregister notieren\n- folgende Befehle prüfen, ob sie es als Quelle lesen\n- liegen weniger als 3 Befehle dazwischen (ES noch nicht fertig) → Datenkonflikt, ohne Forwarding 3 NOPs nötig',
       ex: 'ADD $1,$2,$3\nMUL $3,$2,$1   // $1 noch alt!',
     },
     {

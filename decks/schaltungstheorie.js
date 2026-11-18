@@ -511,6 +511,14 @@ window.DECKS.push({
       def: '$\\begin{bmatrix}u_1\\\\ i_2\\end{bmatrix} = H \\begin{bmatrix}i_1\\\\ u_2\\end{bmatrix}$ – gemischte Beschreibung (Strom an Tor 1, Spannung an Tor 2 steuern).',
     },
     {
+      term: 'Inverse Hybridmatrix $H\'$',
+      def: '$\\begin{bmatrix}i_1\\\\ u_2\\end{bmatrix} = H\' \\begin{bmatrix}u_1\\\\ i_2\\end{bmatrix}$ – gemischte Beschreibung (Spannung an Tor 1, Strom an Tor 2 steuern).',
+    },
+    {
+      term: 'Inverse Kettenmatrix $A\'$',
+      def: '$\\begin{bmatrix}u_2\\\\ i_2\\end{bmatrix} = A\' \\begin{bmatrix}u_1\\\\ -i_1\\end{bmatrix}$ – Achtung: Minuszeichen bei $i_1$; Tor 2 wird aus Tor 1 berechnet.',
+    },
+    {
       term: 'Bedeutung von $g_{11}$, $g_{22}$',
       def: '- $g_{11} = \\left.\\frac{i_1}{u_1}\\right|_{u_2 = 0}$: Eingangsleitwert bei kurzgeschlossenem Ausgang\n- $g_{22} = \\left.\\frac{i_2}{u_2}\\right|_{u_1 = 0}$: Ausgangsleitwert bei kurzgeschlossenem Eingang',
     },
@@ -553,7 +561,7 @@ window.DECKS.push({
     {
       term: 'Umkehrbares (symmetrisches) Zweitor',
       def: 'Vertauschen der Tore ändert den Betriebsraum nicht. Mit $P = \\begin{bmatrix}0&1\\\\1&0\\end{bmatrix}$: $G = PGP$, $R = PRP$, also $g_{11} = g_{22}$, $g_{12} = g_{21}$.',
-      more: '- $P$: selbstinverse Permutationsmatrix (Torvertauschung)\n- Kettenmatrix: $a_{11} = a_{22}$ und $\\det A = 1$\n- Beispiel: T-Glied\n- **antimetrisch**: geht bei Umkehrung in sein duales Zweitor über (z. B. Gyrator)',
+      more: '- $P$: selbstinverse Permutationsmatrix (Torvertauschung)\n- mit Kettenbeschreibung: $A = A\'$\n- Beispiel: T-Glied\n- **antimetrisch**: geht bei Umkehrung in sein duales Zweitor über (z. B. Gyrator)',
       moreLabel: 'Details',
     },
     {
@@ -577,7 +585,7 @@ window.DECKS.push({
     {
       term: 'Gesteuerte Quelle',
       def: 'Zweitor aus zwei Zweigen:\n- **Steuerungszweig:** Leerlauf oder Kurzschluss\n- **gesteuerter Zweig:** abhängige Strom- oder Spannungsquelle\n\nVier Varianten: VCCS, CCCS, VCVS, CCVS.',
-      more: '- **VCCS**: $i_2 = g\\,u_1$, $i_1 = 0$ → $G = \\begin{bmatrix}0&0\\\\g&0\\end{bmatrix}$\n- **CCCS**: $i_2 = \\beta\\, i_1$, $u_1 = 0$ → $H = \\begin{bmatrix}0&0\\\\\\beta&0\\end{bmatrix}$\n- **VCVS**: $u_2 = \\mu\\, u_1$, $i_1 = 0$ → $H\' = \\begin{bmatrix}0&0\\\\\\mu&0\\end{bmatrix}$\n- **CCVS**: $u_2 = r\\, i_1$, $u_1 = 0$ → $R = \\begin{bmatrix}0&0\\\\r&0\\end{bmatrix}$\n\nFür Faktor $\\neq 0$ weder passiv noch reziprok. Mit Faktor $\\to \\infty$ → Nullor.',
+      more: '- **VCCS**: $i_2 = g\\,u_1$, $i_1 = 0$ → $G = \\begin{bmatrix}0&0\\\\g&0\\end{bmatrix}$, $A = \\begin{bmatrix}0&-\\frac{1}{g}\\\\0&0\\end{bmatrix}$\n- **CCCS**: $i_2 = \\beta\\, i_1$, $u_1 = 0$ → $H = \\begin{bmatrix}0&0\\\\\\beta&0\\end{bmatrix}$, $A = \\begin{bmatrix}0&0\\\\0&-\\frac{1}{\\beta}\\end{bmatrix}$\n- **VCVS**: $u_2 = \\mu\\, u_1$, $i_1 = 0$ → $H\' = \\begin{bmatrix}0&0\\\\\\mu&0\\end{bmatrix}$, $A = \\begin{bmatrix}\\frac{1}{\\mu}&0\\\\0&0\\end{bmatrix}$\n- **CCVS**: $u_2 = r\\, i_1$, $u_1 = 0$ → $R = \\begin{bmatrix}0&0\\\\r&0\\end{bmatrix}$, $A = \\begin{bmatrix}0&0\\\\\\frac{1}{r}&0\\end{bmatrix}$\n\nFür Faktor $\\neq 0$ weder passiv noch reziprok. Mit Faktor $\\to \\infty$ → Nullor.',
       moreLabel: 'Vier Typen',
     },
     {
@@ -615,7 +623,7 @@ window.DECKS.push({
     {
       term: 'Idealer Übertrager',
       def: 'Verlustloses und reziprokes Zweitor:\n- $u_1 = \\ddot u\\, u_2$\n- $i_2 = -\\ddot u\\, i_1$\n\n$\\ddot u$: Übersetzungsverhältnis (Windungszahlverhältnis).',
-      more: '$$H = \\begin{bmatrix}0 & \\ddot u\\\\ -\\ddot u & 0\\end{bmatrix} \\qquad A = \\begin{bmatrix}\\ddot u & 0\\\\ 0 & \\frac{1}{\\ddot u}\\end{bmatrix}$$\n- $H$ schiefsymmetrisch; $G$ und $R$ existieren nicht\n- gilt auch für Gleichgrößen (Idealisierung!)\n- umkehrbar für $\\ddot u = \\pm 1$\n- Abschluss mit $R$: am Tor 1 wirkt $R_{\\text{ein}} = \\ddot u^2 R$ → Positiv-Immittanz-Konverter (PIK)',
+      more: '$$H = \\begin{bmatrix}0 & \\ddot u\\\\ -\\ddot u & 0\\end{bmatrix} \\qquad H\' = \\begin{bmatrix}0 & -\\frac{1}{\\ddot u}\\\\ \\frac{1}{\\ddot u} & 0\\end{bmatrix}$$ $$A = \\begin{bmatrix}\\ddot u & 0\\\\ 0 & \\frac{1}{\\ddot u}\\end{bmatrix} \\qquad A\' = \\begin{bmatrix}\\frac{1}{\\ddot u} & 0\\\\ 0 & \\ddot u\\end{bmatrix}$$\n- $H$ und $H\'$ schiefsymmetrisch; $G$ und $R$ existieren nicht\n- gilt auch für Gleichgrößen (Idealisierung!)\n- umkehrbar für $\\ddot u = \\pm 1$\n- Abschluss mit $R$: am Tor 1 wirkt $R_{\\text{ein}} = \\ddot u^2 R$ → Positiv-Immittanz-Konverter (PIK)',
       moreLabel: 'Matrizen',
     },
     {
@@ -626,7 +634,7 @@ window.DECKS.push({
     {
       term: 'Gyrator',
       def: 'Verlustloses Zweitor, für das $G$ und $R$ existieren: $R = \\begin{bmatrix}0 & -R_d\\\\ R_d & 0\\end{bmatrix}$. Wandelt einen Zweipol in seinen dualen (Dualwandler).',
-      more: '- $G = R^{-1} = \\begin{bmatrix}0 & G_d\\\\ -G_d & 0\\end{bmatrix}$, $G_d = 1/R_d$ (Gyrationsleitwert)\n- Kettenmatrix $A = \\begin{bmatrix}0 & R_d\\\\ G_d & 0\\end{bmatrix}$, $\\det A = -1$; keine Hybridmatrizen\n- Abschluss mit $R$: $R_{\\text{ein}} = \\frac{R_d^2}{R}$ (duales Element)\n- antireziprok und antimetrisch; Positiv-Immittanz-Inverter (PII)\n- Realisierung: zwei VCCS parallel oder zwei CCVS in Serie mit entgegengesetztem Steuerfaktor',
+      more: '- $G = R^{-1} = \\begin{bmatrix}0 & G_d\\\\ -G_d & 0\\end{bmatrix}$, $G_d = 1/R_d$ (Gyrationsleitwert)\n- Kettenmatrizen $A = \\begin{bmatrix}0 & R_d\\\\ G_d & 0\\end{bmatrix}$, $A\' = \\begin{bmatrix}0 & -R_d\\\\ -G_d & 0\\end{bmatrix}$, $\\det A = \\det A\' = -1$\n- keine Hybridmatrizen (da $r_{11} = r_{22} = 0$)\n- Abschluss mit $R$: $R_{\\text{ein}} = \\frac{R_d^2}{R}$ (duales Element)\n- antireziprok und antimetrisch; Positiv-Immittanz-Inverter (PII)\n- Realisierung: zwei VCCS parallel oder zwei CCVS in Serie mit entgegengesetztem Steuerfaktor',
       moreLabel: 'Matrizen',
     },
     {
@@ -637,7 +645,7 @@ window.DECKS.push({
     {
       term: 'Negativ-Immittanz-Konverter (NIK)',
       def: 'Aktives Zweitor, das einen positiven in einen negativen Widerstand wandelt: Abschluss mit $R$ ergibt am Tor 1 $R_{\\text{ein}} = -k^2 R$.',
-      more: '$$H = \\begin{bmatrix}0 & -k\\\\ -k & 0\\end{bmatrix} \\qquad A = \\begin{bmatrix}-k & 0\\\\ 0 & \\frac{1}{k}\\end{bmatrix}$$\n- weder spannungs- noch stromgesteuert ($G$, $R$ existieren nicht)\n- aktiv, antireziprok, für $|k| = 1$ symmetrisch\n- $k = 1$: Kennlinie an der $i_1$-Achse gespiegelt, $k = -1$: an der $u_1$-Achse\n- Immittanz = Impedanz + Admittanz',
+      more: '$$H = \\begin{bmatrix}0 & -k\\\\ -k & 0\\end{bmatrix} \\qquad H\' = \\begin{bmatrix}0 & -\\frac{1}{k}\\\\ -\\frac{1}{k} & 0\\end{bmatrix}$$ $$A = \\begin{bmatrix}-k & 0\\\\ 0 & \\frac{1}{k}\\end{bmatrix} \\qquad A\' = \\begin{bmatrix}-\\frac{1}{k} & 0\\\\ 0 & k\\end{bmatrix}$$\n- weder spannungs- noch stromgesteuert ($G$, $R$ existieren nicht)\n- aktiv, antireziprok, für $|k| = 1$ symmetrisch\n- $k = 1$: Kennlinie an der $i_1$-Achse gespiegelt, $k = -1$: an der $u_1$-Achse\n- Immittanz = Impedanz + Admittanz',
       moreLabel: 'Matrizen',
     },
     {
@@ -810,7 +818,7 @@ window.DECKS.push({
     {
       term: 'Gesteuerte Quellen mit Op-Amps',
       def: 'Alle vier gesteuerten Quellen sind mit Op-Amps realisierbar, wenn je ein Pol von Ein- und Ausgang auf Masse liegt; meist braucht man zwei Op-Amps.',
-      more: '- **VCVS** mit $\\mu = 1 + \\frac{R_0}{R_1} > 1$: nichtinvertierender Verstärker\n- **VCVS** mit $\\mu < 0$: Spannungsfolger in Kette mit invertierendem Verstärker\n- **CCVS** mit $r < 0$: invertierender Verstärker ohne Eingangswiderstand (Transimpedanz)\n- **VCCS**, **CCCS** analog über Nullor-Realisierungen\n- **Gyrator**: NIK in Kette mit einem Negativ-Immittanz-Inverter (NII)',
+      more: '- **VCVS** mit $\\mu = 1 + \\frac{R_0}{R_1} > 1$: nichtinvertierender Verstärker\n- **VCVS** mit $\\mu < 0$: Spannungsfolger in Kette mit invertierendem Verstärker\n- **CCVS** mit $r < 0$: invertierender Verstärker ohne Eingangswiderstand (Transimpedanz)\n- **VCCS**: Ausgang mit $G$ und $-G$ ergänzen, per Quellenumwandlung auf eine VCVS mit Innenwiderstand zurückführen ($-R$ per NIK)\n- **CCCS**: wie VCCS, nur der Spannungsfolger wird durch eine CCVS ersetzt\n- **Gyrator**: NIK in Kette mit einem Negativ-Immittanz-Inverter (NII)',
       moreLabel: 'Übersicht',
     },
 
@@ -828,7 +836,7 @@ window.DECKS.push({
     {
       term: 'Zirkulator',
       def: 'Verlustloses, nicht reziprokes Mehrtor (v. a. Mikrowellentechnik): Leistung von Tor 1 geht zu Tor 2, von Tor 2 zu Tor 3, usw.',
-      more: 'Dreitor-Zirkulator:\n$$R = \\begin{bmatrix}0 & R & -R\\\\ -R & 0 & R\\\\ R & -R & 0\\end{bmatrix}$$\n- $R = -R^{\\mathrm{T}}$ → verlustlos, nicht reziprok\n- Anwendung: Senden und Empfangen über dieselbe Antenne\n- realisierbar mit einem Gyrator; $p$-Tor-Zirkulatoren aus mehreren Dreitor-Zirkulatoren',
+      more: 'Dreitor-Zirkulator:\n$$R = \\begin{bmatrix}0 & R & -R\\\\ -R & 0 & R\\\\ R & -R & 0\\end{bmatrix} \\quad \\text{oder} \\quad G = \\begin{bmatrix}0 & G & -G\\\\ -G & 0 & G\\\\ G & -G & 0\\end{bmatrix}$$\n- $R = -R^{\\mathrm{T}}$ bzw. $G = -G^{\\mathrm{T}}$ → verlustlos, nicht reziprok\n- Anwendung: Senden und Empfangen über dieselbe Antenne\n- realisierbar mit einem Gyrator; $p$-Tor-Zirkulatoren aus mehreren Dreitor-Zirkulatoren',
       moreLabel: 'Methode',
     },
     {
@@ -985,7 +993,7 @@ window.DECKS.push({
     },
     {
       term: 'Nullor-Einbau in $G_k$',
-      def: 'Zuerst $G_k^0$ mit Leerläufen statt Nullator/Norator aufstellen, dann:\n- **Nullator** zwischen $\\alpha$, $\\beta$: Spalten $\\alpha$ und $\\beta$ addieren\n- **Norator** zwischen $\\gamma$, $\\delta$: Zeilen $\\gamma$ und $\\delta$ addieren (Superknoten)',
+      def: 'Zuerst $G_k\'$ mit Leerläufen statt Nullator/Norator aufstellen, dann:\n- **Nullator** zwischen $\\alpha$, $\\beta$: Spalten $\\alpha$ und $\\beta$ addieren\n- **Norator** zwischen $\\gamma$, $\\delta$: Zeilen $\\gamma$ und $\\delta$ addieren (Superknoten)',
       more: '- Nullator erzwingt $u_{k\\alpha} = u_{k\\beta}$ → Spalten zusammenfassen, eine Unbekannte weniger; liegt $\\beta$ auf Masse, entfällt Spalte $\\alpha$\n- Norator: Strom beliebig → KCL der beiden Knoten zu einer Superknotengleichung addieren; liegt ein Pol auf Masse, einfach Zeile $\\gamma$ streichen\n- jeder Nullator kostet eine Spalte, jeder Norator eine Zeile → nur paarweise (Nullor) bleibt $G_k$ quadratisch',
       moreLabel: 'Methode',
     },
@@ -1024,7 +1032,7 @@ window.DECKS.push({
     {
       term: 'Zweipolersatzschaltungen',
       def: 'Jede lineare, resistive, intern eindeutig lösbare Schaltung mit einem Klemmenpaar verhält sich wie eine lineare Quelle: Helmholtz/Thévenin- oder Mayer/Norton-Ersatzzweipol.',
-      calc: 'Ersatzspannungsquelle bestimmen:\n- Leerlaufspannung $u_0$ berechnen\n- Innenwiderstand $R_i$ berechnen (Quellen nullsetzen oder $u_0/i_0$)\n- Ersatz: $u_0$ in Serie mit $R_i$ (bzw. Stromquelle $i_0 = u_0/R_i$ parallel zu $R_i$)',
+      calc: 'Ersatzspannungsquelle bestimmen:\n- Leerlaufspannung $u_0$ berechnen\n- Innenwiderstand $R_i$ berechnen (Quellen nullsetzen oder $R_i = -u_0/i_0$ mit den Zählpfeilen aus Kap. 8)\n- Ersatz: $u_0$ in Serie mit $R_i$ (bzw. Stromquelle $i_0 = u_0/R_i$ parallel zu $R_i$)',
       more: '- **Thévenin:** Spannungsquelle $u_0$ in Serie mit $R_i$: $u = u_0 + R_i\\, i$ (für $m \\neq 0$)\n- **Norton:** Stromquelle $i_0$ parallel zu $G_i$ (für $n \\neq 0$)\n- Bestimmung: Leerlaufspannung $u_0$ und Kurzschlussstrom $i_0$ messen, $R_i = -\\frac{u_0}{i_0}$ (Vorzeichen je nach Zählpfeil)\n- oder: alle unabhängigen Quellen durch Nullquellen ersetzen und von außen erregen (gesteuerte Quellen bleiben!)\n- für $G_i \\neq 0$ und $R_i \\neq 0$ existieren beide',
       moreLabel: 'Methode',
     },
@@ -1035,8 +1043,8 @@ window.DECKS.push({
     },
     {
       term: 'Innenwiderstand bestimmen',
-      def: '- **Methode 1:** unabhängige Quellen durch Nullquellen ersetzen (gesteuerte bleiben!), von außen mit $u$ erregen, $i$ messen: $R_i = u/i$\n- **Methode 2:** aus Leerlaufspannung und Kurzschlussstrom',
-      calc: '- **über Quellen:** unabhängige Quellen durch Nullquellen ersetzen ($u_Q \\to$ Kurzschluss, $i_Q \\to$ Leerlauf), gesteuerte bleiben; Ersatzwiderstand an den Klemmen berechnen\n- **über Kennwerte:** $R_i = u_0 / i_0$',
+      def: '- **Methode 1:** unabhängige Quellen durch Nullquellen ersetzen (gesteuerte bleiben!), von außen mit $u$ erregen, $i$ messen: $R_i = u/i$\n- **Methode 2:** aus Leerlaufspannung $u_0$ und Kurzschlussstrom $i_0$: $R_i = -\\frac{u_0}{i_0}$, $G_i = -\\frac{i_0}{u_0}$ (Zählpfeile wie in Kap. 8)',
+      calc: '- **über Quellen:** unabhängige Quellen durch Nullquellen ersetzen ($u_Q \\to$ Kurzschluss, $i_Q \\to$ Leerlauf), gesteuerte bleiben; Ersatzwiderstand an den Klemmen berechnen\n- **über Kennwerte:** $R_i = -\\frac{u_0}{i_0}$ mit den Zählpfeilen aus Kap. 8 (Kurzschlussstrom in die Klemme gemessen); mit dem Kurzschlussstrom aus Kap. 3 entfällt das Minus',
     },
     {
       term: 'Passivität zusammengesetzter Netzwerke',
@@ -1079,7 +1087,7 @@ window.DECKS.push({
     },
     {
       term: 'Gesteuerte Reaktanzen',
-      def: '- **Kapazität:** spannungsgesteuert $q = \\hat q(u)$ oder ladungsgesteuert $u = \\hat u(q)$\n- **Induktivität:** stromgesteuert $\\Phi = \\hat\\Phi(i)$ oder flussgesteuert $i = \\hat\\imath(\\Phi)$',
+      def: '- **Kapazität:** spannungsgesteuert $q = c(u)$ oder ladungsgesteuert $u = \\chi(q)$\n- **Induktivität:** stromgesteuert $\\Phi = l(i)$ oder flussgesteuert $i = \\lambda(\\Phi)$',
     },
     {
       term: 'Beispiele nichtlinearer Reaktanzen',
@@ -1147,7 +1155,7 @@ window.DECKS.push({
     {
       term: 'Stetigkeitsregel',
       def: '- **Kapazität:** Spannung ist stetig, solange der Strom beschränkt ist\n- **Induktivität:** Strom ist stetig, solange die Spannung beschränkt ist',
-      more: 'Beweis für die Kapazität:\n$$|u_C(t_0 + \\Delta t) - u_C(t_0)| \\le \\frac{1}{C}\\,\\Delta t \\cdot \\max|i_C| \\;\\to\\; 0 \\quad (\\Delta t \\to 0)$$\nGilt auch für nichtlineare Kapazitäten mit stetiger Kennlinie. Bei überidealisierten Schaltungen (unbeschränkter Strom) kann sie verletzt sein.',
+      more: 'Beweis für die Kapazität:\n$$|u_C(t_0 + \\Delta t) - u_C(t_0)| \\le \\frac{1}{C}\\,\\Delta t \\cdot \\max|i_C| \\;\\to\\; 0 \\quad (\\Delta t \\to 0)$$\nGilt auch für nichtlineare Kapazitäten mit stetiger ladungsgesteuerter Beschreibung $u = \\chi(q)$ (zeitvariant: $\\chi(q,t)$ stetig in $q$ und $t$). Bei überidealisierten Schaltungen (unbeschränkter Strom) kann sie verletzt sein.',
       moreLabel: 'Beweis',
     },
     {
@@ -1171,7 +1179,7 @@ window.DECKS.push({
     },
     {
       term: 'Parallelschaltung von Kapazitäten',
-      def: '- Kapazitäten addieren sich: $C = C_1 + C_2$ (wie Leitwerte)\n- Anfangsspannungen werden als Spannungsquellen in Serie modelliert',
+      def: '- Kapazitäten addieren sich: $C = C_1 + C_2$ (wie Leitwerte)\n- Anfangsspannungen (als Spannungsquelle in Serie) müssen gleich sein: $u_{01} = u_{02} = u_0$',
       calc: '- Kapazitäten addieren: $C = C_1 + C_2$',
     },
     {
@@ -1181,7 +1189,7 @@ window.DECKS.push({
     },
     {
       term: 'Zusammenschaltung von Induktivitäten',
-      def: 'Dual zu Kapazitäten: Serie $L = L_1 + L_2$, parallel $L = L_1 \\parallel L_2$ (wie Widerstände).',
+      def: 'Dual zu Kapazitäten (wie Widerstände):\n- **Serie:** $L_s = L_1 + L_2$, Anfangsströme gleich: $i_0 = i_{01} = i_{02}$\n- **Parallel:** $L_p = L_1 \\parallel L_2 = \\frac{L_1 L_2}{L_1 + L_2}$, Anfangsströme addieren sich: $i_0 = i_{01} + i_{02}$',
     },
     {
       term: 'Rechenregel reine C- oder L-Netzwerke',
@@ -1269,7 +1277,7 @@ window.DECKS.push({
     },
     {
       term: 'Komplexe Leistung',
-      def: '$\\underline{S} = \\frac{1}{2}\\underline{U}\\,\\underline{I}^* = U_{\\text{eff}} I_{\\text{eff}}\\, e^{j(\\alpha_U - \\alpha_I)} = P_W + j P_B$: Realteil Wirkleistung, Imaginärteil Blindleistung.',
+      def: '$\\underline{P} = \\frac{1}{2}\\underline{U}\\,\\underline{I}^* = U_{\\text{eff}} I_{\\text{eff}}\\, e^{j(\\alpha_U - \\alpha_I)} = P_W + j P_B$\n- Realteil: Wirkleistung $P_W$\n- Imaginärteil: Blindleistung $P_B$\n- Betrag: Scheinleistung $S = |\\underline{P}|$',
       more: '- hängt nur von der Phasendifferenz $\\alpha_U - \\alpha_I$ ab, nicht von den willkürlichen Anfangsphasen\n- Leistung ist ein Produkt zweier Zeitfunktionen → die Zeiger-Hilfssätze gelten hier nicht direkt\n- deshalb der konjugiert komplexe Strom $\\underline{I}^*$',
       moreLabel: 'Details',
     },
@@ -1332,7 +1340,7 @@ window.DECKS.push({
     },
     {
       term: 'Spur',
-      def: 'Summe der Diagonalelemente einer quadratischen Matrix: $\\operatorname{tr}(A) = \\sum_i a_{ii}$.',
+      def: 'Summe der Diagonalelemente einer quadratischen Matrix: $\\operatorname{Sp} A = \\sum_i a_{ii}$\n- gleich der Summe der Eigenwerte: $\\operatorname{Sp} A = \\sum_i \\lambda_i$',
     },
     {
       term: 'Vektorraum und Unterraum',
@@ -1377,7 +1385,7 @@ window.DECKS.push({
     },
     {
       term: 'Quadratische Form und Definitheit',
-      def: '$h = \\boldsymbol{x}^{\\mathrm{T}}A\\boldsymbol{x}$:\n- **positiv definit:** $h > 0$ für alle $\\boldsymbol{x} \\neq \\boldsymbol{0}$\n- **positiv semidefinit:** $h \\ge 0$\n- **indefinit:** beide Vorzeichen möglich\n\nBei schiefsymmetrischem $A$ ist immer $h = 0$.',
+      def: '$h = \\boldsymbol{x}^{\\mathrm{T}}A\\boldsymbol{x}$:\n- **positiv definit:** $h > 0$ für alle $\\boldsymbol{x} \\neq \\boldsymbol{0}$\n- **positiv semidefinit:** $h \\ge 0$\n- **negativ (semi)definit:** $h < 0$ bzw. $h \\le 0$\n- **indefinit:** alle anderen Fälle (beide Vorzeichen)\n- Eigenwerte: positiv definit ⇔ alle $\\lambda_i > 0$, semidefinit ⇔ $\\lambda_i \\ge 0$\n- schiefsymmetrisches $A$: immer $h = 0$',
     },
     // @@ENDE@@
   ],
