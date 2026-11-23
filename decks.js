@@ -14,7 +14,7 @@ window.DECKS = [
     id: 'programmierpraktikum',
     name: 'Programmierpraktikum',
     color: 'sky',
-    description: 'Skripte S. 13–111: das Wichtigste fürs Programmieren – Computer-Modell, Toolchain, git & Shell, Funktionen, printf.',
+    description: 'Skripte S. 13–111: das Wichtigste fürs Programmieren – Computer-Modell, Toolchain, git & Shell, Funktionen, printf – plus C-Syntax-Übersicht.',
     cards: [
       { chapter: '2 Computer-Modelle und Programmausführung' },
       {
@@ -536,6 +536,161 @@ window.DECKS = [
         term: 'Zeilenkommentar',
         def: 'Beginnt mit `//`; alles bis zum Zeilenende wird ignoriert.\n- kein Verschachtelungsproblem → meist vorzuziehen',
         ex: "x++;  // bis Zeilenende",
+      },
+      { chapter: 'C-Syntax' },
+      {
+        term: 'Grundgerüst eines C-Programms',
+        def: '- `#include`-Zeilen für benötigte Header\n- Funktionen, mindestens `main`\n- `return 0;` meldet Erfolg',
+        ex: '#include <stdio.h>\n\nint main(void) {\n    printf("Hallo\\n");\n    return 0;\n}',
+      },
+      {
+        term: 'Anweisung und Block',
+        def: '- **Anweisung:** endet immer mit einem Semikolon `;`\n- **Block:** `{ … }` fasst mehrere Anweisungen zu einer zusammen (z. B. Funktionsrumpf, Schleifenrumpf)',
+        ex: 'int a = 3;      // Anweisung\n{               // Block\n    a = a + 1;\n    a = a * 2;\n}',
+      },
+      {
+        term: 'Token',
+        def: 'Kleinste bedeutungstragende Einheit des Quelltexts, z. B. Schlüsselwort, Identifier, Zahl, Operator, `;`. Der Lexer zerlegt den Quelltext in Token.',
+        ex: 'int a = 7-6/3;\n// int | a | = | 7 | - | 6 | / | 3 | ;',
+        calc: 'Quelltext in Token zerlegen:\n- von links nach rechts lesen\n- Schlüsselwörter und Identifier: zusammenhängende Buchstaben/Ziffern/`_`\n- Zahlen: zusammenhängende Ziffern\n- Operatoren und Satzzeichen (`=`, `-`, `;`, `(`) einzeln\n- Leerzeichen und Kommentare trennen nur, sind selbst kein Token',
+      },
+      {
+        term: 'Schlüsselwort vs. Identifier',
+        def: '- **Schlüsselwort:** reserviertes Wort der Sprache, z. B. `int`, `void`, `return`, `if`, `while`\n- **Identifier:** selbst gewählter Name für Variable oder Funktion; beginnt mit Buchstabe oder `_`, danach auch Ziffern; Groß-/Kleinschreibung zählt',
+        ex: 'int summe_2 = 0;   // int: Schlüsselwort\n                   // summe_2: Identifier\nint 2summe;        // Fehler: beginnt mit Ziffer',
+      },
+      {
+        term: 'Abstrakter Syntax-Baum (AST)',
+        def: 'Der Parser setzt die Token nach den Syntaxregeln zu einem Baum zusammen:\n- Wurzel oben, Blätter unten (Literale, Variablen)\n- zeigt, welche Operation auf welche Operanden wirkt',
+        ex: 'int a = 7-6/3;\n\nVarDecl a\n└─ -\n   ├─ 7\n   └─ /\n      ├─ 6\n      └─ 3',
+      },
+      {
+        term: 'Produktionsregel',
+        def: 'Form, in der der C-Standard die Syntax festlegt: Ein Element wird aus anderen Elementen aufgebaut (auch rekursiv).',
+        ex: 'multiplicative-expression:\n    cast-expression\n    multiplicative-expression * cast-expression\n    multiplicative-expression / cast-expression\n    multiplicative-expression % cast-expression',
+      },
+      {
+        term: 'Semantische Analyse',
+        def: 'Prüft nach dem Parsen, ob der Syntax-Baum nach den Sprachregeln Sinn ergibt, und annotiert jeden Knoten mit seinem Datentyp.\n- sinnvoll: zwei `int` addieren\n- Fehler: Zahl zu einer Zeichenkette addieren',
+      },
+      {
+        term: 'Arithmetische Operatoren',
+        def: '- `+` `-` `*` `/`\n- `%`: Rest der Ganzzahldivision\n- `/` mit zwei Ganzzahlen schneidet die Nachkommastellen ab',
+        ex: '7 / 2      // 3\n7 % 2      // 1\n7.0 / 2    // 3.5\n-7 / 2     // -3 (Richtung 0)',
+      },
+      {
+        term: 'Operator-Rangfolge',
+        def: 'Von stark nach schwach bindend:\n- `()` `[]` `->` `.`, dann unär `!` `~` `++` `--` `-` `*` `&` Cast\n- `*` `/` `%`, dann `+` `-`, dann `<<` `>>`\n- `<` `<=` `>` `>=`, dann `==` `!=`\n- `&`, `^`, `|`, dann `&&`, dann `||`\n- `?:`, dann `=` `+=` …, zuletzt `,`',
+        ex: 'int a = 7 - 6 / 3;      // 5\nint b = (7 - 6) / 3;    // 0\nint c = 1 + 2 == 3;     // 1',
+        calc: 'Ausdruck auswerten:\n- Klammern zuerst\n- dann nach Rangfolge: Punkt (`*` `/` `%`) vor Strich (`+` `-`)\n- gleich starke Operatoren von links nach rechts (Zuweisung von rechts)\n- bei `/` und `%` mit Ganzzahlen: Nachkommastellen abschneiden\n\n`7 - 6 / 3` → `6 / 3 = 2` → `7 - 2 = 5`',
+      },
+      {
+        term: 'Zuweisungsoperatoren',
+        def: '- `=`: Wert zuweisen\n- `+=` `-=` `*=` `/=` `%=`: Kurzform, `a += 3` bedeutet `a = a + 3`',
+        ex: 'int a = 10;\na += 3;   // 13\na *= 2;   // 26\na %= 5;   // 1',
+      },
+      {
+        term: 'Inkrement und Dekrement',
+        def: '- `++` erhöht, `--` verringert um 1\n- **Postfix** `a++`: liefert den alten Wert, erhöht danach\n- **Präfix** `++a`: erhöht zuerst, liefert den neuen Wert',
+        ex: 'int a = 5;\nint b = a++;   // b = 5, a = 6\nint c = ++a;   // c = 7, a = 7',
+      },
+      {
+        term: 'Vergleichsoperatoren',
+        def: '- `==` gleich, `!=` ungleich\n- `<` `>` `<=` `>=`\n- Ergebnis ist `int`: 1 (wahr) oder 0 (falsch)\n- Achtung: `=` weist zu, `==` vergleicht',
+        ex: 'int x = 3;\nx == 3     // 1\nx != 3     // 0\nif (x = 0) // Fehler: Zuweisung, immer falsch',
+      },
+      {
+        term: 'Logische Operatoren',
+        def: '- `&&` UND, `||` ODER, `!` NICHT\n- 0 gilt als falsch, jeder andere Wert als wahr\n- Kurzschluss: rechter Teil wird nur ausgewertet, wenn nötig',
+        ex: 'if (x > 0 && x < 10) { … }\nif (n == 0 || a / n > 2) { … }  // kein /0\n!5   // 0',
+      },
+      {
+        term: 'Bitoperatoren',
+        def: '- `&` UND, `|` ODER, `^` XOR, `~` invertieren\n- `<<` nach links schieben (× 2 je Stelle)\n- `>>` nach rechts schieben (÷ 2 je Stelle)\n- wirken auf jedes Bit einzeln, nicht wie `&&` auf Wahrheitswerte',
+        ex: '0x0C & 0x0A   // 0x08\n0x0C | 0x0A   // 0x0E\n0x0C ^ 0x0A   // 0x06\n1 << 4        // 16\nx & (1 << 3)  // Bit 3 testen',
+        calc: 'Bitoperation berechnen:\n- beide Operanden binär untereinander schreiben\n- Stelle für Stelle verknüpfen (`&`: beide 1, `|`: mind. eine 1, `^`: verschieden)\n- Ergebnis in Hex/Dezimal zurückwandeln\n\n- **Bit setzen:** `x |= 1 << n`\n- **Bit löschen:** `x &= ~(1 << n)`\n- **Bit umschalten:** `x ^= 1 << n`',
+      },
+      {
+        term: 'Bedingter Operator ?:',
+        def: '`Bedingung ? Wert1 : Wert2` liefert Wert1, wenn die Bedingung wahr ist, sonst Wert2 – ein `if` als Ausdruck.',
+        ex: 'int max = (a > b) ? a : b;',
+      },
+      {
+        term: 'Typumwandlung (Cast)',
+        def: '- **explizit:** `(Typ) Ausdruck`\n- **implizit:** bei gemischten Typen wird auf den „größeren“ Typ erweitert (`int` + `double` → `double`)\n- `double` → `int` schneidet Nachkommastellen ab',
+        ex: 'int a = 7, b = 2;\ndouble q = (double) a / b;  // 3.5\ndouble r = a / b;           // 3.0\nint n = (int) 3.9;          // 3',
+      },
+      {
+        term: 'if / else',
+        def: '- Bedingung in runden Klammern\n- `else` optional, `else if` für weitere Fälle\n- geschweifte Klammern auch bei einer Anweisung empfohlen',
+        ex: 'if (x > 0) {\n    printf("positiv\\n");\n} else if (x < 0) {\n    printf("negativ\\n");\n} else {\n    printf("null\\n");\n}',
+      },
+      {
+        term: 'switch',
+        def: 'Verzweigt nach dem Wert eines Ganzzahl-Ausdrucks:\n- `case Wert:` springt dorthin\n- ohne `break` läuft es in den nächsten `case` weiter\n- `default:` für alle übrigen Werte',
+        ex: 'switch (note) {\n    case 1:\n    case 2:  printf("gut\\n"); break;\n    case 3:  printf("ok\\n");  break;\n    default: printf("?\\n");\n}',
+      },
+      {
+        term: 'while-Schleife',
+        def: 'Prüft die Bedingung **vor** jedem Durchlauf; ist sie gleich zu Beginn falsch, läuft der Rumpf kein Mal.',
+        ex: 'int i = 0;\nwhile (i < 3) {\n    printf("%d ", i);   // 0 1 2\n    i++;\n}',
+      },
+      {
+        term: 'do-while-Schleife',
+        def: 'Prüft die Bedingung **nach** jedem Durchlauf – der Rumpf läuft mindestens einmal. Semikolon am Ende!',
+        ex: 'int i = 10;\ndo {\n    printf("%d ", i);   // 10\n    i++;\n} while (i < 3);',
+      },
+      {
+        term: 'for-Schleife',
+        def: '`for (Init; Bedingung; Schritt)`:\n- Init einmal zu Beginn\n- Bedingung vor jedem Durchlauf\n- Schritt nach jedem Durchlauf',
+        ex: 'for (int i = 0; i < 5; i++) {\n    printf("%d ", i);   // 0 1 2 3 4\n}',
+        calc: 'Anzahl der Durchläufe bestimmen:\n- Startwert, Endbedingung und Schrittweite ablesen\n- `for (i = a; i < b; i += s)`: $\\lceil (b - a) / s \\rceil$ Durchläufe (0, wenn $a \\ge b$)\n- bei `<=` statt `<`: $\\lfloor (b - a) / s \\rfloor + 1$\n- im Zweifel die ersten und letzten Werte von `i` ausschreiben\n\n`for (i = 0; i < 10; i += 3)` → 0, 3, 6, 9 → 4 Durchläufe',
+      },
+      {
+        term: 'break und continue',
+        def: '- `break`: verlässt die Schleife (bzw. `switch`) sofort\n- `continue`: springt zum nächsten Durchlauf (bei `for` zuerst zum Schritt)',
+        ex: 'for (int i = 0; i < 10; i++) {\n    if (i == 5) break;      // Ende bei 5\n    if (i % 2) continue;    // ungerade überspringen\n    printf("%d ", i);       // 0 2 4\n}',
+      },
+      {
+        term: 'Array',
+        def: 'Feste Anzahl von Elementen gleichen Typs hintereinander im Speicher.\n- Index von 0 bis $n - 1$\n- keine Prüfung der Grenzen: `a[n]` ist ein Fehler, den der Compiler nicht meldet',
+        ex: 'int a[5] = {1, 2, 3, 4, 5};\na[0] = 10;                       // erstes Element\nsize_t n = sizeof a / sizeof a[0]; // 5',
+        calc: 'Anzahl der Elemente bestimmen:\n- `sizeof a` liefert die Gesamtgröße in Byte\n- durch die Größe eines Elements `sizeof a[0]` teilen\n- funktioniert nur, wo `a` als Array definiert ist (nicht bei einem Zeiger-Parameter)',
+      },
+      {
+        term: 'Zeiger',
+        def: 'Variable, die eine Adresse speichert:\n- `int *p;` Zeiger auf `int`\n- `&x`: Adresse von `x`\n- `*p`: Wert an der Adresse (Dereferenzieren)\n- `NULL`: zeigt auf nichts',
+        ex: 'int x = 5;\nint *p = &x;   // p zeigt auf x\n*p = 7;        // x ist jetzt 7\nprintf("%p", (void *) p);',
+      },
+      {
+        term: 'Zeiger als Parameter',
+        def: 'Übergibt man die Adresse statt des Werts (Call by Reference), kann die Funktion die Variable des Aufrufers ändern.',
+        ex: 'void tausche(int *a, int *b) {\n    int t = *a;\n    *a = *b;\n    *b = t;\n}\n\ntausche(&x, &y);',
+      },
+      {
+        term: 'Zeiger und Arrays',
+        def: '- der Arrayname steht für die Adresse des ersten Elements\n- `a[i]` ist dasselbe wie `*(a + i)`\n- Zeiger + 1 springt um ein ganzes Element weiter (nicht um ein Byte)',
+        ex: 'int a[3] = {4, 5, 6};\nint *p = a;      // = &a[0]\n*(p + 1)         // 5\np[2]             // 6',
+      },
+      {
+        term: 'struct',
+        def: 'Fasst mehrere Variablen verschiedener Typen zu einem Typ zusammen.\n- Zugriff mit `.`\n- über einen Zeiger mit `->`',
+        ex: 'struct punkt {\n    int x, y;\n};\n\nstruct punkt p = {1, 2};\np.x = 5;\nstruct punkt *q = &p;\nq->y = 7;          // = (*q).y',
+      },
+      {
+        term: 'const',
+        def: 'Macht eine Variable unveränderlich; der Compiler meldet jeden Schreibversuch als Fehler.',
+        ex: 'const double PI = 3.14159;\nPI = 3;   // Fehler',
+      },
+      {
+        term: 'Globale und statische Variable',
+        def: '- **global:** außerhalb jeder Funktion definiert, überall sichtbar, lebt bis zum Programmende\n- **static lokal:** nur in der Funktion sichtbar, behält aber seinen Wert zwischen Aufrufen',
+        ex: 'int zaehler = 0;        // global\n\nvoid f(void) {\n    static int n = 0;   // behält Wert\n    n++;\n}',
+      },
+      {
+        term: 'Häufige Syntaxfehler',
+        def: '- fehlendes `;` am Ende einer Anweisung\n- `=` statt `==` in einer Bedingung\n- `;` direkt nach `if (…)` oder `for (…)` → leerer Rumpf\n- Array-Index `n` bei Größe `n`\n- fehlendes `break` im `switch`',
+        ex: 'for (int i = 0; i < 3; i++);  // leerer Rumpf!\n    printf("x");              // nur einmal',
       },
     ],
   },
