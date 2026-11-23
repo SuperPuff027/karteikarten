@@ -399,7 +399,7 @@ window.DECKS.push({
     },
     {
       term: 'Divergenz',
-      def: '- **divergent:** die Folge hat keinen (endlichen) Grenzwert\n- **bestimmt divergent** gegen $+\\infty$: zu jedem $K$ ist $a_n > K$ ab einem Index (analog $-\\infty$)\n\nBeispiel: $(-1)^n$ divergiert.',
+      def: '- **Konvergenz gegen $+\\infty$:** zu jedem $K \\in \\mathbb{R}$ gibt es $N_K$ mit $a_n > K$ für alle $n > N_K$ (analog $-\\infty$), z. B. $n^2$, $2^n$\n- **divergent:** die Folge besitzt keinen Grenzwert, z. B. $(-1)^n$\n- $\\pm\\infty$ sind keine Zahlen: solche Folgen sind unbeschränkt; unbeschränkte Folgen müssen aber nicht gegen $\\pm\\infty$ gehen',
     },
     {
       term: 'Eindeutigkeit und Beschränktheit',
