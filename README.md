@@ -43,7 +43,7 @@ Lernstand und eigene Karten werden nur im eigenen Browser gespeichert (localStor
 - **Programmierpraktikum** (TUM Elektrotechnik, 1. Semester) – das Wichtigste fürs Programmieren mit kurzen Codebeispielen, in 3 Kapitel-Unterordnern plus Unterordner C-Syntax (Operatoren, Verzweigungen, Schleifen, Arrays, Zeiger, struct)
 - **Schaltungstheorie** (TUM Elektrotechnik, 1. Semester) – in 11 Kapitel-Unterordnern, einzeln oder alle zusammen lernbar; mit 42 selbst gezeichneten Schaltbild-Karten (erzeugt mit `tools/schaltbilder.py`)
 - **Computertechnik** (TUM Elektrotechnik, 1. Semester) – Zahlendarstellung, arithmetische Schaltungen, Universalrechner, Befehlssätze, MMIX, Pipelining, Cache; in 8 Kapitel-Unterordnern, mit kurzen MMIX-Codebeispielen und 25 selbst gezeichneten Schaltbild-Karten (erzeugt mit `tools/ct_schaltbilder.py`)
-- **Lineare Algebra 1** (TUM Elektrotechnik, 1. Semester) – Vektoren, LGS, Gauß, Matrizen, Inverse, Unterräume, Rangsatz, lineare Abbildungen, Basiswechsel, Markov-Ketten; in Kapitel-Unterordnern, mit 4 selbst gezeichneten Skizzen (`tools/la_schaltbilder.py`)
+- **Lineare Algebra 1** (TUM Elektrotechnik, 1. Semester) – Vektoren, LGS, Gauß, Matrizen, Inverse, Unterräume, Rangsatz, lineare Abbildungen, Basiswechsel, Markov-Ketten, Eigenwerte, Determinanten; in Kapitel-Unterordnern, mit 4 selbst gezeichneten Skizzen (`tools/la_schaltbilder.py`)
 - **Analysis1** (TUM Elektrotechnik, 1. Semester) – Kapitel 1–2: Mengen, Induktion, Zahlbereiche, Ungleichungen, Supremum, Binomialformel, Trigonometrie, komplexe Zahlen, Folgen, Grenzwerte, Reihen; in Abschnitts-Unterordnern, mit Berechnungs-Karten und 4 Skizzen (`tools/an_schaltbilder.py`)
 
 ## Eigene Lernsets hinzufügen

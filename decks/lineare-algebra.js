@@ -6,7 +6,7 @@ window.DECKS.push({
   id: 'lineare-algebra-1',
   name: 'Lineare Algebra 1',
   color: 'lilac',
-  description: 'Skript Lineare Algebra EI: Vektoren, LGS, Gauß, Matrizen, Inverse, Unterräume, Rang, lineare Abbildungen, Basiswechsel, Markov-Ketten.',
+  description: 'Skript Lineare Algebra EI: Vektoren, LGS, Gauß, Matrizen, Inverse, Unterräume, Rang, lineare Abbildungen, Basiswechsel, Markov-Ketten, Eigenwerte, Determinanten.',
   cards: [
     { chapter: '1 Grundlagen' },
     {
@@ -428,6 +428,114 @@ window.DECKS.push({
       term: 'Markov-Kette (Autovermietung)',
       img: 'schaltbilder/la-markov.svg',
       def: 'Übergangsanteile zwischen den Standorten A, B, C pro Tag.',
+    },
+    { chapter: '17 Eigenwerte und Eigenvektoren' },
+    {
+      term: 'Diagonalisierbarkeit',
+      def: 'Eine lineare Abbildung $f : \\mathbb{R}^n \\to \\mathbb{R}^n$ mit Abbildungsmatrix $A$ heißt diagonalisierbar, falls es ein invertierbares $B \\in \\mathbb{R}^{n \\times n}$ gibt, sodass $$[f]_B = B^{-1}[f]B = B^{-1}AB$$ eine Diagonalmatrix ist.',
+    },
+    {
+      term: 'Diagonalisierbar ⇔ Basis aus Eigenvektoren',
+      def: '- Für invertierbares $B$ mit Spalten $b_1, \\dots, b_n$ gilt: $B^{-1}[f]B$ ist Diagonalmatrix $\\Leftrightarrow$ $f(b_i) = \\lambda_i b_i$ für geeignete $\\lambda_1, \\dots, \\lambda_n \\in \\mathbb{R}$\n- $f$ ist diagonalisierbar $\\Leftrightarrow$ es gibt eine Basis $b_1, \\dots, b_n$ mit $f(b_i) = \\lambda_i b_i$\n- für Matrizen: $A$ diagonalisierbar $\\Leftrightarrow$ es gibt eine Basis mit $Ab_i = \\lambda_i b_i$\n- die Diagonaleinträge von $B^{-1}AB$ sind dann $\\lambda_1, \\dots, \\lambda_n$',
+      calc: '- Eigenwerte $\\lambda_i$ von $A$ bestimmen\n- zu jedem $\\lambda_i$ Eigenvektoren bestimmen\n- gibt es $n$ linear unabhängige Eigenvektoren $b_1, \\dots, b_n$: als Spalten in $B$ schreiben\n- dann ist $B^{-1}AB = \\mathrm{diag}(\\lambda_1, \\dots, \\lambda_n)$',
+    },
+    {
+      term: 'Eigenwert, Eigenvektor',
+      def: '- $\\lambda \\in \\mathbb{R}$ ist Eigenwert von $A \\in \\mathbb{R}^{n \\times n}$, falls es $v \\in \\mathbb{R}^n \\setminus \\{O\\}$ gibt mit $$Av = \\lambda v$$\n- $v$ heißt dann Eigenvektor von $A$ zum Eigenwert $\\lambda$\n- der Nullvektor ist nie Eigenvektor',
+      calc: '- prüfen, ob $v$ Eigenvektor ist: $Av$ ausrechnen\n- ist $Av$ ein Vielfaches $\\lambda v$ von $v$ (und $v \\neq O$), ist $v$ Eigenvektor zum Eigenwert $\\lambda$\n- Beispiel: $\\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix} = \\begin{pmatrix} 3 \\\\ 3 \\end{pmatrix} = 3\\begin{pmatrix} 1 \\\\ 1 \\end{pmatrix}$ → Eigenwert $3$',
+    },
+    {
+      term: 'Eigenwert über LGS',
+      def: '- $\\lambda$ ist genau dann Eigenwert von $A$, wenn $(\\lambda I - A)x = O$ eine nicht-triviale Lösung hat\n- die nicht-trivialen Lösungen sind genau die Eigenvektoren zu $\\lambda$',
+      calc: '- $\\lambda I - A$ aufstellen\n- LGS $(\\lambda I - A)x = O$ mit Gauß lösen\n- freie Variablen als Parameter → alle Lösungen $\\neq O$ sind Eigenvektoren',
+    },
+    {
+      term: 'Kriterien für Eigenwerte',
+      def: 'Für $A \\in \\mathbb{R}^{n \\times n}$ und $\\lambda \\in \\mathbb{R}$ sind äquivalent:\n- $\\lambda$ ist Eigenwert von $A$\n- $\\ker(\\lambda I - A) \\neq \\{O\\}$\n- $\\lambda I - A$ ist nicht invertierbar\n\nFolgerung: $A$ ist genau dann invertierbar, wenn $0$ kein Eigenwert ist.',
+    },
+    {
+      term: 'Eigenraum',
+      def: 'Für einen Eigenwert $\\lambda$ von $A$ heißt $$E_\\lambda(A) := \\ker(\\lambda I - A)$$ der Eigenraum von $\\lambda$ bezüglich $A$.\n- enthält alle Eigenvektoren zu $\\lambda$ und zusätzlich $O$\n- ist ein Unterraum',
+      calc: '- $\\lambda I - A$ aufstellen\n- Kern bestimmen: $(\\lambda I - A)x = O$ lösen\n- Lösungsmenge als Spann von Basisvektoren schreiben → $E_\\lambda(A)$',
+    },
+    {
+      term: 'Invertierbarkeit (2×2-Matrix)',
+      def: '$A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}$ ist genau dann invertierbar, wenn $$ad - bc \\neq 0.$$\n- damit: $\\lambda$ ist Eigenwert $\\Leftrightarrow$ $\\lambda I - A$ nicht invertierbar $\\Leftrightarrow$ $\\det(\\lambda I - A) = 0$',
+      calc: '- $\\lambda I - A = \\begin{pmatrix} \\lambda - a & -b \\\\ -c & \\lambda - d \\end{pmatrix}$\n- Bedingung: $(\\lambda - a)(\\lambda - d) - bc = 0$\n- quadratische Gleichung in $\\lambda$ lösen → Eigenwerte\n- Beispiel $\\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}$: $(\\lambda - 2)^2 - 1 = 0$ → $\\lambda = 1$ oder $\\lambda = 3$',
+    },
+
+    { chapter: '18 Determinanten' },
+    {
+      term: 'Permutation',
+      def: '- Permutation von $\\{1, \\dots, n\\}$: bijektive Abbildung $\\sigma : \\{1, \\dots, n\\} \\to \\{1, \\dots, n\\}$\n- $S_n$: Menge aller Permutationen von $\\{1, \\dots, n\\}$\n- Verkettungen von Permutationen sind wieder Permutationen\n- die Umkehrabbildung einer Permutation ist ebenfalls eine Permutation',
+    },
+    {
+      term: 'Transposition',
+      def: 'Eine Permutation, die genau zwei Zahlen vertauscht und alle anderen festlässt.\n- Signatur jeder Transposition: $\\operatorname{sgn}(\\tau) = -1$',
+    },
+    {
+      term: 'Fehlstand, Signatur',
+      def: '- Fehlstand von $\\sigma \\in S_n$: Paar $(i, j)$ mit $i < j$ und $\\sigma(i) > \\sigma(j)$\n- $k$ = Anzahl der Fehlstände: $$\\operatorname{sgn}(\\sigma) = (-1)^k$$\n- Identität: keine Fehlstände, also $\\operatorname{sgn} = 1$',
+      calc: '- alle Paare $(i, j)$ mit $i < j$ durchgehen\n- zählen, wie oft $\\sigma(i) > \\sigma(j)$ gilt → $k$\n- $\\operatorname{sgn}(\\sigma) = (-1)^k$\n- Beispiel $\\sigma = (3, 1, 2)$ (d. h. $\\sigma(1)=3$, $\\sigma(2)=1$, $\\sigma(3)=2$): Fehlstände $(1,2)$, $(1,3)$ → $k = 2$, $\\operatorname{sgn} = 1$',
+    },
+    {
+      term: 'Produktformel der Signatur',
+      def: 'Für $\\sigma \\in S_n$: $$\\operatorname{sgn}(\\sigma) = \\prod_{1 \\le i < j \\le n} \\frac{\\sigma(j) - \\sigma(i)}{j - i}$$',
+    },
+    {
+      term: 'Rechenregeln der Signatur',
+      def: '- Transposition $\\tau$: $\\operatorname{sgn}(\\tau) = -1$\n- Verkettung: $\\operatorname{sgn}(\\sigma \\circ \\pi) = \\operatorname{sgn}(\\sigma)\\operatorname{sgn}(\\pi)$\n- Umkehrung: $\\operatorname{sgn}(\\sigma^{-1}) = \\operatorname{sgn}(\\sigma)$',
+    },
+    {
+      term: 'Determinante (Definition)',
+      def: 'Für $A = (a_{i,j}) \\in \\mathbb{R}^{n \\times n}$: $$\\det(A) = \\sum_{\\sigma \\in S_n} \\operatorname{sgn}(\\sigma)\\, a_{1,\\sigma(1)}\\, a_{2,\\sigma(2)} \\cdots a_{n,\\sigma(n)}$$\n- pro Permutation ein Produkt mit genau einem Eintrag aus jeder Zeile und jeder Spalte',
+    },
+    {
+      term: 'Determinante (2×2)',
+      def: '$$\\det\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} = ad - bc$$',
+      calc: '- Hauptdiagonale multiplizieren: $ad$\n- Nebendiagonale multiplizieren: $bc$\n- abziehen: $ad - bc$\n- Beispiel: $\\det\\begin{pmatrix} 3 & 2 \\\\ 1 & 4 \\end{pmatrix} = 12 - 2 = 10$',
+    },
+    {
+      term: 'Determinante (3×3)',
+      def: 'Für $A = \\begin{pmatrix} a & b & c \\\\ d & e & f \\\\ g & h & i \\end{pmatrix}$: $$\\begin{aligned} \\det(A) = {} & aei + bfg + cdh \\\\ & - ceg - afh - bdi \\end{aligned}$$',
+      calc: '- drei „Abwärts-Diagonalen“ (zyklisch) addieren: $aei + bfg + cdh$\n- drei „Aufwärts-Diagonalen“ abziehen: $ceg + afh + bdi$\n- Beispiel: $\\det\\begin{pmatrix} 1 & 2 & 0 \\\\ 0 & 1 & 3 \\\\ 1 & 0 & 1 \\end{pmatrix} = 1 + 6 + 0 - 0 - 0 - 0 = 7$',
+    },
+    {
+      term: 'Determinante einer Dreiecksmatrix',
+      def: 'Ist $A$ eine (obere oder untere) Dreiecksmatrix: $$\\det(A) = a_{1,1} \\cdot a_{2,2} \\cdots a_{n,n}$$\n- insbesondere $\\det(I) = 1$',
+      calc: '- Diagonaleinträge multiplizieren\n- Beispiel: $\\det\\begin{pmatrix} 2 & 5 & 1 \\\\ 0 & 3 & 7 \\\\ 0 & 0 & 4 \\end{pmatrix} = 2 \\cdot 3 \\cdot 4 = 24$',
+    },
+    {
+      term: 'Nullzeile und Transponierte',
+      def: '- hat $A$ eine Nullzeile: $\\det(A) = 0$\n- für alle $A$: $\\det(A) = \\det(A^{\\mathrm{T}})$\n- daher gelten alle Zeilenregeln auch für Spalten',
+    },
+    {
+      term: 'Multilinearität',
+      def: '$A_z$: Matrix $A$, deren $k$-te Zeile durch $z$ ersetzt ist.\n- $\\det(A_{x+y}) = \\det(A_x) + \\det(A_y)$\n- $\\det(A_{\\lambda x}) = \\lambda \\det(A_x)$\n- Folgerung: $\\det(\\lambda A) = \\lambda^n \\det(A)$',
+      calc: '- $\\det(\\lambda A)$: Faktor $\\lambda$ aus jeder der $n$ Zeilen herausziehen\n- Beispiel: $A \\in \\mathbb{R}^{3 \\times 3}$, $\\det(A) = 2$ → $\\det(2A) = 2^3 \\cdot 2 = 16$',
+    },
+    {
+      term: 'Zeilen vertauschen',
+      def: '- entsteht $B$ aus $A$, indem Zeile $i$ von $B$ die Zeile $\\sigma(i)$ von $A$ ist: $\\det(B) = \\operatorname{sgn}(\\sigma)\\det(A)$\n- Vertauschen zweier Zeilen ändert das Vorzeichen der Determinante\n- zwei identische Zeilen: $\\det(A) = 0$\n- Vielfaches einer Zeile zu einer anderen addieren: Determinante bleibt gleich',
+    },
+    {
+      term: 'Determinante mit Zeilenumformungen',
+      def: '- Zeile mit $\\lambda$ multiplizieren → Determinante wird mit $\\lambda$ multipliziert\n- zwei Zeilen vertauschen → Vorzeichen wechselt\n- Vielfaches einer Zeile zu einer anderen addieren → Determinante unverändert\n- gilt genauso für Spaltenoperationen',
+      calc: '- mit Zeilenumformungen auf Dreiecksform bringen\n- dabei mitzählen: jede Vertauschung → Faktor $-1$, jede Skalierung mit $\\lambda$ → durch $\\lambda$ teilen\n- Determinante der Dreiecksmatrix = Produkt der Diagonale, dann korrigieren\n- Beispiel: $\\begin{pmatrix} 0 & 2 \\\\ 3 & 1 \\end{pmatrix}$ → vertauschen → $\\begin{pmatrix} 3 & 1 \\\\ 0 & 2 \\end{pmatrix}$, $\\det = -(3 \\cdot 2) = -6$',
+    },
+    {
+      term: 'Multiplikationssatz',
+      def: 'Für $A, B \\in \\mathbb{R}^{n \\times n}$: $$\\det(AB) = \\det(A)\\det(B)$$',
+      calc: '- Determinanten einzeln berechnen und multiplizieren\n- Beispiel: $\\det(A) = 2$, $\\det(B) = -3$ → $\\det(AB) = -6$, $\\det(A^2) = 4$',
+    },
+    {
+      term: 'Determinante und Inverse',
+      def: '- $A$ ist genau dann invertierbar, wenn $\\det(A) \\neq 0$\n- dann gilt $$\\det(A^{-1}) = \\frac{1}{\\det(A)}$$\n- Eigenwerte: $\\lambda$ ist Eigenwert $\\Leftrightarrow$ $\\det(\\lambda I - A) = 0$',
+      calc: '- $\\det(A)$ berechnen\n- $\\det(A) = 0$ → nicht invertierbar, sonst invertierbar\n- Beispiel: $\\det(A) = 4$ → $\\det(A^{-1}) = \\tfrac14$',
+    },
+    {
+      term: 'Hauptsatz invertierbarer Matrizen',
+      def: 'Für $A \\in \\mathbb{R}^{n \\times n}$ mit linearer Abbildung $f$ sind äquivalent:\n- $A$ ist invertierbar\n- $Ax = b$ hat für jedes $b$ eine eindeutige Lösung\n- $Ax = O$ hat nur die triviale Lösung\n- strenge Zeilenstufenform von $A$ ist $I$\n- $A$ ist Produkt von Elementarmatrizen\n- $\\ker(A) = \\{O\\}$, $\\operatorname{rang}(A) = n$\n- $f$ ist bijektiv, injektiv bzw. surjektiv\n- $\\det(A) \\neq 0$\n- $0$ ist kein Eigenwert von $A$',
     },
   ],
 });
