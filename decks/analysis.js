@@ -66,11 +66,11 @@ window.DECKS.push({
     },
     {
       term: 'Gaußsche Summenformel',
-      def: '$$\\sum_{i=1}^{n} i = 1 + 2 + \\dots + n = \\frac{n(n + 1)}{2}$$',
+      def: '**In Worten:** Die Summe der ersten $n$ natürlichen Zahlen ist $n$ mal $(n + 1)$, geteilt durch 2.\n\n**Formal:** $$\\sum_{i=1}^{n} i = 1 + 2 + \\dots + n = \\frac{n(n + 1)}{2}$$ für alle $n \\in \\mathbb{N}$',
     },
     {
       term: 'Geometrische Summenformel',
-      def: 'Für $q \\neq 1$: $$\\sum_{i=0}^{n} q^i = \\frac{1 - q^{n+1}}{1 - q}$$ Für $q = 1$ ist die Summe $n + 1$.',
+      def: '**In Worten:** Die Summe der Potenzen $q^0, q^1, \\dots, q^n$ ist für $q \\neq 1$ gleich $1 - q^{n+1}$ geteilt durch $1 - q$; für $q = 1$ ist sie $n + 1$.\n\n**Formal:** $$\\sum_{i=0}^{n} q^i = \\begin{cases} \\dfrac{1 - q^{n+1}}{1 - q}, & q \\neq 1 \\\\[4pt] n + 1, & q = 1 \\end{cases}$$',
     },
     {
       term: 'Ordnung auf ℕ',
@@ -115,12 +115,12 @@ window.DECKS.push({
     },
     {
       term: 'Dezimaldarstellung rationaler Zahlen',
-      def: 'Jede rationale Zahl ist …\n- ein endlicher Dezimalbruch (z. B. $\\frac{9}{8} = 1{,}125$) oder\n- eine periodische Dezimalzahl (z. B. $\\frac{12}{33} = 0{,}\\overline{36}$)',
+      def: '**In Worten:** Eine reelle Zahl ist genau dann rational, wenn ihre Dezimaldarstellung abbricht oder periodisch wird.\n\n**Formal:** $$x \\in \\mathbb{Q} \\;\\Leftrightarrow\\; x = \\pm\\, z{,}d_1 \\ldots d_k\\,\\overline{p_1 \\ldots p_\\ell}$$ (abbrechend = Periode $\\overline{0}$)\n- $\\frac{9}{8} = 1{,}125$\n- $\\frac{12}{33} = 0{,}\\overline{36}$',
       calc: 'Periodische Dezimalzahl in Bruch umwandeln:\n- Vorperiode abspalten: $0{,}25\\overline{54} = 0{,}25 + \\frac{1}{100} \\cdot 0{,}\\overline{54}$\n- Periode: $0{,}\\overline{b_1 \\ldots b_k} = \\frac{b_1 \\ldots b_k}{99 \\ldots 9}$ ($k$ Neunen)\n- zusammenfassen und kürzen\n\n$0{,}\\overline{21} = \\frac{21}{99} = \\frac{7}{33}$',
     },
     {
       term: '√2 ist irrational',
-      def: 'Es gibt keine teilerfremden $m, n$ mit $\\sqrt{2} = \\frac{m}{n}$ (Widerspruchsbeweis).',
+      def: '**In Worten:** Die Wurzel aus 2 lässt sich nicht als Bruch zweier ganzer Zahlen schreiben.\n\n**Formal:** $$\\sqrt{2} \\notin \\mathbb{Q}$$ d. h. es gibt kein $m \\in \\mathbb{Z}$, $n \\in \\mathbb{N}$ mit $\\sqrt{2} = \\frac{m}{n}$.\n- Beweis per Widerspruch: Annahme $\\sqrt2 = \\frac{m}{n}$ mit teilerfremden $m, n$ → $m$ und $n$ sind beide gerade',
       calc: 'Widerspruchsbeweis:\n- annehmen: $\\sqrt{2} = \\frac{m}{n}$ mit $m, n$ teilerfremd\n- quadrieren: $m^2 = 2n^2$ → $m^2$ gerade → $m$ gerade, $m = 2p$\n- einsetzen: $4p^2 = 2n^2$ → $n^2 = 2p^2$ → $n$ gerade\n- $m$ und $n$ beide gerade → Widerspruch zur Teilerfremdheit',
     },
     {
@@ -130,11 +130,11 @@ window.DECKS.push({
 
     {
       term: 'Irrationalität von Wurzeln',
-      def: 'Für jede Primzahl $p$ ist $\\sqrt{p} \\notin \\mathbb{Q}$ (z. B. $\\sqrt{7}$).\n- Beweis wie bei $\\sqrt{2}$: aus $m^2 = p\\,n^2$ folgt $p \\mid m$, dann $p \\mid n$ → Widerspruch zur Teilerfremdheit',
+      def: '**In Worten:** Die Wurzel aus einer Primzahl ist nie rational.\n\n**Formal:** $$p \\text{ Primzahl} \\;\\Rightarrow\\; \\sqrt{p} \\notin \\mathbb{Q}$$\n- z. B. $\\sqrt{7} \\notin \\mathbb{Q}$\n- Beweis wie bei $\\sqrt{2}$: aus $m^2 = p\\,n^2$ folgt $p \\mid m$, dann $p \\mid n$ → Widerspruch zur Teilerfremdheit',
     },
     {
       term: 'Summen rationaler und irrationaler Zahlen',
-      def: '- rational + rational = **rational**\n- rational + irrational = **irrational** (Widerspruchsbeweis)\n- irrational + irrational = **kann rational sein**: $\\sqrt{2} + (-\\sqrt{2}) = 0$',
+      def: '**In Worten:** Rational plus rational ist rational. Rational plus irrational ist immer irrational. Zwei irrationale Zahlen können eine rationale Summe haben.\n\n**Formal:**\n- $a, b \\in \\mathbb{Q} \\Rightarrow a + b \\in \\mathbb{Q}$\n- $a \\in \\mathbb{Q},\\ b \\in \\mathbb{R} \\setminus \\mathbb{Q} \\Rightarrow a + b \\in \\mathbb{R} \\setminus \\mathbb{Q}$ (Widerspruchsbeweis)\n- $a, b \\in \\mathbb{R} \\setminus \\mathbb{Q} \\not\\Rightarrow a + b \\notin \\mathbb{Q}$: $\\sqrt{2} + (-\\sqrt{2}) = 0$',
     },
     {
       term: 'Irrationalität über Primfaktoren',
@@ -198,7 +198,7 @@ window.DECKS.push({
 
     {
       term: 'Umgekehrte Dreiecksungleichung',
-      def: '$$\\big||x| - |y|\\big| \\le |x - y|$$\n- falsch ist dagegen $|x - y| \\le |x| - |y|$\n- und im Allgemeinen $|x - y| \\neq \\big||x| - |y|\\big|$',
+      def: '**In Worten:** Der Abstand der Beträge zweier Zahlen ist höchstens so groß wie der Abstand der Zahlen selbst.\n\n**Formal:** $$\\big||x| - |y|\\big| \\le |x - y| \\quad \\text{für alle } x, y \\in \\mathbb{R}$$\n- falsch ist dagegen $|x - y| \\le |x| - |y|$\n- und im Allgemeinen $|x - y| \\neq \\big||x| - |y|\\big|$',
     },
     {
       term: 'Quadrat-Trick für Ungleichungen',
@@ -230,7 +230,7 @@ window.DECKS.push({
     },
     {
       term: 'Binomische Formel',
-      def: '$$(a + b)^n = \\sum_{k=0}^{n} \\binom{n}{k} a^k b^{n-k}$$ $n + 1$ Summanden, Exponentensumme jeweils $n$.',
+      def: '**In Worten:** Multipliziert man $(a + b)^n$ aus, erhält man alle Produkte $a^k b^{n-k}$, jeweils mit dem Binomialkoeffizienten $\\binom{n}{k}$ als Vorfaktor.\n\n**Formal:** $$(a + b)^n = \\sum_{k=0}^{n} \\binom{n}{k} a^k b^{n-k} \\quad \\text{für } n \\in \\mathbb{N}_0$$ $n + 1$ Summanden, Exponentensumme jeweils $n$.',
       calc: '- Zeile $n$ des Pascalschen Dreiecks als Koeffizienten aufschreiben\n- Exponent von $a$ steigt von 0 bis $n$, von $b$ fällt er von $n$ bis 0\n- Summanden addieren\n\n$(a + b)^4 = a^4 + 4a^3 b + 6a^2 b^2 + 4ab^3 + b^4$',
     },
 
@@ -254,7 +254,7 @@ window.DECKS.push({
     },
     {
       term: 'Additionstheorem',
-      def: '- $\\cos(x + y) = \\cos x \\cos y - \\sin x \\sin y$\n- $\\sin(x + y) = \\sin x \\cos y + \\cos x \\sin y$\n\nFolgt z. B.: $\\sin(x + \\frac{\\pi}{2}) = \\cos x$.',
+      def: '**In Worten:** Kosinus und Sinus einer Winkelsumme lassen sich durch Sinus und Kosinus der einzelnen Winkel ausdrücken.\n\n**Formal:** Für alle $x, y \\in \\mathbb{R}$:\n- $\\cos(x + y) = \\cos x \\cos y - \\sin x \\sin y$\n- $\\sin(x + y) = \\sin x \\cos y + \\cos x \\sin y$\n\nFolgt z. B.: $\\sin(x + \\frac{\\pi}{2}) = \\cos x$.',
     },
     {
       term: 'Tangens und Kotangens',
@@ -328,7 +328,7 @@ window.DECKS.push({
     },
     {
       term: 'Fundamentalsatz der Algebra',
-      def: 'Jedes nicht konstante Polynom hat in $\\mathbb{C}$ eine Nullstelle.\n- Polynom $n$-ten Grades zerfällt in $n$ Linearfaktoren: $p(x) = a_n \\prod_{k=1}^{n}(x - x_k)$\n- $l$-fache Nullstelle: kommt $l$-mal vor',
+      def: '**In Worten:** Jedes nicht konstante Polynom hat in $\\mathbb{C}$ eine Nullstelle. Daher zerfällt ein Polynom vom Grad $n$ in $n$ Linearfaktoren.\n\n**Formal:** Für $p(z) = \\sum_{k=0}^{n} a_k z^k$ mit $n \\ge 1$, $a_n \\neq 0$: $$\\exists\\, z_0 \\in \\mathbb{C}: p(z_0) = 0, \\qquad p(z) = a_n \\prod_{k=1}^{n}(z - z_k)$$\n- $l$-fache Nullstelle: kommt $l$-mal unter den $z_k$ vor',
     },
     {
       term: 'Quadratische Gleichung',
@@ -346,7 +346,7 @@ window.DECKS.push({
     },
     {
       term: 'Potenz einer komplexen Zahl',
-      def: '$$\\left(r(\\cos\\varphi + i\\sin\\varphi)\\right)^n = r^n(\\cos(n\\varphi) + i\\sin(n\\varphi))$$',
+      def: '**In Worten:** Eine komplexe Zahl in Polardarstellung potenziert man, indem man den Betrag potenziert und das Argument mit $n$ multipliziert (Formel von de Moivre).\n\n**Formal:** $$\\begin{aligned} &\\big(r(\\cos\\varphi + i\\sin\\varphi)\\big)^n \\\\ &= r^n\\big(\\cos(n\\varphi) + i\\sin(n\\varphi)\\big) \\end{aligned}$$ für alle $n \\in \\mathbb{N}$',
       calc: '- in Polardarstellung umwandeln ($r$, $\\varphi$)\n- $r^n$ berechnen und $n\\varphi$ bilden\n- $\\cos(n\\varphi)$ und $\\sin(n\\varphi)$ auswerten\n\n$(1 + i)^{12} = (\\sqrt{2})^{12}(\\cos 3\\pi + i\\sin 3\\pi) = -64$',
     },
 
@@ -403,7 +403,7 @@ window.DECKS.push({
     },
     {
       term: 'Eindeutigkeit und Beschränktheit',
-      def: '- der Grenzwert einer konvergenten Folge ist eindeutig\n- jede konvergente Folge ist beschränkt\n- aber: nicht jede beschränkte Folge konvergiert ($(-1)^n$)',
+      def: '**In Worten:** Eine konvergente Folge hat genau einen Grenzwert und ist beschränkt. Eine beschränkte Folge muss aber nicht konvergieren.\n\n**Formal:**\n- $a_n \\to a$ und $a_n \\to b$ $\\Rightarrow$ $a = b$\n- $(a_n)$ konvergent $\\Rightarrow$ $\\exists K\\ \\forall n: |a_n| \\le K$\n- Umkehrung falsch: $(-1)^n$ ist beschränkt, aber divergent',
     },
 
     {
@@ -416,72 +416,72 @@ window.DECKS.push({
     {
       term: 'ε-N-Kriterium (Nachweis per Definition)',
       use: 'Grenzwert beweisen (wenn er schon vermutet ist)',
-      def: '**Aussage:** $a_n \\to a$, wenn es zu jedem $\\varepsilon > 0$ ein $N_\\varepsilon$ gibt mit $|a_n - a| < \\varepsilon$ für alle $n > N_\\varepsilon$.\n\n**Anwendung:** nur, wenn der Grenzwert $a$ schon vermutet wird.\n- $|a_n - a|$ vereinfachen bzw. nach oben abschätzen\n- $< \\varepsilon$ nach $n$ auflösen → $N_\\varepsilon$ angeben\n\n$a_n = \\frac{n+1}{n}$: $|a_n - 1| = \\frac1n < \\varepsilon$ für $n > \\frac{1}{\\varepsilon}$ → $a_n \\to 1$',
+      def: '**In Worten:** Eine Folge konvergiert gegen $a$, wenn für jede noch so kleine Toleranz $\\varepsilon$ ab einem Index alle Glieder näher als $\\varepsilon$ an $a$ liegen.\n\n**Formal:** $$a_n \\to a \\;:\\Leftrightarrow\\; \\forall \\varepsilon > 0\\ \\exists N_\\varepsilon\\ \\forall n > N_\\varepsilon: |a_n - a| < \\varepsilon$$\n\n**Anwendung:** nur, wenn der Grenzwert $a$ schon vermutet wird.\n- $|a_n - a|$ vereinfachen bzw. nach oben abschätzen\n- $< \\varepsilon$ nach $n$ auflösen → $N_\\varepsilon$ angeben\n\n$a_n = \\frac{n+1}{n}$: $|a_n - 1| = \\frac1n < \\varepsilon$ für $n > \\frac{1}{\\varepsilon}$ → $a_n \\to 1$',
     },
     {
       term: 'Grenzwertsätze (Rechenregeln) anwenden',
       use: 'Grenzwert berechnen',
-      def: '**Aussage:** Konvergieren $a_n \\to a$ und $b_n \\to b$, dann auch $a_n \\pm b_n$, $a_n b_n$, $\\frac{a_n}{b_n}$ ($b \\neq 0$), $|a_n|$, $\\sqrt{a_n}$ ($a_n \\ge 0$) – gegen $a \\pm b$, $ab$, $\\frac ab$, $|a|$, $\\sqrt a$.\n\n**Anwendung:**\n- Folge in bekannte Bausteine zerlegen: $\\frac1n \\to 0$, $q^n \\to 0$ ($|q| < 1$), $\\sqrt[n]{n} \\to 1$\n- bei Brüchen die höchste Potenz im Nenner ausklammern\n- Voraussetzung: **beide** Teilfolgen konvergieren; bei $\\infty - \\infty$, $0 \\cdot \\infty$, $\\frac{\\infty}{\\infty}$ erst umformen\n\n$\\frac{2n^2 + 1}{n^2 - n} = \\frac{2 + 1/n^2}{1 - 1/n} \\to 2$',
+      def: '**In Worten:** Summe, Differenz, Produkt, Quotient, Betrag und Wurzel konvergenter Folgen konvergieren gegen die entsprechende Verknüpfung der Grenzwerte (beim Quotienten muss der Grenzwert des Nenners $\\neq 0$ sein).\n\n**Formal:** Aus $a_n \\to a$ und $b_n \\to b$ folgt\n- $a_n \\pm b_n \\to a \\pm b$, $\\;a_n b_n \\to ab$\n- $\\frac{a_n}{b_n} \\to \\frac{a}{b}$, falls $b \\neq 0$\n- $|a_n| \\to |a|$, $\\;\\sqrt{a_n} \\to \\sqrt{a}$, falls $a_n \\ge 0$\n\n**Anwendung:**\n- Folge in bekannte Bausteine zerlegen: $\\frac1n \\to 0$, $q^n \\to 0$ ($|q| < 1$), $\\sqrt[n]{n} \\to 1$\n- bei Brüchen die höchste Potenz im Nenner ausklammern\n- Voraussetzung: **beide** Teilfolgen konvergieren; bei $\\infty - \\infty$, $0 \\cdot \\infty$, $\\frac{\\infty}{\\infty}$ erst umformen\n\n$\\frac{2n^2 + 1}{n^2 - n} = \\frac{2 + 1/n^2}{1 - 1/n} \\to 2$',
     },
     {
       term: 'Sandwich-Kriterium (Einschließungskriterium)',
       use: 'Grenzwert bestimmen durch Einschließen',
-      def: '**Aussage:** Gilt $a_n \\le c_n \\le b_n$ ab einem Index und $a_n \\to L$, $b_n \\to L$, dann $c_n \\to L$.\n\n**Anwendung:** wenn $c_n$ zu kompliziert für die Grenzwertsätze ist (Wurzeln, $\\sin$, Summen).\n- $c_n$ nach unten und oben durch einfachere Folgen abschätzen\n- beide Schranken müssen **denselben** Grenzwert haben\n\n$c_n = \\sqrt[n]{2^n + 3^n}$: $3 \\le c_n \\le \\sqrt[n]{2 \\cdot 3^n} = 3\\sqrt[n]{2} \\to 3$ → $c_n \\to 3$',
+      def: '**In Worten:** Liegt eine Folge ab einem Index zwischen zwei Folgen mit demselben Grenzwert, hat sie auch diesen Grenzwert.\n\n**Formal:** $$\\begin{aligned} &a_n \\le c_n \\le b_n \\ (n \\ge N),\\ a_n, b_n \\to L \\\\ \\Rightarrow\\ &c_n \\to L \\end{aligned}$$\n\n**Anwendung:** wenn $c_n$ zu kompliziert für die Grenzwertsätze ist (Wurzeln, $\\sin$, Summen).\n- $c_n$ nach unten und oben durch einfachere Folgen abschätzen\n- beide Schranken müssen **denselben** Grenzwert haben\n\n$c_n = \\sqrt[n]{2^n + 3^n}$: $3 \\le c_n \\le \\sqrt[n]{2 \\cdot 3^n} = 3\\sqrt[n]{2} \\to 3$ → $c_n \\to 3$',
     },
     {
       term: 'Vergleich mit einer Nullfolge',
       use: 'Grenzwert beweisen durch Abschätzen des Abstands',
-      def: '**Aussage:** Gilt $|a_n - a| \\le C\\, b_n$ ab einem Index mit Konstante $C > 0$ und $b_n \\to 0$, dann $a_n \\to a$.\n\n**Anwendung:** einseitige Form des Sandwich-Kriteriums – nur der Abstand zum vermuteten Grenzwert muss nach oben abgeschätzt werden.\n\n$\\left|\\frac{n}{n+1} - 1\\right| = \\frac{1}{n+1} \\le \\frac1n \\to 0$ → $\\frac{n}{n+1} \\to 1$',
+      def: '**In Worten:** Ist der Abstand zu $a$ ab einem Index höchstens ein festes Vielfaches einer Nullfolge, konvergiert die Folge gegen $a$.\n\n**Formal:** $$\\begin{aligned} &|a_n - a| \\le C\\, b_n \\ (n \\ge N),\\ b_n \\to 0 \\\\ \\Rightarrow\\ &a_n \\to a \\end{aligned}$$ mit einer Konstanten $C > 0$.\n\n**Anwendung:** einseitige Form des Sandwich-Kriteriums – nur der Abstand zum vermuteten Grenzwert muss nach oben abgeschätzt werden.\n\n$\\left|\\frac{n}{n+1} - 1\\right| = \\frac{1}{n+1} \\le \\frac1n \\to 0$ → $\\frac{n}{n+1} \\to 1$',
     },
     {
       term: 'Beschränkt mal Nullfolge (Kriterium)',
       use: 'Nullfolge zeigen (Faktor $\\sin n$, $(-1)^n$ …)',
-      def: '**Aussage:** Ist $(a_n)$ beschränkt mit $|a_n| \\le K$ und $b_n \\to 0$, dann $a_n b_n \\to 0$, denn $|a_n b_n| \\le K |b_n|$.\n\n**Anwendung:** bei Faktoren wie $\\sin(n)$, $\\cos(n)$, $(-1)^n$, die selbst nicht konvergieren.\n\n$\\frac{\\sin n}{n} = \\sin n \\cdot \\frac1n \\to 0$',
+      def: '**In Worten:** Das Produkt einer beschränkten Folge mit einer Nullfolge ist eine Nullfolge.\n\n**Formal:** $$|a_n| \\le K \\ \\forall n,\\quad b_n \\to 0 \\;\\Rightarrow\\; a_n b_n \\to 0$$ denn $|a_n b_n| \\le K\\,|b_n|$.\n\n**Anwendung:** bei Faktoren wie $\\sin(n)$, $\\cos(n)$, $(-1)^n$, die selbst nicht konvergieren.\n\n$\\frac{\\sin n}{n} = \\sin n \\cdot \\frac1n \\to 0$',
     },
     {
       term: 'Bestimmte Divergenz durch Minorante',
       use: 'Divergenz gegen $\\pm\\infty$ zeigen',
-      def: '**Aussage:** Gilt $a_n \\ge b_n$ ab einem Index und $b_n \\to +\\infty$, dann $a_n \\to +\\infty$ (analog mit $\\le$ für $-\\infty$).\n\n**Anwendung:** $a_n$ nach unten durch eine einfachere, unbeschränkt wachsende Folge abschätzen (oft mit Bernoulli).\n\n$\\frac{n^2 + 1}{n} \\ge n \\to +\\infty$',
+      def: '**In Worten:** Liegt eine Folge ab einem Index oberhalb einer Folge, die gegen $+\\infty$ strebt, strebt sie selbst gegen $+\\infty$ (analog für $-\\infty$ mit $\\le$).\n\n**Formal:** $$\\begin{aligned} &a_n \\ge b_n \\ (n \\ge N),\\ b_n \\to +\\infty \\\\ \\Rightarrow\\ &a_n \\to +\\infty \\end{aligned}$$\n\n**Anwendung:** $a_n$ nach unten durch eine einfachere, unbeschränkt wachsende Folge abschätzen (oft mit Bernoulli).\n\n$\\frac{n^2 + 1}{n} \\ge n \\to +\\infty$',
     },
     {
       term: 'Bernoulli-Abschätzung',
       use: 'Potenzen abschätzen (für Sandwich oder Minorante)',
-      def: '**Aussage:** $(1 + x)^n \\ge 1 + nx$ für $x \\ge -1$, $n \\in \\mathbb{N}$.\n\n**Anwendung:** Potenzen $(1 + x)^n$ nach unten durch einen in $n$ linearen Ausdruck abschätzen – dann Minorante oder Sandwich.\n- $q^n \\to \\infty$ für $q > 1$: $q = 1 + h$, $q^n \\ge 1 + nh \\to \\infty$\n- $\\sqrt[n]{\\alpha} \\to 1$ für $\\alpha > 1$: $\\sqrt[n]{\\alpha} = 1 + h_n$ mit $h_n \\ge 0$, dann $\\alpha \\ge 1 + n h_n$, also $0 \\le h_n \\le \\frac{\\alpha - 1}{n} \\to 0$',
+      def: '**In Worten:** Die Potenz $(1 + x)^n$ ist mindestens so groß wie $1 + nx$, sofern $x \\ge -1$.\n\n**Formal:** $$(1 + x)^n \\ge 1 + nx \\quad \\text{für alle } x \\ge -1,\\ n \\in \\mathbb{N}$$\n\n**Anwendung:** Potenzen $(1 + x)^n$ nach unten durch einen in $n$ linearen Ausdruck abschätzen – dann Minorante oder Sandwich.\n- $q^n \\to \\infty$ für $q > 1$: $q = 1 + h$, $q^n \\ge 1 + nh \\to \\infty$\n- $\\sqrt[n]{\\alpha} \\to 1$ für $\\alpha > 1$: $\\sqrt[n]{\\alpha} = 1 + h_n$ mit $h_n \\ge 0$, dann $\\alpha \\ge 1 + n h_n$, also $0 \\le h_n \\le \\frac{\\alpha - 1}{n} \\to 0$',
     },
     {
       term: 'Differenzen- und Quotiententest',
       use: 'Monotonie zeigen',
-      def: '**Aussage:** $(a_n)$ ist monoton steigend, wenn $a_{n+1} \\ge a_n$ für alle $n$ gilt (fallend analog mit $\\le$).\n\n**Anwendung:**\n- **Differenz:** $a_{n+1} - a_n \\ge 0$ → steigend, $\\le 0$ → fallend\n- **Quotient** (nur bei $a_n > 0$): $\\frac{a_{n+1}}{a_n} \\ge 1$ → steigend, $\\le 1$ → fallend – lohnt sich bei Fakultäten und Potenzen\n- **rekursiv** $a_{n+1} = f(a_n)$ mit monoton steigendem $f$: aus $a_1 \\ge a_0$ folgt per Induktion $a_{n+1} \\ge a_n$\n\n$a_n = \\frac{2^n}{n!}$: $\\frac{a_{n+1}}{a_n} = \\frac{2}{n+1} \\le 1$ für $n \\ge 1$ → fallend ab $n = 1$',
+      def: '**In Worten:** Eine Folge ist monoton steigend, wenn jedes Glied mindestens so groß ist wie sein Vorgänger. Das prüft man über die Differenz oder, bei positiven Gliedern, über den Quotienten aufeinanderfolgender Glieder (fallend analog).\n\n**Formal:** $(a_n)$ monoton steigend\n- $\\Leftrightarrow$ $a_{n+1} - a_n \\ge 0$ für alle $n$\n- $\\Leftrightarrow$ $\\frac{a_{n+1}}{a_n} \\ge 1$ für alle $n$ (falls alle $a_n > 0$)\n\n**Anwendung:**\n- **Differenz:** $a_{n+1} - a_n \\ge 0$ → steigend, $\\le 0$ → fallend\n- **Quotient** (nur bei $a_n > 0$): $\\frac{a_{n+1}}{a_n} \\ge 1$ → steigend, $\\le 1$ → fallend – lohnt sich bei Fakultäten und Potenzen\n- **rekursiv** $a_{n+1} = f(a_n)$ mit monoton steigendem $f$: aus $a_1 \\ge a_0$ folgt per Induktion $a_{n+1} \\ge a_n$\n\n$a_n = \\frac{2^n}{n!}$: $\\frac{a_{n+1}}{a_n} = \\frac{2}{n+1} \\le 1$ für $n \\ge 1$ → fallend ab $n = 1$',
     },
     {
       term: 'Monotoniekriterium anwenden',
       use: 'Konvergenz zeigen, ohne den Grenzwert zu kennen',
-      def: '**Aussage:** Monoton steigend und nach oben beschränkt ⇒ konvergent (gegen das Supremum); analog fallend und nach unten beschränkt. Monoton und unbeschränkt ⇒ bestimmt divergent.\n\n**Anwendung:** wenn der Grenzwert unbekannt ist (rekursive Folgen, Summen).\n- Monotonie: $a_{n+1} - a_n$ oder $\\frac{a_{n+1}}{a_n}$ untersuchen\n- Schranke angeben, oft per Induktion\n- liefert nur Konvergenz, nicht den Wert\n\n$a_n = \\sum_{k=1}^{n} \\frac{1}{k^2}$: steigend, $a_n \\le 1 + \\sum_{k=2}^{n} \\frac{1}{k(k-1)} = 2 - \\frac1n < 2$ → konvergent',
+      def: '**In Worten:** Eine monotone und beschränkte Folge konvergiert (steigend: gegen das Supremum). Eine monotone, unbeschränkte Folge strebt gegen $\\pm\\infty$.\n\n**Formal:**\n- $(a_n)$ monoton steigend, $a_n \\le K \\ \\forall n$ $\\Rightarrow$ $a_n \\to \\sup_n a_n$\n- $(a_n)$ monoton fallend, $a_n \\ge K \\ \\forall n$ $\\Rightarrow$ $a_n \\to \\inf_n a_n$\n- $(a_n)$ monoton steigend und unbeschränkt $\\Rightarrow$ $a_n \\to +\\infty$\n\n**Anwendung:** wenn der Grenzwert unbekannt ist (rekursive Folgen, Summen).\n- Monotonie: $a_{n+1} - a_n$ oder $\\frac{a_{n+1}}{a_n}$ untersuchen\n- Schranke angeben, oft per Induktion\n- liefert nur Konvergenz, nicht den Wert\n\n$a_n = \\sum_{k=1}^{n} \\frac{1}{k^2}$: steigend, $a_n \\le 1 + \\sum_{k=2}^{n} \\frac{1}{k(k-1)} = 2 - \\frac1n < 2$ → konvergent',
     },
     {
       term: 'Fixpunktmethode (rekursive Folgen)',
       use: 'Grenzwert rekursiver Folgen berechnen',
-      def: '**Aussage:** Ist $a_{n+1} = f(a_n)$ mit stetigem $f$ und $a_n \\to a$, dann gilt $a = f(a)$.\n\n**Anwendung:**\n- **zuerst** Konvergenz zeigen (meist Monotoniekriterium)\n- dann $a_n$ und $a_{n+1}$ durch $a$ ersetzen und $a = f(a)$ lösen\n- unpassende Lösungen ausschließen (Vorzeichen, Schranken)\n\n$a_0 = 0$, $a_{n+1} = \\sqrt{2 + a_n}$: steigend, $a_n < 2$ → konvergent; $a = \\sqrt{2 + a}$ → $a^2 - a - 2 = 0$ → $a = 2$ (da $a \\ge 0$)',
+      def: '**In Worten:** Konvergiert eine rekursive Folge $a_{n+1} = f(a_n)$ mit stetigem $f$, so ist ihr Grenzwert ein Fixpunkt von $f$.\n\n**Formal:** $$\\begin{aligned} &a_{n+1} = f(a_n),\\ f \\text{ stetig},\\ a_n \\to a \\\\ \\Rightarrow\\ &f(a) = a \\end{aligned}$$\n\n**Anwendung:**\n- **zuerst** Konvergenz zeigen (meist Monotoniekriterium)\n- dann $a_n$ und $a_{n+1}$ durch $a$ ersetzen und $a = f(a)$ lösen\n- unpassende Lösungen ausschließen (Vorzeichen, Schranken)\n\n$a_0 = 0$, $a_{n+1} = \\sqrt{2 + a_n}$: steigend, $a_n < 2$ → konvergent; $a = \\sqrt{2 + a}$ → $a^2 - a - 2 = 0$ → $a = 2$ (da $a \\ge 0$)',
     },
     {
       term: 'Quotientenkriterium für Folgen',
       use: 'Nullfolge oder Divergenz zeigen',
-      def: '**Aussage:** Für $a_n \\neq 0$ und $q = \\lim \\left|\\frac{a_{n+1}}{a_n}\\right|$:\n- $q < 1$ → $a_n \\to 0$\n- $q > 1$ → $|a_n| \\to \\infty$, also divergent\n- $q = 1$ → keine Aussage ($\\frac1n$, $1$, $n$)\n\n**Anwendung:** bei Fakultäten und Potenzen $q^n$, $n^n$.\n\n$a_n = \\frac{n!}{n^n}$: $\\frac{a_{n+1}}{a_n} = \\frac{1}{(1 + 1/n)^n} \\to \\frac1e < 1$ → $a_n \\to 0$',
+      def: '**In Worten:** Ist der Betrag des Quotienten aufeinanderfolgender Glieder im Grenzwert kleiner als 1, ist die Folge eine Nullfolge; ist er größer als 1, wächst ihr Betrag über alle Grenzen.\n\n**Formal:** Für $a_n \\neq 0$ und $q = \\lim_{n\\to\\infty} \\left|\\frac{a_{n+1}}{a_n}\\right|$:\n- $q < 1 \\Rightarrow a_n \\to 0$\n- $q > 1 \\Rightarrow |a_n| \\to \\infty$, also divergent\n- $q = 1$: keine Aussage ($\\frac1n$, $1$, $n$)\n\n**Anwendung:** bei Fakultäten und Potenzen $q^n$, $n^n$.\n\n$a_n = \\frac{n!}{n^n}$: $\\frac{a_{n+1}}{a_n} = \\frac{1}{(1 + 1/n)^n} \\to \\frac1e < 1$ → $a_n \\to 0$',
     },
     {
       term: 'Cauchy-Kriterium anwenden',
       use: 'Konvergenz oder Divergenz zeigen, ohne Grenzwert',
-      def: '**Aussage:** $(a_n)$ konvergiert ⇔ zu jedem $\\varepsilon > 0$ gibt es $N_\\varepsilon$ mit $|a_m - a_n| < \\varepsilon$ für alle $m, n > N_\\varepsilon$.\n\n**Anwendung:** Konvergenz ohne Kenntnis des Grenzwerts.\n- **Konvergenz:** z. B. $|a_{n+1} - a_n| \\le C q^n$ mit $0 < q < 1$ → mit geometrischer Summe ist $(a_n)$ Cauchy-Folge\n- **Divergenz:** Indizes $m, n$ beliebig groß finden mit $|a_m - a_n| \\ge c > 0$\n- Achtung: $|a_{n+1} - a_n| \\to 0$ allein reicht **nicht** ($\\sqrt n$)\n\n$s_n = \\sum_{k=1}^{n} \\frac1k$: $s_{2n} - s_n \\ge n \\cdot \\frac{1}{2n} = \\frac12$ → divergent',
+      def: '**In Worten:** Eine Folge konvergiert genau dann, wenn ihre Glieder ab einem Index beliebig nahe beieinander liegen.\n\n**Formal:** $$\\begin{aligned} &(a_n) \\text{ konvergent} \\\\ \\Leftrightarrow\\ &\\forall \\varepsilon > 0\\ \\exists N_\\varepsilon\\ \\forall m, n > N_\\varepsilon: \\\\ &|a_m - a_n| < \\varepsilon \\end{aligned}$$\n\n**Anwendung:** Konvergenz ohne Kenntnis des Grenzwerts.\n- **Konvergenz:** z. B. $|a_{n+1} - a_n| \\le C q^n$ mit $0 < q < 1$ → mit geometrischer Summe ist $(a_n)$ Cauchy-Folge\n- **Divergenz:** Indizes $m, n$ beliebig groß finden mit $|a_m - a_n| \\ge c > 0$\n- Achtung: $|a_{n+1} - a_n| \\to 0$ allein reicht **nicht** ($\\sqrt n$)\n\n$s_n = \\sum_{k=1}^{n} \\frac1k$: $s_{2n} - s_n \\ge n \\cdot \\frac{1}{2n} = \\frac12$ → divergent',
     },
     {
       term: 'Teilfolgen-Kriterium',
       use: 'Divergenz zeigen',
-      def: '**Aussage:** Konvergiert $a_n \\to a$, dann konvergiert jede Teilfolge gegen $a$.\n\n**Anwendung (Divergenz):** zwei Teilfolgen mit verschiedenen Grenzwerten finden, oder eine divergente Teilfolge.\n- typisch: gerade und ungerade Indizes $a_{2n}$, $a_{2n+1}$\n- umgekehrt: $a_{2n} \\to a$ **und** $a_{2n+1} \\to a$ ⇒ $a_n \\to a$\n\n$a_n = (-1)^n \\frac{n}{n+1}$: $a_{2n} \\to 1$, $a_{2n+1} \\to -1$ → divergent',
+      def: '**In Worten:** Konvergiert eine Folge gegen $a$, konvergiert auch jede ihrer Teilfolgen gegen $a$.\n\n**Formal:** $$a_n \\to a \\;\\Rightarrow\\; a_{n_k} \\to a \\ \\text{ für jede Teilfolge } (a_{n_k})$$\n\n**Anwendung (Divergenz):** zwei Teilfolgen mit verschiedenen Grenzwerten finden, oder eine divergente Teilfolge.\n- typisch: gerade und ungerade Indizes $a_{2n}$, $a_{2n+1}$\n- umgekehrt: $a_{2n} \\to a$ **und** $a_{2n+1} \\to a$ ⇒ $a_n \\to a$\n\n$a_n = (-1)^n \\frac{n}{n+1}$: $a_{2n} \\to 1$, $a_{2n+1} \\to -1$ → divergent',
     },
     {
       term: 'Unbeschränkt ⇒ divergent',
       use: 'Divergenz zeigen',
-      def: '**Aussage:** Jede konvergente Folge ist beschränkt. Kontraposition: eine unbeschränkte Folge ist divergent (hat keinen endlichen Grenzwert).\n\n**Anwendung:** schneller Divergenztest – zeigen, dass $|a_n|$ jede Schranke überschreitet.\n- Umkehrung gilt **nicht**: $(-1)^n$ ist beschränkt und divergent\n\n$a_n = (-1)^n n$: $|a_n| = n$ unbeschränkt → divergent (auch nicht gegen $\\pm\\infty$)',
+      def: '**In Worten:** Jede konvergente Folge ist beschränkt. Umgekehrt gelesen: Eine unbeschränkte Folge hat keinen endlichen Grenzwert.\n\n**Formal:**\n- $(a_n)$ konvergent $\\Rightarrow$ $\\exists K\\ \\forall n: |a_n| \\le K$\n- Kontraposition: $(a_n)$ unbeschränkt $\\Rightarrow$ $(a_n)$ divergent\n\n**Anwendung:** schneller Divergenztest – zeigen, dass $|a_n|$ jede Schranke überschreitet.\n- Umkehrung gilt **nicht**: $(-1)^n$ ist beschränkt und divergent\n\n$a_n = (-1)^n n$: $|a_n| = n$ unbeschränkt → divergent (auch nicht gegen $\\pm\\infty$)',
     },
     {
       term: 'Konvergenz einer Folge prüfen',
@@ -493,12 +493,12 @@ window.DECKS.push({
     { chapter: '2.2 Grenzwertbestimmung' },
     {
       term: 'Geometrische Folge',
-      def: '$a_n = q^n$:\n- $|q| < 1$: $\\lim = 0$\n- $q = 1$: $\\lim = 1$\n- $q > 1$: $\\lim = +\\infty$\n- $q \\le -1$: divergent',
+      def: '**In Worten:** Die Potenzen $q^n$ gehen gegen 0, wenn $|q| < 1$. Für $q = 1$ bleiben sie 1, für $q > 1$ wachsen sie über alle Grenzen, für $q \\le -1$ divergieren sie.\n\n**Formal:** $$\\lim_{n\\to\\infty} q^n = \\begin{cases} 0, & |q| < 1 \\\\ 1, & q = 1 \\\\ +\\infty, & q > 1 \\end{cases}$$ Für $q \\le -1$ ist $(q^n)$ divergent.',
     },
     {
       term: 'Grenzwertsätze',
       use: 'Grenzwert berechnen',
-      def: 'Für $a_n \\to a$, $b_n \\to b$:\n- $a_n + b_n \\to a + b$\n- $a_n b_n \\to ab$\n- $\\frac{a_n}{b_n} \\to \\frac{a}{b}$ (falls $b \\neq 0$)\n- $\\sqrt{a_n} \\to \\sqrt{a}$ (falls $a_n \\ge 0$)\n- $|a_n| \\to |a|$',
+      def: '**In Worten:** Grenzwerte vertragen sich mit den Rechenarten: Der Grenzwert einer Summe, eines Produkts, eines Quotienten (Nenner-Grenzwert $\\neq 0$), einer Wurzel oder eines Betrags ist die entsprechende Verknüpfung der Grenzwerte.\n\n**Formal:** Für $a_n \\to a$, $b_n \\to b$:\n- $a_n + b_n \\to a + b$\n- $a_n b_n \\to ab$\n- $\\frac{a_n}{b_n} \\to \\frac{a}{b}$ (falls $b \\neq 0$)\n- $\\sqrt{a_n} \\to \\sqrt{a}$ (falls $a_n \\ge 0$)\n- $|a_n| \\to |a|$',
     },
     {
       term: 'Grenzwert gebrochen-rationaler Folgen',
@@ -512,12 +512,12 @@ window.DECKS.push({
     },
     {
       term: 'Grenzwert und Ungleichungen',
-      def: '- aus $a_n \\le b_n$ folgt $\\lim a_n \\le \\lim b_n$\n- aus $a_n < b_n$ folgt nur $\\le$ für die Grenzwerte (z. B. $\\frac1n > 0$, beide Grenzwerte 0)',
+      def: '**In Worten:** Ungleichungen zwischen den Gliedern zweier konvergenter Folgen bleiben für die Grenzwerte erhalten – strikte Ungleichungen aber nur als $\\le$.\n\n**Formal:** Für konvergente $(a_n)$, $(b_n)$:\n- $a_n \\le b_n \\ (n \\ge N) \\Rightarrow \\lim a_n \\le \\lim b_n$\n- $a_n < b_n \\not\\Rightarrow \\lim a_n < \\lim b_n$, z. B. $0 < \\frac1n$, beide Grenzwerte 0',
     },
     {
       term: 'Sandwich-Theorem',
       use: 'Grenzwert bestimmen durch Einschließen',
-      def: 'Gilt $a_n \\le c_n \\le b_n$ ab einem Index und $a_n, b_n \\to b$, dann auch $c_n \\to b$.',
+      def: '**In Worten:** Liegt eine Folge ab einem Index zwischen zwei Folgen mit demselben Grenzwert, hat sie auch diesen Grenzwert.\n\n**Formal:** $$\\begin{aligned} &a_n \\le c_n \\le b_n \\ (n \\ge N),\\ a_n, b_n \\to b \\\\ \\Rightarrow\\ &c_n \\to b \\end{aligned}$$',
       calc: '- $c_n$ nach unten und oben durch einfachere Folgen abschätzen\n- prüfen, dass beide Schranken denselben Grenzwert haben\n- dann hat $c_n$ diesen Grenzwert\n\n$0 \\le \\frac{n}{2^n} \\le \\frac{1}{n}$ (für $n \\ge 4$) → $\\frac{n}{2^n} \\to 0$',
     },
     {
@@ -533,12 +533,12 @@ window.DECKS.push({
     {
       term: 'Monotoniekriterium',
       use: 'Konvergenz zeigen, ohne den Grenzwert zu kennen',
-      def: 'Jede beschränkte und monotone Folge ist konvergent.',
+      def: '**In Worten:** Jede beschränkte und monotone Folge ist konvergent.\n\n**Formal:** $$\\begin{aligned} &(a_n) \\text{ monoton},\\ \\exists K\\ \\forall n: |a_n| \\le K \\\\ \\Rightarrow\\ &(a_n) \\text{ konvergent} \\end{aligned}$$',
     },
     {
       term: 'Grenzwert rekursiver Folgen',
       use: 'Grenzwert rekursiver Folgen berechnen',
-      def: 'Für $a_{n+1} = f(a_n)$ mit stetigem $f$ kommen nur Fixpunkte $f(a) = a$ als Grenzwert in Frage. Konvergenz muss extra gezeigt werden!',
+      def: '**In Worten:** Konvergiert eine Folge $a_{n+1} = f(a_n)$ mit stetigem $f$, kommen als Grenzwert nur Fixpunkte von $f$ in Frage. Die Konvergenz selbst muss extra gezeigt werden!\n\n**Formal:** $$\\begin{aligned} &a_{n+1} = f(a_n),\\ f \\text{ stetig},\\ a_n \\to a \\\\ \\Rightarrow\\ &f(a) = a \\end{aligned}$$',
       calc: '- Beschränktheit zeigen (oft per Induktion)\n- Monotonie zeigen ($a_{n+1} - a_n$)\n- → konvergent (Monotoniekriterium)\n- in der Rekursion $a_n, a_{n+1}$ durch $a$ ersetzen, Fixpunktgleichung lösen\n- unpassende Lösungen ausschließen (z. B. Vorzeichen)\n\n$a_{n+1} = \\frac12 a_n + \\frac{1}{a_n}$: $a = \\frac{a}{2} + \\frac{1}{a}$ → $a^2 = 2$ → $a = \\sqrt2$ (da $a_n > 0$)',
     },
     {
@@ -552,12 +552,12 @@ window.DECKS.push({
     {
       term: 'Bernoulli-Ungleichung',
       use: 'Potenzen nach unten abschätzen',
-      def: '$(1 + a)^n \\ge 1 + na$ für alle $n \\in \\mathbb{N}$ und $a \\ge -1$.',
+      def: '**In Worten:** Die Potenz $(1 + a)^n$ ist mindestens so groß wie $1 + na$, sofern $a \\ge -1$.\n\n**Formal:** $$(1 + a)^n \\ge 1 + na \\quad \\text{für alle } n \\in \\mathbb{N},\\ a \\ge -1$$',
     },
     {
       term: 'Cauchy-Kriterium (Folgen)',
       use: 'Konvergenz zeigen, ohne Grenzwert',
-      def: '$(a_n)$ konvergiert genau dann, wenn es zu jedem $\\varepsilon > 0$ ein $N_\\varepsilon$ gibt mit $|a_m - a_n| < \\varepsilon$ für alle $m, n > N_\\varepsilon$.',
+      def: '**In Worten:** Eine Folge konvergiert genau dann, wenn ihre Glieder ab einem Index beliebig nahe beieinander liegen.\n\n**Formal:** $$\\begin{aligned} &(a_n) \\text{ konvergent} \\\\ \\Leftrightarrow\\ &\\forall \\varepsilon > 0\\ \\exists N_\\varepsilon\\ \\forall m, n > N_\\varepsilon: \\\\ &|a_m - a_n| < \\varepsilon \\end{aligned}$$',
     },
     {
       term: 'Teilfolge',
@@ -572,7 +572,7 @@ window.DECKS.push({
     {
       term: 'Satz von Bolzano-Weierstraß',
       use: 'konvergente Teilfolge sichern',
-      def: 'Jede beschränkte Folge hat mindestens eine konvergente Teilfolge.',
+      def: '**In Worten:** Jede beschränkte Folge hat mindestens eine konvergente Teilfolge.\n\n**Formal:** $$\\begin{aligned} &\\exists K\\ \\forall n: |a_n| \\le K \\\\ \\Rightarrow\\ &\\exists \\text{ Teilfolge } (a_{n_k}),\\ a \\in \\mathbb{R}: \\\\ &a_{n_k} \\to a \\end{aligned}$$',
     },
 
     {
@@ -581,7 +581,7 @@ window.DECKS.push({
     },
     {
       term: 'Endlich viele Folgenglieder ändern',
-      def: 'Ändert man endlich viele Glieder einer konvergenten Folge, bleibt sie konvergent mit **demselben** Grenzwert.',
+      def: '**In Worten:** Ändert man endlich viele Glieder einer konvergenten Folge, bleibt sie konvergent mit **demselben** Grenzwert.\n\n**Formal:** $$\\begin{aligned} &a_n \\to a,\\ b_n = a_n \\text{ für } n \\ge N \\\\ \\Rightarrow\\ &b_n \\to a \\end{aligned}$$',
     },
     {
       term: 'Teleskopprodukt',
@@ -590,15 +590,15 @@ window.DECKS.push({
     },
     {
       term: 'n-te Wurzel einer Konstanten',
-      def: '$$\\lim_{n\\to\\infty} \\sqrt[n]{\\alpha} = 1 \\quad \\text{für jedes } \\alpha > 0$$ Beweis mit Bernoulli-Ungleichung und Sandwich-Theorem.',
+      def: '**In Worten:** Die $n$-te Wurzel einer festen positiven Zahl geht für $n \\to \\infty$ gegen 1.\n\n**Formal:** $$\\lim_{n\\to\\infty} \\sqrt[n]{\\alpha} = 1 \\quad \\text{für jedes } \\alpha > 0$$ Beweis mit Bernoulli-Ungleichung und Sandwich-Theorem.',
     },
     {
       term: 'Nullfolge und Kehrwert',
-      def: 'Für eine monoton fallende Folge positiver Zahlen gilt: $$x_n \\to 0 \\;\\Leftrightarrow\\; \\left(\\tfrac{1}{x_n}\\right) \\text{ ist unbeschränkt}$$',
+      def: '**In Worten:** Eine monoton fallende Folge positiver Zahlen ist genau dann eine Nullfolge, wenn die Folge ihrer Kehrwerte unbeschränkt ist.\n\n**Formal:** Für $x_n > 0$, $(x_n)$ monoton fallend: $$x_n \\to 0 \\;\\Leftrightarrow\\; \\left(\\tfrac{1}{x_n}\\right) \\text{ ist unbeschränkt}$$',
     },
     {
       term: 'Beschränkt mal Nullfolge',
-      def: '- beschränkt · **Nullfolge** → Nullfolge\n- beschränkt · **konvergent** → im Allgemeinen **nicht** konvergent: $(-1)^n \\cdot 1$',
+      def: '**In Worten:** Beschränkte Folge mal Nullfolge ergibt eine Nullfolge. Beschränkt mal konvergent muss dagegen nicht konvergieren.\n\n**Formal:**\n- $|a_n| \\le K \\ \\forall n$, $b_n \\to 0$ $\\Rightarrow$ $a_n b_n \\to 0$\n- $(a_n)$ beschränkt, $(b_n)$ konvergent $\\not\\Rightarrow$ $(a_n b_n)$ konvergent: $(-1)^n \\cdot 1$',
     },
 
     { chapter: '2.3 Unendliche Reihen' },
@@ -608,63 +608,63 @@ window.DECKS.push({
     },
     {
       term: 'Geometrische Reihe',
-      def: '$$\\sum_{n=0}^{\\infty} q^n = \\frac{1}{1 - q} \\quad \\text{für } |q| < 1$$ Für $|q| \\ge 1$ divergent.',
+      def: '**In Worten:** Die Reihe der Potenzen $q^n$ konvergiert genau für $|q| < 1$, und zwar gegen $\\frac{1}{1 - q}$.\n\n**Formal:** $$\\sum_{n=0}^{\\infty} q^n = \\frac{1}{1 - q} \\quad \\text{für } |q| < 1$$ Für $|q| \\ge 1$ divergent.',
       calc: '- Reihe auf die Form $\\sum c\\,q^n$ bringen, Startindex beachten\n- $|q| < 1$ prüfen\n- Wert: erstes Glied $\\cdot \\frac{1}{1 - q}$\n\n$\\sum_{n=1}^{\\infty} \\left(\\frac12\\right)^n = \\frac12 \\cdot \\frac{1}{1 - \\frac12} = 1$',
     },
     {
       term: 'Harmonische Reihe',
-      def: '$\\sum_{n=1}^{\\infty} \\frac{1}{n} = +\\infty$ – divergent, obwohl $\\frac1n$ eine Nullfolge ist.',
+      def: '**In Worten:** Die Summe der Kehrwerte aller natürlichen Zahlen ist unendlich – obwohl die Summanden gegen 0 gehen.\n\n**Formal:** $$\\sum_{n=1}^{\\infty} \\frac{1}{n} = +\\infty, \\quad \\text{obwohl } \\frac{1}{n} \\to 0$$',
     },
     {
       term: 'Reihe 1/n^α',
-      def: '$\\sum_{n=1}^{\\infty} \\frac{1}{n^\\alpha}$\n- divergent für $\\alpha \\le 1$\n- konvergent für $\\alpha > 1$\n\nQuotienten- und Wurzelkriterium liefern hier keine Aussage.',
+      def: '**In Worten:** Die Reihe der Kehrwerte von $n^\\alpha$ konvergiert genau dann, wenn der Exponent größer als 1 ist.\n\n**Formal:** $$\\sum_{n=1}^{\\infty} \\frac{1}{n^\\alpha} \\text{ konvergent} \\;\\Leftrightarrow\\; \\alpha > 1$$ Quotienten- und Wurzelkriterium liefern hier keine Aussage.',
     },
     {
       term: 'Rechenregeln für Reihen',
-      def: 'Für konvergente Reihen:\n- $\\sum (a_n \\pm b_n) = \\sum a_n \\pm \\sum b_n$\n- $\\sum c\\,a_n = c \\sum a_n$',
+      def: '**In Worten:** Konvergente Reihen darf man gliedweise addieren, subtrahieren und mit einer Konstanten multiplizieren.\n\n**Formal:** Für konvergente $\\sum a_n$, $\\sum b_n$ und $c \\in \\mathbb{R}$:\n- $\\sum (a_n \\pm b_n) = \\sum a_n \\pm \\sum b_n$\n- $\\sum c\\,a_n = c \\sum a_n$',
     },
     {
       term: 'Cauchy-Kriterium (Reihen)',
       use: 'Konvergenz zeigen, ohne Reihenwert',
-      def: '$\\sum a_n$ konvergiert genau dann, wenn es zu jedem $\\varepsilon > 0$ ein $N_\\varepsilon$ gibt mit $\\left|\\sum_{k=m+1}^{n} a_k\\right| < \\varepsilon$ für alle $n > m > N_\\varepsilon$.',
+      def: '**In Worten:** Eine Reihe konvergiert genau dann, wenn jeder Abschnitt der Reihe ab einem genügend großen Index eine beliebig kleine Summe hat.\n\n**Formal:** $$\\begin{aligned} &\\textstyle\\sum a_n \\text{ konvergent} \\\\ \\Leftrightarrow\\ &\\forall \\varepsilon > 0\\ \\exists N_\\varepsilon\\ \\forall n > m > N_\\varepsilon: \\\\ &\\Big|\\sum_{k=m+1}^{n} a_k\\Big| < \\varepsilon \\end{aligned}$$',
     },
     {
       term: 'Notwendige Bedingung (Nullfolge)',
       use: 'Divergenz zeigen ($a_n \\not\\to 0$)',
-      def: 'Konvergiert $\\sum a_n$, dann ist $(a_n)$ eine Nullfolge.\n- nur notwendig, nicht hinreichend (harmonische Reihe)\n- Umkehrung als Test: ist $(a_n)$ **keine** Nullfolge → Reihe divergiert',
+      def: '**In Worten:** Wenn eine Reihe konvergiert, bilden ihre Summanden eine Nullfolge.\n\n**Formal:** $$\\sum a_n \\text{ konvergent} \\;\\Rightarrow\\; a_n \\to 0$$\n- nur notwendig, nicht hinreichend (harmonische Reihe)\n- Umkehrung als Test: ist $(a_n)$ **keine** Nullfolge → Reihe divergiert',
     },
     {
       term: 'Absolute Konvergenz',
-      def: '$\\sum a_n$ heißt absolut konvergent, wenn $\\sum |a_n|$ konvergiert.\n- absolut konvergent ⇒ konvergent\n- nicht umgekehrt: alternierende harmonische Reihe',
+      def: '**In Worten:** Eine Reihe heißt absolut konvergent, wenn die Reihe der Beträge konvergiert. Jede absolut konvergente Reihe ist auch konvergent.\n\n**Formal:** $$\\begin{aligned} &\\textstyle\\sum |a_n| \\text{ konvergent} \\\\ \\Rightarrow\\ &\\textstyle\\sum a_n \\text{ konvergent} \\end{aligned}$$\n- nicht umgekehrt: alternierende harmonische Reihe $\\sum \\frac{(-1)^n}{n}$',
     },
     {
       term: 'Leibniz-Kriterium',
       use: 'Konvergenz alternierender Reihen zeigen',
-      def: 'Ist $(a_n)$ eine monoton fallende Nullfolge mit $a_n \\ge 0$, dann konvergiert $\\sum (-1)^n a_n$.',
+      def: '**In Worten:** Eine alternierende Reihe, deren Beträge eine monoton fallende Nullfolge bilden, konvergiert.\n\n**Formal:** $$\\begin{aligned} &a_n \\ge 0,\\ a_n \\to 0,\\ (a_n) \\text{ monoton fallend} \\\\ \\Rightarrow\\ &\\textstyle\\sum (-1)^n a_n \\text{ konvergent} \\end{aligned}$$',
       calc: '- prüfen: Reihe ist alternierend $(-1)^n a_n$\n- $a_n \\ge 0$\n- $a_n \\to 0$\n- $a_n$ monoton fallend\n- alle erfüllt → konvergent',
     },
     {
       term: 'Majorantenkriterium',
       use: 'Konvergenz (Majorante) oder Divergenz (Minorante) zeigen',
-      def: 'Gilt $|a_n| \\le b_n$ ab einem Index:\n- $\\sum b_n$ konvergent ⇒ $\\sum a_n$ absolut konvergent (Majorante)\n- $\\sum |a_n|$ divergent ⇒ $\\sum b_n$ divergent (Minorante)',
+      def: '**In Worten:** Lässt sich eine Reihe gliedweise durch eine konvergente Reihe nach oben abschätzen, konvergiert sie absolut. Liegt eine divergente Reihe darunter, divergiert die obere.\n\n**Formal:** Gilt $|a_n| \\le b_n$ ab einem Index:\n- $\\sum b_n$ konvergent $\\Rightarrow$ $\\sum a_n$ absolut konvergent (Majorante)\n- $\\sum |a_n|$ divergent $\\Rightarrow$ $\\sum b_n$ divergent (Minorante)',
       calc: '- vermuten: konvergent oder divergent?\n- **Konvergenz:** $|a_n| \\le b_n$ mit bekannter konvergenter Reihe, z. B. $\\frac{1}{n^2}$ oder geometrisch\n- **Divergenz:** $a_n \\ge b_n \\ge 0$ mit divergenter Reihe, z. B. $\\frac{c}{n}$\n- dabei Zähler nach oben, Nenner nach unten abschätzen (bzw. umgekehrt)\n\n$\\left|\\frac{\\sin(3n + 2)}{3n^2 + 2n + 8}\\right| \\le \\frac{1}{3n^2}$ → konvergent',
     },
     {
       term: 'Vergleichskriterium (Grenzwertform)',
       use: 'Konvergenz oder Divergenz durch Vergleich mit $\\sum \\frac{1}{n^\\alpha}$',
-      def: 'Für $a_n \\ge 0$, $b_n > 0$ (ab einem Index) und $c = \\lim_{n\\to\\infty} \\frac{a_n}{b_n}$:\n- $0 < c < \\infty$ → $\\sum a_n$ und $\\sum b_n$ sind **beide** konvergent oder **beide** divergent\n- $c = 0$ → aus $\\sum b_n$ konvergent folgt $\\sum a_n$ konvergent\n- $c = \\infty$ → aus $\\sum b_n$ divergent folgt $\\sum a_n$ divergent\n\nErspart die Ungleichungen des Majorantenkriteriums: es genügt ein Grenzwert.',
+      def: '**In Worten:** Verhalten sich die Glieder zweier positiver Reihen im Grenzwert proportional zueinander, haben beide Reihen dasselbe Konvergenzverhalten.\n\n**Formal:** Für $a_n \\ge 0$, $b_n > 0$ (ab einem Index) und $c = \\lim_{n\\to\\infty} \\frac{a_n}{b_n}$:\n- $0 < c < \\infty$ $\\Rightarrow$ $\\sum a_n$ und $\\sum b_n$ sind **beide** konvergent oder **beide** divergent\n- $c = 0$: $\\sum b_n$ konvergent $\\Rightarrow$ $\\sum a_n$ konvergent\n- $c = \\infty$: $\\sum b_n$ divergent $\\Rightarrow$ $\\sum a_n$ divergent\n\nErspart die Ungleichungen des Majorantenkriteriums: es genügt ein Grenzwert.',
       calc: '- nur die höchsten Potenzen in Zähler und Nenner betrachten → Vergleichsreihe $b_n = \\frac{1}{n^\\alpha}$ (oder geometrisch) wählen\n- $\\frac{a_n}{b_n}$ bilden und den Grenzwert $c$ bestimmen\n- ist $0 < c < \\infty$: $\\sum a_n$ verhält sich wie $\\sum b_n$ (bei $\\frac{1}{n^\\alpha}$: konvergent für $\\alpha > 1$)\n\n$\\sum \\frac{n + 1}{n^3 + 2}$ mit $b_n = \\frac{1}{n^2}$: $\\frac{a_n}{b_n} = \\frac{n^3 + n^2}{n^3 + 2} \\to 1$ → konvergent\n\n$\\sum \\frac{n + 1}{n^2 + 3}$ mit $b_n = \\frac1n$: $\\frac{a_n}{b_n} = \\frac{n^2 + n}{n^2 + 3} \\to 1$ → divergent',
     },
     {
       term: 'Quotientenkriterium',
       use: 'absolute Konvergenz oder Divergenz zeigen (Fakultäten, $q^n$)',
-      def: 'Mit $\\rho = \\lim \\left|\\frac{a_{n+1}}{a_n}\\right|$:\n- $\\rho < 1$ → absolut konvergent\n- $\\rho > 1$ → divergent\n- $\\rho = 1$ → keine Aussage',
+      def: '**In Worten:** Ist der Betrag des Quotienten aufeinanderfolgender Glieder im Grenzwert kleiner als 1, konvergiert die Reihe absolut; ist er größer als 1, divergiert sie.\n\n**Formal:** Mit $\\rho = \\lim_{n\\to\\infty} \\left|\\frac{a_{n+1}}{a_n}\\right|$:\n- $\\rho < 1$ $\\Rightarrow$ $\\sum a_n$ absolut konvergent\n- $\\rho > 1$ $\\Rightarrow$ $\\sum a_n$ divergent\n- $\\rho = 1$: keine Aussage',
       calc: '- $\\frac{a_{n+1}}{a_n}$ aufstellen\n- Doppelbrüche auflösen, kürzen (Fakultäten, Potenzen!)\n- Grenzwert $\\rho$ bestimmen und mit 1 vergleichen\n\n$\\sum \\frac{n^2}{3^n}$: $\\frac{1}{3}(1 + \\frac1n)^2 \\to \\frac13 < 1$ → konvergent',
     },
     {
       term: 'Wurzelkriterium',
       use: 'absolute Konvergenz oder Divergenz zeigen ($n$-te Potenzen)',
-      def: 'Mit $\\mu = \\lim \\sqrt[n]{|a_n|}$:\n- $\\mu < 1$ → absolut konvergent\n- $\\mu > 1$ → divergent\n- $\\mu = 1$ → keine Aussage',
+      def: '**In Worten:** Ist die $n$-te Wurzel aus $|a_n|$ im Grenzwert kleiner als 1, konvergiert die Reihe absolut; ist sie größer als 1, divergiert sie.\n\n**Formal:** Mit $\\mu = \\lim_{n\\to\\infty} \\sqrt[n]{|a_n|}$:\n- $\\mu < 1$ $\\Rightarrow$ $\\sum a_n$ absolut konvergent\n- $\\mu > 1$ $\\Rightarrow$ $\\sum a_n$ divergent\n- $\\mu = 1$: keine Aussage',
       calc: '- $\\sqrt[n]{|a_n|}$ bilden – lohnt sich, wenn $a_n$ eine $n$-te Potenz enthält\n- Grenzwert $\\mu$ bestimmen und mit 1 vergleichen\n\n$\\sum \\left(1 - \\frac2n\\right)^{n^2}$: $\\left(1 - \\frac2n\\right)^n \\to e^{-2} < 1$ → konvergent',
     },
     {

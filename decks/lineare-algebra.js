@@ -69,11 +69,11 @@ window.DECKS.push({
     },
     {
       term: 'Cauchy-Schwarz-Ungleichung',
-      def: '$$|\\langle v, w \\rangle| \\le \\|v\\|_2 \\cdot \\|w\\|_2$$',
+      def: '**In Worten:** Der Betrag des Skalarprodukts zweier Vektoren ist höchstens das Produkt ihrer Längen.\n\n**Formal:** $$|\\langle v, w \\rangle| \\le \\|v\\|_2 \\cdot \\|w\\|_2 \\quad \\text{für alle } v, w \\in \\mathbb{R}^n$$',
     },
     {
       term: 'Dreiecksungleichung',
-      def: '$$\\|v + w\\|_2 \\le \\|v\\|_2 + \\|w\\|_2$$',
+      def: '**In Worten:** Die Länge der Summe zweier Vektoren ist höchstens die Summe ihrer Längen.\n\n**Formal:** $$\\|v + w\\|_2 \\le \\|v\\|_2 + \\|w\\|_2$$ für alle $v, w \\in \\mathbb{R}^n$',
     },
     {
       term: 'Orthogonalität',
@@ -82,7 +82,7 @@ window.DECKS.push({
     },
     {
       term: 'Satz von Pythagoras',
-      def: 'Äquivalent sind:\n- $v$ und $w$ sind orthogonal\n- $\\|v + w\\|_2^2 = \\|v\\|_2^2 + \\|w\\|_2^2$',
+      def: '**In Worten:** Zwei Vektoren sind genau dann orthogonal, wenn das Längenquadrat ihrer Summe gleich der Summe ihrer Längenquadrate ist.\n\n**Formal:** $$\\langle v, w \\rangle = 0 \\;\\Leftrightarrow\\; \\|v + w\\|_2^2 = \\|v\\|_2^2 + \\|w\\|_2^2$$',
     },
     {
       term: 'Gerade durch den Ursprung',
@@ -132,7 +132,7 @@ window.DECKS.push({
     },
     {
       term: 'Rückwärtseinsetzen',
-      def: 'LGS in Dreiecksform mit $a_{1,1}, \\ldots, a_{n,n} \\neq 0$ hat genau eine Lösung:\n- $x_n = \\frac{b_n}{a_{n,n}}$\n- $x_i = \\frac{1}{a_{i,i}}\\left(b_i - a_{i,i+1}x_{i+1} - \\dots - a_{i,n}x_n\\right)$ für $i = n-1, \\ldots, 1$',
+      def: '**In Worten:** Ein LGS in Dreiecksform, dessen Diagonaleinträge alle ungleich 0 sind, hat genau eine Lösung. Man berechnet sie von unten nach oben.\n\n**Formal:** $a_{1,1}, \\ldots, a_{n,n} \\neq 0$ $\\Rightarrow$ genau eine Lösung:\n- $x_n = \\frac{b_n}{a_{n,n}}$\n- $x_i = \\frac{1}{a_{i,i}}\\left(b_i - a_{i,i+1}x_{i+1} - \\dots - a_{i,n}x_n\\right)$ für $i = n-1, \\ldots, 1$',
     },
 
     { chapter: '4 Gauß-Elimination' },
@@ -161,11 +161,11 @@ window.DECKS.push({
     },
     {
       term: 'Rang und freie Variablen',
-      def: 'Ist das LGS mit Koeffizientenmatrix $A$ in $n$ Variablen lösbar, gilt: $$\\text{rang}(A) = \\#\\text{abhängige Variablen} = n - \\#\\text{freie Variablen}$$',
+      def: '**In Worten:** Bei einem lösbaren LGS ist der Rang der Koeffizientenmatrix gleich der Anzahl der abhängigen Variablen, also Anzahl aller Variablen minus Anzahl der freien Variablen.\n\n**Formal:** Für $A \\in \\mathbb{R}^{m \\times n}$ und lösbares $Ax = b$: $$\\begin{aligned} \\text{rang}(A) &= \\#\\text{abhängige Variablen} \\\\ &= n - \\#\\text{freie Variablen} \\end{aligned}$$',
     },
     {
       term: 'Lösbarkeit eines LGS',
-      def: 'Äquivalent sind:\n- das LGS ist lösbar\n- die erweiterte Koeffizientenmatrix in ZSF hat keine Zeile $(0 \\ldots 0 \\mid \\beta)$ mit $\\beta \\neq 0$\n- $\\text{rang}(A) = \\text{rang}(A \\mid b)$',
+      def: '**In Worten:** Ein LGS ist genau dann lösbar, wenn beim Gauß-Verfahren keine widersprüchliche Zeile „$0 = \\beta$“ mit $\\beta \\neq 0$ entsteht – also wenn die rechte Seite den Rang nicht erhöht.\n\n**Formal:** $$Ax = b \\text{ lösbar} \\;\\Leftrightarrow\\; \\text{rang}(A) = \\text{rang}(A \\mid b)$$ $\\Leftrightarrow$ die ZSF von $(A \\mid b)$ hat keine Zeile $(0 \\ldots 0 \\mid \\beta)$ mit $\\beta \\neq 0$.',
       calc: '- $(A \\mid b)$ in Zeilenstufenform bringen\n- Zeile $(0 \\ldots 0 \\mid \\beta)$ mit $\\beta \\neq 0$ → nicht lösbar\n- sonst lösbar; eindeutig, wenn $\\text{rang}(A) = n$ (keine freien Variablen)',
     },
 
@@ -182,7 +182,7 @@ window.DECKS.push({
     },
     {
       term: 'Homogenes LGS',
-      def: 'Alle rechten Seiten sind Null: $Ax = O$.\n- hat immer die Lösung $x = O$\n- mehr Variablen als Gleichungen → unendlich viele Lösungen',
+      def: 'Alle rechten Seiten sind Null: $Ax = O$.\n\n**In Worten:** Ein homogenes LGS hat immer die Lösung $x = O$. Hat es mehr Variablen als Gleichungen, hat es unendlich viele Lösungen.\n\n**Formal:**\n- $A\\,O = O$ für jedes $A$\n- $A \\in \\mathbb{R}^{m \\times n}$ mit $n > m$ $\\Rightarrow$ $Ax = O$ hat unendlich viele Lösungen',
     },
     {
       term: 'Gauß-Jordan-Elimination',
@@ -207,7 +207,7 @@ window.DECKS.push({
     },
     {
       term: 'Lineare Abhängigkeit erkennen',
-      def: 'Vektoren sind genau dann linear abhängig, wenn …\n- einer von ihnen eine Linearkombination der anderen ist\n- (Spalten von $A$) $(A \\mid O)$ unendlich viele Lösungen hat\n- (Zeilen von $A$, $m$ Zeilen) $\\text{rang}(A) < m$ gilt\n\nMehr als $n$ Vektoren im $\\mathbb{R}^n$ sind immer linear abhängig.',
+      def: '**In Worten:** Vektoren sind genau dann linear abhängig, wenn sich einer von ihnen als Linearkombination der anderen schreiben lässt. Mehr als $n$ Vektoren im $\\mathbb{R}^n$ sind immer linear abhängig.\n\n**Formal:** $v^1, \\ldots, v^k$ linear abhängig\n- $\\Leftrightarrow$ $\\exists i: v^i \\in \\text{span}(\\{v^j : j \\neq i\\})$\n- $\\Leftrightarrow$ (als Spalten von $A$) $Ax = O$ hat unendlich viele Lösungen\n- $\\Leftrightarrow$ (als Zeilen von $A$, $m = k$ Zeilen) $\\text{rang}(A) < m$\n- $k > n$ $\\Rightarrow$ linear abhängig',
     },
 
     { chapter: '9 Matrizen' },
@@ -262,7 +262,7 @@ window.DECKS.push({
     },
     {
       term: 'Lösungen auf einer Geraden',
-      def: 'Sind $v$ und $w$ Lösungen von $Ax = b$, dann ist auch jedes $\\lambda v + (1 - \\lambda) w$ eine Lösung.',
+      def: '**In Worten:** Mit zwei Lösungen eines LGS ist auch jeder Punkt auf der Geraden durch diese beiden Lösungen eine Lösung.\n\n**Formal:** $$\\begin{aligned} &Av = b,\\ Aw = b \\\\ \\Rightarrow\\ &A\\big(\\lambda v + (1 - \\lambda) w\\big) = b \\end{aligned}$$ für alle $\\lambda \\in \\mathbb{R}$',
     },
     {
       term: 'Transponierte',
@@ -288,7 +288,7 @@ window.DECKS.push({
     },
     {
       term: 'LGS mit invertierbarer Matrix',
-      def: 'Ist $A$ invertierbar, hat $Ax = b$ genau eine Lösung: $x = A^{-1} b$.',
+      def: '**In Worten:** Ist die Koeffizientenmatrix invertierbar, hat das LGS genau eine Lösung, nämlich $A^{-1} b$.\n\n**Formal:** $$\\begin{aligned} &A \\text{ invertierbar} \\\\ \\Rightarrow\\ &Ax = b \\text{ hat genau die Lösung } x = A^{-1} b \\end{aligned}$$',
     },
     {
       term: 'Inverse einer 2×2-Matrix',
@@ -296,15 +296,15 @@ window.DECKS.push({
     },
     {
       term: 'Rechenregeln Inverse',
-      def: '- $(A^{-1})^{-1} = A$\n- $(\\lambda A)^{-1} = \\frac{1}{\\lambda} A^{-1}$ für $\\lambda \\neq 0$\n- $(AB)^{-1} = B^{-1} A^{-1}$ (umgekehrte Reihenfolge)\n- $(A^{\\mathrm{T}})^{-1} = (A^{-1})^{\\mathrm{T}}$\n- $(A^n)^{-1} = (A^{-1})^n$',
+      def: '**In Worten:** Die Inversen von Inversen, Vielfachen, Produkten (umgekehrte Reihenfolge!), Transponierten und Potenzen invertierbarer Matrizen erhält man aus den einzelnen Inversen.\n\n**Formal:** Für invertierbare $A, B \\in \\mathbb{R}^{n \\times n}$:\n- $(A^{-1})^{-1} = A$\n- $(\\lambda A)^{-1} = \\frac{1}{\\lambda} A^{-1}$ für $\\lambda \\neq 0$\n- $(AB)^{-1} = B^{-1} A^{-1}$ (umgekehrte Reihenfolge)\n- $(A^{\\mathrm{T}})^{-1} = (A^{-1})^{\\mathrm{T}}$\n- $(A^n)^{-1} = (A^{-1})^n$',
     },
     {
       term: 'Einseitige Inverse genügt',
-      def: 'Für quadratische $A, B$: Gilt $AB = I$ **oder** $BA = I$, dann ist $A$ invertierbar und $A^{-1} = B$.',
+      def: '**In Worten:** Bei quadratischen Matrizen reicht es, eine Seite zu prüfen: Ist $AB = I$ oder $BA = I$, dann ist $B$ schon die Inverse von $A$.\n\n**Formal:** Für $A, B \\in \\mathbb{R}^{n \\times n}$: $$\\begin{aligned} &AB = I \\ \\text{ oder } \\ BA = I \\\\ \\Rightarrow\\ &A \\text{ invertierbar},\\ A^{-1} = B \\end{aligned}$$',
     },
     {
       term: 'Hauptsatz invertierbarer Matrizen',
-      def: 'Für $A \\in \\mathbb{R}^{n \\times n}$ mit Abbildung $f(x) = Ax$ sind äquivalent:\n- $A$ ist invertierbar\n- $Ax = b$ hat für jedes $b$ genau eine Lösung\n- $Ax = O$ hat nur die triviale Lösung\n- strenge ZSF von $A$ ist $I$\n- $A$ ist Produkt elementarer Matrizen\n- $\\text{kern}(A) = \\{O\\}$\n- $\\text{rang}(A) = n$\n- $f$ ist bijektiv / injektiv / surjektiv',
+      def: '**In Worten:** Für eine quadratische Matrix sind alle folgenden Aussagen gleichwertig – gilt eine, gelten alle.\n\n**Formal:** Für $A \\in \\mathbb{R}^{n \\times n}$ mit Abbildung $f(x) = Ax$ sind äquivalent:\n- $A$ ist invertierbar\n- $Ax = b$ hat für jedes $b$ genau eine Lösung\n- $Ax = O$ hat nur die triviale Lösung\n- strenge ZSF von $A$ ist $I$\n- $A$ ist Produkt elementarer Matrizen\n- $\\text{kern}(A) = \\{O\\}$\n- $\\text{rang}(A) = n$\n- $f$ ist bijektiv / injektiv / surjektiv',
     },
 
     { chapter: '12 Unterräume und Basen' },
@@ -314,7 +314,7 @@ window.DECKS.push({
     },
     {
       term: 'Lösbarkeit über den Span',
-      def: 'Äquivalent sind:\n- $(A \\mid b)$ hat eine Lösung\n- $b$ ist eine Linearkombination der Spalten von $A$\n- $b$ liegt im Span der Spalten von $A$',
+      def: '**In Worten:** Ein LGS ist genau dann lösbar, wenn die rechte Seite eine Linearkombination der Spalten der Koeffizientenmatrix ist.\n\n**Formal:** Mit den Spalten $a_1, \\ldots, a_n$ von $A$: $$\\begin{aligned} &Ax = b \\text{ lösbar} \\\\ \\Leftrightarrow\\ &b = x_1 a_1 + \\dots + x_n a_n \\text{ für passende } x_i \\\\ \\Leftrightarrow\\ &b \\in \\text{span}(\\{a_1, \\ldots, a_n\\}) \\end{aligned}$$',
     },
     {
       term: 'Unterraum',
@@ -327,7 +327,7 @@ window.DECKS.push({
     },
     {
       term: 'Struktur der Lösungsmenge',
-      def: 'Ist $x\'$ eine Lösung von $Ax = b$, dann gilt:\n- $x\' + x^0$ ist für jedes $x^0 \\in \\text{kern}(A)$ ebenfalls eine Lösung\n- jede Lösung hat diese Form\n\nKurz: Lösungsmenge = spezielle Lösung + Kern.',
+      def: '**In Worten:** Kennt man eine Lösung, erhält man alle Lösungen, indem man die Lösungen des homogenen Systems dazu addiert: Lösungsmenge = spezielle Lösung + Kern.\n\n**Formal:** $$\\begin{aligned} &Ax\' = b \\\\ \\Rightarrow\\ &\\{x : Ax = b\\} = \\{x\' + x^0 : x^0 \\in \\text{kern}(A)\\} \\end{aligned}$$',
       calc: '- eine spezielle Lösung $x\'$ von $Ax = b$ bestimmen\n- Kern von $A$ bestimmen (homogenes LGS)\n- Lösungsmenge $= \\{x\' + x^0 : x^0 \\in \\text{kern}(A)\\}$',
     },
     {
@@ -349,11 +349,11 @@ window.DECKS.push({
     },
     {
       term: 'Rangsatz',
-      def: 'Für jede $(m \\times n)$-Matrix $A$: $$\\text{rang}(A) + \\dim(\\text{kern}(A)) = n$$',
+      def: '**In Worten:** Rang und Dimension des Kerns einer Matrix ergeben zusammen die Anzahl ihrer Spalten.\n\n**Formal:** Für jedes $A \\in \\mathbb{R}^{m \\times n}$: $$\\text{rang}(A) + \\dim(\\text{kern}(A)) = n$$',
     },
     {
       term: 'Zeilenrang = Spaltenrang',
-      def: '$\\text{rang}(A) = \\dim(\\text{row}(A)) = \\dim(\\text{col}(A))$, also ist der Rang …\n- die größte Anzahl linear unabhängiger Zeilen\n- die größte Anzahl linear unabhängiger Spalten\n\nAußerdem $\\text{rang}(A) = \\text{rang}(A^{\\mathrm{T}})$.',
+      def: '**In Worten:** Die größte Anzahl linear unabhängiger Zeilen ist gleich der größten Anzahl linear unabhängiger Spalten – beides ist der Rang.\n\n**Formal:** $$\\begin{aligned} \\text{rang}(A) &= \\dim(\\text{row}(A)) = \\dim(\\text{col}(A)) \\\\ &= \\text{rang}(A^{\\mathrm{T}}) \\end{aligned}$$',
     },
 
     { chapter: '14 Lineare Abbildungen' },
@@ -363,7 +363,7 @@ window.DECKS.push({
     },
     {
       term: 'Matrizen und lineare Abbildungen',
-      def: '- jede Matrix $A$ liefert eine lineare Abbildung $f(x) = Ax$\n- jede lineare Abbildung $f$ hat eine Matrix $A$ mit $f(x) = Ax$',
+      def: '**In Worten:** Jede Matrix liefert eine lineare Abbildung, und jede lineare Abbildung ist die Multiplikation mit einer Matrix.\n\n**Formal:** $$\\begin{aligned} &f : \\mathbb{R}^n \\to \\mathbb{R}^m \\text{ linear} \\\\ \\Leftrightarrow\\ &\\exists A \\in \\mathbb{R}^{m \\times n}\\ \\forall x: f(x) = Ax \\end{aligned}$$',
     },
     {
       term: 'Abbildungsmatrix',
@@ -376,12 +376,12 @@ window.DECKS.push({
     },
     {
       term: 'Injektiv / surjektiv / bijektiv bei linearen Abbildungen',
-      def: '- **surjektiv** $\\Leftrightarrow \\text{im}(f) = \\mathbb{R}^m$\n- **injektiv** $\\Leftrightarrow \\text{kern}(f) = \\{O\\}$\n- **bijektiv** $\\Leftrightarrow m = n$ und $[f]$ invertierbar\n\nFür $f : \\mathbb{R}^n \\to \\mathbb{R}^n$ sind injektiv, surjektiv und bijektiv äquivalent.',
+      def: '**In Worten:** Eine lineare Abbildung ist surjektiv, wenn ihr Bild der ganze Zielraum ist, und injektiv, wenn ihr Kern nur den Nullvektor enthält. Bei gleich großem Start- und Zielraum fallen die drei Eigenschaften zusammen.\n\n**Formal:** Für $f : \\mathbb{R}^n \\to \\mathbb{R}^m$ linear:\n- **surjektiv** $\\Leftrightarrow \\text{im}(f) = \\mathbb{R}^m$\n- **injektiv** $\\Leftrightarrow \\text{kern}(f) = \\{O\\}$\n- **bijektiv** $\\Leftrightarrow m = n$ und $[f]$ invertierbar\n- $m = n$: injektiv $\\Leftrightarrow$ surjektiv $\\Leftrightarrow$ bijektiv',
       calc: '- Abbildungsmatrix $[f] \\in \\mathbb{R}^{m \\times n}$ aufstellen\n- $\\text{rang}([f])$ bestimmen\n- **injektiv:** $\\text{rang} = n$\n- **surjektiv:** $\\text{rang} = m$\n- **bijektiv:** beides, also $m = n = \\text{rang}$',
     },
     {
       term: 'Festlegung durch eine Basis',
-      def: 'Stimmen zwei lineare Abbildungen $f, g$ auf einer Basis $b^1, \\ldots, b^n$ überein, dann gilt $f(v) = g(v)$ für alle $v$.',
+      def: '**In Worten:** Eine lineare Abbildung ist durch ihre Werte auf einer Basis vollständig festgelegt.\n\n**Formal:** Ist $b^1, \\ldots, b^n$ eine Basis: $$\\begin{aligned} &f, g \\text{ linear},\\ f(b^i) = g(b^i) \\ (i = 1, \\ldots, n) \\\\ \\Rightarrow\\ &f(v) = g(v) \\text{ für alle } v \\end{aligned}$$',
     },
 
     {
@@ -392,7 +392,7 @@ window.DECKS.push({
     { chapter: '15 Basiswechsel' },
     {
       term: 'Eindeutige Darstellung',
-      def: 'Ist $b^1, \\ldots, b^k$ eine Basis von $U$, lässt sich jedes $v \\in U$ auf genau eine Weise als Linearkombination der $b^i$ schreiben.',
+      def: '**In Worten:** Bezüglich einer Basis lässt sich jeder Vektor des Unterraums auf genau eine Weise als Linearkombination der Basisvektoren schreiben.\n\n**Formal:** $b^1, \\ldots, b^k$ Basis von $U$ $\\Rightarrow$ $$\\begin{aligned} &\\forall v \\in U\\ \\exists!\\, \\mu_1, \\ldots, \\mu_k \\in \\mathbb{R}: \\\\ &v = \\mu_1 b^1 + \\dots + \\mu_k b^k \\end{aligned}$$',
     },
     {
       term: 'Koordinaten bezüglich einer Basis',
@@ -436,7 +436,7 @@ window.DECKS.push({
     },
     {
       term: 'Diagonalisierbar ⇔ Basis aus Eigenvektoren',
-      def: '- Für invertierbares $B$ mit Spalten $b_1, \\dots, b_n$ gilt: $B^{-1}[f]B$ ist Diagonalmatrix $\\Leftrightarrow$ $f(b_i) = \\lambda_i b_i$ für geeignete $\\lambda_1, \\dots, \\lambda_n \\in \\mathbb{R}$\n- $f$ ist diagonalisierbar $\\Leftrightarrow$ es gibt eine Basis $b_1, \\dots, b_n$ mit $f(b_i) = \\lambda_i b_i$\n- für Matrizen: $A$ diagonalisierbar $\\Leftrightarrow$ es gibt eine Basis mit $Ab_i = \\lambda_i b_i$\n- die Diagonaleinträge von $B^{-1}AB$ sind dann $\\lambda_1, \\dots, \\lambda_n$',
+      def: '**In Worten:** Eine lineare Abbildung ist genau dann diagonalisierbar, wenn es eine Basis aus Eigenvektoren gibt. Die Diagonaleinträge sind dann die Eigenwerte.\n\n**Formal:**\n- für invertierbares $B$ mit Spalten $b_1, \\dots, b_n$ gilt: $B^{-1}[f]B$ ist Diagonalmatrix $\\Leftrightarrow$ $f(b_i) = \\lambda_i b_i$ für geeignete $\\lambda_1, \\dots, \\lambda_n \\in \\mathbb{R}$\n- $f$ ist diagonalisierbar $\\Leftrightarrow$ es gibt eine Basis $b_1, \\dots, b_n$ mit $f(b_i) = \\lambda_i b_i$\n- für Matrizen: $A$ diagonalisierbar $\\Leftrightarrow$ es gibt eine Basis mit $Ab_i = \\lambda_i b_i$\n- die Diagonaleinträge von $B^{-1}AB$ sind dann $\\lambda_1, \\dots, \\lambda_n$',
       calc: '- Eigenwerte $\\lambda_i$ von $A$ bestimmen\n- zu jedem $\\lambda_i$ Eigenvektoren bestimmen\n- gibt es $n$ linear unabhängige Eigenvektoren $b_1, \\dots, b_n$: als Spalten in $B$ schreiben\n- dann ist $B^{-1}AB = \\mathrm{diag}(\\lambda_1, \\dots, \\lambda_n)$',
     },
     {
@@ -446,12 +446,12 @@ window.DECKS.push({
     },
     {
       term: 'Eigenwert über LGS',
-      def: '- $\\lambda$ ist genau dann Eigenwert von $A$, wenn $(\\lambda I - A)x = O$ eine nicht-triviale Lösung hat\n- die nicht-trivialen Lösungen sind genau die Eigenvektoren zu $\\lambda$',
+      def: '**In Worten:** $\\lambda$ ist genau dann ein Eigenwert, wenn das homogene LGS mit der Matrix $\\lambda I - A$ eine Lösung $\\neq O$ hat. Diese Lösungen sind genau die Eigenvektoren.\n\n**Formal:** $$\\begin{aligned} &\\lambda \\text{ Eigenwert von } A \\\\ \\Leftrightarrow\\ &\\exists x \\neq O: (\\lambda I - A)x = O \\end{aligned}$$\n- die Lösungen $x \\neq O$ sind genau die Eigenvektoren zu $\\lambda$',
       calc: '- $\\lambda I - A$ aufstellen\n- LGS $(\\lambda I - A)x = O$ mit Gauß lösen\n- freie Variablen als Parameter → alle Lösungen $\\neq O$ sind Eigenvektoren',
     },
     {
       term: 'Kriterien für Eigenwerte',
-      def: 'Für $A \\in \\mathbb{R}^{n \\times n}$ und $\\lambda \\in \\mathbb{R}$ sind äquivalent:\n- $\\lambda$ ist Eigenwert von $A$\n- $\\ker(\\lambda I - A) \\neq \\{O\\}$\n- $\\lambda I - A$ ist nicht invertierbar\n\nFolgerung: $A$ ist genau dann invertierbar, wenn $0$ kein Eigenwert ist.',
+      def: '**In Worten:** $\\lambda$ ist genau dann Eigenwert von $A$, wenn $\\lambda I - A$ einen nicht-trivialen Kern hat, also nicht invertierbar ist.\n\n**Formal:** Für $A \\in \\mathbb{R}^{n \\times n}$ und $\\lambda \\in \\mathbb{R}$ sind äquivalent:\n- $\\lambda$ ist Eigenwert von $A$\n- $\\ker(\\lambda I - A) \\neq \\{O\\}$\n- $\\lambda I - A$ ist nicht invertierbar\n\nFolgerung: $A$ ist genau dann invertierbar, wenn $0$ kein Eigenwert ist.',
     },
     {
       term: 'Eigenraum',
@@ -460,7 +460,7 @@ window.DECKS.push({
     },
     {
       term: 'Invertierbarkeit (2×2-Matrix)',
-      def: '$A = \\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix}$ ist genau dann invertierbar, wenn $$ad - bc \\neq 0.$$\n- damit: $\\lambda$ ist Eigenwert $\\Leftrightarrow$ $\\lambda I - A$ nicht invertierbar $\\Leftrightarrow$ $\\det(\\lambda I - A) = 0$',
+      def: '**In Worten:** Eine $2 \\times 2$-Matrix ist genau dann invertierbar, wenn „Hauptdiagonale mal minus Nebendiagonale mal“ nicht 0 ist.\n\n**Formal:** $$\\begin{pmatrix} a & b \\\\ c & d \\end{pmatrix} \\text{ invertierbar} \\;\\Leftrightarrow\\; ad - bc \\neq 0$$\n- damit: $\\lambda$ ist Eigenwert $\\Leftrightarrow$ $\\lambda I - A$ nicht invertierbar $\\Leftrightarrow$ $\\det(\\lambda I - A) = 0$',
       calc: '- $\\lambda I - A = \\begin{pmatrix} \\lambda - a & -b \\\\ -c & \\lambda - d \\end{pmatrix}$\n- Bedingung: $(\\lambda - a)(\\lambda - d) - bc = 0$\n- quadratische Gleichung in $\\lambda$ lösen → Eigenwerte\n- Beispiel $\\begin{pmatrix} 2 & 1 \\\\ 1 & 2 \\end{pmatrix}$: $(\\lambda - 2)^2 - 1 = 0$ → $\\lambda = 1$ oder $\\lambda = 3$',
     },
 
@@ -480,11 +480,11 @@ window.DECKS.push({
     },
     {
       term: 'Produktformel der Signatur',
-      def: 'Für $\\sigma \\in S_n$: $$\\operatorname{sgn}(\\sigma) = \\prod_{1 \\le i < j \\le n} \\frac{\\sigma(j) - \\sigma(i)}{j - i}$$',
+      def: '**In Worten:** Die Signatur einer Permutation ist das Produkt der Quotienten $\\frac{\\sigma(j) - \\sigma(i)}{j - i}$ über alle Paare $i < j$.\n\n**Formal:** Für $\\sigma \\in S_n$: $$\\operatorname{sgn}(\\sigma) = \\prod_{1 \\le i < j \\le n} \\frac{\\sigma(j) - \\sigma(i)}{j - i}$$',
     },
     {
       term: 'Rechenregeln der Signatur',
-      def: '- Transposition $\\tau$: $\\operatorname{sgn}(\\tau) = -1$\n- Verkettung: $\\operatorname{sgn}(\\sigma \\circ \\pi) = \\operatorname{sgn}(\\sigma)\\operatorname{sgn}(\\pi)$\n- Umkehrung: $\\operatorname{sgn}(\\sigma^{-1}) = \\operatorname{sgn}(\\sigma)$',
+      def: '**In Worten:** Jede Transposition hat Signatur $-1$. Die Signatur einer Verkettung ist das Produkt der Signaturen, und die Umkehrpermutation hat dieselbe Signatur.\n\n**Formal:** Für $\\sigma, \\pi \\in S_n$ und eine Transposition $\\tau$:\n- $\\operatorname{sgn}(\\tau) = -1$\n- $\\operatorname{sgn}(\\sigma \\circ \\pi) = \\operatorname{sgn}(\\sigma)\\operatorname{sgn}(\\pi)$\n- $\\operatorname{sgn}(\\sigma^{-1}) = \\operatorname{sgn}(\\sigma)$',
     },
     {
       term: 'Determinante (Definition)',
@@ -502,40 +502,40 @@ window.DECKS.push({
     },
     {
       term: 'Determinante einer Dreiecksmatrix',
-      def: 'Ist $A$ eine (obere oder untere) Dreiecksmatrix: $$\\det(A) = a_{1,1} \\cdot a_{2,2} \\cdots a_{n,n}$$\n- insbesondere $\\det(I) = 1$',
+      def: '**In Worten:** Die Determinante einer (oberen oder unteren) Dreiecksmatrix ist das Produkt ihrer Diagonaleinträge.\n\n**Formal:** $$\\begin{aligned} &A \\text{ Dreiecksmatrix} \\\\ \\Rightarrow\\ &\\det(A) = a_{1,1} \\cdot a_{2,2} \\cdots a_{n,n} \\end{aligned}$$\n- insbesondere $\\det(I) = 1$',
       calc: '- Diagonaleinträge multiplizieren\n- Beispiel: $\\det\\begin{pmatrix} 2 & 5 & 1 \\\\ 0 & 3 & 7 \\\\ 0 & 0 & 4 \\end{pmatrix} = 2 \\cdot 3 \\cdot 4 = 24$',
     },
     {
       term: 'Nullzeile und Transponierte',
-      def: '- hat $A$ eine Nullzeile: $\\det(A) = 0$\n- für alle $A$: $\\det(A) = \\det(A^{\\mathrm{T}})$\n- daher gelten alle Zeilenregeln auch für Spalten',
+      def: '**In Worten:** Eine Matrix mit einer Nullzeile hat Determinante 0. Transponieren ändert die Determinante nicht – deshalb gelten alle Zeilenregeln auch für Spalten.\n\n**Formal:**\n- $A$ hat eine Nullzeile $\\Rightarrow$ $\\det(A) = 0$\n- $\\det(A) = \\det(A^{\\mathrm{T}})$ für alle $A \\in \\mathbb{R}^{n \\times n}$',
     },
     {
       term: 'Multilinearität',
-      def: '$A_z$: Matrix $A$, deren $k$-te Zeile durch $z$ ersetzt ist.\n- $\\det(A_{x+y}) = \\det(A_x) + \\det(A_y)$\n- $\\det(A_{\\lambda x}) = \\lambda \\det(A_x)$\n- Folgerung: $\\det(\\lambda A) = \\lambda^n \\det(A)$',
+      def: '**In Worten:** Die Determinante ist in jeder einzelnen Zeile linear: Eine Summe in einer Zeile teilt die Determinante in eine Summe auf, ein Faktor einer Zeile lässt sich herausziehen.\n\n**Formal:** $A_z$: Matrix $A$, deren $k$-te Zeile durch $z$ ersetzt ist.\n- $\\det(A_{x+y}) = \\det(A_x) + \\det(A_y)$\n- $\\det(A_{\\lambda x}) = \\lambda \\det(A_x)$\n- Folgerung: $\\det(\\lambda A) = \\lambda^n \\det(A)$',
       calc: '- $\\det(\\lambda A)$: Faktor $\\lambda$ aus jeder der $n$ Zeilen herausziehen\n- Beispiel: $A \\in \\mathbb{R}^{3 \\times 3}$, $\\det(A) = 2$ → $\\det(2A) = 2^3 \\cdot 2 = 16$',
     },
     {
       term: 'Zeilen vertauschen',
-      def: '- entsteht $B$ aus $A$, indem Zeile $i$ von $B$ die Zeile $\\sigma(i)$ von $A$ ist: $\\det(B) = \\operatorname{sgn}(\\sigma)\\det(A)$\n- Vertauschen zweier Zeilen ändert das Vorzeichen der Determinante\n- zwei identische Zeilen: $\\det(A) = 0$\n- Vielfaches einer Zeile zu einer anderen addieren: Determinante bleibt gleich',
+      def: '**In Worten:** Vertauscht man die Zeilen einer Matrix, ändert sich die Determinante um das Vorzeichen (die Signatur) der Vertauschung. Eine einzelne Vertauschung kehrt das Vorzeichen um.\n\n**Formal:**\n- entsteht $B$ aus $A$, indem Zeile $i$ von $B$ die Zeile $\\sigma(i)$ von $A$ ist: $\\det(B) = \\operatorname{sgn}(\\sigma)\\det(A)$\n- Vertauschen zweier Zeilen ändert das Vorzeichen der Determinante\n- zwei identische Zeilen: $\\det(A) = 0$\n- Vielfaches einer Zeile zu einer anderen addieren: Determinante bleibt gleich',
     },
     {
       term: 'Determinante mit Zeilenumformungen',
-      def: '- Zeile mit $\\lambda$ multiplizieren → Determinante wird mit $\\lambda$ multipliziert\n- zwei Zeilen vertauschen → Vorzeichen wechselt\n- Vielfaches einer Zeile zu einer anderen addieren → Determinante unverändert\n- gilt genauso für Spaltenoperationen',
+      def: '**In Worten:** Zeilenumformungen ändern die Determinante auf vorhersagbare Weise – so lässt sie sich über die Zeilenstufenform berechnen.\n\n**Formal:** Entsteht $B$ aus $A$ durch\n- Multiplikation einer Zeile mit $\\lambda$: $\\det(B) = \\lambda \\det(A)$\n- Vertauschen zweier Zeilen: $\\det(B) = -\\det(A)$\n- Addition eines Vielfachen einer Zeile zu einer anderen: $\\det(B) = \\det(A)$\n\nGilt genauso für Spaltenoperationen.',
       calc: '- mit Zeilenumformungen auf Dreiecksform bringen\n- dabei mitzählen: jede Vertauschung → Faktor $-1$, jede Skalierung mit $\\lambda$ → durch $\\lambda$ teilen\n- Determinante der Dreiecksmatrix = Produkt der Diagonale, dann korrigieren\n- Beispiel: $\\begin{pmatrix} 0 & 2 \\\\ 3 & 1 \\end{pmatrix}$ → vertauschen → $\\begin{pmatrix} 3 & 1 \\\\ 0 & 2 \\end{pmatrix}$, $\\det = -(3 \\cdot 2) = -6$',
     },
     {
       term: 'Multiplikationssatz',
-      def: 'Für $A, B \\in \\mathbb{R}^{n \\times n}$: $$\\det(AB) = \\det(A)\\det(B)$$',
+      def: '**In Worten:** Die Determinante eines Produkts ist das Produkt der Determinanten.\n\n**Formal:** $$\\det(AB) = \\det(A)\\det(B)$$ für alle $A, B \\in \\mathbb{R}^{n \\times n}$',
       calc: '- Determinanten einzeln berechnen und multiplizieren\n- Beispiel: $\\det(A) = 2$, $\\det(B) = -3$ → $\\det(AB) = -6$, $\\det(A^2) = 4$',
     },
     {
       term: 'Determinante und Inverse',
-      def: '- $A$ ist genau dann invertierbar, wenn $\\det(A) \\neq 0$\n- dann gilt $$\\det(A^{-1}) = \\frac{1}{\\det(A)}$$\n- Eigenwerte: $\\lambda$ ist Eigenwert $\\Leftrightarrow$ $\\det(\\lambda I - A) = 0$',
+      def: '**In Worten:** Eine Matrix ist genau dann invertierbar, wenn ihre Determinante nicht 0 ist. Die Determinante der Inversen ist dann der Kehrwert.\n\n**Formal:**\n- $A$ invertierbar $\\Leftrightarrow$ $\\det(A) \\neq 0$\n- dann $\\det(A^{-1}) = \\dfrac{1}{\\det(A)}$\n- Eigenwerte: $\\lambda$ ist Eigenwert $\\Leftrightarrow$ $\\det(\\lambda I - A) = 0$',
       calc: '- $\\det(A)$ berechnen\n- $\\det(A) = 0$ → nicht invertierbar, sonst invertierbar\n- Beispiel: $\\det(A) = 4$ → $\\det(A^{-1}) = \\tfrac14$',
     },
     {
       term: 'Hauptsatz invertierbarer Matrizen',
-      def: 'Für $A \\in \\mathbb{R}^{n \\times n}$ mit linearer Abbildung $f$ sind äquivalent:\n- $A$ ist invertierbar\n- $Ax = b$ hat für jedes $b$ eine eindeutige Lösung\n- $Ax = O$ hat nur die triviale Lösung\n- strenge Zeilenstufenform von $A$ ist $I$\n- $A$ ist Produkt von Elementarmatrizen\n- $\\ker(A) = \\{O\\}$, $\\operatorname{rang}(A) = n$\n- $f$ ist bijektiv, injektiv bzw. surjektiv\n- $\\det(A) \\neq 0$\n- $0$ ist kein Eigenwert von $A$',
+      def: '**In Worten:** Für eine quadratische Matrix sind alle folgenden Aussagen gleichwertig – gilt eine, gelten alle.\n\n**Formal:** Für $A \\in \\mathbb{R}^{n \\times n}$ mit linearer Abbildung $f$ sind äquivalent:\n- $A$ ist invertierbar\n- $Ax = b$ hat für jedes $b$ eine eindeutige Lösung\n- $Ax = O$ hat nur die triviale Lösung\n- strenge Zeilenstufenform von $A$ ist $I$\n- $A$ ist Produkt von Elementarmatrizen\n- $\\ker(A) = \\{O\\}$, $\\operatorname{rang}(A) = n$\n- $f$ ist bijektiv, injektiv bzw. surjektiv\n- $\\det(A) \\neq 0$\n- $0$ ist kein Eigenwert von $A$',
     },
   ],
 });

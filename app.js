@@ -233,6 +233,11 @@
         size -= 0.5; t.style.fontSize = size + 'px';
       }
       c.style.overflowY = t.scrollHeight > avail ? 'auto' : 'visible';
+      // abgesetzte Formeln, die breiter als die Karte sind, auf Kartenbreite verkleinern (höchstens auf 70 %)
+      t.querySelectorAll('.katex-display').forEach(k => {
+        k.style.fontSize = '';
+        if (k.scrollWidth > k.clientWidth + 1) k.style.fontSize = Math.max(0.7, k.clientWidth / k.scrollWidth * 0.98) + 'em';
+      });
     });
   }
   let resizeTimer;
