@@ -21,6 +21,7 @@ Die App lässt sich auf den Home-Bildschirm legen, startet dann im Vollbild und 
 - **Drei Bewertungen** – *Nicht gewusst*, *Unsicher*, *Gewusst*; gewusste Karten werden beim Wiederholen seltener abgefragt, schwache zuerst
 - **Lernstand** pro Ordner mit Fortschrittsbalken
 - **Eigene Ordner und Karten** direkt in der App anlegen
+- **Karten ansehen und bearbeiten** – in der Kartenliste eines Ordners eine Karte antippen: sie öffnet sich groß (antippen zum Umdrehen, ‹ › zum Blättern); über den Stift oben rechts lässt sie sich bearbeiten. Änderungen an Karten aus Skripten werden nur im eigenen Browser gespeichert und lassen sich mit „Original wiederherstellen“ zurücknehmen
 - **Hell- und Dunkelmodus**
 - Für das **Hochformat** am Handy gemacht (funktioniert auch quer und am PC)
 - **Formeln im LaTeX-Stil** (KaTeX)

@@ -168,7 +168,17 @@ button.row:active { background: var(--press); }
 }
 .swatch.on { outline: 1px solid var(--text); outline-offset: 3px; }
 
+.card-preview { cursor: pointer; }
+.card-preview:active { background: var(--press); }
 .card-preview .title { white-space: normal; }
+.icon-btn[disabled] { opacity: .3; pointer-events: none; }
+
+/* Einzelne Karte ansehen */
+.card-controls { justify-content: space-between; }
+.card-controls .sides { flex: 1; min-width: 0; display: flex; justify-content: center; }
+.card-controls .sides .segment { width: 100%; max-width: 420px; }
+.card-controls .sides .segment button { padding: 8px 6px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+.form-hint { margin: 0; font-size: 12px; }
 .card-preview .sub { display: -webkit-box; -webkit-line-clamp: 2; -webkit-box-orient: vertical; overflow: hidden; }
 .tag {
   font-size: 11px; color: var(--muted);

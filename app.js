@@ -17,10 +17,14 @@
   let prefs = Object.assign({ reverse: false, shuffle: true, extended: true, smart: true, images: true }, store.get('kk.prefs', {}));
   // Lernstand pro Karte: { s: 'known'|'unsure'|'wrong', lvl: 0..5, t: Zeitstempel }
   let stats = store.get('kk.stats', {});
+  // Eigene Änderungen an eingebauten Karten: { editKey: {term, def, more, moreLabel, calc, ex} }
+  let edits = store.get('kk.edits', {});
 
-  const state = { view: 'home', folderId: null, newFolder: false, newCard: false, study: null };
+  const state = { view: 'home', folderId: null, newFolder: false, newCard: false, study: null,
+    cardIdx: 0, cardSide: 0, cardFlipped: false, editing: false, listScroll: 0 };
 
-  const save = () => { store.set('kk.folders', userFolders); store.set('kk.cards', ownCards); store.set('kk.prefs', prefs); store.set('kk.stats', stats); };
+  const save = () => { store.set('kk.folders', userFolders); store.set('kk.cards', ownCards); store.set('kk.prefs', prefs); store.set('kk.stats', stats); store.set('kk.edits', edits); };
+  const EDIT_FIELDS = ['term', 'def', 'more', 'moreLabel', 'calc', 'ex'];
 
   // ---------- Lernstand ----------
   const statKey = (folderId, term, label) => folderId + '|' + term + '|' + (label || '');
@@ -47,20 +51,32 @@
   const sid = f => f.statId || f.id;
 
   // Alle Lernkarten eines Ordners (Definition, Vertiefung, Berechnung, Schaltbild); all = Optionen ignorieren
+  // Lernkarten, die aus einer Karte entstehen (Definition, Vertiefung, Berechnung, Schaltbild)
+  function itemsOf(c, all) {
+    const out = [];
+    if (c.img) {
+      if (all || prefs.images) out.push({ term: c.term, img: c.img, text: c.def || '', label: 'Schaltbild' });
+      return out;
+    }
+    if (c.def) out.push({ term: c.term, text: c.def, ex: c.ex, label: null });
+    if (c.more && (all || prefs.extended)) out.push({ term: c.term, text: c.more, label: c.moreLabel || 'Methode' });
+    // Rechenweg-Karte: Vorderseite „Begriff: Berechnung“, Rückseite die Schritte
+    if (c.calc) out.push({ term: c.term, text: c.calc, ex: c.calcEx, label: 'Berechnung' });
+    return out;
+  }
   function studyItems(f, all) {
     const id = sid(f), out = [];
-    for (const c of cardsOf(f)) {
-      if (c.img) {
-        if (all || prefs.images) out.push({ term: c.term, img: c.img, text: c.def || '', label: 'Schaltbild' });
-        continue;
-      }
-      if (c.def) out.push({ term: c.term, text: c.def, ex: c.ex, label: null });
-      if (c.more && (all || prefs.extended)) out.push({ term: c.term, text: c.more, label: c.moreLabel || 'Methode' });
-      // Rechenweg-Karte: Vorderseite „Begriff: Berechnung“, Rückseite die Schritte
-      if (c.calc) out.push({ term: c.term, text: c.calc, ex: c.calcEx, label: 'Berechnung' });
-    }
+    for (const c of cardsOf(f)) out.push(...itemsOf(c, all));
     out.forEach((it, i) => { it.key = statKey(id, it.term, it.label); it.pos = i; });
     return out;
+  }
+  // Lernstand mitnehmen, wenn Begriff oder Bezeichnung der Vertiefung geändert werden
+  function moveStats(id, a, b) {
+    const pairs = [[null, null], ['Berechnung', 'Berechnung'], ['Schaltbild', 'Schaltbild'], [a.moreLabel || 'Methode', b.moreLabel || 'Methode']];
+    for (const [la, lb] of pairs) {
+      const ok = statKey(id, a.term, la), nk = statKey(id, b.term, lb);
+      if (ok !== nk && stats[ok] && !stats[nk]) { stats[nk] = stats[ok]; delete stats[ok]; }
+    }
   }
   const statItems = f => studyItems(f).map(it => it.key);
   function summary(f) {
@@ -73,9 +89,13 @@
   // Lernset aus decks.js: Einträge { chapter: '…' } teilen die Karten in Kapitel-Unterordner
   function parseDeck(d, i) {
     const id = d.id || 'deck-' + i, color = d.color || COLORS[i % COLORS.length];
-    const cards = [], chapters = [];
-    for (const c of d.cards || []) {
-      if (c.chapter) { chapters.push({ name: c.chapter, cards: [] }); continue; }
+    const cards = [], chapters = [], seen = {};
+    for (const orig of d.cards || []) {
+      if (orig.chapter) { chapters.push({ name: orig.chapter, cards: [] }); continue; }
+      // Schlüssel für eigene Änderungen: Lernset + ursprünglicher Begriff (+ Nummer bei gleichen Begriffen)
+      const base = id + '|' + orig.term + '|' + (orig.img ? 'img' : '');
+      const editKey = base + '|' + (seen[base] = (seen[base] || 0) + 1);
+      const c = Object.assign({}, orig, edits[editKey] || {}, { orig, editKey, edited: !!edits[editKey] });
       cards.push(c);
       if (chapters.length) chapters[chapters.length - 1].cards.push(c);
     }
@@ -162,6 +182,8 @@
     sun: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>',
     moon: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M20 14.5A8 8 0 1 1 9.5 4a6.5 6.5 0 0 0 10.5 10.5z"/></svg>',
     chev: '<svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round"><path d="M9 6l6 6-6 6"/></svg>',
+    next: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M9 6l6 6-6 6"/></svg>',
+    pencil: '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20h4L19 9a2.1 2.1 0 0 0-4-4L4 16v4z"/><path d="M13.5 6.5l4 4"/></svg>',
   };
 
   // ---------- Theme ----------
@@ -186,10 +208,11 @@
   const app = document.getElementById('app');
 
   function render() {
-    document.body.classList.toggle('studying', state.view === 'study');
+    document.body.classList.toggle('studying', state.view === 'study' || (state.view === 'card' && !state.editing));
     if (state.view === 'home') app.innerHTML = viewHome();
     else if (state.view === 'folder') app.innerHTML = viewFolder();
     else if (state.view === 'study') app.innerHTML = viewStudy();
+    else if (state.view === 'card') app.innerHTML = viewCard();
     const auto = app.querySelector('[autofocus]');
     if (auto) auto.focus();
     fitCards();
@@ -344,11 +367,11 @@
       ${hasChapters ? `<div class="section-label">Kapitel</div>
       <div class="list">${f.chapters.map(chapterRow).join('')}</div>` : `
       <div class="section-label">Karten</div>
-      <div class="list">${cs.length ? cs.map(c => `<div class="row card-preview">
+      <div class="list">${cs.length ? cs.map((c, i) => `<div class="row card-preview" data-action="view-card" data-idx="${i}" role="button" tabindex="0">
           <span class="dot" style="background:${dotFor(stats[statKey(sid(f), c.term, c.img ? 'Schaltbild' : null)])}"></span>
-          <span class="grow"><div class="title">${fmt(c.term)}${c.img ? '<span class="tag">Schaltbild</span>' : ''}${c.more ? `<span class="tag">+ ${esc(c.moreLabel || 'Methode')}</span>` : ''}${c.calc ? '<span class="tag">+ Berechnung</span>' : ''}${c.own ? '<span class="tag">eigene</span>' : ''}</div>
+          <span class="grow"><div class="title">${fmt(c.term)}${c.img ? '<span class="tag">Schaltbild</span>' : ''}${c.more ? `<span class="tag">+ ${esc(c.moreLabel || 'Methode')}</span>` : ''}${c.calc ? '<span class="tag">+ Berechnung</span>' : ''}${c.own ? '<span class="tag">eigene</span>' : ''}${c.edited ? '<span class="tag">bearbeitet</span>' : ''}</div>
           <div class="sub">${fmt(String(c.def || c.calc || '').replace(/\n+- /g, ' · ').replace(/\n+/g, ' ').replace(/^- /, ''))}</div></span>
-          ${c.own ? `<button class="del" data-action="del-card" data-i="${c.ownIndex}" aria-label="Karte löschen">×</button>` : ''}
+          ${c.own ? `<button class="del" data-action="del-card" data-i="${c.ownIndex}" aria-label="Karte löschen">×</button>` : `<span class="chev">${icon.chev}</span>`}
         </div>`).join('') : '<div class="empty">Dieser Ordner ist noch leer.</div>'}</div>`}
 
       ${f.isChapter || hasChapters ? '' : `<div style="margin-top:14px">${state.newCard ? newCardForm() : '<button class="btn block" data-action="new-card">+ Karte hinzufügen</button>'}</div>`}
@@ -422,9 +445,9 @@
      <button class="btn grade" data-action="grade" data-g="known"><span class="dot" style="background:${GRADES.known.dot}"></span>Gewusst</button>`;
   const flipButton = () => '<button class="btn ghost" data-action="flip">Umdrehen</button>';
 
-  function face(side, item, color) {
+  function face(side, item, color, reverse = prefs.reverse) {
     // side: 'front' | 'back'; Inhalt hängt von der Richtung ab
-    const showTerm = (side === 'front') !== prefs.reverse;
+    const showTerm = (side === 'front') !== reverse;
     let inner;
     // kurzes Codebeispiel: immer auf der Rückseite (im umgekehrten Modus also beim Begriff)
     const ex = side === 'back' && item.ex ? `<pre class="ex"><code>${esc(item.ex)}</code></pre>` : '';
@@ -473,6 +496,106 @@
       </div>
       <div class="study-controls">${s.flipped ? answerButtons() : flipButton()}</div>
     </div>`;
+  }
+
+  // ---------- Einzelne Karte ansehen und bearbeiten ----------
+  function currentCard() {
+    const f = folderById(state.folderId);
+    if (!f) return {};
+    const cs = cardsOf(f);
+    return { f, cs, c: cs[state.cardIdx] };
+  }
+  const sideName = it => it.label || 'Definition';
+
+  function viewCard() {
+    const { f, cs, c } = currentCard();
+    if (!c) { state.view = f ? 'folder' : 'home'; state.editing = false; return f ? viewFolder() : viewHome(); }
+    if (state.editing) return viewEdit(f, c);
+    const items = itemsOf(c, true);
+    if (!items.length) items.push({ term: c.term, text: '', label: null });
+    const k = Math.min(state.cardSide, items.length - 1), item = items[k];
+    const i = state.cardIdx;
+    const sides = items.length > 1
+      ? `<div class="segment">${items.map((it, j) => `<button class="${j === k ? 'on' : ''}" data-action="card-side" data-k="${j}">${esc(sideName(it))}</button>`).join('')}</div>`
+      : '<button class="btn ghost" data-action="pv-flip">Umdrehen</button>';
+    return `<div class="study">
+      <div class="study-bar">
+        <button class="icon-btn" data-action="card-back" aria-label="Zurück">${icon.back}</button>
+        <div class="info">${esc(f.name)} · Karte ${i + 1} von ${cs.length}${c.edited ? ' · bearbeitet' : ''}</div>
+        <button class="icon-btn" data-action="edit-card" aria-label="Karte bearbeiten">${icon.pencil}</button>
+      </div>
+      <div class="stage">
+        <div class="card ${state.cardFlipped ? 'flipped' : ''}" data-action="pv-flip" role="button" aria-label="Karte umdrehen">
+          <div class="inner">${face('front', item, f.color, false)}${face('back', item, f.color, false)}</div>
+        </div>
+      </div>
+      <div class="study-controls card-controls">
+        <button class="icon-btn" data-action="card-nav" data-d="-1" aria-label="Vorherige Karte" ${i === 0 ? 'disabled' : ''}>${icon.back}</button>
+        <div class="sides">${sides}</div>
+        <button class="icon-btn" data-action="card-nav" data-d="1" aria-label="Nächste Karte" ${i >= cs.length - 1 ? 'disabled' : ''}>${icon.next}</button>
+      </div>
+    </div>`;
+  }
+
+  function viewEdit(f, c) {
+    const rows = v => Math.min(14, Math.max(3, String(v || '').split('\n').length + 1));
+    const area = (name, label, v) => `<label>${label}<textarea name="${name}" rows="${rows(v)}">${esc(v || '')}</textarea></label>`;
+    const fields = c.img
+      ? `<label>Begriff<input name="term" value="${esc(c.term)}" required></label>
+         ${area('def', 'Bildunterschrift', c.def)}`
+      : `<label>Begriff (Vorderseite)<input name="term" value="${esc(c.term)}" required></label>
+         ${area('def', 'Definition / Erklärung (Rückseite)', c.def)}
+         ${area('more', 'Vertiefung (optional – eigene Karte)', c.more)}
+         <label>Bezeichnung der Vertiefung<input name="moreLabel" value="${esc(c.moreLabel || '')}" placeholder="Methode"></label>
+         ${area('calc', 'Berechnung / Rechenweg (optional – eigene Karte)', c.calc)}
+         ${area('ex', 'Codebeispiel (optional)', c.ex)}`;
+    return `<div class="menu">
+      <div class="topbar">
+        <div class="left"><button class="icon-btn" data-action="cancel-edit" aria-label="Zurück">${icon.back}</button>
+        <h1>Karte bearbeiten</h1></div>
+      </div>
+      <form class="form" data-form="edit">
+        ${fields}
+        <p class="muted form-hint">Formeln mit $…$, Listen mit „- “ am Zeilenanfang, **fett**.${c.own ? '' : ' Änderungen an Karten aus Skripten werden nur auf diesem Gerät gespeichert.'}</p>
+        <div class="actions"><button type="button" class="btn ghost" data-action="cancel-edit">Abbrechen</button><button class="btn primary">Speichern</button></div>
+      </form>
+      ${c.edited ? '<div style="margin-top:14px;text-align:center"><button class="btn ghost" data-action="restore-card">Original wiederherstellen</button></div>' : ''}
+      ${c.own ? '<div style="margin-top:14px;text-align:center"><button class="btn ghost danger" data-action="del-own-card">Karte löschen</button></div>' : ''}
+    </div>`;
+  }
+
+  function saveEdit(data) {
+    const { f, c } = currentCard(); if (!c) return;
+    const upd = {};
+    for (const k of EDIT_FIELDS) if (k in data) upd[k] = String(data[k]).replace(/\r\n/g, '\n').trim();
+    if (!upd.term || (!c.img && !upd.def)) { alert(c.img ? 'Bitte einen Begriff eingeben.' : 'Begriff und Definition dürfen nicht leer sein.'); return; }
+    if (c.own) {
+      const list = ownCards[f.id] || [], card = Object.assign({}, list[c.ownIndex]);
+      for (const k in upd) { if (upd[k]) card[k] = upd[k]; else delete card[k]; }
+      list[c.ownIndex] = card; ownCards[f.id] = list;
+    } else {
+      // nur speichern, was sich vom Original unterscheidet; ohne Unterschied wird die Änderung entfernt
+      const same = Object.keys(upd).every(k => upd[k] === String(c.orig[k] || '').trim());
+      if (same) delete edits[c.editKey]; else edits[c.editKey] = upd;
+    }
+    moveStats(sid(f), c, upd);
+    state.editing = false; save(); render();
+  }
+
+  function cardNav(d) {
+    const { cs } = currentCard(); if (!cs) return;
+    const i = state.cardIdx + d;
+    if (i < 0 || i >= cs.length) return;
+    state.cardIdx = i; state.cardSide = 0; state.cardFlipped = false; render();
+  }
+  function pvFlip() {
+    state.cardFlipped = !state.cardFlipped;
+    const card = app.querySelector('.card');
+    if (card) card.classList.toggle('flipped', state.cardFlipped);
+  }
+  function backToFolder() {
+    state.view = 'folder'; state.editing = false; render();
+    scrollTo(0, state.listScroll || 0);
   }
 
   function flip() {
@@ -530,6 +653,34 @@
       case 'exit-study': state.view = state.folderId ? 'folder' : 'home'; state.study = null; render(); break;
       case 'flip': flip(); break;
       case 'grade': answer(el.dataset.g); break;
+      case 'view-card':
+        state.listScroll = scrollY;
+        state.cardIdx = +el.dataset.idx; state.cardSide = 0; state.cardFlipped = false; state.editing = false;
+        state.view = 'card'; render(); scrollTo(0, 0);
+        break;
+      case 'card-back': backToFolder(); break;
+      case 'card-nav': cardNav(+el.dataset.d); break;
+      case 'card-side': state.cardSide = +el.dataset.k; state.cardFlipped = false; render(); break;
+      case 'pv-flip': pvFlip(); break;
+      case 'edit-card': state.editing = true; render(); scrollTo(0, 0); break;
+      case 'cancel-edit': state.editing = false; render(); break;
+      case 'restore-card': {
+        const { f, c } = currentCard();
+        if (c && !c.own && confirm('Eigene Änderungen an dieser Karte verwerfen?')) {
+          delete edits[c.editKey];
+          moveStats(sid(f), c, c.orig);
+          state.editing = false; save(); render();
+        }
+        break;
+      }
+      case 'del-own-card': {
+        const { f, c } = currentCard();
+        if (c && c.own && confirm('Diese Karte löschen?')) {
+          ownCards[f.id].splice(c.ownIndex, 1); save();
+          backToFolder();
+        }
+        break;
+      }
       case 'reset-stats': {
         const f = folderById(state.folderId);
         if (f && confirm(`Lernstand für „${f.name}“ zurücksetzen?`)) {
@@ -570,11 +721,23 @@
       if ((data.more || '').trim()) { card.more = data.more.trim(); if ((data.moreLabel || '').trim()) card.moreLabel = data.moreLabel.trim(); }
       (ownCards[state.folderId] = ownCards[state.folderId] || []).push(card);
       save(); render(); // Formular bleibt offen für die nächste Karte
+    } else if (form.dataset.form === 'edit') {
+      saveEdit(data);
     }
   });
 
   document.addEventListener('keydown', e => {
-    if (state.view !== 'study' || e.target.closest('input,textarea')) return;
+    if (e.target.closest('input,textarea')) return;
+    // Kartenzeilen sind keine echten Buttons → Enter/Leertaste selbst auslösen
+    if ((e.key === 'Enter' || e.key === ' ') && e.target.matches && e.target.matches('.card-preview')) { e.preventDefault(); e.target.click(); return; }
+    if (state.view === 'card' && !state.editing) {
+      if (e.key === ' ' || e.key === 'Enter') { if (!e.target.closest('button')) { e.preventDefault(); pvFlip(); } }
+      else if (e.key === 'ArrowLeft') cardNav(-1);
+      else if (e.key === 'ArrowRight') cardNav(1);
+      else if (e.key === 'Escape') backToFolder();
+      return;
+    }
+    if (state.view !== 'study') return;
     if (e.key === ' ' || e.key === 'Enter') { e.preventDefault(); flip(); }
     else if (e.key === '1' || e.key === 'ArrowLeft') answer('wrong');
     else if (e.key === '2' || e.key === 'ArrowDown') answer('unsure');
