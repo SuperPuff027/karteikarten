@@ -412,6 +412,65 @@ window.DECKS.push({
       def: 'Ab dem Index $N_\\varepsilon$ liegen alle Folgenglieder im Streifen $(a - \\varepsilon, a + \\varepsilon)$.',
     },
 
+    // Kriterien für Konvergenz, Divergenz und Grenzwert – Vorderseite: Name, Rückseite: Aussage + Anwendung
+    {
+      term: 'ε-N-Kriterium (Nachweis per Definition)',
+      def: '**Aussage:** $a_n \\to a$, wenn es zu jedem $\\varepsilon > 0$ ein $N_\\varepsilon$ gibt mit $|a_n - a| < \\varepsilon$ für alle $n > N_\\varepsilon$.\n\n**Anwendung:** nur, wenn der Grenzwert $a$ schon vermutet wird.\n- $|a_n - a|$ vereinfachen bzw. nach oben abschätzen\n- $< \\varepsilon$ nach $n$ auflösen → $N_\\varepsilon$ angeben\n\n$a_n = \\frac{n+1}{n}$: $|a_n - 1| = \\frac1n < \\varepsilon$ für $n > \\frac{1}{\\varepsilon}$ → $a_n \\to 1$',
+    },
+    {
+      term: 'Grenzwertsätze (Rechenregeln) anwenden',
+      def: '**Aussage:** Konvergieren $a_n \\to a$ und $b_n \\to b$, dann auch $a_n \\pm b_n$, $a_n b_n$, $\\frac{a_n}{b_n}$ ($b \\neq 0$), $|a_n|$, $\\sqrt{a_n}$ ($a_n \\ge 0$) – gegen $a \\pm b$, $ab$, $\\frac ab$, $|a|$, $\\sqrt a$.\n\n**Anwendung:**\n- Folge in bekannte Bausteine zerlegen: $\\frac1n \\to 0$, $q^n \\to 0$ ($|q| < 1$), $\\sqrt[n]{n} \\to 1$\n- bei Brüchen die höchste Potenz im Nenner ausklammern\n- Voraussetzung: **beide** Teilfolgen konvergieren; bei $\\infty - \\infty$, $0 \\cdot \\infty$, $\\frac{\\infty}{\\infty}$ erst umformen\n\n$\\frac{2n^2 + 1}{n^2 - n} = \\frac{2 + 1/n^2}{1 - 1/n} \\to 2$',
+    },
+    {
+      term: 'Sandwich-Kriterium (Einschließungskriterium)',
+      def: '**Aussage:** Gilt $a_n \\le c_n \\le b_n$ ab einem Index und $a_n \\to L$, $b_n \\to L$, dann $c_n \\to L$.\n\n**Anwendung:** wenn $c_n$ zu kompliziert für die Grenzwertsätze ist (Wurzeln, $\\sin$, Summen).\n- $c_n$ nach unten und oben durch einfachere Folgen abschätzen\n- beide Schranken müssen **denselben** Grenzwert haben\n\n$c_n = \\sqrt[n]{2^n + 3^n}$: $3 \\le c_n \\le \\sqrt[n]{2 \\cdot 3^n} = 3\\sqrt[n]{2} \\to 3$ → $c_n \\to 3$',
+    },
+    {
+      term: 'Vergleich mit einer Nullfolge',
+      def: '**Aussage:** Gilt $|a_n - a| \\le C\\, b_n$ ab einem Index mit Konstante $C > 0$ und $b_n \\to 0$, dann $a_n \\to a$.\n\n**Anwendung:** einseitige Form des Sandwich-Kriteriums – nur der Abstand zum vermuteten Grenzwert muss nach oben abgeschätzt werden.\n\n$\\left|\\frac{n}{n+1} - 1\\right| = \\frac{1}{n+1} \\le \\frac1n \\to 0$ → $\\frac{n}{n+1} \\to 1$',
+    },
+    {
+      term: 'Beschränkt mal Nullfolge (Kriterium)',
+      def: '**Aussage:** Ist $(a_n)$ beschränkt mit $|a_n| \\le K$ und $b_n \\to 0$, dann $a_n b_n \\to 0$, denn $|a_n b_n| \\le K |b_n|$.\n\n**Anwendung:** bei Faktoren wie $\\sin(n)$, $\\cos(n)$, $(-1)^n$, die selbst nicht konvergieren.\n\n$\\frac{\\sin n}{n} = \\sin n \\cdot \\frac1n \\to 0$',
+    },
+    {
+      term: 'Bestimmte Divergenz durch Minorante',
+      def: '**Aussage:** Gilt $a_n \\ge b_n$ ab einem Index und $b_n \\to +\\infty$, dann $a_n \\to +\\infty$ (analog mit $\\le$ für $-\\infty$).\n\n**Anwendung:** $a_n$ nach unten durch eine einfachere, unbeschränkt wachsende Folge abschätzen (oft mit Bernoulli).\n\n$\\frac{n^2 + 1}{n} \\ge n \\to +\\infty$',
+    },
+    {
+      term: 'Bernoulli-Abschätzung',
+      def: '**Aussage:** $(1 + x)^n \\ge 1 + nx$ für $x \\ge -1$, $n \\in \\mathbb{N}$.\n\n**Anwendung:** Potenzen $(1 + x)^n$ nach unten durch einen in $n$ linearen Ausdruck abschätzen – dann Minorante oder Sandwich.\n- $q^n \\to \\infty$ für $q > 1$: $q = 1 + h$, $q^n \\ge 1 + nh \\to \\infty$\n- $\\sqrt[n]{\\alpha} \\to 1$ für $\\alpha > 1$: $\\sqrt[n]{\\alpha} = 1 + h_n$ mit $h_n \\ge 0$, dann $\\alpha \\ge 1 + n h_n$, also $0 \\le h_n \\le \\frac{\\alpha - 1}{n} \\to 0$',
+    },
+    {
+      term: 'Monotoniekriterium anwenden',
+      def: '**Aussage:** Monoton steigend und nach oben beschränkt ⇒ konvergent (gegen das Supremum); analog fallend und nach unten beschränkt. Monoton und unbeschränkt ⇒ bestimmt divergent.\n\n**Anwendung:** wenn der Grenzwert unbekannt ist (rekursive Folgen, Summen).\n- Monotonie: $a_{n+1} - a_n$ oder $\\frac{a_{n+1}}{a_n}$ untersuchen\n- Schranke angeben, oft per Induktion\n- liefert nur Konvergenz, nicht den Wert\n\n$a_n = \\sum_{k=1}^{n} \\frac{1}{k^2}$: steigend, $a_n \\le 1 + \\sum_{k=2}^{n} \\frac{1}{k(k-1)} = 2 - \\frac1n < 2$ → konvergent',
+    },
+    {
+      term: 'Fixpunktmethode (rekursive Folgen)',
+      def: '**Aussage:** Ist $a_{n+1} = f(a_n)$ mit stetigem $f$ und $a_n \\to a$, dann gilt $a = f(a)$.\n\n**Anwendung:**\n- **zuerst** Konvergenz zeigen (meist Monotoniekriterium)\n- dann $a_n$ und $a_{n+1}$ durch $a$ ersetzen und $a = f(a)$ lösen\n- unpassende Lösungen ausschließen (Vorzeichen, Schranken)\n\n$a_0 = 0$, $a_{n+1} = \\sqrt{2 + a_n}$: steigend, $a_n < 2$ → konvergent; $a = \\sqrt{2 + a}$ → $a^2 - a - 2 = 0$ → $a = 2$ (da $a \\ge 0$)',
+    },
+    {
+      term: 'Quotientenkriterium für Folgen',
+      def: '**Aussage:** Für $a_n \\neq 0$ und $q = \\lim \\left|\\frac{a_{n+1}}{a_n}\\right|$:\n- $q < 1$ → $a_n \\to 0$\n- $q > 1$ → $|a_n| \\to \\infty$, also divergent\n- $q = 1$ → keine Aussage ($\\frac1n$, $1$, $n$)\n\n**Anwendung:** bei Fakultäten und Potenzen $q^n$, $n^n$.\n\n$a_n = \\frac{n!}{n^n}$: $\\frac{a_{n+1}}{a_n} = \\frac{1}{(1 + 1/n)^n} \\to \\frac1e < 1$ → $a_n \\to 0$',
+    },
+    {
+      term: 'Cauchy-Kriterium anwenden',
+      def: '**Aussage:** $(a_n)$ konvergiert ⇔ zu jedem $\\varepsilon > 0$ gibt es $N_\\varepsilon$ mit $|a_m - a_n| < \\varepsilon$ für alle $m, n > N_\\varepsilon$.\n\n**Anwendung:** Konvergenz ohne Kenntnis des Grenzwerts.\n- **Konvergenz:** z. B. $|a_{n+1} - a_n| \\le C q^n$ mit $0 < q < 1$ → mit geometrischer Summe ist $(a_n)$ Cauchy-Folge\n- **Divergenz:** Indizes $m, n$ beliebig groß finden mit $|a_m - a_n| \\ge c > 0$\n- Achtung: $|a_{n+1} - a_n| \\to 0$ allein reicht **nicht** ($\\sqrt n$)\n\n$s_n = \\sum_{k=1}^{n} \\frac1k$: $s_{2n} - s_n \\ge n \\cdot \\frac{1}{2n} = \\frac12$ → divergent',
+    },
+    {
+      term: 'Teilfolgen-Kriterium',
+      def: '**Aussage:** Konvergiert $a_n \\to a$, dann konvergiert jede Teilfolge gegen $a$.\n\n**Anwendung (Divergenz):** zwei Teilfolgen mit verschiedenen Grenzwerten finden, oder eine divergente Teilfolge.\n- typisch: gerade und ungerade Indizes $a_{2n}$, $a_{2n+1}$\n- umgekehrt: $a_{2n} \\to a$ **und** $a_{2n+1} \\to a$ ⇒ $a_n \\to a$\n\n$a_n = (-1)^n \\frac{n}{n+1}$: $a_{2n} \\to 1$, $a_{2n+1} \\to -1$ → divergent',
+    },
+    {
+      term: 'Unbeschränkt ⇒ divergent',
+      def: '**Aussage:** Jede konvergente Folge ist beschränkt. Kontraposition: eine unbeschränkte Folge ist divergent (hat keinen endlichen Grenzwert).\n\n**Anwendung:** schneller Divergenztest – zeigen, dass $|a_n|$ jede Schranke überschreitet.\n- Umkehrung gilt **nicht**: $(-1)^n$ ist beschränkt und divergent\n\n$a_n = (-1)^n n$: $|a_n| = n$ unbeschränkt → divergent (auch nicht gegen $\\pm\\infty$)',
+    },
+    {
+      term: 'Konvergenz einer Folge prüfen',
+      def: 'Übersicht, welches Kriterium wann passt.',
+      calc: '- **Bausteine erkennbar?** → Grenzwertsätze (höchste Potenz ausklammern, $\\infty - \\infty$ mit Gegenklammer)\n- **$\\sin$, $\\cos$, $(-1)^n$ als Faktor?** → beschränkt mal Nullfolge\n- **Wurzeln, Summen, schwer zu rechnen?** → Sandwich-Kriterium\n- **Fakultäten, $q^n$, $n^n$?** → Quotientenkriterium für Folgen\n- **rekursiv oder Grenzwert unbekannt?** → Monotoniekriterium, dann Fixpunkt\n- **Divergenz vermutet?** → unbeschränkt, zwei Teilfolgen, Minorante gegen $\\infty$\n- **Grenzwert vermutet, Beweis verlangt?** → ε-N-Kriterium',
+    },
+
     { chapter: '2.2 Grenzwertbestimmung' },
     {
       term: 'Geometrische Folge',
