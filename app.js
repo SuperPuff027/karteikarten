@@ -24,7 +24,7 @@
     cardIdx: 0, cardSide: 0, cardFlipped: false, editing: false, listScroll: 0 };
 
   const save = () => { store.set('kk.folders', userFolders); store.set('kk.cards', ownCards); store.set('kk.prefs', prefs); store.set('kk.stats', stats); store.set('kk.edits', edits); };
-  const EDIT_FIELDS = ['term', 'def', 'more', 'moreLabel', 'calc', 'ex'];
+  const EDIT_FIELDS = ['term', 'use', 'def', 'more', 'moreLabel', 'calc', 'ex'];
 
   // ---------- Lernstand ----------
   const statKey = (folderId, term, label) => folderId + '|' + term + '|' + (label || '');
@@ -370,6 +370,7 @@
       <div class="list">${cs.length ? cs.map((c, i) => `<div class="row card-preview" data-action="view-card" data-idx="${i}" role="button" tabindex="0">
           <span class="dot" style="background:${dotFor(stats[statKey(sid(f), c.term, c.img ? 'Schaltbild' : null)])}"></span>
           <span class="grow"><div class="title">${fmt(c.term)}${c.img ? '<span class="tag">Schaltbild</span>' : ''}${c.more ? `<span class="tag">+ ${esc(c.moreLabel || 'Methode')}</span>` : ''}${c.calc ? '<span class="tag">+ Berechnung</span>' : ''}${c.own ? '<span class="tag">eigene</span>' : ''}${c.edited ? '<span class="tag">bearbeitet</span>' : ''}</div>
+          ${c.use ? `<div class="use">→ ${fmt(c.use)}</div>` : ''}
           <div class="sub">${fmt(String(c.def || c.calc || '').replace(/\n+- /g, ' · ').replace(/\n+/g, ' ').replace(/^- /, ''))}</div></span>
           ${c.own ? `<button class="del" data-action="del-card" data-i="${c.ownIndex}" aria-label="Karte löschen">×</button>` : `<span class="chev">${icon.chev}</span>`}
         </div>`).join('') : '<div class="empty">Dieser Ordner ist noch leer.</div>'}</div>`}
@@ -544,6 +545,7 @@
       ? `<label>Begriff<input name="term" value="${esc(c.term)}" required></label>
          ${area('def', 'Bildunterschrift', c.def)}`
       : `<label>Begriff (Vorderseite)<input name="term" value="${esc(c.term)}" required></label>
+         <label>Wofür? (steht in der Kartenliste unter dem Begriff, optional)<input name="use" value="${esc(c.use || '')}" placeholder="z. B. Divergenz zeigen"></label>
          ${area('def', 'Definition / Erklärung (Rückseite)', c.def)}
          ${area('more', 'Vertiefung (optional – eigene Karte)', c.more)}
          <label>Bezeichnung der Vertiefung<input name="moreLabel" value="${esc(c.moreLabel || '')}" placeholder="Methode"></label>
