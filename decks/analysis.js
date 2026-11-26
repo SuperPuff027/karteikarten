@@ -618,6 +618,11 @@ window.DECKS.push({
       calc: '- vermuten: konvergent oder divergent?\n- **Konvergenz:** $|a_n| \\le b_n$ mit bekannter konvergenter Reihe, z. B. $\\frac{1}{n^2}$ oder geometrisch\n- **Divergenz:** $a_n \\ge b_n \\ge 0$ mit divergenter Reihe, z. B. $\\frac{c}{n}$\n- dabei Zähler nach oben, Nenner nach unten abschätzen (bzw. umgekehrt)\n\n$\\left|\\frac{\\sin(3n + 2)}{3n^2 + 2n + 8}\\right| \\le \\frac{1}{3n^2}$ → konvergent',
     },
     {
+      term: 'Vergleichskriterium (Grenzwertform)',
+      def: 'Für $a_n \\ge 0$, $b_n > 0$ (ab einem Index) und $c = \\lim_{n\\to\\infty} \\frac{a_n}{b_n}$:\n- $0 < c < \\infty$ → $\\sum a_n$ und $\\sum b_n$ sind **beide** konvergent oder **beide** divergent\n- $c = 0$ → aus $\\sum b_n$ konvergent folgt $\\sum a_n$ konvergent\n- $c = \\infty$ → aus $\\sum b_n$ divergent folgt $\\sum a_n$ divergent\n\nErspart die Ungleichungen des Majorantenkriteriums: es genügt ein Grenzwert.',
+      calc: '- nur die höchsten Potenzen in Zähler und Nenner betrachten → Vergleichsreihe $b_n = \\frac{1}{n^\\alpha}$ (oder geometrisch) wählen\n- $\\frac{a_n}{b_n}$ bilden und den Grenzwert $c$ bestimmen\n- ist $0 < c < \\infty$: $\\sum a_n$ verhält sich wie $\\sum b_n$ (bei $\\frac{1}{n^\\alpha}$: konvergent für $\\alpha > 1$)\n\n$\\sum \\frac{n + 1}{n^3 + 2}$ mit $b_n = \\frac{1}{n^2}$: $\\frac{a_n}{b_n} = \\frac{n^3 + n^2}{n^3 + 2} \\to 1$ → konvergent\n\n$\\sum \\frac{n + 1}{n^2 + 3}$ mit $b_n = \\frac1n$: $\\frac{a_n}{b_n} = \\frac{n^2 + n}{n^2 + 3} \\to 1$ → divergent',
+    },
+    {
       term: 'Quotientenkriterium',
       def: 'Mit $\\rho = \\lim \\left|\\frac{a_{n+1}}{a_n}\\right|$:\n- $\\rho < 1$ → absolut konvergent\n- $\\rho > 1$ → divergent\n- $\\rho = 1$ → keine Aussage',
       calc: '- $\\frac{a_{n+1}}{a_n}$ aufstellen\n- Doppelbrüche auflösen, kürzen (Fakultäten, Potenzen!)\n- Grenzwert $\\rho$ bestimmen und mit 1 vergleichen\n\n$\\sum \\frac{n^2}{3^n}$: $\\frac{1}{3}(1 + \\frac1n)^2 \\to \\frac13 < 1$ → konvergent',
@@ -630,7 +635,7 @@ window.DECKS.push({
     {
       term: 'Konvergenz einer Reihe prüfen',
       def: 'Übersicht, welches Kriterium wann passt.',
-      calc: '- **Nullfolge?** $a_n \\not\\to 0$ → divergent\n- **bekannte Reihe?** geometrisch, $\\frac{1}{n^\\alpha}$\n- **alternierend?** → Leibniz\n- **Fakultäten / $q^n$?** → Quotientenkriterium\n- **$n$-te Potenzen?** → Wurzelkriterium\n- **sonst** → Majoranten-/Minorantenkriterium mit Abschätzung',
+      calc: '- **Nullfolge?** $a_n \\not\\to 0$ → divergent\n- **bekannte Reihe?** geometrisch, $\\frac{1}{n^\\alpha}$\n- **alternierend?** → Leibniz\n- **Fakultäten / $q^n$?** → Quotientenkriterium\n- **$n$-te Potenzen?** → Wurzelkriterium\n- **Bruch aus Potenzen von $n$?** → Vergleichskriterium (Grenzwertform) mit $\\frac{1}{n^\\alpha}$\n- **sonst** → Majoranten-/Minorantenkriterium mit Abschätzung',
     },
   ],
 });
