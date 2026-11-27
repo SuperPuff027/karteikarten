@@ -300,8 +300,8 @@ window.DECKS.push({
     },
     {
       term: 'Stromteilerregel',
-      def: 'Bei parallelen Widerständen verhalten sich die Ströme wie die Leitwerte: $\\frac{i_1}{i_2} = \\frac{G_1}{G_2}$, $\\;\\frac{i_1}{i} = \\frac{G_1}{G_1 + G_2}$.',
-      calc: '- prüfen: die Widerstände liegen parallel (gleiche Spannung)\n- Leitwerte $G_k = 1/R_k$ bilden\n- $i_1 = i \\cdot \\frac{G_1}{G_1 + G_2} = i \\cdot \\frac{R_2}{R_1 + R_2}$',
+      def: 'Bei parallelen Widerständen verhalten sich die Ströme wie die Leitwerte – also umgekehrt wie die Widerstände.\n- **Leitwertform:** $\\frac{i_1}{i_2} = \\frac{G_1}{G_2}$, $\\;\\frac{i_1}{i} = \\frac{G_1}{G_1 + G_2}$\n- **Widerstandsform:** $\\frac{i_1}{i_2} = \\frac{R_2}{R_1}$, $\\;\\frac{i_1}{i} = \\frac{R_2}{R_1 + R_2}$ (im Zähler steht der Widerstand des **anderen** Zweigs)\n- $n$ Zweige: $\\frac{i_k}{i} = \\frac{G_k}{G_1 + \\dots + G_n} = \\frac{R_1 \\parallel \\dots \\parallel R_n}{R_k}$',
+      calc: '- prüfen: die Widerstände liegen parallel (gleiche Spannung)\n- **Leitwertform:** $i_1 = i \\cdot \\frac{G_1}{G_1 + G_2}$ mit $G_k = \\frac{1}{R_k}$\n- **Widerstandsform:** $i_1 = i \\cdot \\frac{R_2}{R_1 + R_2}$ – im Zähler der Widerstand des **anderen** Zweigs\n- mehr als zwei Zweige: $i_k = i \\cdot \\frac{R_\\text{ges}}{R_k}$ mit $R_\\text{ges} = R_1 \\parallel \\dots \\parallel R_n$',
     },
     {
       term: 'Spannungsteilerregel',
